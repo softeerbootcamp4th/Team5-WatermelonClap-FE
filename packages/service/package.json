@@ -1,0 +1,50 @@
+{
+  "name": "@watermelon-clap/service",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc -b && vite build",
+    "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@emotion/css": "^11.11.2",
+    "@emotion/react": "^11.11.4",
+    "@emotion/styled": "^11.11.5",
+    "@react-three/drei": "^9.108.4",
+    "@react-three/fiber": "^8.16.8",
+    "@tsparticles/react": "^3.0.0",
+    "@tsparticles/slim": "^3.5.0",
+    "@types/three": "^0.166.0",
+    "@watermelon-clap/core": "workspace:*",
+    "firebase": "^10.12.4",
+    "framer-motion": "^11.3.2",
+    "leva": "^0.9.35",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-router-dom": "^6.24.1",
+    "three": "^0.166.1"
+  },
+  "devDependencies": {
+    "@emotion/babel-plugin": "^11.11.0",
+    "@svgr/plugin-jsx": "^8.1.0",
+    "@svgr/plugin-svgo": "^8.1.0",
+    "@types/react": "^18.3.3",
+    "@types/react-dom": "^18.3.0",
+    "@typescript-eslint/eslint-plugin": "^7.16.1",
+    "@typescript-eslint/parser": "^7.16.1",
+    "@vitejs/plugin-react": "^4.3.1",
+    "eslint": "^8.57.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-prettier": "^5.1.3",
+    "eslint-plugin-react-hooks": "^4.6.2",
+    "eslint-plugin-react-refresh": "^0.4.7",
+    "prettier": "^3.3.3",
+    "typescript": "^5.5.0",
+    "vite": "^5.3.1",
+    "vite-plugin-svgr": "^4.2.0",
+    "vite-tsconfig-paths": "^4.3.2"
+  }
+}
