@@ -70,7 +70,7 @@ export const MainPage = () => {
           right: 20px;
         `}
       >
-        개발자
+        개발
       </Link>
     </div>
   );
