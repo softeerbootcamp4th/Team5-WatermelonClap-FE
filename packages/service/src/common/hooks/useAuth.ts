@@ -26,6 +26,7 @@ export const useAuth = () => {
   const [isAuthInit, setIsAuthInit] = useState(false);
   useEffect(() => {
     fbAuth.onAuthStateChanged((auth) => {
+      console.log(auth);
       setAuth(auth);
       setIsAuthInit(true);
     });
