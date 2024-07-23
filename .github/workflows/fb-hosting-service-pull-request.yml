@@ -13,14 +13,23 @@ jobs:
         working-directory: packages/service
     steps:
       - uses: actions/checkout@v3
-      - name: Create .env file
-        run: |
-          jq -r 'to_entries|map("\(.key)=\(.value|tostring)")|.[]' <<< "$SECRETS_CONTEXT" > .env
-        env:
-          SECRETS_CONTEXT: ${{ toJson(secrets) }}
-      - run: npm install -g pnpm && pnpm install && pnpm build
-      - uses: FirebaseExtended/action-hosting-deploy@v0
+      - uses: technote-space/get-diff-action@v6
+        id: git-diff
         with:
-          repoToken: '${{ secrets.GITHUB_TOKEN }}'
-          firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_WATERMELON_CLAP }}'
-          projectId: watermelon-clap
+          RELATIVE: '.'
+      - name: deploy
+        if: steps.git-diff.outputs.diff
+        - name: Create .env file
+          run: |
+            jq -r 'to_entries|map("\(.key)=\(.value|tostring)")|.[]' <<< "$SECRETS_CONTEXT" > .env
+          env:
+            SECRETS_CONTEXT: ${{ toJson(secrets) }}
+        - run: npm install -g pnpm && pnpm install && pnpm build
+
+        
+        - uses: FirebaseExtended/action-hosting-deploy@v0
+          with:
+            repoToken: '${{ secrets.GITHUB_TOKEN }}'
+            firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_WATERMELON_CLAP }}'
+            projectId: watermelon-clap
+        
