@@ -73,6 +73,15 @@ export const ScrollTextPage: React.FC = () => {
   );
 };
 
+interface ScrollTextProps {
+  children: string;
+  startColor: string;
+  endColor: string;
+  direction: "left" | "right";
+  fontSize: string;
+  containerRef: React.MutableRefObject<HTMLDivElement | null>;
+}
+
 export const ScrollText: React.FC<ScrollTextProps> = ({
   children,
   startColor,
@@ -113,12 +122,3 @@ export const ScrollText: React.FC<ScrollTextProps> = ({
     </motion.h1>
   );
 };
-
-interface ScrollTextProps {
-  children: string;
-  startColor: string;
-  endColor: string;
-  direction: "left" | "right";
-  fontSize: string;
-  containerRef: React.MutableRefObject<HTMLDivElement | null>;
-}
