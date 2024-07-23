@@ -11,6 +11,11 @@
   },
   "dependencies": {
     "@emotion/react": "^11.11.4",
+    "@emotion/styled": "^11.11.5",
+    "@mui/material": "^5.16.4",
+    "@tanstack/react-query": "^5.51.11",
+    "@watermelon-clap/core": "workspace:*",
+    "firebase": "^10.12.4",
     "react": "^18.3.1",
     "react-dom": "^18.3.1"
   },
