@@ -10,14 +10,14 @@ jobs:
     environment: preview
     defaults:
       run:
-        working-directory: ./packages/service
+        working-directory: packages/service
     steps:
+      - uses: actions/checkout@v3
       - name: Create .env file
         run: |
           jq -r 'to_entries|map("\(.key)=\(.value|tostring)")|.[]' <<< "$SECRETS_CONTEXT" > .env
         env:
           SECRETS_CONTEXT: ${{ toJson(secrets) }}
-      - uses: actions/checkout@v3
       - run: npm install -g pnpm && pnpm install && pnpm build
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
