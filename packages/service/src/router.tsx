@@ -7,7 +7,7 @@ import {
   MAIN_PAGE_ROUTE,
   ROTATE_DEMO_PAGE_ROUTE,
   SCROLL_DEMO_PAGE_ROUTE,
-  SCROLLTEXT_DEMO_PAGE_ROUTE,
+  SCROLL_TEXT_DEMO_PAGE_ROUTE,
 } from "./constants/routes";
 import { RotateDemoPage } from "./Demo/pages/RotateDemoPage";
 import { MainPage } from "./Main/pages/MainPage";
@@ -39,7 +39,7 @@ export const router = createBrowserRouter([
         element: <AuthDemoPage />,
       },
       {
-        path: SCROLLTEXT_DEMO_PAGE_ROUTE,
+        path: SCROLL_TEXT_DEMO_PAGE_ROUTE,
         element: <ScrollTextPage />,
       },
     ],
