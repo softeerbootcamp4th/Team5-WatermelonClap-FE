@@ -5,9 +5,6 @@ jobs:
     if: ${{ github.event.pull_request.head.repo.full_name == github.repository }}
     runs-on: ubuntu-latest
     environment: preview
-    defaults:
-      run:
-        working-directory: packages/service
     steps:
       - uses: actions/checkout@v3
       
@@ -15,9 +12,10 @@ jobs:
         id: diff-check
         uses: ./.github/workflows/diff-check.yml
         with:
-          relative: packages/service
+          relative: ./packages/service
           is_merge: false
-      
+      - name: package-folder
+        run: cd ./packages/service
       - name: Create .env file
         if: ${{ steps.diff-check.outputs.diff }}
         run: |

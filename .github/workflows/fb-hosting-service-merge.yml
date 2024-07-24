@@ -10,18 +10,18 @@ jobs:
   build_and_deploy:
     runs-on: ubuntu-latest
     environment: production
-    defaults:
-      run:
-        working-directory: packages/service
+
     steps:
       - uses: actions/checkout@v3
+
       - name: Run diff-check
-        id: diff-check
         uses: ./.github/workflows/diff-check.yml
+        id: diff-check
         with:
-          relative: packages/service
+          relative: ./packages/service
           is_merge: false
-      
+      - name: package-folder
+        run: cd ./packages/service
       - name: Create .env file
         if: steps.diff-check.outputs.diff
         run: |
