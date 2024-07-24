@@ -36,19 +36,19 @@ jobs:
           fi
       - run: echo ${{ steps.diff-check.outputs.diff }}
       - name: Create .env file
-        if: ${{ steps.diff-check.outputs.diff }}
+        if: ${{ steps.diff-check.outputs.diff  == 'true' }}
         run: |
           jq -r 'to_entries|map("\(.key)=\(.value|tostring)")|.[]' <<< "$SECRETS_CONTEXT" > .env
         env:
           SECRETS_CONTEXT: ${{ toJson(secrets) }}
           
       - name: Install Dependencies and Build
-        if: ${{ steps.diff-check.outputs.diff }}
+        if: ${{ steps.diff-check.outputs.diff == 'true' }}
         run: |
           npm install -g pnpm && pnpm install && pnpm build
           
       - name: Deploy to Firebase Hosting
-        if: ${{ steps.diff-check.outputs.diff }}
+        if: ${{ steps.diff-check.outputs.diff == 'true' }}
         uses: FirebaseExtended/action-hosting-deploy@v0
         with:
           repoToken: ${{ secrets.GITHUB_TOKEN }}
