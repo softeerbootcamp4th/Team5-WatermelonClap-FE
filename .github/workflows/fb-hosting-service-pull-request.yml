@@ -15,7 +15,7 @@ jobs:
       - name: Make Last Hash
         id: last
         run: |
-          LAST_HASH=$(git rev-parse remote/origin/main:packages/service)
+          LAST_HASH=$(git rev-parse remotes/origin/main:packages/service)
           echo "::set-output name=hash::$LAST_HASH"
       
       - name: Make Current Hash
