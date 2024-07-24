@@ -3,7 +3,6 @@ import {
   IAssetLoaderState,
   AssetLoaderContext,
 } from "../contexts/AssetLoaderContext";
-import { AssetLoaderStateStatus } from "../contexts/AssetLoaderContext";
 
 interface AssetLoaderContextProviderProps {
   children: ReactNode;
@@ -19,7 +18,7 @@ const assetLoaderReducer = (
     case "LOAD_START":
       return {
         ...state,
-        status: AssetLoaderStateStatus.LOADING,
+        status: "loading",
         percentage: 0,
         maxCount: state.maxCount + 1,
       };
@@ -33,7 +32,7 @@ const assetLoaderReducer = (
 };
 
 const initialState: IAssetLoaderState = {
-  status: AssetLoaderStateStatus.IDLE,
+  status: "idle",
   loadedCount: 0,
   maxCount: 0,
   percentage: 0,
