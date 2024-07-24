@@ -7,9 +7,17 @@ import { useRef } from "react";
 import { hideScrollBarStyle } from "@service/common/styles/hideScrollBarStyle";
 import { Link } from "react-router-dom";
 import { DEMO_PAGE_ROUTE } from "@service/constants/routes";
+import AssetLoaderOverlay from "@service/common/components/AssetLoaderOverlay/Overlay";
+import AssetWrapper from "@service/common/components/AssetLoaderOverlay/AssetWrapper";
 
 export const MainPage = () => {
   const scrollTargetRef = useRef<HTMLDivElement>(null);
+
+  const imageUrls = Array.from(
+    { length: 10 },
+    (_, index) => `https://picsum.photos/800/600?img=${index + 1}`,
+  );
+
   return (
     <div
       css={css`
@@ -22,7 +30,28 @@ export const MainPage = () => {
       `}
       ref={scrollTargetRef}
     >
+      <AssetLoaderOverlay />
       <MainBanner />
+      <div
+        css={css`
+          display: flex;
+          flex-wrap: wrap;
+          gap: 8px;
+        `}
+      >
+        {imageUrls.map((url, index) => (
+          <AssetWrapper
+            key={index}
+            src={url}
+            alt={`test ${index + 1}`}
+            css={css`
+              width: 100px;
+              height: auto;
+            `}
+          />
+        ))}
+      </div>
+
       <Game />
       <VirtualScrollBar scrollTargetRef={scrollTargetRef} />
       <Link
@@ -41,7 +70,7 @@ export const MainPage = () => {
           right: 20px;
         `}
       >
-        개발
+        개발ㄴ
       </Link>
     </div>
   );
