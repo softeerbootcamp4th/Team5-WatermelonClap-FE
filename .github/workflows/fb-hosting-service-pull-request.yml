@@ -8,12 +8,13 @@ jobs:
     environment: preview
     steps:
       - uses: actions/checkout@v3
+      - run: git branch -a 
       - name: Make Last Hash
         id: last
         run: |
           LAST_HASH=$(git rev-parse main:packages/service)
           echo "::set-output name=hash::$LAST_HASH"
-      - run: git branch -a 
+      
       - name: Make Current Hash
         id: current
         run: |
