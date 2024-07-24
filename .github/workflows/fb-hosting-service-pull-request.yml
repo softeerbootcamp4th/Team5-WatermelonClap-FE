@@ -1,6 +1,7 @@
 name: Deploy Service to Firebase Hosting on PR
 on: pull_request
 jobs:
+  
   build_and_preview:
     if: ${{ github.event.pull_request.head.repo.full_name == github.repository }}
     runs-on: ubuntu-latest
@@ -8,12 +9,26 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       
-      - name: Run diff-check
+      - name: Make Last Hash
+        id: last
+        run: |
+          LAST_HASH=$(git rev-parse HEAD^:packages/service)
+          echo "::set-output name=hash::$LAST_HASH"
+
+      - name: Make Current Hash
+        id: current
+        run: |
+          CURRENT_HASH=$(git rev-parse HEAD:packages/service)
+          echo "::set-output name=hash::$CURRENT_HASH"
+
+      - name: Set Diff
         id: diff-check
-        uses: ./.github/workflows/diff-check.yml
-        with:
-          relative: ./packages/service
-          is_merge: false
+        run: |
+          if [ "${{ steps.last.outputs.hash }}" != "${{ steps.current.outputs.hash }}" ]; then
+            echo "::set-output name=diff::true"
+          else
+            echo "::set-output name=diff::false"
+          fi
       - name: package-folder
         run: cd ./packages/service
       - name: Create .env file
