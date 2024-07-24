@@ -12,12 +12,18 @@ import {
 import { RotateDemoPage } from "./Demo/pages/RotateDemoPage";
 import { MainPage } from "./Main/pages/MainPage";
 import { AuthDemoPage } from "./Demo/pages/AuthDemoPage";
+import { AssetLoaderContextProvider } from "./common/providers/AssetLoaderContextProvider";
 import { ScrollTextPage } from "./Demo/pages/ScrollTextPage";
+
 
 export const router = createBrowserRouter([
   {
     path: MAIN_PAGE_ROUTE,
-    element: <MainPage />,
+    element: (
+      <AssetLoaderContextProvider>
+        <MainPage />,
+      </AssetLoaderContextProvider>
+    ),
   },
   {
     path: DEMO_PAGE_ROUTE,
