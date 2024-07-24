@@ -15,22 +15,25 @@ jobs:
         working-directory: packages/service
     steps:
       - uses: actions/checkout@v3
-      - uses: technote-space/get-diff-action@v6
+      - name: Run diff-check
+        id: diff-check
+        uses: ./.github/workflows/diff-check.yml
         with:
-          RELATIVE: '/'
-        id: git-diff
+          relative: packages/service
+          is_merge: false
+      
       - name: Create .env file
-        if: steps.git-diff.outputs.diff
+        if: steps.diff-check.outputs.diff
         run: |
           jq -r 'to_entries|map("\(.key)=\(.value|tostring)")|.[]' <<< "$SECRETS_CONTEXT" > .env
         env:
           SECRETS_CONTEXT: ${{ toJson(secrets) }}
       - name: Install Dependencies and Build
-        if: steps.git-diff.outputs.diff
+        if: steps.diff-check.outputs.diff
         run: |
           npm install -g pnpm && pnpm install && pnpm build
       - name: Deploy to Firebase Hosting
-        if: steps.git-diff.outputs.diff
+        if: steps.diff-check.outputs.diff
         uses: FirebaseExtended/action-hosting-deploy@v0
         with:
           repoToken: '${{ secrets.GITHUB_TOKEN }}'
