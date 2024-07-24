@@ -1,13 +1,7 @@
 import { createContext, useContext } from "react";
 
-export enum AssetLoaderStateStatus {
-  IDLE = "idle",
-  LOADING = "loading",
-  DONE = "done",
-}
-
 export interface IAssetLoaderState {
-  status: AssetLoaderStateStatus;
+  status: "idle" | "loading" | "done";
   loadedCount: number;
   maxCount: number;
   percentage: number;
