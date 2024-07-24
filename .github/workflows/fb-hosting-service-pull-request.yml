@@ -34,7 +34,6 @@ jobs:
           else
             echo "::set-output name=diff::false"
           fi
-      - run: echo ${{ steps.diff-check.outputs.diff }}
       - name: Create .env file
         if: ${{ steps.diff-check.outputs.diff  == 'true' }}
         run: |
