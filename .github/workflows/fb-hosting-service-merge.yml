@@ -13,11 +13,6 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
-
-
-      - name: package-folder
-        run: cd ./packages/service
-
       - name: Make Last Hash
         id: last
         run: |
@@ -38,6 +33,8 @@ jobs:
           else
             echo "::set-output name=diff::false"
           fi
+      - name: package-folder
+        run: cd ./packages/service
       - name: Create .env file
         if: steps.diff-check.outputs.diff
         run: |
