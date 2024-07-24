@@ -20,7 +20,7 @@ export const AssetLoaderContext = createContext<IAssetLoaderContext | null>(
 export const useAssetLoader = () => {
   const context = useContext(AssetLoaderContext);
 
-  if (!context) {
+  if (context === null) {
     throw new Error(
       "useAssetLoader must be used within an AssetLoaderProvider",
     );
