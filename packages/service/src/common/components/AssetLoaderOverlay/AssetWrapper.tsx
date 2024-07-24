@@ -7,6 +7,10 @@ interface AssetWrapperProps {
   className?: string;
 }
 
+/**
+ * 이 컴포넌트는 AssetLoaderContext 내에서만 사용해야 함
+ */
+
 const AssetWrapper: React.FC<AssetWrapperProps> = ({ src, alt, className }) => {
   const imgRef = useRef<HTMLImageElement | null>(null);
   const isFirstRender = useRef(true);
