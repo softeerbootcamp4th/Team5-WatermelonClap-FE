@@ -41,7 +41,7 @@ export const MainPage = () => {
           right: 20px;
         `}
       >
-        개발
+        개발ㄴ
       </Link>
     </div>
   );
