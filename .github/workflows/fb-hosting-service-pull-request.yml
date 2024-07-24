@@ -8,10 +8,8 @@ jobs:
     environment: preview
     steps:
       - uses: actions/checkout@v3
-      - name: main Checkout
-        uses: actions/checkout@v3
         with:
-          path: main
+          fetch-depth: 0
 
       - run: git branch -a 
       - name: Make Last Hash
