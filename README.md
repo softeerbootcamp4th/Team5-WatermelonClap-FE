@@ -18,6 +18,7 @@
    - 스프린트는 1주일의 주기를 가진다.
    - 스프린트 시작 시 백로그에서 이번주에 진행할 작업을 가져와 스프린트에 채운다.
    - 스프린트 종료 시 회고를 통해 작업 진행속도 및 작업 분배에 대해 논의한다. 
+   - 이슈 연결 기능을 사용하여 작업 간의 종속성을 명시한다.
 
 <img width="800" alt="image" src="https://github.com/user-attachments/assets/b6e96953-96ed-4a26-a4be-3543d81a45d5">
 
@@ -28,26 +29,26 @@
 
 ### 기본 규칙: 
     
-    ```
-    라벨명(이슈번호): 한 줄짜리 description `단, 개발 용어를 제외하고는 무조건 한글만 허용`
-    
-    - 설명 1(최대한 자세하게)
-    - 설명 2
-    ```
+```
+라벨명(이슈번호): 한 줄짜리 description `단, 개발 용어를 제외하고는 무조건 한글만 허용`
+
+- 설명 1(최대한 자세하게)
+- 설명 2
+```
 
     
 ### 라벨 설명
 
-    ```
-    feat: 새로운 기능 추가 및 삭제. 사용자가 조금이라도 변화를 감지할 수 있으면 무조건 feat로 분리.
-    fix: 버그 수정
-    refactor: feat와 fix를 제외한 모든 코드 수정
-    chore: 별로 중요하지 않은 변경 사항 `e.g., 파일명 변경, 폴더 구조 변경, 오타 수정, 주석 제거, etc.`
-    build: 빌드 관련 설정
-    config: 개발환경 관련 설정(프로젝트 초기 설정도 포함)
-    style: 코드  
-    res: 리소스 관련 (String, Color 등) 파일 `안드로이드 한정`
-    ```
+```
+feat: 새로운 기능 추가 및 삭제. 사용자가 조금이라도 변화를 감지할 수 있으면 무조건 feat로 분리.
+fix: 버그 수정
+refactor: feat와 fix를 제외한 모든 코드 수정
+chore: 별로 중요하지 않은 변경 사항 `e.g., 파일명 변경, 폴더 구조 변경, 오타 수정, 주석 제거, etc.`
+build: 빌드 관련 설정
+config: 개발환경 관련 설정(프로젝트 초기 설정도 포함)
+style: 코드  
+res: 리소스 관련 (String, Color 등) 파일 `안드로이드 한정`
+```
     
 ### 커밋 한번에는 100줄 이상의 변화를 넣지 않는다.
 
@@ -96,10 +97,11 @@
 
 ### Base
 - prettier recommended 설정을 최대한 따라간다.
-```'eslint:recommended',
-    'plugin:@typescript-eslint/recommended',
-    'plugin:react-hooks/recommended',
-    'plugin:prettier/recommended',
+```
+'eslint:recommended',
+'plugin:@typescript-eslint/recommended',
+'plugin:react-hooks/recommended',
+'plugin:prettier/recommended',
 ```
 - eslint와 prettier를 통합하여 사용한다.
 - 모든 패키지에서 같은 eslint rule 및 convention을 가져간다.
@@ -162,11 +164,11 @@
 - emotion을 쓰셔서 그런지 몰라도 자바스크립트 코드가 길어 보입니다. 그럼에도 불구하고 emotion을 쓰신 이유가 있을까요?  
   -> css-in-js의 장점을 가져가고자 했습니다. 복잡한 스타일링 로직은 분리(*.css.ts)하면 됩니다.
 
-- React-query를 선택한 이유  
-  -> 비동기 로직 처리를 효율적으로 수행하기 위해 사용하였습니다.
+- React-Query를 선택한 이유  
+  -> 서버의 트래픽을 줄이고, 비동기 로직 처리를 효율적으로 수행하기 위해 사용하였습니다.
 
 - 모노레포 구성을 채택한 이유  
-  -> admin과 service 패키지가 나뉘어지면서 각각의 패키지에 필요한 모듈들을 독립적으로 관리하기 위해 사용했습니다.
+  -> admin과 service 패키지가 나뉘어지면서 각각의 패키지에 필요한 모듈들을 독립적으로 관리하기 위해 사용했습니다. 또한 admin과 service를 각각 배포하면서 로직을 재사용하기 위해 채택했습니다.
 
 
 
