@@ -38,7 +38,7 @@ jobs:
         if: ${{ steps.diff-check.outputs.diff  == 'true' }}
         run: |
           jq -r 'to_entries|map("\(.key)=\(.value|tostring)")|.[]' <<< "$ENVIRONMENT" > .env
-          echo "$REPOSITORY_VAR"
+          echo "$OVERRIDE_VAR"
         env:
           SECRETS_CONTEXT: ${{ toJson(secrets) }}
           
