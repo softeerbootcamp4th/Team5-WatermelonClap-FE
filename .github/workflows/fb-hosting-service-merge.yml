@@ -6,7 +6,7 @@ name: Deploy Serivce to Firebase Hosting on merge
   push:
     branches:
       - main
-jobs:
+  s:
   build_and_deploy:
     runs-on: ubuntu-latest
     environment: production
@@ -56,3 +56,4 @@ jobs:
           repoToken: '${{ secrets.GITHUB_TOKEN }}'
           firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_WATERMELON_CLAP }}'
           projectId: watermelon-clap
+          channelId: live
