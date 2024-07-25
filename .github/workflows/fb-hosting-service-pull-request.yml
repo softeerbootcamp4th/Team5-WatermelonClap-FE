@@ -55,7 +55,6 @@ jobs:
           repoToken: ${{ secrets.GITHUB_TOKEN }}
           firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_WATERMELON_CLAP }}
           projectId: watermelon-clap
-          disableComment: true
           
 
       - name: Comment PR
@@ -64,8 +63,8 @@ jobs:
         with:
           message: |
             Finish "service" deployment!
-            preview url: ${{ steps.deploy.outputs.details_url}}
-            expire: ${{ steps.deploy.outputs.expire_time_formatted}}
+          comment_tag: excution
+        
 
   
   
