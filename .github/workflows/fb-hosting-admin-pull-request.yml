@@ -63,5 +63,5 @@ jobs:
         with:
           message: |
             Finish "admin" deployment!
-          comment_tag: excution
+          comment_tag: admin-excution
 
