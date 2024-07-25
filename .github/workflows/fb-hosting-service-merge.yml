@@ -52,7 +52,7 @@ jobs:
         if: ${{steps.diff-check.outputs.diff == 'true'}}
         uses: FirebaseExtended/action-hosting-deploy@v0
         with:
-          target: watermelon-clap
+          target: service
           repoToken: '${{ secrets.GITHUB_TOKEN }}'
           firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_WATERMELON_CLAP }}'
           projectId: watermelon-clap
