@@ -9,6 +9,7 @@ import { Link } from "react-router-dom";
 import { DEMO_PAGE_ROUTE } from "@service/constants/routes";
 import AssetLoaderOverlay from "@service/common/components/AssetLoaderOverlay/Overlay";
 import AssetWrapper from "@service/common/components/AssetLoaderOverlay/AssetWrapper";
+import { BorderBeam } from "@service/common/components/BorderBeam";
 
 export const MainPage = () => {
   const scrollTargetRef = useRef<HTMLDivElement>(null);
@@ -39,6 +40,14 @@ export const MainPage = () => {
           gap: 8px;
         `}
       >
+        <BorderBeam
+          css={css`
+            width: 100px;
+            height: 100px;
+          `}
+        >
+          hi
+        </BorderBeam>
         {imageUrls.map((url, index) => (
           <AssetWrapper
             key={index}
