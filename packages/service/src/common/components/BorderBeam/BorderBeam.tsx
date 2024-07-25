@@ -41,6 +41,7 @@ const BorderBeam: FC<PropsWithChildren<BorderBeamProps>> = ({
             ${colorSperator},
             ${colorTo}
           );
+          border-radius: inherit;
           animation: rotate ${duration}s linear infinite;
         }
         &::after {
