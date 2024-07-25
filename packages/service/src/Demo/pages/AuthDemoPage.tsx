@@ -2,6 +2,7 @@ import { useAuth } from "@service/common/hooks/useAuth";
 
 export const AuthDemoPage = () => {
   const { auth, login, logout } = useAuth();
+
   return (
     <div>
       {auth == null ? (
