@@ -41,9 +41,10 @@ jobs:
       - name: Create .env file
         if: ${{steps.diff-check.outputs.diff == 'true'}}
         run: |
-          jq -r 'to_entries|map("\(.key)=\(.value|tostring)")|.[]' <<< "$SECRETS_CONTEXT" > .env
+          jq -r 'to_entries|map("\(.key)=\(.value|tostring)")|.[]' <<< "$VARS_CONTEXT" > .env
         env:
-          SECRETS_CONTEXT: ${{ toJson(secrets) }}
+          VARS_CONTEXT: ${{ toJson(vars) }}
+          
       - name: Install Dependencies and Build
         if:  ${{steps.diff-check.outputs.diff == 'true'}}
         run: |
