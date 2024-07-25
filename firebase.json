@@ -1,7 +1,7 @@
 {
   "hosting": [
     {
-      "target": "watermelon-clap",
+      "target": "service",
       "public": "packages/service/dist",
       "ignore": [
         "firebase.json",
@@ -16,7 +16,7 @@
       ]
     },
     {
-      "target": "watermelon-clap-admin",
+      "target": "admin",
       "public": "packages/admin/dist",
       "ignore": [
         "firebase.json",
