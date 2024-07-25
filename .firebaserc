@@ -1,5 +1,19 @@
 {
   "projects": {
     "default": "watermelon-clap"
-  }
+  },
+  "targets": {
+    "watermelon-clap": {
+      "hosting": {
+        "service": [
+          "watermelon-clap"
+        ],
+        "admin": [
+          "watermelon-clap-admin"
+        ]
+      }
+    }
+  },
+  "etags": {},
+  "dataconnectEmulatorConfig": {}
 }
