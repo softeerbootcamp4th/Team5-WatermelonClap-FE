@@ -49,6 +49,7 @@ jobs:
       - name: Deploy to Firebase Hosting
         if: ${{ steps.diff-check.outputs.diff == 'true' }}
         uses: FirebaseExtended/action-hosting-deploy@v0
+        id: deploy
         with:
           target: admin
           repoToken: ${{ secrets.GITHUB_TOKEN }}
@@ -60,4 +61,5 @@ jobs:
         uses: thollander/actions-comment-pull-request@v2
         with:
           message: |
-            admin
+            admin ${{ steps.deploy.outputs.urls[0]}}
+
