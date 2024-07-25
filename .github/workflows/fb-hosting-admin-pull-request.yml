@@ -51,7 +51,7 @@ jobs:
         uses: FirebaseExtended/action-hosting-deploy@v0
         id: deploy
         with:
-          disableComment: true
+          disableComment: "true"
           target: admin
           repoToken: ${{ secrets.GITHUB_TOKEN }}
           firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_WATERMELON_CLAP }}
