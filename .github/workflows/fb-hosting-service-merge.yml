@@ -5,11 +5,11 @@ name: Deploy Service to Firebase Hosting on merge
 'on':
   push:
     branches:
-      - main
-  s:
+      - main   
+jobs:
   build_and_deploy:
     runs-on: ubuntu-latest
-    environment: production
+    environment: service-production
     defaults:
       run:
         working-directory: packages/service

@@ -6,7 +6,7 @@ jobs:
   build_and_preview:
     if: ${{ github.event.pull_request.head.repo.full_name == github.repository }}
     runs-on: ubuntu-latest
-    environment: preview
+    environment: admin-preview
     defaults:
       run:
         working-directory: packages/admin
@@ -37,7 +37,8 @@ jobs:
       - name: Create .env file
         if: ${{ steps.diff-check.outputs.diff  == 'true' }}
         run: |
-          jq -r 'to_entries|map("\(.key)=\(.value|tostring)")|.[]' <<< "$SECRETS_CONTEXT" > .env
+          jq -r 'to_entries|map("\(.key)=\(.value|tostring)")|.[]' <<< "$vars" > .env
+          echo "$vars"
         env:
           SECRETS_CONTEXT: ${{ toJson(secrets) }}
           
@@ -51,6 +52,7 @@ jobs:
         uses: FirebaseExtended/action-hosting-deploy@v0
         id: deploy
         with:
+          disableComment: false
           target: admin
           repoToken: ${{ secrets.GITHUB_TOKEN }}
           firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_WATERMELON_CLAP }}
@@ -62,6 +64,6 @@ jobs:
         with:
           message: |
             Finish admin deployment!
-            
             preview url: ${{ steps.deploy.outputs.details_url}}
+            expire: ${{ steps.deploy.outputs.expire_time_formatted}}
 
