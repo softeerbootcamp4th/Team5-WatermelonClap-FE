@@ -44,6 +44,7 @@ export const MainPage = () => {
           css={css`
             width: 100px;
             height: 100px;
+            border-radius: 2rem;
           `}
         >
           hi
