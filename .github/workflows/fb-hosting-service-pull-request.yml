@@ -63,7 +63,7 @@ jobs:
         with:
           message: |
             Finish "service" deployment!
-          comment_tag: excution
+          comment_tag: service-excution
         
 
   
