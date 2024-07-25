@@ -64,6 +64,6 @@ jobs:
           message: |
             Finish "admin" deployment!
             preview url: ${{ steps.deploy.outputs.details_url}}
-            expire: ${{ steps.deploy.outputs.expire_time_formatted}}
+            expire: ${{ steps.deploy.outputs.expire_time}}
           comment_tag: execution
 
