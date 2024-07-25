@@ -49,6 +49,7 @@ jobs:
       - name: Deploy to Firebase Hosting
         if: ${{ steps.diff-check.outputs.diff == 'true' }}
         uses: FirebaseExtended/action-hosting-deploy@v0
+        id: deploy
         with:
           target: service
           repoToken: ${{ secrets.GITHUB_TOKEN }}
@@ -56,8 +57,12 @@ jobs:
           projectId: watermelon-clap
 
       - name: Comment PR
-        if: ${{ steps.diff-check.outputs.diff == 'true' }}
+        if: ${{ steps.diff-check.outputs.diff == 'true'}}
         uses: thollander/actions-comment-pull-request@v2
         with:
           message: |
-            service
+            Finish service deployment!
+            
+            preview url: ${{ steps.deploy.outputs.details_url}}
+  
+  

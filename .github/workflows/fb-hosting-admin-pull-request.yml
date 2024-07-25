@@ -57,9 +57,11 @@ jobs:
           projectId: watermelon-clap
 
       - name: Comment PR
-        if: ${{ steps.diff-check.outputs.diff == 'true' }}
+        if: ${{ steps.diff-check.outputs.diff == 'true'}}
         uses: thollander/actions-comment-pull-request@v2
         with:
           message: |
-            admin ${{ steps.deploy.outputs.details_url}}
+            Finish admin deployment!
+            
+            preview url: ${{ steps.deploy.outputs.details_url}}
 
