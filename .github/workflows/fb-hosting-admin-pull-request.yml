@@ -51,7 +51,6 @@ jobs:
         uses: FirebaseExtended/action-hosting-deploy@v0
         id: deploy
         with:
-          disableComment: false
           target: admin
           repoToken: ${{ secrets.GITHUB_TOKEN }}
           firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_WATERMELON_CLAP }}
@@ -62,7 +61,6 @@ jobs:
         uses: thollander/actions-comment-pull-request@v2
         with:
           message: |
-            Finish admin deployment!
-            preview url: ${{ steps.deploy.outputs.details_url}}
-            expire: ${{ steps.deploy.outputs.expire_time_formatted}}
+            Finish "admin" deployment!
+          comment_tag: admin-excution
 
