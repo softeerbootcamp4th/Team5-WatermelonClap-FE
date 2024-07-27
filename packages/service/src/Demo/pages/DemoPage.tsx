@@ -5,6 +5,7 @@ import {
   ROTATE_DEMO_PAGE_ROUTE,
   SCROLL_DEMO_PAGE_ROUTE,
   SCROLL_TEXT_DEMO_PAGE_ROUTE,
+  MARQUEE_DEMO_PAGE_ROUTE,
 } from "../../constants/routes";
 
 const linkStyles = css`
@@ -44,6 +45,9 @@ export const DemoPage = () => {
       </Link>
       <Link to={SCROLL_TEXT_DEMO_PAGE_ROUTE} css={linkStyles}>
         스크롤 텍스트 데모
+      </Link>
+      <Link to={MARQUEE_DEMO_PAGE_ROUTE} css={linkStyles}>
+        마퀴 데모
       </Link>
     </div>
   );
