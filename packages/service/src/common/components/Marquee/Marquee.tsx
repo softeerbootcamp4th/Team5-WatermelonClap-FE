@@ -1,0 +1,55 @@
+import { ReactNode, ReactElement, Children } from "react";
+import { marqueeStyles, marqueeItemStyles } from "./Marquee.css";
+import { toPx, toS } from "@service/common/utils/formatter";
+
+interface MarqueeItemProps {
+  children: ReactNode;
+}
+
+const MarqueeItem = ({ children }: MarqueeItemProps) => {
+  return <div css={marqueeItemStyles}>{children}</div>;
+};
+
+interface MarqueeProps {
+  pauseOnHover?: boolean;
+  reverse?: boolean;
+  repeat?: number;
+  duration?: number | string; // number로 들어올 경우 s로 포맷팅 됩니다.
+  gap?: number | string; // number로 들어올 경우 px로 포맷팅 됩니다.
+  children: Array<ReactElement<typeof MarqueeItem>>;
+}
+
+const Marquee = ({
+  pauseOnHover = false,
+  reverse = false,
+  repeat = 4,
+  duration = "40s",
+  gap = "1rem",
+  children,
+  ...props
+}: MarqueeProps) => {
+  const formattedDuration = toS(duration);
+  const formattedGap = toPx(gap);
+
+  const repeatedChildren = Children.toArray(children).flatMap((child) =>
+    Array(repeat).fill(child),
+  );
+
+  return (
+    <div
+      css={marqueeStyles({
+        pauseOnHover,
+        reverse,
+        duration: formattedDuration,
+        gap: formattedGap,
+      })}
+      {...props}
+    >
+      {repeatedChildren}
+    </div>
+  );
+};
+
+Marquee.Item = MarqueeItem;
+
+export default Marquee;

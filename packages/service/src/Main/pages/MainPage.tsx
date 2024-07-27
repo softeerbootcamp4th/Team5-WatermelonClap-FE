@@ -80,7 +80,7 @@ export const MainPage = () => {
           right: 20px;
         `}
       >
-        개발ㄴ
+        개발자
       </Link>
     </div>
   );

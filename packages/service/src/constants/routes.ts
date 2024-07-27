@@ -5,3 +5,4 @@ export const DEMO_PAGE_ROUTE = "/demo" as const;
 export const AUTH_DEMO_PAGE_ROUTE = "auth" as const;
 export const AUTH_CALLBACK_DEMO_PAGE_ROUTE = "auth/callback" as const;
 export const SCROLL_TEXT_DEMO_PAGE_ROUTE = "scroll-text" as const;
+export const MARQUEE_DEMO_PAGE_ROUTE = "marquee" as const;

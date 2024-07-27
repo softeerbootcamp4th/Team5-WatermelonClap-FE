@@ -8,12 +8,14 @@ import {
   ROTATE_DEMO_PAGE_ROUTE,
   SCROLL_DEMO_PAGE_ROUTE,
   SCROLL_TEXT_DEMO_PAGE_ROUTE,
+  MARQUEE_DEMO_PAGE_ROUTE,
 } from "./constants/routes";
 import { RotateDemoPage } from "./Demo/pages/RotateDemoPage";
 import { MainPage } from "./Main/pages/MainPage";
 import { AuthDemoPage } from "./Demo/pages/AuthDemoPage";
 import { AssetLoaderContextProvider } from "./common/providers/AssetLoaderContextProvider";
 import { ScrollTextPage } from "./Demo/pages/ScrollTextPage";
+import { MarqueeDemoPage } from "./Demo/pages/MarqueeDemoPage";
 
 export const router = createBrowserRouter([
   {
@@ -46,6 +48,10 @@ export const router = createBrowserRouter([
       {
         path: SCROLL_TEXT_DEMO_PAGE_ROUTE,
         element: <ScrollTextPage />,
+      },
+      {
+        path: MARQUEE_DEMO_PAGE_ROUTE,
+        element: <MarqueeDemoPage />,
       },
     ],
   },
