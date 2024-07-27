@@ -35,7 +35,7 @@ export const Marquee = ({
       {...props}
     >
       {Array.from({ length: repeat }, (_, i) => (
-        <MarqueeItem key={i} reverse={reverse} className="marquee-item">
+        <MarqueeItem key={i} reverse={reverse}>
           {children}
         </MarqueeItem>
       ))}
