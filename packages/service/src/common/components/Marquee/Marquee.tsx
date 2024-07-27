@@ -18,7 +18,7 @@ interface MarqueeProps {
   children: Array<ReactElement<typeof MarqueeItem>>;
 }
 
-export const Marquee = ({
+const Marquee = ({
   pauseOnHover = false,
   reverse = false,
   repeat = 4,
@@ -52,3 +52,5 @@ export const Marquee = ({
 };
 
 Marquee.Item = MarqueeItem;
+
+export default Marquee;
