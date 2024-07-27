@@ -1,7 +1,7 @@
 import styled from "@emotion/styled";
-import { keyframes, css } from "@emotion/react";
+import { keyframes } from "@emotion/react";
 
-const marqueeHorizontalAnimation = keyframes`
+const marqueeAnimation = keyframes`
   0% {
     transform: translateX(100%);
   }
@@ -10,52 +10,37 @@ const marqueeHorizontalAnimation = keyframes`
   }
 `;
 
-const marqueeVerticalAnimation = keyframes`
-  0% {
-    transform: translateY(100%);
-  }
-  100% {
-    transform: translateY(-100%);
-  }
-`;
-
 export const MarqueeItem = styled.div<{
-  vertical: boolean;
   reverse: boolean;
-  isPaused: boolean;
 }>`
   display: flex;
   flex-shrink: 0;
   justify-content: space-around;
   gap: var(--gap);
-  ${({ vertical }) => css`
-    animation: ${vertical
-        ? marqueeVerticalAnimation
-        : marqueeHorizontalAnimation}
-      var(--duration) linear infinite;
-  `}
+  animation: ${marqueeAnimation} var(--duration) linear infinite;
   animation-direction: ${({ reverse }) => (reverse ? "reverse" : "normal")};
-  animation-play-state: ${({ isPaused }) => (isPaused ? "paused" : "running")};
+  animation-play-state: running;
 `;
 
 export const MarqueeContainer = styled.div<{
-  vertical: boolean;
   pauseOnHover: boolean;
-  isPaused: boolean;
-  duration: number;
+  duration: string;
+  gap: string;
 }>`
   display: flex;
   overflow: hidden;
   padding: 2rem;
-  --duration: ${({ duration }) => `${duration}s`};
-  --gap: 1rem;
+  --duration: ${({ duration }) => duration};
+  --gap: ${({ gap }) => gap};
   gap: var(--gap);
-  flex-direction: ${({ vertical }) => (vertical ? "column" : "row")};
 
   &:hover {
-    .marquee-item {
-      animation-play-state: ${({ pauseOnHover }) =>
-        pauseOnHover ? "paused" : "running"};
-    }
+    ${({ pauseOnHover }) =>
+      pauseOnHover &&
+      `
+      div.marquee-item {
+        animation-play-state: paused;
+      }
+    `}
   }
 `;
