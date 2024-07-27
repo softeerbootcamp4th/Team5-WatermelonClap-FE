@@ -1,22 +1,30 @@
-import { ReactNode } from "react";
-import { marqueeContainerStyles, marqueeItemStyles } from "./Marquee.css";
+import { marqueeStyles, marqueeItemStyles } from "./Marquee.css";
+import { ReactNode, ReactElement, Children } from "react";
+
+interface MarqueeItemProps {
+  children: ReactNode;
+}
+
+const MarqueeItem = ({ children }: MarqueeItemProps) => {
+  return <div css={marqueeItemStyles}>{children}</div>;
+};
 
 interface MarqueeProps {
-  reverse?: boolean;
   pauseOnHover?: boolean;
-  children: ReactNode;
+  reverse?: boolean;
   repeat?: number;
   duration?: number | string; // number로 들어올 경우 s로 포맷팅 됩니다.
   gap?: number | string; // number로 들어올 경우 px로 포맷팅 됩니다.
+  children: Array<ReactElement<typeof MarqueeItem>>;
 }
 
 export const Marquee = ({
-  reverse = false,
   pauseOnHover = false,
-  children,
+  reverse = false,
   repeat = 4,
   duration = "40s",
   gap = "1rem",
+  children,
   ...props
 }: MarqueeProps) => {
   const formattedDuration =
@@ -24,20 +32,23 @@ export const Marquee = ({
 
   const formattedGap = typeof gap === "number" ? `${gap}px` : gap;
 
+  const repeatedChildren = Children.toArray(children).flatMap((child) =>
+    Array(repeat).fill(child),
+  );
+
   return (
     <div
-      css={marqueeContainerStyles({
+      css={marqueeStyles({
         pauseOnHover,
+        reverse,
         duration: formattedDuration,
         gap: formattedGap,
       })}
       {...props}
     >
-      {Array.from({ length: repeat }, (_, i) => (
-        <div css={marqueeItemStyles({ reverse })} key={i}>
-          {children}
-        </div>
-      ))}
+      {repeatedChildren}
     </div>
   );
 };
+
+Marquee.Item = MarqueeItem;
