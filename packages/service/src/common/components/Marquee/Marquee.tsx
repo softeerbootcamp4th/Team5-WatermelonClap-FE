@@ -1,8 +1,7 @@
 import { ReactNode } from "react";
-import { MarqueeContainer, MarqueeItem } from "./Marquee.css";
+import { marqueeContainerStyles, marqueeItemStyles } from "./Marquee.css";
 
 interface MarqueeProps {
-  className?: string;
   reverse?: boolean;
   pauseOnHover?: boolean;
   children: ReactNode;
@@ -12,7 +11,6 @@ interface MarqueeProps {
 }
 
 export const Marquee = ({
-  className,
   reverse = false,
   pauseOnHover = false,
   children,
@@ -27,18 +25,19 @@ export const Marquee = ({
   const formattedGap = typeof gap === "number" ? `${gap}px` : gap;
 
   return (
-    <MarqueeContainer
-      className={className}
-      pauseOnHover={pauseOnHover}
-      duration={formattedDuration}
-      gap={formattedGap}
+    <div
+      css={marqueeContainerStyles({
+        pauseOnHover,
+        duration: formattedDuration,
+        gap: formattedGap,
+      })}
       {...props}
     >
       {Array.from({ length: repeat }, (_, i) => (
-        <MarqueeItem key={i} reverse={reverse}>
+        <div css={marqueeItemStyles({ reverse })} key={i}>
           {children}
-        </MarqueeItem>
+        </div>
       ))}
-    </MarqueeContainer>
+    </div>
   );
 };
