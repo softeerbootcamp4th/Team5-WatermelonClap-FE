@@ -38,7 +38,7 @@ export const MarqueeContainer = styled.div<{
     ${({ pauseOnHover }) =>
       pauseOnHover &&
       `
-      div.marquee-item {
+      div {
         animation-play-state: paused;
       }
     `}
