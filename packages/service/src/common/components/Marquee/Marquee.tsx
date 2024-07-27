@@ -1,5 +1,6 @@
-import { marqueeStyles, marqueeItemStyles } from "./Marquee.css";
 import { ReactNode, ReactElement, Children } from "react";
+import { marqueeStyles, marqueeItemStyles } from "./Marquee.css";
+import { toPx, toS } from "@service/common/utils/formatter";
 
 interface MarqueeItemProps {
   children: ReactNode;
@@ -27,10 +28,8 @@ const Marquee = ({
   children,
   ...props
 }: MarqueeProps) => {
-  const formattedDuration =
-    typeof duration === "number" ? `${duration}s` : duration;
-
-  const formattedGap = typeof gap === "number" ? `${gap}px` : gap;
+  const formattedDuration = toS(duration);
+  const formattedGap = toPx(gap);
 
   const repeatedChildren = Children.toArray(children).flatMap((child) =>
     Array(repeat).fill(child),
