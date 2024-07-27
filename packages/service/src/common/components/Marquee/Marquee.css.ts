@@ -1,50 +1,46 @@
 import { css, keyframes } from "@emotion/react";
 
-interface MarqueeItemStylesProps {
-  reverse: boolean;
-}
-
-interface MarqueeContainerStylesProps {
+interface MarqueeStylesProps {
   pauseOnHover: boolean;
+  reverse: boolean;
   duration: string;
   gap: string;
 }
 
 const marqueeAnimation = keyframes`
   0% {
-    transform: translateX(100%);
+    transform: translateX(400%);
   }
   100% {
-    transform: translateX(-100%);
+    transform: translateX(-400%);
   }
 `;
 
-export const marqueeItemStyles = ({ reverse }: MarqueeItemStylesProps) => css`
+export const marqueeItemStyles = css`
   display: flex;
   flex-shrink: 0;
   justify-content: space-around;
-  gap: var(--gap);
   animation: ${marqueeAnimation} var(--duration) linear infinite;
-  animation-direction: ${reverse ? "reverse" : "normal"};
+  animation-direction: var(--direction);
   animation-play-state: running;
 `;
 
-export const marqueeContainerStyles = ({
+export const marqueeStyles = ({
   pauseOnHover,
+  reverse,
   duration,
   gap,
-}: MarqueeContainerStylesProps) => css`
+}: MarqueeStylesProps) => css`
   display: flex;
   overflow: hidden;
   padding: 2rem;
+  gap: ${gap};
   --duration: ${duration};
-  --gap: ${gap};
-  gap: var(--gap);
+  --direction: ${reverse ? "reverse" : "normal"};
 
   &:hover {
     ${pauseOnHover &&
-    `
-      div {
+    `div {
         animation-play-state: paused;
       }
     `}

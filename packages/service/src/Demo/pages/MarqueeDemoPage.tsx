@@ -8,7 +8,7 @@ interface ReviewCardProps {
   body: string;
 }
 
-export const ReviewCard = ({ img, name, username, body }: ReviewCardProps) => {
+const ReviewCard = ({ img, name, username, body }: ReviewCardProps) => {
   const cardStyles = css`
     width: 20rem;
     cursor: pointer;
@@ -129,19 +129,25 @@ export const MarqueeDemoPage = () => {
         }
       `}
     >
-      <Marquee pauseOnHover duration={20} gap={32}>
+      <Marquee pauseOnHover>
         {reviews.map((review) => (
-          <ReviewCard key={review.username} {...review} />
+          <Marquee.Item>
+            <ReviewCard key={review.username} {...review} />
+          </Marquee.Item>
         ))}
       </Marquee>
       <Marquee reverse pauseOnHover>
         {reviews.map((review) => (
-          <ReviewCard key={review.username} {...review} />
+          <Marquee.Item>
+            <ReviewCard key={review.username} {...review} />
+          </Marquee.Item>
         ))}
       </Marquee>
       <Marquee>
         {reviews.map((review) => (
-          <ReviewCard key={review.username} {...review} />
+          <Marquee.Item>
+            <ReviewCard key={review.username} {...review} />
+          </Marquee.Item>
         ))}
       </Marquee>
     </div>
