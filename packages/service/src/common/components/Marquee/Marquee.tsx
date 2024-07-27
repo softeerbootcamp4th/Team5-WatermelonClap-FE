@@ -1,4 +1,4 @@
-import { ReactNode, useState } from "react";
+import { ReactNode } from "react";
 import { MarqueeContainer, MarqueeItem } from "./Marquee.css";
 
 interface MarqueeProps {
@@ -6,9 +6,9 @@ interface MarqueeProps {
   reverse?: boolean;
   pauseOnHover?: boolean;
   children: ReactNode;
-  vertical?: boolean;
   repeat?: number;
-  duration?: number;
+  duration?: number | string; // number로 들어올 경우 s로 포맷팅 됩니다.
+  gap?: number | string; // number로 들어올 경우 px로 포맷팅 됩니다.
 }
 
 export const Marquee = ({
@@ -16,31 +16,26 @@ export const Marquee = ({
   reverse = false,
   pauseOnHover = false,
   children,
-  vertical = false,
   repeat = 4,
-  duration = 40,
+  duration = "40s",
+  gap = "1rem",
   ...props
 }: MarqueeProps) => {
-  const [isPaused, setIsPaused] = useState(false);
+  const formattedDuration =
+    typeof duration === "number" ? `${duration}s` : duration;
+
+  const formattedGap = typeof gap === "number" ? `${gap}px` : gap;
 
   return (
     <MarqueeContainer
-      vertical={vertical}
       className={className}
       pauseOnHover={pauseOnHover}
-      isPaused={isPaused}
-      duration={duration}
+      duration={formattedDuration}
+      gap={formattedGap}
       {...props}
-      onMouseEnter={() => setIsPaused(true)}
-      onMouseLeave={() => setIsPaused(false)}
     >
       {Array.from({ length: repeat }, (_, i) => (
-        <MarqueeItem
-          key={i}
-          vertical={vertical}
-          reverse={reverse}
-          isPaused={isPaused}
-        >
+        <MarqueeItem key={i} reverse={reverse} className="marquee-item">
           {children}
         </MarqueeItem>
       ))}
