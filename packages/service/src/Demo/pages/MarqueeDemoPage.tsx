@@ -110,9 +110,6 @@ const reviews = [
   },
 ];
 
-const firstRow = reviews;
-const secondRow = reviews;
-
 export const MarqueeDemoPage = () => {
   return (
     <div
@@ -132,13 +129,18 @@ export const MarqueeDemoPage = () => {
         }
       `}
     >
-      <Marquee pauseOnHover duration={20}>
-        {firstRow.map((review) => (
+      <Marquee pauseOnHover duration={20} gap={32}>
+        {reviews.map((review) => (
           <ReviewCard key={review.username} {...review} />
         ))}
       </Marquee>
       <Marquee reverse pauseOnHover>
-        {secondRow.map((review) => (
+        {reviews.map((review) => (
+          <ReviewCard key={review.username} {...review} />
+        ))}
+      </Marquee>
+      <Marquee>
+        {reviews.map((review) => (
           <ReviewCard key={review.username} {...review} />
         ))}
       </Marquee>
