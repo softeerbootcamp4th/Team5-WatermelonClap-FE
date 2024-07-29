@@ -1,6 +1,6 @@
 import { css } from "@emotion/react";
-import { Button } from "../../../common/components/Button";
-import { contentLayoutStyles } from "../../../common/styles/contentLayoutStyles";
+import { Button } from "../../common/components/Button";
+import { contentLayoutStyles } from "../../common/styles/contentLayoutStyles";
 
 export const MainBannerContent = () => {
   return (
