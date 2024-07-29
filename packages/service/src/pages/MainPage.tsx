@@ -1,5 +1,5 @@
 import { css } from "@emotion/react";
-import { pageLayoutStyles } from "../../common/styles/pageLayoutStyles";
+import { pageLayoutStyles } from "../common/styles/pageLayoutStyles";
 import { MainBanner } from "../components/MainBanner/MainBanner";
 import { Game } from "../components/Game/Game";
 import { VirtualScrollBar } from "@service/common/components/VirtualScrollBar";
