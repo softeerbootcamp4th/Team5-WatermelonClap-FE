@@ -11,7 +11,7 @@ import {
   MARQUEE_DEMO_PAGE_ROUTE,
 } from "./constants/routes";
 import { RotateDemoPage } from "./Demo/pages/RotateDemoPage";
-import { MainPage } from "./Main/pages/MainPage";
+import { MainPage } from "./pages/MainPage";
 import { AuthDemoPage } from "./Demo/pages/AuthDemoPage";
 import { AssetLoaderContextProvider } from "./common/providers/AssetLoaderContextProvider";
 import { ScrollTextPage } from "./Demo/pages/ScrollTextPage";
