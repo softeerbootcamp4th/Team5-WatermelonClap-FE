@@ -10,10 +10,10 @@ import { DEMO_PAGE_ROUTE } from "@service/constants/routes";
 import AssetLoaderOverlay from "@service/common/components/AssetLoaderOverlay/Overlay";
 import AssetWrapper from "@service/common/components/AssetLoaderOverlay/AssetWrapper";
 import { BorderBeam } from "@service/common/components/BorderBeam";
+import { theme } from "@watermelon-clap/core";
 
 export const MainPage = () => {
   const scrollTargetRef = useRef<HTMLDivElement>(null);
-
   const imageUrls = Array.from(
     { length: 10 },
     (_, index) => `https://picsum.photos/800/600?img=${index + 1}`,
@@ -33,6 +33,11 @@ export const MainPage = () => {
     >
       <AssetLoaderOverlay />
       <MainBanner />
+      <div css={[theme.font.pretend.medium.bodyM20, theme.color.eventSkyblue]}>
+        나는 m20
+      </div>
+      <div css={theme.font.pretend.bold.body18}>나는 m18</div>
+      <div css={theme.font.pretend.bold.titleB28}>나는 m14</div>
       <div
         css={css`
           display: flex;
