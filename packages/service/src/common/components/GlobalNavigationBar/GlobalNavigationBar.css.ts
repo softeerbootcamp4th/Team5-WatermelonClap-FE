@@ -10,7 +10,7 @@ export const headerContainerStyles = css`
 `;
 
 export const logoStyles = css`
-  ${theme.color.white}
+  color: ${theme.color.white};
   width: 220px;
   height: 40px;
 `;
