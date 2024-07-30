@@ -50,4 +50,7 @@ export const clipButtonSuccessContentStyle = css`
   color: ${theme.color.eventBlue};
   font-weight: 500;
   gap: 10px;
+  rect {
+    stroke: ${theme.color.eventBlue};
+  }
 `;
