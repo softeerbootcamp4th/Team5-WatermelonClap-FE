@@ -6,6 +6,7 @@ import {
   clipButtonContentStyle,
   clipButtonSuccessContentStyle,
 } from "./ClipBoardButton.css";
+import { ReactComponent as ClipBoardIcon } from "public/icons/clipboard.svg";
 
 const ClipBoardButton = () => {
   const [isCliped, setIsCliped] = useState<boolean>(false);
@@ -28,11 +29,7 @@ const ClipBoardButton = () => {
             initial={{ y: -50 }}
             animate={{ y: 0 }}
           >
-            <img
-              sizes="24"
-              src="/icons/clipboard-success.svg"
-              alt="copy Icon"
-            />
+            <ClipBoardIcon />
             {changeText}
           </motion.span>
         </motion.button>
@@ -50,7 +47,7 @@ const ClipBoardButton = () => {
             initial={{ x: 0 }}
             exit={{ x: 50, transition: { duration: 0.1 } }}
           >
-            <img sizes="24" src="/icons/clipboard.svg" alt="copy Icon" />
+            <ClipBoardIcon />
             {initialText}
           </motion.span>
         </motion.button>
