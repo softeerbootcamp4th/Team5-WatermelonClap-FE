@@ -1,5 +1,5 @@
 import { MainBannerContent } from "./MainBannerContent";
-import { AppHeader } from "@service/common/components/AppHeader";
+import { GlobalNavigationBar } from "@service/common/components/GlobalNavigationBar";
 import {
   mainBannerContentBoxStyles,
   mainBannerImgStyles,
@@ -11,7 +11,7 @@ export const MainBanner = () => {
     <section css={mainBannerSectionStyles}>
       <img css={mainBannerImgStyles} src="/images/main-banner.png" />
       <div css={mainBannerContentBoxStyles}>
-        <AppHeader />
+        <GlobalNavigationBar />
         <MainBannerContent />
       </div>
     </section>
