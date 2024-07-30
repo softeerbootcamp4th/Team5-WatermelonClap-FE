@@ -2,19 +2,19 @@ import { css, SerializedStyles } from "@emotion/react";
 
 interface ITheme {
   color: {
-    black: SerializedStyles;
-    white: SerializedStyles;
-    gray100: SerializedStyles;
-    gray200: SerializedStyles;
-    gray300: SerializedStyles;
-    gray400: SerializedStyles;
-    gray500: SerializedStyles;
-    gray600: SerializedStyles;
-    eventBlue: SerializedStyles;
-    eventSkyblue: SerializedStyles;
-    hyundaiActiveRed: SerializedStyles;
-    hyundaiBlue: SerializedStyles;
-    mainEventCardBg: SerializedStyles;
+    black: string;
+    white: string;
+    gray100: string;
+    gray200: string;
+    gray300: string;
+    gray400: string;
+    gray500: string;
+    gray600: string;
+    eventBlue: string;
+    eventSkyblue: string;
+    hyundaiActiveRed: string;
+    hyundaiBlue: string;
+    mainEventCardBg: string;
   };
   font: {
     pretend: {
@@ -57,51 +57,20 @@ interface ITheme {
 
 const theme: ITheme = {
   color: {
-    black: css`
-      color: #000000;
-    `,
-    white: css`
-      color: #ffffff;
-    `,
-    gray100: css`
-      color: #ececec;
-    `,
-    gray200: css`
-      color: #cccccc;
-    `,
-    gray300: css`
-      color: #999999;
-    `,
-    gray400: css`
-      color: #666666;
-    `,
-    gray500: css`
-      color: #333333;
-    `,
-    gray600: css`
-      color: #1a1a1a;
-    `,
-    eventBlue: css`
-      color: #027df1;
-    `,
-    eventSkyblue: css`
-      color: #57adff;
-    `,
-    hyundaiActiveRed: css`
-      color: #e63312;
-    `,
-    hyundaiBlue: css`
-      color: #002c5f;
-    `,
-    mainEventCardBg: css`
-      background: linear-gradient(
-        194deg,
-        #e5ffa9 3.1%,
-        #d2ecff 33.71%,
-        #fffbdd 78.87%,
-        #a9bcff 103.46%
-      );
-    `,
+    black: "#000000",
+    white: "#ffffff",
+    gray100: "#ececec",
+    gray200: "#cccccc",
+    gray300: "#999999",
+    gray400: "#666666",
+    gray500: "#333333",
+    gray600: "#1a1a1a",
+    eventBlue: "#027df1",
+    eventSkyblue: "#57adff",
+    hyundaiActiveRed: "#e63312",
+    hyundaiBlue: "#002c5f",
+    mainEventCardBg:
+      "background: linear-gradient(194deg, #e5ffa9 3.1%, #d2ecff 33.71%, #fffbdd 78.87%, #a9bcff 103.46%)",
   },
   font: {
     pretend: {
