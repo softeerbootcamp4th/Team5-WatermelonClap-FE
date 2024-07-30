@@ -10,7 +10,6 @@ import { DEMO_PAGE_ROUTE } from "@service/constants/routes";
 import AssetLoaderOverlay from "@service/common/components/AssetLoaderOverlay/Overlay";
 import AssetWrapper from "@service/common/components/AssetLoaderOverlay/AssetWrapper";
 import { BorderBeam } from "@service/common/components/BorderBeam";
-import { theme } from "@watermelon-clap/core";
 
 export const Main = () => {
   const scrollTargetRef = useRef<HTMLDivElement>(null);
@@ -31,7 +30,7 @@ export const Main = () => {
       `}
       ref={scrollTargetRef}
     >
-      <div css={theme.font.pyeongChangPeace.bold.head}>하이요</div>
+      {/* <div css={theme.font.pyeongChangPeace.bold.head}>하이요</div> */}
       <AssetLoaderOverlay />
       <MainBanner />
       <div

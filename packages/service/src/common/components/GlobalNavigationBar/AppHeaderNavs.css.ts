@@ -1,4 +1,5 @@
 import { css } from "@emotion/react";
+import { theme } from "@watermelon-clap/core";
 
 export const navsContainerStyles = css`
   display: flex;
@@ -17,17 +18,13 @@ export const gapStyles = css`
   max-width: 120px;
   min-width: 30px;
 `;
+
 export const linkStyles = css`
-  color: var(--White, #fff);
+  ${theme.color.white}
+  ${theme.font.pretend.bold.body16}
   text-decoration: none;
   display: inline-flex;
   gap: 4px;
-  /* title/preten (GNB) body B16 */
-  font-family: Pretendard;
-  font-size: 16px;
-  font-style: normal;
-  font-weight: 700;
-  line-height: normal;
   flex-shrink: 0;
 
   &:hover {
