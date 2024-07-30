@@ -33,13 +33,6 @@ export const Main = () => {
     >
       <AssetLoaderOverlay />
       <MainBanner />
-      <p
-        css={css`
-          ${theme.font.pyeongChangPeace.bold.head}
-        `}
-      >
-        평창평창체
-      </p>
       <div
         css={css`
           display: flex;
