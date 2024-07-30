@@ -13,7 +13,6 @@ import { BorderBeam } from "@service/common/components/BorderBeam";
 
 export const MainPage = () => {
   const scrollTargetRef = useRef<HTMLDivElement>(null);
-
   const imageUrls = Array.from(
     { length: 10 },
     (_, index) => `https://picsum.photos/800/600?img=${index + 1}`,
