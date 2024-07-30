@@ -1,7 +1,8 @@
-import { headerContainerStyles, logoStyles } from "./AppHeader.css";
+import { headerContainerStyles, logoStyles } from "./GlobalNavigationBar.css";
 import { ReactComponent as LogoLong } from "@service/assets/logo-long.svg";
 import { AppHeaderNavs } from "./AppHeaderNavs";
-export const AppHeader = () => {
+
+const AppHeader = () => {
   return (
     <header css={headerContainerStyles}>
       <LogoLong css={logoStyles} />
@@ -10,3 +11,5 @@ export const AppHeader = () => {
     </header>
   );
 };
+
+export default AppHeader;
