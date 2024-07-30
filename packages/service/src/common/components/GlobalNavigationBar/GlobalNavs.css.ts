@@ -20,7 +20,7 @@ export const gapStyles = css`
 `;
 
 export const linkStyles = css`
-  ${theme.color.white}
+  color: ${theme.color.white};
   ${theme.font.pretend.bold.body16}
   text-decoration: none;
   display: inline-flex;

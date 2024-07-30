@@ -1,14 +1,14 @@
 import { Link } from "react-router-dom";
-import { ReactComponent as NLogo } from "@service/assets/n-logo.svg";
+import { ReactComponent as NLogo } from "public/images/gnb/n-logo.svg";
 import {
   gapStyles,
   linkStyles,
   navsContainerStyles,
   nLogoStyles,
-} from "./AppHeaderNavs.css";
+} from "./GlobalNavs.css";
 import { Flex } from "../Flex";
 
-export const AppHeaderNavs = () => {
+const GlobalNavs = () => {
   return (
     <div css={navsContainerStyles}>
       <Link to="#" css={linkStyles}>
@@ -29,3 +29,5 @@ export const AppHeaderNavs = () => {
     </div>
   );
 };
+
+export default GlobalNavs;
