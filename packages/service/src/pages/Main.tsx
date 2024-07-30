@@ -10,7 +10,6 @@ import { DEMO_PAGE_ROUTE } from "@service/constants/routes";
 import AssetLoaderOverlay from "@service/common/components/AssetLoaderOverlay/Overlay";
 import AssetWrapper from "@service/common/components/AssetLoaderOverlay/AssetWrapper";
 import { BorderBeam } from "@service/common/components/BorderBeam";
-import { theme } from "@watermelon-clap/core";
 
 export const Main = () => {
   const scrollTargetRef = useRef<HTMLDivElement>(null);
@@ -33,13 +32,6 @@ export const Main = () => {
     >
       <AssetLoaderOverlay />
       <MainBanner />
-      <p
-        css={css`
-          ${theme.font.pyeongChangPeace.bold.head}
-        `}
-      >
-        평창평창체
-      </p>
       <div
         css={css`
           display: flex;
