@@ -1,3 +1,4 @@
-import theme from "./Theme";
+import theme from "./theme";
 import globalStyles from "./globalStyles";
-export { theme, globalStyles };
+import baseStyles from "./baseStyles";
+export { theme, globalStyles, baseStyles };

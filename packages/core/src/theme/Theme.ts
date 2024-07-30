@@ -1,6 +1,6 @@
 import { css, SerializedStyles } from "@emotion/react";
 
-interface Theme {
+interface ITheme {
   color: {
     black: SerializedStyles;
     white: SerializedStyles;
@@ -55,7 +55,7 @@ interface Theme {
   };
 }
 
-const theme: Theme = {
+const theme: ITheme = {
   color: {
     black: css`
       color: #000000;
