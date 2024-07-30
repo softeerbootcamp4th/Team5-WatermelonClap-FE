@@ -11,7 +11,7 @@ import {
   MARQUEE_DEMO_PAGE_ROUTE,
 } from "./constants/routes";
 import { RotateDemoPage } from "./Demo/pages/RotateDemoPage";
-import { MainPage } from "./pages/MainPage";
+import { Main } from "./pages/Main";
 import { AuthDemoPage } from "./Demo/pages/AuthDemoPage";
 import { AssetLoaderContextProvider } from "./common/providers/AssetLoaderContextProvider";
 import { ScrollTextPage } from "./Demo/pages/ScrollTextPage";
@@ -22,7 +22,7 @@ export const router = createBrowserRouter([
     path: MAIN_PAGE_ROUTE,
     element: (
       <AssetLoaderContextProvider>
-        <MainPage />,
+        <Main />,
       </AssetLoaderContextProvider>
     ),
   },
