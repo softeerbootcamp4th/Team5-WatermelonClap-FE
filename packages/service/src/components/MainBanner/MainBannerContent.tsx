@@ -1,5 +1,5 @@
 import { css } from "@emotion/react";
-import { Button } from "../../common/components/Button";
+import { Button, ButtonVariant } from "../../common/components/Button";
 import { contentLayoutStyles } from "../../common/styles/contentLayoutStyles";
 
 export const MainBannerContent = () => {
@@ -56,8 +56,8 @@ export const MainBannerContent = () => {
             margin-top: 24px;
           `}
         >
-          <Button variant="bordered">자세히 보기</Button>
-          <Button variant="filled">이벤트 바로 가기</Button>
+          <Button variant={ButtonVariant.SMALL_DARK}>자세히 보기</Button>
+          <Button variant={ButtonVariant.SMALL_LIGHT}>이벤트 바로 가기</Button>
         </div>
       </span>
     </div>
