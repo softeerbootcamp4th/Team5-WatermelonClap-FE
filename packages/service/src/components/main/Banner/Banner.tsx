@@ -5,11 +5,11 @@ import { css } from "@emotion/react";
 import * as style from "./style";
 
 const bannerImgs = [
-  "images/mainBanner/main-banner-1.svg",
-  "images/mainBanner/main-banner-2.svg",
-  "images/mainBanner/main-banner-3.svg",
-  "images/mainBanner/main-banner-4.svg",
-  "images/mainBanner/main-banner-5.svg",
+  "images/main/main-banner-1.svg",
+  "images/main/main-banner-2.svg",
+  "images/main/main-banner-3.svg",
+  "images/main/main-banner-4.svg",
+  "images/main/main-banner-5.svg",
 ];
 
 export const Banner: React.FC = () => {
