@@ -3,7 +3,6 @@ import { css } from "@emotion/react";
 export const container = css`
   position: relative;
   min-width: 600px;
-  width: 100vw;
 `;
 
 interface IBannerImg {
