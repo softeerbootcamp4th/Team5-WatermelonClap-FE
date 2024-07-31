@@ -1,6 +1,4 @@
 import { createBrowserRouter } from "react-router-dom";
-import { DemoPage } from "./Demo/pages/DemoPage";
-import { ScrollDemoPage } from "./Demo/pages/ScrollDemoPage";
 import {
   AUTH_DEMO_PAGE_ROUTE,
   DEMO_PAGE_ROUTE,
@@ -11,11 +9,13 @@ import {
   MARQUEE_DEMO_PAGE_ROUTE,
 } from "./constants/routes";
 import { RotateDemoPage } from "./Demo/pages/RotateDemoPage";
-import { Main } from "./pages/Main";
 import { AuthDemoPage } from "./Demo/pages/AuthDemoPage";
 import { AssetLoaderContextProvider } from "./common/providers/AssetLoaderContextProvider";
 import { ScrollTextPage } from "./Demo/pages/ScrollTextPage";
 import { MarqueeDemoPage } from "./Demo/pages/MarqueeDemoPage";
+import Main from "./pages/Main";
+import { DemoPage } from "./Demo/pages/DemoPage";
+import { ScrollDemoPage } from "./Demo/pages/ScrollDemoPage";
 
 export const router = createBrowserRouter([
   {
