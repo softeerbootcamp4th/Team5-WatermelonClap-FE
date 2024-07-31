@@ -4,7 +4,6 @@ const Main = () => {
   return (
     <div>
       <Banner />
-      <div>sdf</div>
     </div>
   );
 };
