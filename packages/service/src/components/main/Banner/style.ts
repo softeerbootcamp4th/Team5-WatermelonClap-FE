@@ -20,6 +20,6 @@ export const bannerImg = ({ index, currentIndex }: IBannerImg) => css`
 export const bannerContent = css`
   text-align: right;
   position: absolute;
-  top: 120px;
+  top: 200px;
   right: 200px;
 `;
