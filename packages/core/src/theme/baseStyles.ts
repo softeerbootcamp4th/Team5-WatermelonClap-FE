@@ -81,30 +81,6 @@ const baseStyles: IBaseStyles = {
     `,
   },
 
-  gap: {
-    gap4: css`
-      gap: 4px;
-    `,
-    gap8: css`
-      gap: 8px;
-    `,
-    gap12: css`
-      gap: 12px;
-    `,
-    gap16: css`
-      gap: 16px;
-    `,
-    gap24: css`
-      gap: 24px;
-    `,
-    gap32: css`
-      gap: 32px;
-    `,
-    gap48: css`
-      gap: 48px;
-    `,
-  },
-
   padding: {
     pd4: css`
       padding: 4px;

@@ -15,6 +15,9 @@ const GlobalNavs = () => {
         <NLogo css={nLogoStyles} /> 퀴즈
       </Link>
       <Link to="#" css={linkStyles}>
+        내 컬렉션
+      </Link>
+      <Link to="#" css={linkStyles}>
         응모 내역 확인
       </Link>
     </div>

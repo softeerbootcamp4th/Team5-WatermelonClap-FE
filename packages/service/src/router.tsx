@@ -11,22 +11,19 @@ import {
 } from "./constants/routes";
 import { RotateDemoPage } from "./Demo/pages/RotateDemoPage";
 import { AuthDemoPage } from "./Demo/pages/AuthDemoPage";
-import { AssetLoaderContextProvider } from "./common/providers/AssetLoaderContextProvider";
 import { ScrollTextPage } from "./Demo/pages/ScrollTextPage";
 import { MarqueeDemoPage } from "./Demo/pages/MarqueeDemoPage";
 import Main from "./pages/Main";
 import { DemoPage } from "./Demo/pages/DemoPage";
 import { ScrollDemoPage } from "./Demo/pages/ScrollDemoPage";
 import ButtonDemoPage from "./Demo/pages/ButtonDemoPage";
+import { App } from "./App";
 
 export const router = createBrowserRouter([
   {
-    path: MAIN_PAGE_ROUTE,
-    element: (
-      <AssetLoaderContextProvider>
-        <Main />,
-      </AssetLoaderContextProvider>
-    ),
+    path: "",
+    element: <App />,
+    children: [{ path: MAIN_PAGE_ROUTE, element: <Main /> }],
   },
   {
     path: DEMO_PAGE_ROUTE,

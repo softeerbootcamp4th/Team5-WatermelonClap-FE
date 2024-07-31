@@ -1,5 +1,5 @@
 import { css } from "@emotion/react";
-import { baseStyles, theme } from "@watermelon-clap/core";
+import { theme } from "@watermelon-clap/core";
 
 export const navsContainerStyles = css`
   display: flex;
@@ -7,7 +7,8 @@ export const navsContainerStyles = css`
   align-items: center;
   flex: 1;
   width: 100%;
-  ${baseStyles.gap.gap12}
+  justify-content: space-around;
+  flex-grow: 0.6;
 `;
 
 export const nLogoStyles = css`
