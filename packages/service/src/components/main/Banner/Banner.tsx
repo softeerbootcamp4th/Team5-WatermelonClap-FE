@@ -68,9 +68,9 @@ export const Banner = () => {
 };
 
 const bannerImgs = [
-  "@service/../public/images/mainBanner/main-banner-1.svg",
-  "@service/../public/images/mainBanner/main-banner-2.svg",
-  "@service/../public/images/mainBanner/main-banner-3.svg",
-  "@service/../public/images/mainBanner/main-banner-4.svg",
-  "@service/../public/images/mainBanner/main-banner-5.svg",
+  "images/mainBanner/main-banner-1.svg",
+  "images/mainBanner/main-banner-2.svg",
+  "images/mainBanner/main-banner-3.svg",
+  "images/mainBanner/main-banner-4.svg",
+  "images/mainBanner/main-banner-5.svg",
 ];
