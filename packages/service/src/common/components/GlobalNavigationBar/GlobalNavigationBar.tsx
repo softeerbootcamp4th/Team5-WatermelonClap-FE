@@ -6,7 +6,6 @@ const GlobalNavigationBar = () => {
   return (
     <header css={headerContainerStyles}>
       <LogoLong css={logoStyles} />
-
       <GlobalNavs />
     </header>
   );
