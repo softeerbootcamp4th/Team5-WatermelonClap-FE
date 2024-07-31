@@ -18,6 +18,6 @@ export const headerContainerStyles = css`
 export const logoStyles = css`
   color: ${theme.color.white};
   width: 220px;
-  height: 40px;
   flex-grow: 0.2;
+  cursor: pointer;
 `;
