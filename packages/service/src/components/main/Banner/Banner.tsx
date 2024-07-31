@@ -1,13 +1,14 @@
 import { useState, useEffect } from "react";
-import { theme } from "@watermelon-clap/core";
+import { baseStyles, theme } from "@watermelon-clap/core";
 import * as style from "./style";
 import { css } from "@emotion/react";
+import { Button, ButtonVariant } from "@service/common/components/Button";
 
 export const Banner = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   // 배너 넘어가는 속도
-  const BANNERSPEED = 1000;
+  const BANNERSPEED = 3000;
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -48,9 +49,18 @@ export const Banner = () => {
         >
           최대 290마력, 일상형 스포츠카 출시
         </h2>
-        <div>
-          <button>자세히보기</button>
-          <button>이벤트 바로가기</button>
+
+        <div css={baseStyles.margin.mg32}></div>
+
+        <div
+          css={css`
+            ${baseStyles.flex.center};
+            ${baseStyles.gap.gap16}
+            justify-content: right;
+          `}
+        >
+          <Button variant={ButtonVariant.SMALL_DARK}>자세히 보기</Button>
+          <Button variant={ButtonVariant.SMALL_LIGHT}>이벤트 바로 가기</Button>
         </div>
       </div>
     </section>
