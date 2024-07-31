@@ -19,4 +19,5 @@ export const logoStyles = css`
   color: ${theme.color.white};
   width: 220px;
   flex-grow: 0.2;
+  cursor: pointer;
 `;
