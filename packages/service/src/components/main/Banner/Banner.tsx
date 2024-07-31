@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { baseStyles, theme } from "@watermelon-clap/core";
 import * as style from "./style";
 import { css } from "@emotion/react";
-import { Button, ButtonVariant } from "@service/common/components/Button";
+import { Button, ButtonVariant } from "src/common/components/Button";
 
 export const Banner = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -68,9 +68,9 @@ export const Banner = () => {
 };
 
 const bannerImgs = [
-  "/public/images/mainBanner/main-banner-1.svg",
-  "/public/images/mainBanner/main-banner-2.svg",
-  "/public/images/mainBanner/main-banner-3.svg",
-  "/public/images/mainBanner/main-banner-4.svg",
-  "/public/images/mainBanner/main-banner-5.svg",
+  "@service/../public/images/mainBanner/main-banner-1.svg",
+  "@service/../public/images/mainBanner/main-banner-2.svg",
+  "@service/../public/images/mainBanner/main-banner-3.svg",
+  "@service/../public/images/mainBanner/main-banner-4.svg",
+  "@service/../public/images/mainBanner/main-banner-5.svg",
 ];
