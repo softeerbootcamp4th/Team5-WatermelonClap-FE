@@ -12,7 +12,7 @@ const bannerImgs = [
   "images/main/main-banner-5.svg",
 ];
 
-export const Banner: React.FC = () => {
+export const Banner = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const bannerDivRef = useRef<HTMLDivElement>(null);
   const BANNERSPEED = 3000;

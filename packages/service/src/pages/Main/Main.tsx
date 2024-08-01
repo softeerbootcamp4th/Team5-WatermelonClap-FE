@@ -1,7 +1,7 @@
 import * as style from "./style";
 import { Banner, EventPeriod } from "@service/components/main";
 
-const Main = () => {
+export const Main = () => {
   return (
     <div>
       <img src="images/main/main-bg.svg" css={style.mainBg} />
@@ -10,5 +10,3 @@ const Main = () => {
     </div>
   );
 };
-
-export default Main;
