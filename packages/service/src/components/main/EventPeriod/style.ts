@@ -4,7 +4,7 @@ import { theme } from "@watermelon-clap/core";
 export const container = css`
   color: ${theme.color.white};
   text-align: center;
-  margin: 50px;
+  margin: 70px;
 `;
 
 export const period = css`
