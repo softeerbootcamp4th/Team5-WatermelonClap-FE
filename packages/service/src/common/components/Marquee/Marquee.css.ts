@@ -9,10 +9,10 @@ interface MarqueeStylesProps {
 
 const marqueeAnimation = keyframes`
   0% {
-    transform: translateX(400%);
+    transform: translateX(100vw);
   }
   100% {
-    transform: translateX(-400%);
+    transform: translateX(-200vw);
   }
 `;
 
