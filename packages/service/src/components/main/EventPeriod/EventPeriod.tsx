@@ -2,7 +2,7 @@ import * as style from "./style";
 import { theme } from "@watermelon-clap/core";
 import { css } from "@emotion/react";
 
-export const EventPeriod: React.FC = () => {
+export const EventPeriod = () => {
   return (
     <div css={style.container}>
       <h1
