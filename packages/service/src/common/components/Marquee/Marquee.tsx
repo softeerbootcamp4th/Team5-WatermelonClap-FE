@@ -24,7 +24,7 @@ const Marquee = ({
   reverse = false,
   repeat = 4,
   duration = "40s",
-  gap = "1rem",
+  gap = "2rem",
   children,
   ...props
 }: MarqueeProps) => {
