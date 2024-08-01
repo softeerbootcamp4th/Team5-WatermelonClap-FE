@@ -14,11 +14,11 @@ const globalStyles = css`
     src: url("/fonts/pretendard/Pretendard-SemiBold.woff2") format("woff2");
   }
   @font-face {
-    font-family: "PyeongChang=Bold";
+    font-family: "PyeongChang-Bold";
     src: url("/fonts/pyeongChang/PyeongChang-Bold.otf") format("opentype");
   }
   @font-face {
-    font-family: "PyeongChang=Regular";
+    font-family: "PyeongChang-Regular";
     src: url("/fonts/pyeongChang/PyeongChang-Regular.otf") format("opentype");
   }
   @font-face {
