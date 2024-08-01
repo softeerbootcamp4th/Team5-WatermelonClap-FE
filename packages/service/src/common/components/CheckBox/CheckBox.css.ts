@@ -13,20 +13,24 @@ export const checkBoxButtonStyle = css`
   border: none;
 `;
 
-export const checkBoxStyle = (isChecked: boolean) => css`
-  position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 26px;
-  width: 26px;
-  border: 2px solid ${theme.color.gray300};
-  border-radius: 4px;
-  transition: all 0.5s;
-  cursor: pointer;
-  background-color: ${isChecked ? theme.color.white : "transparent"};
-  border-color: ${isChecked ? theme.color.white : theme.color.gray300};
-`;
+export const checkBoxStyle = (isChecked: boolean) => {
+  const { gray300, white } = theme.color;
+
+  return css`
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 26px;
+    width: 26px;
+    border: 2px solid ${gray300};
+    border-radius: 4px;
+    transition: all 0.5s;
+    cursor: pointer;
+    background-color: ${isChecked ? white : "transparent"};
+    border-color: ${isChecked ? white : gray300};
+  `;
+};
 
 export const checkBoxSvgStyle = css`
   position: absolute;
