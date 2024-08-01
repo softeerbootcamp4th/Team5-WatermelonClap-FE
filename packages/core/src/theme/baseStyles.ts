@@ -6,6 +6,16 @@ interface IBaseStyles {
     center: SerializedStyles;
     column: SerializedStyles;
   };
+
+  gap: {
+    gap4: SerializedStyles;
+    gap8: SerializedStyles;
+    gap12: SerializedStyles;
+    gap16: SerializedStyles;
+    gap24: SerializedStyles;
+    gap32: SerializedStyles;
+    gap48: SerializedStyles;
+  };
   padding: {
     pd4: SerializedStyles;
     pd8: SerializedStyles;
@@ -46,6 +56,31 @@ const baseStyles: IBaseStyles = {
       align-items: center;
     `,
   },
+
+  gap: {
+    gap4: css`
+      gap: 4px;
+    `,
+    gap8: css`
+      gap: 8px;
+    `,
+    gap12: css`
+      gap: 12px;
+    `,
+    gap16: css`
+      gap: 16px;
+    `,
+    gap24: css`
+      gap: 24px;
+    `,
+    gap32: css`
+      gap: 32px;
+    `,
+    gap48: css`
+      gap: 48px;
+    `,
+  },
+
   padding: {
     pd4: css`
       padding: 4px;
