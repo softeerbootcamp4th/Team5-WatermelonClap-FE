@@ -2,8 +2,11 @@ import { Button, ButtonVariant } from "@service/common/components/Button";
 import { baseStyles } from "@watermelon-clap/core";
 import { css } from "@emotion/react";
 import { ClipBoardButton } from "@service/common/components/ClipBoardButton";
+import { CheckBox } from "@service/common/components/CheckBox";
+import { useState } from "react";
 
 const ButtonDemoPage = () => {
+  const [isChecked, setIsChecked] = useState(false);
   return (
     <div
       css={css`
@@ -60,6 +63,12 @@ const ButtonDemoPage = () => {
         </Button>
 
         <ClipBoardButton />
+
+        <CheckBox
+          isChecked={isChecked}
+          setIsChecked={setIsChecked}
+          text="check box"
+        />
       </div>
     </div>
   );
