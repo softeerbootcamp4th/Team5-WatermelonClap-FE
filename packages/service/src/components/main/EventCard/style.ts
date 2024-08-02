@@ -5,12 +5,10 @@ export const eventCard = (isMainEvent: boolean) => css`
   padding: 72px;
   background: ${isMainEvent ? theme.color.mainEventCardBg : theme.color.white};
   width: 552px;
-  height: 1036px;
   border-radius: 20px;
   text-align: center;
   white-space: pre-wrap;
-  ${baseStyles.flex.column}
-  gap : 38px;
+  gap: 38px;
   box-shadow: 0px 0px 100px 0px rgba(255, 255, 255, 0.5);
 
   .title {
@@ -22,8 +20,8 @@ export const eventCard = (isMainEvent: boolean) => css`
   .event-number {
     border-radius: 50%;
     background-color: ${theme.color.black};
-    width: 40px;
-    height: 40px;
+    width: 44px;
+    height: 44px;
     color: ${theme.color.white};
     margin: 0 auto;
     ${baseStyles.flex.center}
