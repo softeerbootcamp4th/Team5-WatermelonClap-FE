@@ -17,6 +17,7 @@ import {
   staticCardStyles,
   textStyles,
 } from "./style";
+import { theme } from "@watermelon-clap/core";
 
 export const Timer = ({ date }: CountdownProps) => {
   return <ReactCountdown date={date} renderer={renderer} />;
@@ -33,8 +34,12 @@ const renderer: CountdownRendererFn = ({
   return (
     <div
       css={css`
-        display: flex;
-        justify-content: center;
+        background-color: ${theme.color.black};
+        width: fit-content;
+        margin: 0 auto;
+        border-radius: 50px;
+        box-shadow: 0 0 20px 10px ${theme.color.black};
+        padding: 20px;
       `}
     >
       <div
