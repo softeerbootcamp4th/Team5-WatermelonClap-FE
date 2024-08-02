@@ -7,6 +7,7 @@ import {
   SCROLL_TEXT_DEMO_PAGE_ROUTE,
   MARQUEE_DEMO_PAGE_ROUTE,
   BUTTON_DEMO_PAGE_ROUTE,
+  MODAL_DEMO_PAGE_ROUTE,
 } from "../../constants/routes";
 
 const linkStyles = css`
@@ -52,6 +53,9 @@ export const DemoPage = () => {
       </Link>
       <Link to={BUTTON_DEMO_PAGE_ROUTE} css={linkStyles}>
         버튼 데모
+      </Link>
+      <Link to={MODAL_DEMO_PAGE_ROUTE} css={linkStyles}>
+        모달 데모
       </Link>
     </div>
   );
