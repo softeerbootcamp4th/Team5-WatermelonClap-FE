@@ -51,6 +51,7 @@ const baseStyles: IBaseStyles = {
     `,
 
     column: css`
+      display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
