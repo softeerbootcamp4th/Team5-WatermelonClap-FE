@@ -16,7 +16,7 @@ export const staticCardStyles = (position: "upper" | "lower") => css`
 
 export const textStyles = (translateY?: string, title?: string) => css`
   font-family: "PyeongChang Peace";
-  font-size: 102px;
+  font-size: 90px;
   -webkit-text-stroke-width: 2px;
   font-weight: normal;
   transform: translateY(${translateY});
