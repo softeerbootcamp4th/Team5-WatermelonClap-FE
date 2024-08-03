@@ -18,25 +18,28 @@ interface ITheme {
   };
 
   font: {
-    pre: SerializedStyles;
+    preM: SerializedStyles;
+    preSB: SerializedStyles;
+    preB: SerializedStyles;
+    preM20: SerializedStyles;
+    preM18: SerializedStyles;
+    preM14: SerializedStyles;
     preSB86: SerializedStyles;
     preB38: SerializedStyles;
     preB28: SerializedStyles;
     preB24: SerializedStyles;
     preB18: SerializedStyles;
     preB16: SerializedStyles;
-    preM20: SerializedStyles;
-    preM18: SerializedStyles;
-    preM14: SerializedStyles;
 
-    pcp: SerializedStyles;
-    pcpB82: SerializedStyles;
-    pcpB28: SerializedStyles;
+    pcpL: SerializedStyles;
+    pcpB: SerializedStyles;
     pcpL80: SerializedStyles;
     pcpL32: SerializedStyles;
     pcpL28: SerializedStyles;
+    pcpB82: SerializedStyles;
+    pcpB28: SerializedStyles;
 
-    pc: SerializedStyles;
+    pcB: SerializedStyles;
     pcB40: SerializedStyles;
     pcB28: SerializedStyles;
     pcB16: SerializedStyles;
@@ -97,8 +100,27 @@ export const theme: ITheme = {
       "linear-gradient(194deg, #e5ffa9 3.1%, #d2ecff 33.71%, #fffbdd 78.87%, #a9bcff 103.46%)",
   },
   font: {
-    pre: css`
+    preM: css`
+      font-family: "Pretendard-Medium";
+    `,
+    preSB: css`
       font-family: "Pretendard-SemiBold";
+    `,
+    preB: css`
+      font-family: "Pretendard-Bold";
+    `,
+
+    preM20: css`
+      font-family: "Pretendard-Medium";
+      font-size: 20px;
+    `,
+    preM18: css`
+      font-family: "Pretendard-Medium";
+      font-size: 18px;
+    `,
+    preM14: css`
+      font-family: "Pretendard-Medium";
+      font-size: 14px;
     `,
     preSB86: css`
       font-family: "Pretendard-SemiBold";
@@ -124,29 +146,12 @@ export const theme: ITheme = {
       font-family: "Pretendard-Bold";
       font-size: 16px;
     `,
-    preM20: css`
-      font-family: "Pretendard-Medium";
-      font-size: 20px;
-    `,
-    preM18: css`
-      font-family: "Pretendard-Medium";
-      font-size: 18px;
-    `,
-    preM14: css`
-      font-family: "Pretendard-Medium";
-      font-size: 14px;
-    `,
 
-    pcp: css`
-      font-family: "PyeongChangPeace-Bold";
+    pcpL: css`
+      font-family: "PyeongChangPeace-Light";
     `,
-    pcpB82: css`
+    pcpB: css`
       font-family: "PyeongChangPeace-Bold";
-      font-size: 82px;
-    `,
-    pcpB28: css`
-      font-family: "PyeongChangPeace-Bold";
-      font-size: 28px;
     `,
     pcpL80: css`
       font-family: "PyeongChangPeace-Light";
@@ -161,9 +166,19 @@ export const theme: ITheme = {
       font-size: 28px;
     `,
 
-    pc: css`
+    pcpB82: css`
+      font-family: "PyeongChangPeace-Bold";
+      font-size: 82px;
+    `,
+    pcpB28: css`
+      font-family: "PyeongChangPeace-Bold";
+      font-size: 28px;
+    `,
+
+    pcB: css`
       font-family: "PyeongChang-Bold";
     `,
+
     pcB40: css`
       font-family: "PyeongChang-Bold";
       font-size: 40px;
