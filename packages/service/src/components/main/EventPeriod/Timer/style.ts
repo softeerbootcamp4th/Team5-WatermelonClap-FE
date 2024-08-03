@@ -1,4 +1,5 @@
 import { css } from "@emotion/react";
+import { mobile } from "@service/common/responsive/responsive";
 import { theme } from "@watermelon-clap/core";
 
 export const staticCardStyles = (position: "upper" | "lower") => css`
@@ -16,11 +17,15 @@ export const staticCardStyles = (position: "upper" | "lower") => css`
 
 export const textStyles = (translateY?: string, title?: string) => css`
   font-family: "PyeongChang Peace";
-  font-size: 90px;
+  font-size: calc(20px + 3vw);
   -webkit-text-stroke-width: 2px;
   font-weight: normal;
   transform: translateY(${translateY});
   color: ${title === "days" ? theme.color.eventBlue : theme.color.white};
+
+  ${mobile(css`
+    font-size: 30px;
+  `)}
 `;
 
 export const animatedCardStyles = css`
@@ -38,6 +43,8 @@ export const animatedCardStyles = css`
   transform-origin: 50% 100%;
   background-color: #000000;
   border-radius: 6px 6px 0 0;
+
+  ${mobile(css``)}
 `;
 
 export const animatedCardBottomStyles = css`
@@ -54,6 +61,10 @@ export const animatedCardBottomStyles = css`
   align-items: flex-start;
   transform-origin: 50% 0%;
   background-color: #000000;
+
+  ${mobile(css`
+    font-size: 10px;
+  `)}
 `;
 
 export const flipContainerStyles = css`
@@ -64,10 +75,35 @@ export const flipContainerStyles = css`
 export const flipBoxStyles = css`
   display: block;
   position: relative;
-  width: 140px;
+  width: 100%;
   height: 120px;
   background-color: #000000;
   border-radius: 6px;
   perspective: 300px;
   perspective-origin: 50% 50%;
+
+  ${mobile(css`
+    width: 40px;
+  `)}
+`;
+
+export const rendererWrap1 = css`
+  background-color: ${theme.color.black};
+  margin: 0 auto;
+  border-radius: 50px;
+  box-shadow: 0 0 20px 10px ${theme.color.black};
+  padding: 20px;
+  width: 70%;
+  display: flex;
+  justify-content: center;
+`;
+
+export const rendererWrap2 = css`
+  display: flex;
+  align-items: center;
+  gap: 20px;
+
+  ${mobile(css`
+    gap: 0.3rem;
+  `)}
 `;

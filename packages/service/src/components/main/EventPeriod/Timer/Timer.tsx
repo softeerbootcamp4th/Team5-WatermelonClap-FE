@@ -14,10 +14,12 @@ import {
   animatedCardStyles,
   flipBoxStyles,
   flipContainerStyles,
+  rendererWrap1,
+  rendererWrap2,
   staticCardStyles,
   textStyles,
 } from "./style";
-import { theme } from "@watermelon-clap/core";
+import { mobile } from "@service/common/responsive/responsive";
 
 export const Timer = ({ date }: CountdownProps) => {
   return <ReactCountdown date={date} renderer={renderer} />;
@@ -32,32 +34,16 @@ const renderer: CountdownRendererFn = ({
 }) => {
   if (completed) return null;
   return (
-    <div
-      css={css`
-        background-color: ${theme.color.black};
-        width: fit-content;
-        margin: 0 auto;
-        border-radius: 50px;
-        box-shadow: 0 0 20px 10px ${theme.color.black};
-        padding: 20px;
-      `}
-    >
-      <div
-        css={css`
-          display: flex;
-          align-items: center;
-          gap: 1.25rem;
-        `}
-      >
+    <div css={rendererWrap1}>
+      <div css={rendererWrap2}>
+        <span css={[textStyles("", "days")]}>D</span>
+        <span css={[textStyles("", "days")]}>-</span>
         <FlipContainer number={days} title="days" />{" "}
-        <span
-          css={css`
-            ${textStyles("", "days")};
-            margin-right: 50px;
-          `}
-        >
-          일
-        </span>
+        <div
+          css={mobile(css`
+            margin-right: 10px;
+          `)}
+        ></div>
         <FlipContainer number={hours} title="hours" />{" "}
         <span css={textStyles("", "")}>:</span>
         <FlipContainer number={minutes} title="mins" />{" "}

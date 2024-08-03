@@ -14,11 +14,3 @@ export const period = css`
   color: ${theme.color.eventSkyblue};
   margin-top: 10px;
 `;
-
-export const timer = css`
-  ${theme.font.pcpL};
-  font-size: 112px;
-  -webkit-text-stroke-width: 2px;
-  margin: 24px;
-  word-spacing: 8px;
-`;
