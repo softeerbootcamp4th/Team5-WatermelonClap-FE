@@ -47,7 +47,7 @@ export const expectationCard = css`
   }
 
   > .text {
-    ${theme.font.pretend.medium.bodyM18}
+    ${theme.font.preM18}
     line-height: 1.6rem;
   }
 `;

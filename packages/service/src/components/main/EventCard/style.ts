@@ -1,5 +1,5 @@
 import { css } from "@emotion/react";
-import { baseStyles, theme } from "@watermelon-clap/core";
+import { theme } from "@watermelon-clap/core";
 
 export const eventCard = (isMainEvent: boolean) => css`
   padding: 72px;
@@ -19,18 +19,18 @@ export const eventNumber = css`
   height: 44px;
   color: ${theme.color.white};
   margin: 0 auto;
-  ${baseStyles.flex.center}
-  ${theme.font.pretend.bold.body24}
+  ${theme.flex.center}
+  ${theme.font.preB24}
 `;
 
 export const eventTitle = css`
-  ${theme.font.pyeongChangPeace.bold.title};
-  ${baseStyles.margin.mg12}
+  ${theme.font.pcpB};
+  ${theme.margin.mg12}
   font-size: 40px;
 `;
 
 export const joinButton = css`
-  ${theme.font.pretend.bold.titleB38};
+  ${theme.font.preB38};
   width: 100%;
   height: 120px;
   border-radius: 18px;
