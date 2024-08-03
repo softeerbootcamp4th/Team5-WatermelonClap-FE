@@ -1,6 +1,6 @@
 import { css } from "@emotion/react";
 
-const globalStyles = css`
+export const globalStyles = css`
   @font-face {
     font-family: "Pretendard-Bold";
     src: url("/fonts/pretendard/Pretendard-Bold.woff2") format("woff2");
@@ -32,5 +32,3 @@ const globalStyles = css`
       format("opentype");
   }
 `;
-
-export default globalStyles;

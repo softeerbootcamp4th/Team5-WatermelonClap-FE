@@ -1,9 +1,17 @@
 import { Button, ButtonVariant } from "@service/common/components/Button";
-import { baseStyles } from "@watermelon-clap/core";
+import { theme } from "@watermelon-clap/core";
 import { css } from "@emotion/react";
 import { ClipBoardButton } from "@service/common/components/ClipBoardButton";
+import { CheckBox } from "@service/common/components/CheckBox";
+import { useState } from "react";
+import { ReactComponent as ClipBoardIcon } from "public/icons/clipboard.svg";
 
 const ButtonDemoPage = () => {
+  const [isChecked1, setIsChecked1] = useState(false);
+  const [isChecked2, setIsChecked2] = useState(false);
+  const [isChecked3, setIsChecked3] = useState(false);
+  const [isChecked4, setIsChecked4] = useState(false);
+
   return (
     <div
       css={css`
@@ -15,8 +23,8 @@ const ButtonDemoPage = () => {
     >
       <div
         css={[
-          baseStyles.flex.center,
-          baseStyles.flex.column,
+          theme.flex.center,
+          theme.flex.column,
           css`
             gap: 20px;
           `,
@@ -60,6 +68,55 @@ const ButtonDemoPage = () => {
         </Button>
 
         <ClipBoardButton />
+
+        <CheckBox
+          isChecked={isChecked1}
+          setIsChecked={setIsChecked1}
+          text="check box"
+        />
+
+        <CheckBox
+          isChecked={isChecked2}
+          setIsChecked={setIsChecked2}
+          text="check box"
+          style={{ backgroundColor: "red" }}
+        />
+
+        <CheckBox
+          isChecked={isChecked3}
+          setIsChecked={setIsChecked3}
+          text="check box"
+          interpolation={{
+            labelStyle: css`
+              color: blue;
+            `,
+            checkBoxStyle: (isChecked: boolean) => css`
+              background-color: ${isChecked ? "blue" : "transparent"};
+              border: 2px solid ${isChecked ? "blue" : "blue"};
+            `,
+          }}
+        />
+
+        <CheckBox
+          isChecked={isChecked4}
+          setIsChecked={setIsChecked4}
+          text="check box"
+          interpolation={{
+            labelStyle: css`
+              font-size: 18px;
+              color: #004d40;
+            `,
+            checkBoxStyle: (isChecked: boolean) => css`
+              background-color: ${isChecked ? "#00796b" : "#ffffff"};
+              border: 2px solid ${isChecked ? "#004d40" : "#00796b"};
+            `,
+            svgStyle: css`
+              width: 28px;
+              height: 28px;
+            `,
+          }}
+          svgIcon={<ClipBoardIcon />}
+        />
       </div>
     </div>
   );

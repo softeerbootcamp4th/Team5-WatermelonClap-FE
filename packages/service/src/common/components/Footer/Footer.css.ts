@@ -1,62 +1,107 @@
 import { css } from "@emotion/react";
+import { theme } from "@watermelon-clap/core";
 
 export const footerStyles = css`
-  background-color: #111;
-  color: #fff;
-  padding: 20px;
+  position: relative;
+  z-index: 2;
+  padding: 40px 20px;
+  background-color: #1c1b1b;
+  ${theme.font.preM14}
+  color: ${theme.color.white};
   font-size: 14px;
-  z-index: 999;
-  /* 
-  position: absolute;
-  bottom: 0; */
 
   .inner-wrap {
-    max-width: 1200px;
+    width: 100%;
+    min-width: 800px;
+    max-width: 1120px;
     margin: 0 auto;
   }
 
   .footer-top {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 20px;
+    align-items: flex-start;
+  }
+
+  .footer-logo {
+    margin-right: 80px;
   }
 
   .footer-logo img {
-    width: 150px;
+    border-style: none;
   }
 
-  .menu ul {
-    list-style: none;
-    padding: 0;
+  .menu {
     display: flex;
-    gap: 15px;
+    flex-direction: column;
+    gap: 10px;
+    margin-right: 80px;
+    color: ${theme.color.gray400};
   }
 
-  .menu ul li a {
-    color: #fff;
+  .menu .links {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .menu .links .link-group {
+    display: flex;
+    gap: 20px;
+  }
+
+  .menu .links .link-group a {
     text-decoration: none;
+    color: ${theme.color.gray400};
+    &:hover {
+      color: ${theme.color.white};
+    }
   }
 
-  .menu .service {
-    margin-top: 10px;
+  .menu .contact,
+  .menu .copyright {
+    font-size: 14px;
   }
 
   .menu .copyright {
-    margin-top: 5px;
+    font-size: 12px;
   }
 
   .social {
+    margin-bottom: 20px;
+  }
+
+  .social li {
+    width: 30px;
+    height: 30px;
+    background: url(https://www.hyundai.com/static/images/ico_social.png)
+      no-repeat;
+    background-size: contain;
+  }
+
+  .social li a {
+    display: block;
+    width: 30px;
+    height: 30px;
+    color: ${theme.color.white};
+    text-decoration: none;
+  }
+
+  .site {
+    right: 0;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .site .social {
     display: flex;
     gap: 10px;
   }
 
-  .social li a {
-    color: #fff;
-  }
-
-  .family-site {
-    position: relative;
+  .site .family-site,
+  .site .custom-selectbox {
+    display: flex;
+    align-items: center;
   }
 
   .custom-selectbox button {
@@ -65,32 +110,37 @@ export const footerStyles = css`
     color: #fff;
     padding: 5px 10px;
     cursor: pointer;
+    font-size: 14px;
   }
 
-  .site-list {
-    display: none;
-    position: absolute;
-    top: 100%;
-    left: 0;
-    background-color: #333;
-    padding: 10px;
-    list-style: none;
-    width: 200px;
+  .footer-bottom {
+    margin-top: 40px;
+    padding-top: 22px;
+    border-top: 1px solid #2a2a2a;
+    color: ${theme.color.gray400};
   }
 
   .footer-bottom ul {
     display: flex;
-    gap: 10px;
     flex-wrap: wrap;
+    font-size: 11px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
   }
 
   .footer-bottom ul li {
     display: flex;
-    align-items: center;
-    gap: 5px;
+    flex: 0 0 25%;
+    box-sizing: border-box;
+    padding: 10px;
+    padding-left: 0px;
+    font-size: 12px;
   }
 
   .footer-bottom ul li img {
-    width: 40px;
+    float: left;
+    padding-right: 10px;
+    height: 40px;
   }
 `;

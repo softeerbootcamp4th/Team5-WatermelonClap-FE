@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef, useCallback } from "react";
 import { Button, ButtonVariant } from "src/common/components/Button";
-import { baseStyles, theme } from "@watermelon-clap/core";
+import { theme } from "@watermelon-clap/core";
 import { css } from "@emotion/react";
 import * as style from "./style";
 
@@ -69,7 +69,7 @@ export const Banner = () => {
       <div css={style.bannerContent}>
         <h1
           css={css`
-            ${theme.font.pretend.semiBold.headSB86};
+            ${theme.font.preSB86};
             color: ${theme.color.white};
             font-size: calc(30px + 2.4vw);
           `}
@@ -78,7 +78,7 @@ export const Banner = () => {
         </h1>
         <h2
           css={[
-            theme.font.pretend.bold.titleB38,
+            theme.font.preB38,
             css`
               color: ${theme.color.white};
               font-size: calc(12px + 1.5vw);
@@ -88,12 +88,12 @@ export const Banner = () => {
           최대 290마력, 일상형 스포츠카 출시
         </h2>
 
-        <div css={baseStyles.margin.mg32}></div>
+        <div css={theme.margin.mg32}></div>
 
         <div
           css={css`
-            ${baseStyles.flex.center};
-            ${baseStyles.gap.gap16}
+            ${theme.flex.center};
+            ${theme.gap.gap16}
             justify-content: right;
           `}
         >
