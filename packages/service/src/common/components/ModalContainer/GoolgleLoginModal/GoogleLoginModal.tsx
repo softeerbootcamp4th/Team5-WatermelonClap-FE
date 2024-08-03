@@ -2,11 +2,11 @@ import Modal from "react-modal";
 import { Button, ButtonVariant } from "../../Button";
 import { useScrollStop } from "@service/common/hooks/useScrollStop";
 import { useAuth } from "@service/common/hooks/useAuth";
-import { theme } from "@watermelon-clap/core";
 import {
   googleLoginModalStyles,
   googleLoginModalBodyStyles,
 } from "./GoogleLoginModal.css";
+import { theme } from "@watermelon-clap/core";
 
 export interface GoogleLoginModalProps {
   isOpen: boolean;

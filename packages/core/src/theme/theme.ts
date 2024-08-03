@@ -79,7 +79,7 @@ interface ITheme {
   };
 }
 
-const theme: ITheme = {
+export const theme: ITheme = {
   color: {
     black: "#000000",
     white: "#ffffff",
@@ -270,5 +270,3 @@ const theme: ITheme = {
     `,
   },
 };
-
-export default theme;
