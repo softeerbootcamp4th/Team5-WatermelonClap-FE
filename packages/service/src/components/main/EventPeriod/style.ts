@@ -8,7 +8,7 @@ export const container = css`
 `;
 
 export const period = css`
-  ${theme.font.pyeongChangPeace.light.title32};
+  ${theme.font.pcpL32};
   -webkit-text-stroke-width: 1px;
   font-size: 40px;
   color: ${theme.color.eventSkyblue};
@@ -16,7 +16,7 @@ export const period = css`
 `;
 
 export const timer = css`
-  ${theme.font.pyeongChangPeace.light.head};
+  ${theme.font.pcpL};
   font-size: 112px;
   -webkit-text-stroke-width: 2px;
   margin: 24px;
