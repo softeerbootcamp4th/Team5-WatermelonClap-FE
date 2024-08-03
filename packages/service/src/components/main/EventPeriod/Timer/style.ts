@@ -6,13 +6,12 @@ export const staticCardStyles = (position: "upper" | "lower") => css`
   position: relative;
   justify-content: center;
   width: 100%;
-  height: 50%;
   overflow: hidden;
   display: flex;
   ${position === "upper"
     ? "align-items: flex-end;"
     : "align-items: flex-start; background-color: #000000;"}
-  border-radius: ${position === "upper" ? "6px 6px 0 0;" : "0 0 6px 6px;"}
+  border-radius: ${position === "upper" ? "6px 6px 0 0;" : "0 0 6px 6px;"};
 `;
 
 export const textStyles = (translateY?: string, title?: string) => css`
@@ -33,7 +32,6 @@ export const animatedCardStyles = css`
   position: absolute;
   left: 0;
   width: 100%;
-  height: 50%;
   overflow: hidden;
   display: flex;
   backface-visibility: hidden;
@@ -52,7 +50,6 @@ export const animatedCardBottomStyles = css`
   position: absolute;
   left: 0;
   width: 100%;
-  height: 50%;
   overflow: hidden;
   display: flex;
   backface-visibility: hidden;
@@ -76,7 +73,6 @@ export const flipBoxStyles = css`
   display: block;
   position: relative;
   width: 100%;
-  height: 120px;
   background-color: #000000;
   border-radius: 6px;
   perspective: 300px;
@@ -89,21 +85,18 @@ export const flipBoxStyles = css`
 
 export const rendererWrap1 = css`
   background-color: ${theme.color.black};
-  margin: 0 auto;
   border-radius: 50px;
-  box-shadow: 0 0 20px 10px ${theme.color.black};
-  padding: 20px;
+  margin: 0 auto;
+  box-shadow: 0 0 220px 10px ${theme.color.black};
   width: 70%;
-  display: flex;
-  justify-content: center;
 `;
 
 export const rendererWrap2 = css`
   display: flex;
   align-items: center;
-  gap: 20px;
-
+  gap: calc(10px + 2vw);
+  justify-content: center;
   ${mobile(css`
     gap: 0.3rem;
-  `)}
+  `)};
 `;

@@ -20,6 +20,7 @@ import {
   textStyles,
 } from "./style";
 import { mobile } from "@service/common/responsive/responsive";
+import { theme } from "@watermelon-clap/core";
 
 export const Timer = ({ date }: CountdownProps) => {
   return <ReactCountdown date={date} renderer={renderer} />;
@@ -36,9 +37,11 @@ const renderer: CountdownRendererFn = ({
   return (
     <div css={rendererWrap1}>
       <div css={rendererWrap2}>
-        <span css={[textStyles("", "days")]}>D</span>
-        <span css={[textStyles("", "days")]}>-</span>
-        <FlipContainer number={days} title="days" />{" "}
+        <div css={[theme.flex.center, theme.gap.gap4]}>
+          <span css={[textStyles("", "days")]}>D</span>
+          <span css={[textStyles("", "days")]}>-</span>
+          <FlipContainer number={days} title="days" />{" "}
+        </div>
         <div
           css={mobile(css`
             margin-right: 10px;
