@@ -1,9 +1,9 @@
 import { css } from "@emotion/react";
-import { baseStyles, theme } from "@watermelon-clap/core";
+import { theme } from "@watermelon-clap/core";
 
 export const clipButtonStyle = css`
-  ${baseStyles.flex.center}
-  ${theme.font.pretend.bold.body18}
+  ${theme.flex.center}
+  ${theme.font.preB18}
   cursor: pointer;
   width: 265px;
   height: 50px;
@@ -24,7 +24,7 @@ export const clipButtonStyle = css`
 `;
 
 export const clipButtonSuccessStyle = css`
-  ${baseStyles.flex.center}
+  ${theme.flex.center}
   cursor: pointer;
   width: 265px;
   height: 50px;
@@ -37,16 +37,16 @@ export const clipButtonSuccessStyle = css`
 `;
 
 export const clipButtonContentStyle = css`
-  ${baseStyles.flex.center}
-  ${theme.font.pretend.bold.body18}
+  ${theme.flex.center}
+  ${theme.font.preB18}
   color: ${theme.color.black};
   font-weight: 500;
   gap: 10px;
 `;
 
 export const clipButtonSuccessContentStyle = css`
-  ${baseStyles.flex.center}
-  ${theme.font.pretend.bold.body18}
+  ${theme.flex.center}
+  ${theme.font.preB18}
   color: ${theme.color.eventBlue};
   font-weight: 500;
   gap: 10px;
