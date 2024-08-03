@@ -10,7 +10,7 @@ interface IEventDataProps {
 export const EventCard = ({ eventData }: IEventDataProps) => {
   return (
     <div css={style.eventCard(eventData.id === 1)}>
-      <div className="event-number">{eventData.id}</div>
+      <div css={style.eventNumber}>{eventData.id}</div>
       <div css={[baseStyles.flex.column, baseStyles.gap.gap32]}>
         <div>
           <h2
@@ -22,7 +22,7 @@ export const EventCard = ({ eventData }: IEventDataProps) => {
           >
             {eventData.eventType}
           </h2>
-          <h1 className="title">{eventData.title}</h1>
+          <h1 css={style.eventTitle}>{eventData.title}</h1>
           <h3 css={theme.font.pretend.bold.body24}> {eventData.subTitle}</h3>
         </div>
 
