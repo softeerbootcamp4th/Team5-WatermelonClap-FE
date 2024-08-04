@@ -1,6 +1,5 @@
 import * as style from "./style";
 import { theme } from "@watermelon-clap/core";
-import { css } from "@emotion/react";
 import { Timer } from "./Timer";
 
 export const EventPeriod = () => {
