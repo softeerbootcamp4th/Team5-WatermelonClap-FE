@@ -11,7 +11,7 @@ const GlobalNavs = () => {
       <Link to="#" css={linkStyles}>
         내 아반떼 N 뽑기
       </Link>
-      <Link to="#" css={linkStyles}>
+      <Link to="/nQuiz" css={linkStyles}>
         <NLogo css={nLogoStyles} /> 퀴즈
       </Link>
       <Link to="#" css={linkStyles}>

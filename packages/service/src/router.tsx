@@ -9,6 +9,7 @@ import {
   MARQUEE_DEMO_PAGE_ROUTE,
   BUTTON_DEMO_PAGE_ROUTE,
   MODAL_DEMO_PAGE_ROUTE,
+  N_QUIZ_EVENT_PAGE_ROUTE,
 } from "./constants/routes";
 import { RotateDemoPage } from "./Demo/pages/RotateDemoPage";
 import { AuthDemoPage } from "./Demo/pages/AuthDemoPage";
@@ -20,12 +21,16 @@ import { ScrollDemoPage } from "./Demo/pages/ScrollDemoPage";
 import ButtonDemoPage from "./Demo/pages/ButtonDemoPage";
 import { App } from "./App";
 import { ModalDemoPage } from "./Demo/pages/ModalDemoPage";
+import { NQuizEvent } from "./pages/NQuizEvent";
 
 export const router = createBrowserRouter([
   {
     path: "",
     element: <App />,
-    children: [{ path: MAIN_PAGE_ROUTE, element: <Main /> }],
+    children: [
+      { path: MAIN_PAGE_ROUTE, element: <Main /> },
+      { path: N_QUIZ_EVENT_PAGE_ROUTE, element: <NQuizEvent /> },
+    ],
   },
   {
     path: DEMO_PAGE_ROUTE,
