@@ -1,6 +1,6 @@
 import { nQuizSectionStyles } from "./NQuizSection.css";
-import { NQuizHeader } from "../NQuizHeader";
-import { NQuizInput } from "../NQuizInput";
+import { NQuizHeader } from "./NQuizHeader";
+import { NQuizInput } from "./NQuizInput";
 import {
   nQuizSectionHeaderContainerStyles,
   nQuizSectionBodyContainerStyles,
