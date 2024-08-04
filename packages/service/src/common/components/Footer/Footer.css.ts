@@ -1,4 +1,5 @@
 import { css } from "@emotion/react";
+import { mobile } from "@service/common/responsive/responsive";
 import { theme } from "@watermelon-clap/core";
 
 export const footerStyles = css`
@@ -8,26 +9,46 @@ export const footerStyles = css`
   background-color: #1c1b1b;
   ${theme.font.preM14}
   color: ${theme.color.white};
-  font-size: 14px;
+  min-width: 1200px;
+  ${mobile(css`
+    min-width: 412px;
+    padding: 20px 20px;
+  `)}
 
   .inner-wrap {
     width: 100%;
     min-width: 800px;
     max-width: 1120px;
     margin: 0 auto;
+
+    ${mobile(css`
+      min-width: 380px;
+      max-width: 380px;
+    `)}
   }
 
   .footer-top {
     display: flex;
-    align-items: flex-start;
+
+    ${mobile(css`
+      flex-direction: row;
+    `)}
   }
 
   .footer-logo {
     margin-right: 80px;
+
+    ${mobile(css`
+      margin-right: 16px;
+    `)}
   }
 
   .footer-logo img {
     border-style: none;
+
+    ${mobile(css`
+      width: 40px;
+    `)}
   }
 
   .menu {
@@ -36,17 +57,31 @@ export const footerStyles = css`
     gap: 10px;
     margin-right: 80px;
     color: ${theme.color.gray400};
+
+    ${mobile(css`
+      margin-right: 0;
+      padding-bottom: 20px;
+    `)}
   }
 
   .menu .links {
     display: flex;
     flex-direction: column;
     gap: 10px;
+
+    ${mobile(css`
+      display: none;
+    `)}
   }
 
   .menu .links .link-group {
     display: flex;
     gap: 20px;
+
+    ${mobile(css`
+      display: inline;
+      flex-wrap: wrap;
+    `)}
   }
 
   .menu .links .link-group a {
@@ -57,13 +92,24 @@ export const footerStyles = css`
     }
   }
 
-  .menu .contact,
-  .menu .copyright {
+  .menu .contact {
     font-size: 14px;
+
+    ${mobile(css`
+      padding-bottom: 20px;
+    `)}
   }
 
-  .menu .copyright {
+  .copyright {
     font-size: 12px;
+  }
+
+  .copyright-logo {
+    display: none;
+
+    ${mobile(css`
+      margin-right: 80px;
+    `)}
   }
 
   .social {
@@ -118,6 +164,10 @@ export const footerStyles = css`
     padding-top: 22px;
     border-top: 1px solid #2a2a2a;
     color: ${theme.color.gray400};
+
+    ${mobile(css`
+      display: none;
+    `)}
   }
 
   .footer-bottom ul {
