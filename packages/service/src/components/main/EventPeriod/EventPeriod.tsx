@@ -1,4 +1,4 @@
-import * as style from "./style";
+import * as style from "./EventPeriod.css";
 import { theme } from "@watermelon-clap/core";
 import { Timer } from "./Timer";
 

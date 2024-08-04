@@ -18,7 +18,7 @@ import {
   rendererWrap2,
   staticCardStyles,
   textStyles,
-} from "./style";
+} from "./Timer.css";
 import { mobile } from "@service/common/responsive/responsive";
 import { theme } from "@watermelon-clap/core";
 

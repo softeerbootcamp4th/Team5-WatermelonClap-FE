@@ -2,7 +2,7 @@ import { useState, useEffect, useRef, useCallback } from "react";
 import { Button, ButtonVariant } from "src/common/components/Button";
 import { theme } from "@watermelon-clap/core";
 import { css } from "@emotion/react";
-import * as style from "./style";
+import * as style from "./Banner.css";
 import { mobile } from "@service/common/responsive/responsive";
 
 const bannerImgs = [
