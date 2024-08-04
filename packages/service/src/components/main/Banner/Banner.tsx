@@ -3,6 +3,7 @@ import { Button, ButtonVariant } from "src/common/components/Button";
 import { theme } from "@watermelon-clap/core";
 import { css } from "@emotion/react";
 import * as style from "./style";
+import { mobile } from "@service/common/responsive/responsive";
 
 const bannerImgs = [
   "images/main/main-banner-1.svg",
@@ -67,35 +68,33 @@ export const Banner = () => {
         ))}
       </div>
       <div css={style.bannerContent}>
-        <h1
-          css={css`
-            ${theme.font.preSB86};
-            color: ${theme.color.white};
-            font-size: calc(30px + 2.4vw);
-          `}
-        >
-          AVANTE N
-        </h1>
-        <h2
-          css={[
-            theme.font.preB38,
-            css`
-              color: ${theme.color.white};
-              font-size: calc(12px + 1.5vw);
-            `,
-          ]}
-        >
-          최대 290마력, 일상형 스포츠카 출시
+        <h1 css={style.title}>AVANTE N</h1>
+        <h2 css={style.subTitle}>
+          <span>최대 290마력,</span> <span>일상형 스포츠카 출시</span>
         </h2>
 
-        <div css={theme.margin.mg32}></div>
+        <div
+          css={[
+            theme.margin.mg32,
+            mobile(css`
+              ${theme.margin.mg12}
+            `),
+          ]}
+        ></div>
 
         <div
-          css={css`
-            ${theme.flex.center};
-            ${theme.gap.gap16}
-            justify-content: right;
-          `}
+          css={[
+            css`
+              ${theme.flex.center};
+              ${theme.gap.gap16}
+              justify-content: right;
+            `,
+            mobile(css`
+              flex-direction: column;
+              align-items: end;
+              gap: 4px;
+            `),
+          ]}
         >
           <Button variant={ButtonVariant.SMALL_DARK}>자세히 보기</Button>
           <Button variant={ButtonVariant.SMALL_LIGHT}>이벤트 바로 가기</Button>
