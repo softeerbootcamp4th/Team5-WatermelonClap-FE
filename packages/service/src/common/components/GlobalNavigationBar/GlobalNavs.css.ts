@@ -18,7 +18,7 @@ export const nLogoStyles = css`
 
 export const linkStyles = css`
   color: ${theme.color.white};
-  ${theme.font.pretend.bold.body16}
+  ${theme.font.preB16}
   text-decoration: none;
   display: inline-flex;
   gap: 4px;

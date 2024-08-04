@@ -1,8 +1,8 @@
 import { css } from "@emotion/react";
-import { baseStyles, theme } from "@watermelon-clap/core";
+import { theme } from "@watermelon-clap/core";
 
 export const checkBoxContainerStyle = css`
-  ${baseStyles.flex.center}
+  ${theme.flex.center}
 `;
 
 export const checkBoxButtonStyle = css`
@@ -41,7 +41,7 @@ export const checkBoxSvgStyle = css`
 `;
 
 export const checkBoxLabelStyle = css`
-  ${theme.font.pretend.medium.bodyM18}
+  ${theme.font.preM18}
   color: ${theme.color.gray300};
   margin-left: 8px;
   transition: color 0.3s ease-out;
