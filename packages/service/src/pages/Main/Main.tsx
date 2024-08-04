@@ -1,5 +1,5 @@
 import { EventCard } from "@service/components/main/EventCard";
-import * as style from "./style";
+import * as style from "./Main.css";
 import { Banner, EventPeriod, Expectations } from "@service/components/main";
 import { eventData } from "./eventData";
 import { theme } from "@watermelon-clap/core";
