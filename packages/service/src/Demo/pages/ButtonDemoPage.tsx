@@ -1,5 +1,5 @@
 import { Button, ButtonVariant } from "@service/common/components/Button";
-import { baseStyles } from "@watermelon-clap/core";
+import { theme } from "@watermelon-clap/core";
 import { css } from "@emotion/react";
 import { ClipBoardButton } from "@service/common/components/ClipBoardButton";
 import { CheckBox } from "@service/common/components/CheckBox";
@@ -23,8 +23,8 @@ const ButtonDemoPage = () => {
     >
       <div
         css={[
-          baseStyles.flex.center,
-          baseStyles.flex.column,
+          theme.flex.center,
+          theme.flex.column,
           css`
             gap: 20px;
           `,

@@ -1,9 +1,9 @@
 import { css } from "@emotion/react";
-import { baseStyles, theme } from "@watermelon-clap/core";
+import { theme } from "@watermelon-clap/core";
 
 export const longButtonStyle = css`
-  ${baseStyles.flex.center}
-  ${theme.font.pretend.medium.bodyM20}
+  ${theme.flex.center}
+  ${theme.font.preM20}
   background: ${theme.color.black};
   color: ${theme.color.white};
   width: 360px;
@@ -24,8 +24,8 @@ export const longButtonStyle = css`
 `;
 
 export const shortButtonStyle = css`
-  ${baseStyles.flex.center}
-  ${theme.font.pretend.medium.bodyM18}
+  ${theme.flex.center}
+  ${theme.font.preM18}
   background: ${theme.color.gray500};
   color: ${theme.color.white};
   width: 238px;
@@ -50,8 +50,8 @@ export const shortButtonStyle = css`
 `;
 
 export const smallDarkButtonStyle = css`
-  ${baseStyles.flex.center}
-  ${theme.font.pretend.medium.bodyM20}
+  ${theme.flex.center}
+  ${theme.font.preM20}
   background: rgba(0, 0, 0, 0.3);
   color: ${theme.color.white};
   width: 180px;
@@ -73,8 +73,8 @@ export const smallDarkButtonStyle = css`
 `;
 
 export const smallLightButtonStyle = css`
-  ${baseStyles.flex.center}
-  ${theme.font.pretend.medium.bodyM20}
+  ${theme.flex.center}
+  ${theme.font.preM20}
   color: ${theme.color.black};
   font-weight: 600;
   background: ${theme.color.white};
@@ -96,8 +96,8 @@ export const smallLightButtonStyle = css`
 `;
 
 export const hugeButtonStyle = css`
-  ${baseStyles.flex.center}
-  ${theme.font.pretend.bold.titleB38}
+  ${theme.flex.center}
+  ${theme.font.preB38}
   background: ${theme.color.white};
   color: ${theme.color.black};
   width: 597px;

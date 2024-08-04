@@ -6,7 +6,7 @@ export const footerStyles = css`
   z-index: 2;
   padding: 40px 20px;
   background-color: #1c1b1b;
-  ${theme.font.pretend.medium.bodyM14}
+  ${theme.font.preM14}
   color: ${theme.color.white};
   font-size: 14px;
 

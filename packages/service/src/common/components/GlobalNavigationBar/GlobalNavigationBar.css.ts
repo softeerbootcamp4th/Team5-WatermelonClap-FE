@@ -1,10 +1,10 @@
 import { css } from "@emotion/react";
-import { theme, baseStyles } from "@watermelon-clap/core";
+import { theme } from "@watermelon-clap/core";
 
 export const headerContainerStyles = css`
   padding: 16px 0px;
   gap: 32px;
-  ${baseStyles.flex.between}
+  ${theme.flex.between}
   width: 100%;
   padding-left: 16px;
   padding-right: 16px;
