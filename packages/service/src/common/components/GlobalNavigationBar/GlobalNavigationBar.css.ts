@@ -2,12 +2,10 @@ import { css } from "@emotion/react";
 import { theme } from "@watermelon-clap/core";
 
 export const headerContainerStyles = css`
-  padding: 16px 0px;
+  padding: 16px calc(-30px + 10%);
   gap: 32px;
   ${theme.flex.between}
   width: 100%;
-  padding-left: 16px;
-  padding-right: 16px;
   margin: 0 auto;
   position: fixed;
   z-index: 999;
@@ -17,7 +15,6 @@ export const headerContainerStyles = css`
 
 export const logoStyles = css`
   color: ${theme.color.white};
-  width: 220px;
-  flex-grow: 0.2;
   cursor: pointer;
+  flex-shrink: 0;
 `;
