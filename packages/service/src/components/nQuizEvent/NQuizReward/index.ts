@@ -1,1 +1,1 @@
-export { NQuizReward } from "./NQuizReward";
+export * from "./NQuizReward";
