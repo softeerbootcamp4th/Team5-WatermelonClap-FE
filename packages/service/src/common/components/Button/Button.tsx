@@ -8,6 +8,7 @@ import {
   smallDarkButtonStyle,
   smallLightButtonStyle,
 } from "./Button.css";
+import { mobile } from "@service/common/responsive/responsive";
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: ButtonVariant;
@@ -15,18 +16,37 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 }
 
 const getButtonVariantStyles = (variant: ButtonVariant) => {
+  const commonStyle = css`
+    cursor: pointer;
+    ${mobile(css`
+      width: 120px;
+      height: fit-content;
+      padding: 8px 10px;
+      font-size: 14px;
+    `)};
+  `;
+
+  let eachStyle;
+
   switch (variant) {
     case ButtonVariant.LONG:
-      return longButtonStyle;
+      eachStyle = longButtonStyle;
+      break;
     case ButtonVariant.SHORT:
-      return shortButtonStyle;
+      eachStyle = shortButtonStyle;
+      break;
     case ButtonVariant.SMALL_DARK:
-      return smallDarkButtonStyle;
+      eachStyle = smallDarkButtonStyle;
+      break;
     case ButtonVariant.SMALL_LIGHT:
-      return smallLightButtonStyle;
+      eachStyle = smallLightButtonStyle;
+      break;
     case ButtonVariant.HUGE:
-      return hugeButtonStyle;
+      eachStyle = hugeButtonStyle;
+      break;
   }
+
+  return [commonStyle, eachStyle];
 };
 
 const Button = ({
@@ -38,10 +58,7 @@ const Button = ({
     <button
       onClick={onClick}
       {...props}
-      css={css`
-        cursor: pointer;
-        ${getButtonVariantStyles(variant)}
-      `}
+      css={getButtonVariantStyles(variant)}
     />
   );
 };

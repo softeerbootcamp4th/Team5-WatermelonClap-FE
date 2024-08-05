@@ -1,10 +1,12 @@
 import { css } from "@emotion/react";
+import { mobile } from "@service/common/responsive/responsive";
 import { theme } from "@watermelon-clap/core";
 
 export const container = css`
   position: relative;
   display: flex;
   align-items: center;
+
   &::before,
   &::after {
     content: "";
@@ -14,7 +16,12 @@ export const container = css`
     padding: 40px 0;
     z-index: 1;
     top: 0;
+
+    ${mobile(css`
+      display: none;
+    `)}
   }
+
   &::before {
     left: 0;
     background: linear-gradient(to right, black 0%, transparent 100%);
@@ -50,4 +57,13 @@ export const expectationCard = css`
     ${theme.font.preM18}
     line-height: 1.6rem;
   }
+
+  ${mobile(css`
+    padding: 0 12px;
+
+    > .text {
+      font-size: 14px;
+      line-height: 18px;
+    }
+  `)}
 `;
