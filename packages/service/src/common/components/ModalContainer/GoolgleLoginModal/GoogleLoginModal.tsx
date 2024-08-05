@@ -7,16 +7,12 @@ import {
   googleLoginModalBodyStyles,
 } from "./GoogleLoginModal.css";
 import { theme } from "@watermelon-clap/core";
-
-export interface GoogleLoginModalProps {
-  isOpen: boolean;
-  onRequestClose: () => void;
-}
+import { DefaultModalProps } from "../ModalContainer";
 
 export const GoogleLoginModal = ({
   isOpen,
   onRequestClose,
-}: GoogleLoginModalProps) => {
+}: DefaultModalProps) => {
   const { login } = useAuth();
 
   useScrollStop(isOpen);
