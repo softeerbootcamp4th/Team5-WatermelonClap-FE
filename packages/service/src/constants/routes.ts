@@ -9,3 +9,4 @@ export const MARQUEE_DEMO_PAGE_ROUTE = "marquee" as const;
 export const BUTTON_DEMO_PAGE_ROUTE = "button" as const;
 export const MODAL_DEMO_PAGE_ROUTE = "modal" as const;
 export const N_QUIZ_EVENT_PAGE_ROUTE = "/nQuiz" as const;
+export const NEW_CAR_PAGE_ROUTE = "/new-car" as const;
