@@ -2,18 +2,24 @@ import { useContext } from "react";
 import { createPortal } from "react-dom";
 import { ModalStateContext } from "@service/common/contexts/ModalContext";
 import { useModal } from "@service/common/hooks/useModal";
-import { GoogleLoginModal, GoogleLoginModalProps } from "./GoolgleLoginModal";
+import { GoogleLoginModal } from "./GoolgleLoginModal";
+import { AlertModal, AlertModalProps } from "./AlertModal";
 
-export type ModalType = "login" | "test";
+export type ModalType = "login" | "alert";
+
+export interface DefaultModalProps {
+  isOpen: boolean;
+  onRequestClose: () => void;
+}
 
 interface ModalComponentMap {
-  login: React.FC<GoogleLoginModalProps>;
-  test: React.FC<GoogleLoginModalProps>;
+  login: React.FC<DefaultModalProps>;
+  alert: React.FC<AlertModalProps>;
 }
 
 const MODAL_COMPONENT_MAP: ModalComponentMap = {
   login: GoogleLoginModal,
-  test: GoogleLoginModal,
+  alert: AlertModal,
 };
 
 export const ModalContainer = () => {
