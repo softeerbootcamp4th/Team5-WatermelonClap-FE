@@ -1,7 +1,6 @@
 import { css } from "@emotion/react";
 
 export const mainBg = css`
-  z-index: -1;
-  position: absolute;
-  width: 100%;
+  background-image: url("images/main/main-bg.svg");
+  background-size: cover;
 `;
