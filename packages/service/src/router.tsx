@@ -15,7 +15,7 @@ import { RotateDemoPage } from "./Demo/pages/RotateDemoPage";
 import { AuthDemoPage } from "./Demo/pages/AuthDemoPage";
 import { ScrollTextPage } from "./Demo/pages/ScrollTextPage";
 import { MarqueeDemoPage } from "./Demo/pages/MarqueeDemoPage";
-import Main from "./pages/Main";
+import { Main } from "./pages/Main/Main";
 import { DemoPage } from "./Demo/pages/DemoPage";
 import { ScrollDemoPage } from "./Demo/pages/ScrollDemoPage";
 import ButtonDemoPage from "./Demo/pages/ButtonDemoPage";

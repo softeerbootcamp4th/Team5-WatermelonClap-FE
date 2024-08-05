@@ -97,7 +97,7 @@ export const theme: ITheme = {
     hyundaiActiveRed: "#e63312",
     hyundaiBlue: "#002c5f",
     mainEventCardBg:
-      "background: linear-gradient(194deg, #e5ffa9 3.1%, #d2ecff 33.71%, #fffbdd 78.87%, #a9bcff 103.46%)",
+      "linear-gradient(194deg, #e5ffa9 3.1%, #d2ecff 33.71%, #fffbdd 78.87%, #a9bcff 103.46%)",
   },
   font: {
     preM: css`
@@ -207,6 +207,7 @@ export const theme: ITheme = {
     `,
 
     column: css`
+      display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
