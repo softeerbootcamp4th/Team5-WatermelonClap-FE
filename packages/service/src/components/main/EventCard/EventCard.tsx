@@ -2,7 +2,6 @@ import { theme } from "@watermelon-clap/core";
 import * as style from "./EventCard.css";
 import { IEventData } from "@service/pages/Main/eventData";
 import { Button, ButtonVariant } from "@service/common/components/Button";
-import { css } from "@emotion/react";
 import { useMobile } from "@service/common/hooks/useMobile";
 
 interface IEventDataProps {
