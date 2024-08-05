@@ -25,6 +25,7 @@ export const logoContainerStyle = css`
 export const logoStyle = css`
   width: 208px;
   height: 87px;
+  text-shadow: 0 0 40px rgba(255, 255, 255, 0.6);
 
   ${mobile(css`
     width: 104px;
@@ -35,10 +36,11 @@ export const logoStyle = css`
 export const titleStyle = css`
   ${theme.font.pcpB82}
   color: ${theme.color.white};
+  text-shadow: 0 0 40px rgba(255, 255, 255, 0.6);
 
   ${mobile(css`
     font-size: 41px;
-  `)}
+  `)};
 `;
 
 export const dateStyle = css`
