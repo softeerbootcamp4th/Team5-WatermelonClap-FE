@@ -5,9 +5,14 @@ import { MAIN_PAGE_ROUTE } from "@service/constants/routes";
 import GlobalNavs from "./GlobalNavs/GlobalNavs";
 import { useState } from "react";
 import { MenuButton } from "./MenuButton";
+import { useMobile } from "@service/common/hooks/useMobile";
+import { GNB_BREAKPOINT } from "@service/constants/breakpoints";
 
 export const GlobalNavigationBar = () => {
   const [isOpen, setIsOpen] = useState(false);
+
+  // 800px보다 작아지면 햄버거 메뉴 생성
+  const isMobile = useMobile(GNB_BREAKPOINT);
 
   const navigate = useNavigate();
   return (
@@ -19,9 +24,11 @@ export const GlobalNavigationBar = () => {
         }}
       />
 
-      <MenuButton isOpen={isOpen} onClick={() => setIsOpen(!isOpen)} />
+      {isMobile && (
+        <MenuButton isOpen={isOpen} onClick={() => setIsOpen(!isOpen)} />
+      )}
 
-      <GlobalNavs />
+      <GlobalNavs isOpen={isOpen} />
     </header>
   );
 };

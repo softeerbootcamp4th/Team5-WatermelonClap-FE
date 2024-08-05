@@ -60,6 +60,9 @@ export const MenuButton = ({ isOpen = false, onClick }: IMenuButtonProps) => {
       onClick={onClick}
       css={css`
         cursor: pointer;
+        position: absolute;
+        right: 30px;
+        z-index: 2;
       `}
     >
       <motion.line
