@@ -2,9 +2,9 @@ import { Link } from "react-router-dom";
 import { ReactComponent as NLogo } from "public/images/gnb/n-logo.svg";
 import { linkStyles, navsContainerStyles, nLogoStyles } from "./GlobalNavs.css";
 
-const GlobalNavs = () => {
+const GlobalNavs = ({ isOpen }: { isOpen: boolean }) => {
   return (
-    <div css={navsContainerStyles}>
+    <div css={navsContainerStyles(isOpen)}>
       <Link to="#" css={linkStyles}>
         아반떼 N
       </Link>
