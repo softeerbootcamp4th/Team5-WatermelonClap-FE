@@ -3,8 +3,6 @@ import { mobile } from "@service/common/responsive/responsive";
 import { GNB_BREAKPOINT } from "@service/constants/breakpoints";
 import { theme } from "@watermelon-clap/core";
 
-// export const GNB_BREAKPOINT = "800px";
-
 export const headerContainerStyles = css`
   padding: 16px calc(-30px + 10%);
   gap: 32px;
