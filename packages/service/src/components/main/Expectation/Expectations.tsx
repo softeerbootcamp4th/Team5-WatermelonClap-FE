@@ -1,5 +1,5 @@
 import { Marquee } from "@service/common/components/Marquee";
-import * as style from "./style";
+import * as style from "./Expectations.css";
 
 export const Expectations = () => {
   return (

@@ -1,5 +1,5 @@
 import { theme } from "@watermelon-clap/core";
-import * as style from "./style";
+import * as style from "./EventCard.css";
 import { IEventData } from "@service/pages/Main/eventData";
 import { Button, ButtonVariant } from "@service/common/components/Button";
 import { css } from "@emotion/react";
