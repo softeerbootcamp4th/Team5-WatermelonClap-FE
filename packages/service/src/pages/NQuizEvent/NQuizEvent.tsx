@@ -1,10 +1,17 @@
-import { containerStyle, backgroundStyle, gridStyle } from "./NQuizEvent.css";
 import {
   NQuizSection,
   NQuizTitle,
   NQuizReward,
   NQuizRewardProps,
 } from "@service/components/nQuizEvent";
+import {
+  containerStyle,
+  backgroundStyle,
+  gridStyle,
+  termTitleStyle,
+  termListStyle,
+} from "./NQuizEvent.css";
+import { nQuizEventTermTitle, nQuizEventTerms } from "@service/constants/terms";
 
 const rewardList: NQuizRewardProps[] = [
   {
@@ -44,6 +51,7 @@ export const NQuizEvent = () => {
     <div css={containerStyle}>
       <div css={backgroundStyle}>
         <NQuizTitle />
+
         <div css={gridStyle}>
           {rewardList.map((reward, index) => (
             <NQuizReward
@@ -55,11 +63,19 @@ export const NQuizEvent = () => {
             />
           ))}
         </div>
+
         <NQuizSection
           imgSrc="/images/quiz/quiz1.svg"
           startDate="8월 4일"
           status="open"
         />
+
+        <span css={termTitleStyle}>{nQuizEventTermTitle}</span>
+        <ul css={termListStyle}>
+          {nQuizEventTerms.map((term) => (
+            <li>{term}</li>
+          ))}
+        </ul>
       </div>
     </div>
   );
