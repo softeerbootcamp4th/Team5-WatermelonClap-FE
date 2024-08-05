@@ -10,14 +10,17 @@ export const navsContainerStyles = (isOpen: boolean) => css`
   width: 100%;
   justify-content: end;
   gap: calc(10px + 5%);
+
   ${mobile(
     css`
       position: absolute;
       flex-direction: column;
       background-color: rgba(0, 0, 0, 0.4);
       backdrop-filter: blur(6px);
+
       top: ${isOpen ? `50px` : `-400px`};
       opacity: ${isOpen ? 1 : 0};
+
       transition:
         top 0.8s cubic-bezier(0.165, 0.84, 0.44, 1),
         opacity 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);

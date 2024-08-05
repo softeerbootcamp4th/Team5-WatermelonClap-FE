@@ -13,10 +13,13 @@ export const headerContainerStyles = css`
   z-index: 999;
   background-color: rgba(0, 0, 0, 0.4);
   justify-content: space-around;
+  backdrop-filter: blur(6px);
 
   ${mobile(
     css`
       justify-content: center;
+      background-color: #0f0d23;
+      backdrop-filter: none;
     `,
     GNB_BREAKPOINT,
   )}
