@@ -11,11 +11,10 @@ export const container = css`
   &::after {
     content: "";
     position: absolute;
-    width: 300px;
+    width: 10%;
     height: 90px;
-    padding: 40px 0;
     z-index: 1;
-    top: 0;
+    padding: 18px;
 
     ${mobile(css`
       display: none;
