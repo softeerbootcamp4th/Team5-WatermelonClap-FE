@@ -57,11 +57,10 @@ export const NewCarInfo = () => {
       <section ref={ref}>
         <div css={style.scrollContainer}>
           <div css={style.stickyWrap}>
-            <motion.div ref={carouselRef} style={{ x }}>
-              <img
-                src="images/newCar/new-car-scroll-img.svg"
-                css={style.infoImg}
-              />
+            <motion.div css={style.imgWrap} ref={carouselRef} style={{ x }}>
+              {carInfoImgs.map((imgSrc, idx) => (
+                <img css={style.infoImg} src={imgSrc} key={idx} />
+              ))}
             </motion.div>
           </div>
         </div>
@@ -69,3 +68,9 @@ export const NewCarInfo = () => {
     </>
   );
 };
+
+// 신차 소개 이미지 path
+const carInfoImgs = Array.from(
+  { length: 15 },
+  (_, i) => `images/newCar/new-car-info-${i + 1}.svg`,
+);
