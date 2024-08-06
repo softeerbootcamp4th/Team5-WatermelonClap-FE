@@ -41,7 +41,7 @@ export const MenuButton = ({ isOpen = false, onClick }: IMenuButtonProps) => {
 
   const lineProps = {
     stroke: theme.color.white,
-    strokeWidth: 3,
+    strokeWidth: 2,
     vectorEffect: "non-scaling-stroke",
     initial: "closed",
     animate: variant,
@@ -55,8 +55,8 @@ export const MenuButton = ({ isOpen = false, onClick }: IMenuButtonProps) => {
       viewBox={`0 0 ${unitWidth} ${unitHeight}`}
       overflow="visible"
       preserveAspectRatio="none"
-      width={30}
-      height={22}
+      width={20}
+      height={14}
       onClick={onClick}
       css={css`
         cursor: pointer;
