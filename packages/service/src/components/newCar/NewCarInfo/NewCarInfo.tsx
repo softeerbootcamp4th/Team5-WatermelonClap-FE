@@ -60,10 +60,21 @@ export const NewCarInfo = () => {
 
   if (isMobile)
     return (
-      <div css={[theme.flex.column]}>
-        <Space size={50} />
-        {carInfoImgs.map((imgSrc, idx) => (
-          <img css={style.m_infoImg(idx % 2)} src={imgSrc} key={idx} />
+      <div css={style.m_imgWrap}>
+        <Space size={10} />
+        {carInfoImgs.slice(0, 4).map((imgSrc, idx) => (
+          <img src={imgSrc} key={idx} css={style.m_infoImg(idx % 2)} />
+        ))}
+
+        <Space size={100} />
+        {carInfoImgs.slice(4).map((imgSrc, idx) => (
+          <motion.img
+            transition={{ duration: 0.8 }}
+            whileInView={{ y: -200, opacity: [0, 1] }}
+            css={style.m_infoImg(idx % 2)}
+            src={imgSrc}
+            key={idx}
+          />
         ))}
       </div>
     );

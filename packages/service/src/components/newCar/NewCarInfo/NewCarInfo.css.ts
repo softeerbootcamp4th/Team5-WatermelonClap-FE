@@ -1,4 +1,5 @@
 import { css } from "@emotion/react";
+import { theme } from "@watermelon-clap/core";
 
 const SCROLL_SPEED = "3000vh";
 
@@ -27,8 +28,14 @@ export const imgWrap = css`
   gap: calc(10px + 30vw);
 `;
 
+export const m_imgWrap = css`
+  ${theme.flex.column}
+  gap : 40px;
+`;
+
 export const m_infoImg = (num: number) => css`
   width: 80%;
   align-self: ${num === 0 ? "start" : "end"};
+
   margin: 20px;
 `;
