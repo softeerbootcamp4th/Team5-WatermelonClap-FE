@@ -3,7 +3,6 @@ import { motion, useTransform, useViewportScroll } from "framer-motion";
 import { throttle } from "throttle-debounce-ts";
 import { useEffect, useRef, useState } from "react";
 import { useMobile } from "@service/common/hooks/useMobile";
-import { theme } from "@watermelon-clap/core";
 import { Space } from "@service/common/styles/Space";
 import { css } from "@emotion/react";
 
@@ -69,7 +68,10 @@ export const NewCarInfo = () => {
         <Space size={100} />
         {carInfoImgs.slice(4).map((imgSrc, idx) => (
           <motion.img
-            transition={{ duration: 0.8 }}
+            transition={{
+              type: "spring",
+              duration: 0.8,
+            }}
             whileInView={{ y: -200, opacity: [0, 1] }}
             css={style.m_infoImg(idx % 2)}
             src={imgSrc}
@@ -81,17 +83,19 @@ export const NewCarInfo = () => {
 
   return (
     <section ref={ref} css={style.scrollContainer}>
-      (
       <div css={style.stickyWrap}>
         <motion.div css={style.imgWrap} ref={carouselRef} style={{ x }}>
           <div
             css={css`
-              padding-left: 2000px;
+              margin-left: 200px;
             `}
-          ></div>
+          />
           {carInfoImgs.map((imgSrc, idx) => (
             <motion.img
-              transition={{ duration: 0.8 }}
+              transition={{
+                type: "spring",
+                duration: 0.8,
+              }}
               whileInView={{ x: -300, opacity: [0, 1] }}
               css={style.infoImg}
               src={imgSrc}
@@ -100,7 +104,6 @@ export const NewCarInfo = () => {
           ))}
         </motion.div>
       </div>
-      )
     </section>
   );
 };
