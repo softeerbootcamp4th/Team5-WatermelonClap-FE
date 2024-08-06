@@ -221,6 +221,9 @@ importers:
       three:
         specifier: ^0.166.1
         version: 0.166.1
+      throttle-debounce-ts:
+        specifier: ^1.1.1
+        version: 1.1.1
     devDependencies:
       '@emotion/babel-plugin':
         specifier: ^11.11.0
@@ -2942,6 +2945,9 @@ packages:
 
   three@0.166.1:
     resolution: {integrity: sha512-LtuafkKHHzm61AQA1be2MAYIw1IjmhOUxhBa0prrLpEMWbV7ijvxCRHjSgHPGp2493wLBzwKV46tA9nivLEgKg==}
+
+  throttle-debounce-ts@1.1.1:
+    resolution: {integrity: sha512-GUz8pRapqadMqXhQcQPwN/Cvmt0QqFtvr/aVle4yyigqhsC+aCtS3dSnsQwmxAeeB6D8ww6xsl2GRsWWad9/4w==}
 
   to-fast-properties@2.0.0:
     resolution: {integrity: sha512-/OaKK0xYrs3DmxRYqL/yDc+FxFUVYhDlXMhRmv3z915w2HF1tnN1omB354j8VUGO/hbRzyD6Y3sA7v7GS/ceog==}
@@ -6109,6 +6115,8 @@ snapshots:
       three: 0.166.1
 
   three@0.166.1: {}
+
+  throttle-debounce-ts@1.1.1: {}
 
   to-fast-properties@2.0.0: {}
 

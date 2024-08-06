@@ -27,7 +27,8 @@
     "react-dom": "^18.3.1",
     "react-responsive": "^10.0.0",
     "react-router-dom": "^6.24.1",
-    "three": "^0.166.1"
+    "three": "^0.166.1",
+    "throttle-debounce-ts": "^1.1.1"
   },
   "devDependencies": {
     "@emotion/babel-plugin": "^11.11.0",
