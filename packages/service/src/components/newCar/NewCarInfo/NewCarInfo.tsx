@@ -2,6 +2,10 @@ import * as style from "./NewCarInfo.css";
 import { motion, useTransform, useViewportScroll } from "framer-motion";
 import { throttle } from "throttle-debounce-ts";
 import { useEffect, useRef, useState } from "react";
+import { useMobile } from "@service/common/hooks/useMobile";
+import { theme } from "@watermelon-clap/core";
+import { Space } from "@service/common/styles/Space";
+import { css } from "@emotion/react";
 
 const useElementViewportPosition = (ref: React.RefObject<HTMLElement>) => {
   const [position, setPosition] = useState<[number, number]>([0, 0]);
@@ -26,6 +30,8 @@ export const NewCarInfo = () => {
   const [carouselEndPosition, setCarouselEndPosition] = useState(0);
   const { scrollYProgress } = useViewportScroll();
   const x = useTransform(scrollYProgress, position, [0, carouselEndPosition]);
+
+  const isMobile = useMobile();
 
   useEffect(() => {
     if (!carouselRef || !carouselRef.current) return;
@@ -52,20 +58,39 @@ export const NewCarInfo = () => {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
+  if (isMobile)
+    return (
+      <div css={[theme.flex.column]}>
+        <Space size={50} />
+        {carInfoImgs.map((imgSrc, idx) => (
+          <img css={style.m_infoImg(idx % 2)} src={imgSrc} key={idx} />
+        ))}
+      </div>
+    );
+
   return (
-    <>
-      <section ref={ref}>
-        <div css={style.scrollContainer}>
-          <div css={style.stickyWrap}>
-            <motion.div css={style.imgWrap} ref={carouselRef} style={{ x }}>
-              {carInfoImgs.map((imgSrc, idx) => (
-                <img css={style.infoImg} src={imgSrc} key={idx} />
-              ))}
-            </motion.div>
-          </div>
-        </div>
-      </section>
-    </>
+    <section ref={ref} css={style.scrollContainer}>
+      (
+      <div css={style.stickyWrap}>
+        <motion.div css={style.imgWrap} ref={carouselRef} style={{ x }}>
+          <div
+            css={css`
+              padding-left: 2000px;
+            `}
+          ></div>
+          {carInfoImgs.map((imgSrc, idx) => (
+            <motion.img
+              transition={{ duration: 0.8 }}
+              whileInView={{ x: -300, opacity: [0, 1] }}
+              css={style.infoImg}
+              src={imgSrc}
+              key={idx}
+            />
+          ))}
+        </motion.div>
+      </div>
+      )
+    </section>
   );
 };
 

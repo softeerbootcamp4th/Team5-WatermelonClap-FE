@@ -1,6 +1,6 @@
 import { css } from "@emotion/react";
 
-const SCROLL_SPEED = "1000vh";
+const SCROLL_SPEED = "3000vh";
 
 export const scrollContainer = css`
   height: ${SCROLL_SPEED};
@@ -24,5 +24,11 @@ export const infoImg = css`
 
 export const imgWrap = css`
   display: flex;
-  gap: calc(10px + 22vw);
+  gap: calc(10px + 30vw);
+`;
+
+export const m_infoImg = (num: number) => css`
+  width: 80%;
+  align-self: ${num === 0 ? "start" : "end"};
+  margin: 20px;
 `;
