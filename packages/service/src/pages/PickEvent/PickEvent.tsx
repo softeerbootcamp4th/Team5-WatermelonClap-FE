@@ -1,6 +1,5 @@
-import { JoinInfo } from "@service/components/pickEvent/JoinInfo/JoinInfo";
+import { CardCarousel, JoinInfo } from "@service/components/pickEvent";
 import * as style from "./PickEvent.css";
-import { CardCarousel } from "@service/components/pickEvent/CardCarousel";
 
 export const PickEvent = () => {
   return (
