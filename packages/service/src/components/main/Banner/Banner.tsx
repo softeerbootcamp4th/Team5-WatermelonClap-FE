@@ -4,6 +4,8 @@ import { theme } from "@watermelon-clap/core";
 import { css } from "@emotion/react";
 import * as style from "./Banner.css";
 import { mobile } from "@service/common/responsive/responsive";
+import { useNavigate } from "react-router-dom";
+import { NEW_CAR_PAGE_ROUTE } from "@service/constants/routes";
 
 const bannerImgs = [
   "images/main/main-banner-1.svg",
@@ -14,6 +16,7 @@ const bannerImgs = [
 ];
 
 export const Banner = () => {
+  const navigate = useNavigate();
   const [currentIndex, setCurrentIndex] = useState(0);
   const bannerDivRef = useRef<HTMLDivElement>(null);
   const BANNERSPEED = 3000;
@@ -96,7 +99,12 @@ export const Banner = () => {
             `),
           ]}
         >
-          <Button variant={ButtonVariant.SMALL_DARK}>자세히 보기</Button>
+          <Button
+            onClick={() => navigate(NEW_CAR_PAGE_ROUTE)}
+            variant={ButtonVariant.SMALL_DARK}
+          >
+            자세히 보기
+          </Button>
           <Button variant={ButtonVariant.SMALL_LIGHT}>이벤트 바로 가기</Button>
         </div>
       </div>
