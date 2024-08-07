@@ -69,6 +69,8 @@ export const NewCarInfo = () => {
   return (
     <section ref={ref} css={style.scrollContainer}>
       <div css={style.stickyWrap}>
+        <img css={style.bgCirlce1} src="/images/common/bg-circle-green.svg" />
+        <img css={style.bgCirlce2} src="/images/common/bg-circle-blue.svg" />
         <motion.div css={style.imgWrap} ref={carouselRef} style={{ x }}>
           <div
             css={css`
@@ -88,9 +90,6 @@ export const NewCarInfo = () => {
             />
           ))}
         </motion.div>
-
-        <img css={style.bgCirlce1} src="/images/newCar/bg-circle-1.svg" />
-        <img css={style.bgCirlce2} src="/images/newCar/bg-circle-2.svg" />
       </div>
     </section>
   );

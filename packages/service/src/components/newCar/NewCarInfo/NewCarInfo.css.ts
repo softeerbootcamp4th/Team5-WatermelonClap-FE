@@ -42,13 +42,13 @@ export const m_infoImg = (num: number) => css`
 
 export const bgCirlce1 = css`
   position: absolute;
-  top: -100px;
+  top: 0px;
   left: -200px;
   width: calc(300px + 36vw);
 `;
 export const bgCirlce2 = css`
   position: absolute;
-  top: 200px;
-  right: -200px;
+  top: -200px;
+  right: -250px;
   width: calc(400px + 40vw);
 `;
