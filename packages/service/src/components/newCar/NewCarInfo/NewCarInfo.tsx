@@ -103,6 +103,9 @@ export const NewCarInfo = () => {
             />
           ))}
         </motion.div>
+
+        <img css={style.bgCirlce1} src="/images/newCar/bg-circle-1.svg" />
+        <img css={style.bgCirlce2} src="/images/newCar/bg-circle-2.svg" />
       </div>
     </section>
   );
