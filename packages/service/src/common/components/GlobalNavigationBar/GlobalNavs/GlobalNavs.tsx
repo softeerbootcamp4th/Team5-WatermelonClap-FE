@@ -1,7 +1,10 @@
 import { Link } from "react-router-dom";
 import { ReactComponent as NLogo } from "public/images/gnb/n-logo.svg";
 import { linkStyles, navsContainerStyles, nLogoStyles } from "./GlobalNavs.css";
-import { NEW_CAR_PAGE_ROUTE } from "@service/constants/routes";
+import {
+  NEW_CAR_PAGE_ROUTE,
+  PICK_EVENT_PAGE_ROUTE,
+} from "@service/constants/routes";
 
 const GlobalNavs = ({ isOpen }: { isOpen: boolean }) => {
   return (
@@ -9,7 +12,7 @@ const GlobalNavs = ({ isOpen }: { isOpen: boolean }) => {
       <Link to={NEW_CAR_PAGE_ROUTE} css={linkStyles}>
         아반떼 N
       </Link>
-      <Link to="#" css={linkStyles}>
+      <Link to={PICK_EVENT_PAGE_ROUTE} css={linkStyles}>
         내 아반떼 N 뽑기
       </Link>
       <Link to="#" css={linkStyles}>
