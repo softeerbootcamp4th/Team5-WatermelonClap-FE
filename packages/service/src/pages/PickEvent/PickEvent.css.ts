@@ -49,4 +49,9 @@ export const btn = css`
     transform: scale(1.02);
     background-color: ${theme.color.eventSkyblue};
   }
+
+  ${mobile(css`
+    font-size: 20px;
+    padding: 20px 50px;
+  `)}
 `;
