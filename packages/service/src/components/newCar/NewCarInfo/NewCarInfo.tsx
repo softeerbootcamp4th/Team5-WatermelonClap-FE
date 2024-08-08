@@ -5,22 +5,7 @@ import { useEffect, useRef, useState } from "react";
 import { useMobile } from "@service/common/hooks/useMobile";
 import { Space } from "@service/common/styles/Space";
 import { css } from "@emotion/react";
-
-const useElementViewportPosition = (ref: React.RefObject<HTMLElement>) => {
-  const [position, setPosition] = useState<[number, number]>([0, 0]);
-
-  useEffect(() => {
-    if (!ref || !ref.current) return;
-
-    const pageHeight = document.body.scrollHeight;
-    const start = ref.current.offsetTop;
-    const end = start + ref.current.offsetHeight;
-
-    setPosition([start / pageHeight, end / pageHeight]);
-  }, []);
-
-  return { position };
-};
+import { useElementViewportPosition } from "@service/common/hooks/useElementViewportPosition";
 
 export const NewCarInfo = () => {
   const ref = useRef<HTMLDivElement>(null);
@@ -84,6 +69,8 @@ export const NewCarInfo = () => {
   return (
     <section ref={ref} css={style.scrollContainer}>
       <div css={style.stickyWrap}>
+        <img css={style.bgCirlce1} src="/images/common/bg-circle-green.svg" />
+        <img css={style.bgCirlce2} src="/images/common/bg-circle-blue.svg" />
         <motion.div css={style.imgWrap} ref={carouselRef} style={{ x }}>
           <div
             css={css`
@@ -103,9 +90,6 @@ export const NewCarInfo = () => {
             />
           ))}
         </motion.div>
-
-        <img css={style.bgCirlce1} src="/images/newCar/bg-circle-1.svg" />
-        <img css={style.bgCirlce2} src="/images/newCar/bg-circle-2.svg" />
       </div>
     </section>
   );
