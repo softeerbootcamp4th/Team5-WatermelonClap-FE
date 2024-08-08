@@ -1,4 +1,5 @@
 import { css } from "@emotion/react";
+import { mobile } from "@service/common/responsive/responsive";
 import { theme } from "@watermelon-clap/core";
 
 export const alertModalStyles = {
@@ -23,4 +24,9 @@ export const alertModalBodyStyles = css`
   ${theme.flex.column}
   gap: 48.5px;
   padding: 23px 46px;
+
+  ${mobile(css`
+    gap: 30px;
+    padding: 12px 23px;
+  `)}
 `;

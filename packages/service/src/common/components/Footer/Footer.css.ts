@@ -9,9 +9,7 @@ export const footerStyles = css`
   background-color: #1c1b1b;
   ${theme.font.preM14}
   color: ${theme.color.white};
-  min-width: 1200px;
   ${mobile(css`
-    min-width: 412px;
     padding: 20px 20px;
   `)}
 
@@ -22,8 +20,8 @@ export const footerStyles = css`
     margin: 0 auto;
 
     ${mobile(css`
-      min-width: 380px;
-      max-width: 380px;
+      min-width: 100px;
+      max-width: 1000px;
     `)}
   }
 
