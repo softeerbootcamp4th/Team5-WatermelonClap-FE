@@ -1,9 +1,4 @@
 import { Button, ButtonVariant } from "@service/common/components/Button";
-// import {
-//   backgroundStyle,
-//   buttonStyle,
-//   modalContentStyle,
-// } from "./PartsPick.css";
 import {
   partsPickBackgroundStyle,
   partsPickButtonStyle,
