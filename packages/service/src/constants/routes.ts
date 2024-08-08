@@ -10,5 +10,5 @@ export const BUTTON_DEMO_PAGE_ROUTE = "button" as const;
 export const MODAL_DEMO_PAGE_ROUTE = "modal" as const;
 export const N_QUIZ_EVENT_PAGE_ROUTE = "/quiz-event" as const;
 export const NEW_CAR_PAGE_ROUTE = "/new-car" as const;
-export const N_CARD_PICK_PAGE_ROUTE = "/card-pick" as const;
+export const N_PARTS_PICK_PAGE_ROUTE = "/parts-pick" as const;
 export const PICK_EVENT_PAGE_ROUTE = "/pick-event" as const;
