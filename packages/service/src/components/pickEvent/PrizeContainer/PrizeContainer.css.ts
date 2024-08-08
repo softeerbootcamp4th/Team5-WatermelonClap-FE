@@ -41,7 +41,7 @@ export const container = css`
 export const title = css`
   ${theme.font.pcpB}
   text-align : center;
-  font-size: calc(4vw + 10px);
+  font-size: clamp(0px, calc(4vw + 10px), 64px);
   margin-bottom: 80px;
 
   ${mobile(
