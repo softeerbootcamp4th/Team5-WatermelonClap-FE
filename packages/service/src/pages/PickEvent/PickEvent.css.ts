@@ -9,6 +9,47 @@ export const bg = css`
   padding-bottom: 200px;
 `;
 
+export const textWrap = css`
+  ${theme.flex.column}
+  gap : 24px;
+  color: white;
+  text-align: center;
+
+  h1 {
+    ${theme.font.pcpB82}
+    margin-bottom : 12px;
+    text-shadow: 0 0 40px rgba(255, 255, 255, 0.4);
+  }
+
+  span {
+    ${theme.font.pcpL32}
+    word-spacing : 2px;
+    letter-spacing: 2px;
+    -webkit-text-stroke: 2px;
+  }
+
+  pre {
+    ${theme.font.preM20}
+    line-height: 24px;
+  }
+
+  ${mobile(css`
+    h1 {
+      font-size: 30px;
+    }
+
+    span {
+      font-size: 20px;
+    }
+
+    pre {
+      font-size: 14px;
+      white-space: pre-wrap;
+      padding: 0 40px;
+    }
+  `)}
+`;
+
 export const termTitleStyle = css`
   color: ${theme.color.gray400};
   ${theme.font.preM20};
