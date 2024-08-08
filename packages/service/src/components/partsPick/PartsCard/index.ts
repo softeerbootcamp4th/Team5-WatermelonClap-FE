@@ -1,0 +1,1 @@
+export { PartsCard } from "./PartsCard";
