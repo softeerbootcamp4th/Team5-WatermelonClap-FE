@@ -34,3 +34,19 @@ export const termListStyle = css`
     margin-left: 1rem;
   `)}
 `;
+
+export const btn = css`
+  padding: 30px 110px;
+  border-radius: 20px;
+  background-color: ${theme.color.eventBlue};
+  color: ${theme.color.white};
+  ${theme.font.preB38}
+  cursor: pointer;
+  border: none;
+  transition: all 0.2s;
+
+  &:hover {
+    transform: scale(1.02);
+    background-color: ${theme.color.eventSkyblue};
+  }
+`;
