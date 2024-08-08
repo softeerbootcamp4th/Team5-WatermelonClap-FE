@@ -21,6 +21,7 @@ export const stickyWrap = css`
 
 export const infoImg = css`
   height: calc(300px + 10vw);
+  z-index: 999;
 `;
 
 export const imgWrap = css`
@@ -29,11 +30,13 @@ export const imgWrap = css`
 `;
 
 export const m_imgWrap = css`
+  position: relative;
   ${theme.flex.column}
   gap : 40px;
 `;
 
 export const m_infoImg = (num: number) => css`
+  z-index: 999;
   width: 80%;
   align-self: ${num === 0 ? "start" : "end"};
 
@@ -42,13 +45,13 @@ export const m_infoImg = (num: number) => css`
 
 export const bgCirlce1 = css`
   position: absolute;
-  top: -100px;
+  top: 0px;
   left: -200px;
   width: calc(300px + 36vw);
 `;
 export const bgCirlce2 = css`
   position: absolute;
-  top: 200px;
-  right: -200px;
+  top: -200px;
+  right: -250px;
   width: calc(400px + 40vw);
 `;
