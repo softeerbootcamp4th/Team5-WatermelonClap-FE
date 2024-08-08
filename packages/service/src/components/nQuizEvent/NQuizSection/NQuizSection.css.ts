@@ -8,14 +8,12 @@ export const nQuizSectionStyles = css`
   ${theme.flex.column}
   width: 100%;
   aspect-ratio: 1.37 / 1;
-  min-width: 800px;
   flex-shrink: 0;
   border-radius: 20px;
   background-color: ${theme.color.white};
   padding: 40px 48px;
 
   ${mobile(css`
-    min-width: 350px;
     padding: 20px 21px;
     border-radius: 10px;
   `)}

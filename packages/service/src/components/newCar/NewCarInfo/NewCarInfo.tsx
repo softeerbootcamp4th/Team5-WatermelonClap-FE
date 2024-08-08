@@ -1,24 +1,26 @@
 import * as style from "./NewCarInfo.css";
-import { motion, useTransform, useViewportScroll } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
 import { throttle } from "throttle-debounce-ts";
 import { useEffect, useRef, useState } from "react";
 import { useMobile } from "@service/common/hooks/useMobile";
 import { Space } from "@service/common/styles/Space";
 import { css } from "@emotion/react";
 import { useElementViewportPosition } from "@service/common/hooks/useElementViewportPosition";
+import { TracingCar } from "../TracingCar";
 
 export const NewCarInfo = () => {
   const ref = useRef<HTMLDivElement>(null);
   const carouselRef = useRef<HTMLDivElement>(null);
   const { position } = useElementViewportPosition(ref);
   const [carouselEndPosition, setCarouselEndPosition] = useState(0);
-  const { scrollYProgress } = useViewportScroll();
-  const x = useTransform(scrollYProgress, position, [0, carouselEndPosition]);
+  const { scrollYProgress } = useScroll({ target: ref });
 
+  const x = useTransform(scrollYProgress, position, [0, carouselEndPosition]);
   const isMobile = useMobile();
 
   useEffect(() => {
     if (!carouselRef || !carouselRef.current) return;
+
     const parent = carouselRef.current.parentElement;
     const scrollbarWidth =
       window.innerWidth - document.documentElement.clientWidth;
@@ -44,25 +46,28 @@ export const NewCarInfo = () => {
 
   if (isMobile)
     return (
-      <div css={style.m_imgWrap}>
-        <Space size={10} />
-        {carInfoImgs.slice(0, 4).map((imgSrc, idx) => (
-          <img src={imgSrc} key={idx} css={style.m_infoImg(idx % 2)} />
-        ))}
+      <div>
+        <div ref={ref} css={style.m_imgWrap}>
+          <Space size={10} />
+          {carInfoImgs.slice(0, 4).map((imgSrc, idx) => (
+            <img src={imgSrc} key={idx} css={style.m_infoImg(idx % 2)} />
+          ))}
 
-        <Space size={100} />
-        {carInfoImgs.slice(4).map((imgSrc, idx) => (
-          <motion.img
-            transition={{
-              type: "spring",
-              duration: 0.8,
-            }}
-            whileInView={{ y: -200, opacity: [0, 1] }}
-            css={style.m_infoImg(idx % 2)}
-            src={imgSrc}
-            key={idx}
-          />
-        ))}
+          <Space size={100} />
+          <TracingCar x={scrollYProgress} parentRef={ref} />
+          {carInfoImgs.slice(4).map((imgSrc, idx) => (
+            <motion.img
+              transition={{
+                type: "spring",
+                duration: 0.8,
+              }}
+              whileInView={{ y: -200, opacity: [0, 1] }}
+              css={style.m_infoImg(idx % 2)}
+              src={imgSrc}
+              key={idx}
+            />
+          ))}
+        </div>
       </div>
     );
 
@@ -77,6 +82,7 @@ export const NewCarInfo = () => {
               margin-left: 200px;
             `}
           />
+          <TracingCar x={x} parentRef={ref} />s
           {carInfoImgs.map((imgSrc, idx) => (
             <motion.img
               transition={{

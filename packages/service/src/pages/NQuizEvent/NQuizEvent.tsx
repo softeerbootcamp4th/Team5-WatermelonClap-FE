@@ -5,7 +5,6 @@ import {
   NQuizRewardProps,
 } from "@service/components/nQuizEvent";
 import {
-  containerStyle,
   backgroundStyle,
   gridStyle,
   termTitleStyle,
@@ -48,7 +47,7 @@ const rewardList: NQuizRewardProps[] = [
 
 export const NQuizEvent = () => {
   return (
-    <div css={containerStyle}>
+    <>
       <div css={backgroundStyle}>
         <NQuizTitle />
 
@@ -77,6 +76,6 @@ export const NQuizEvent = () => {
           ))}
         </ul>
       </div>
-    </div>
+    </>
   );
 };

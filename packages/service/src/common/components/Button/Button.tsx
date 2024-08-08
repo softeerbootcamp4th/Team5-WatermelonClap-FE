@@ -10,9 +10,9 @@ import {
 } from "./Button.css";
 import { mobile } from "@service/common/responsive/responsive";
 
-interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: ButtonVariant;
-  onClick?: () => void;
+  onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
 }
 
 const getButtonVariantStyles = (variant: ButtonVariant) => {
@@ -49,7 +49,7 @@ const getButtonVariantStyles = (variant: ButtonVariant) => {
   return [commonStyle, eachStyle];
 };
 
-const Button = ({
+export const Button = ({
   variant = ButtonVariant.SHORT,
   onClick = () => {},
   ...props
@@ -62,5 +62,3 @@ const Button = ({
     />
   );
 };
-
-export default Button;
