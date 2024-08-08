@@ -7,6 +7,9 @@ export const bg = css`
   background-size: cover;
   padding-top: 54px;
   padding-bottom: 200px;
+  ${mobile(css`
+    padding-bottom: 50px;
+  `)}
 `;
 
 export const textWrap = css`
@@ -85,6 +88,8 @@ export const btn = css`
   cursor: pointer;
   border: none;
   transition: all 0.2s;
+  margin: 0 auto;
+  display: block;
 
   &:hover {
     transform: scale(1.02);
@@ -92,7 +97,16 @@ export const btn = css`
   }
 
   ${mobile(css`
-    font-size: 20px;
-    padding: 20px 50px;
+    font-size: 14px;
+    padding: 12px 30px;
+  `)}
+`;
+
+export const termWrap = css`
+  padding: 100px;
+  padding-bottom: 0px;
+
+  ${mobile(css`
+    padding: 20px;
   `)}
 `;

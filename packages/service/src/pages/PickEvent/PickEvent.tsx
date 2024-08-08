@@ -6,12 +6,15 @@ import { useNavigate } from "react-router-dom";
 import { PrizeContainer } from "@service/components/pickEvent";
 import { theme } from "@watermelon-clap/core";
 import { css } from "@emotion/react";
+import { Space } from "@service/common/styles/Space";
 
 export const PickEvent = () => {
   const navigate = useNavigate();
 
   return (
     <div css={style.bg}>
+      <Space size={80} />
+
       <div css={style.textWrap}>
         <h1>내 아반떼 N 뽑기</h1>
         <span
@@ -25,21 +28,32 @@ export const PickEvent = () => {
         <pre>{textData.desc}</pre>
       </div>
 
+      <Space size={100} />
+
       <JoinInfo />
+
+      <Space size={100} />
+
       <CardCarousel />
 
       <button css={style.btn} onClick={() => navigate("/parts-pick")}>
         지금 바로 뽑기
       </button>
 
+      <Space size={130} />
+
       <PrizeContainer />
 
-      <span css={style.termTitleStyle}>{pickEventTermsTitle}</span>
-      <ul css={style.termListStyle}>
-        {pickEventTerms.map((term) => (
-          <li>{term}</li>
-        ))}
-      </ul>
+      <Space size={100} />
+
+      <div css={style.termWrap}>
+        <span css={style.termTitleStyle}>{pickEventTermsTitle}</span>
+        <ul css={style.termListStyle}>
+          {pickEventTerms.map((term) => (
+            <li>{term}</li>
+          ))}
+        </ul>
+      </div>
     </div>
   );
 };
