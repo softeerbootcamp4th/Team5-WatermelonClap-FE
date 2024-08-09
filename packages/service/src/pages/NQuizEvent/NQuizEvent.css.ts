@@ -21,7 +21,7 @@ export const backgroundStyle = css`
   padding-bottom: 94px;
 
   ${mobile(css`
-    min-width: 412px;
+    min-width: 0px;
     padding: 20vw 6vw;
     padding-bottom: 47px;
   `)}
