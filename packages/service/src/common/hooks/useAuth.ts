@@ -22,11 +22,12 @@ const provider = new GoogleAuthProvider();
 
 export const useAuth = () => {
   return {
-    login: () => {
+    login: (callback: () => void = () => {}) => {
       signInWithPopup(fbAuth, provider).then((res) =>
-        res.user
-          .getIdToken()
-          .then((token) => localStorage.setItem("accessToken", token)),
+        res.user.getIdToken().then((token) => {
+          localStorage.setItem("accessToken", token);
+          callback();
+        }),
       );
     },
     logout: () => {

@@ -9,13 +9,16 @@ import { Space } from "@service/common/styles/Space";
 import { useEffect, useRef, useState } from "react";
 import { useModal } from "@service/common/hooks/useModal";
 import { useMobile } from "@service/common/hooks/useMobile";
+import { useLocation } from "react-router-dom";
 
 export const PartsPick = () => {
   const { openModal } = useModal();
   const isMobile = useMobile();
-  const [remainChance, setRemainChance] = useState(3);
   const [isPickComplete, setIsPickComplete] = useState(false);
   const initPickFlag = useRef(false);
+  const [remainChance, setRemainChance] = useState(
+    useLocation()?.state?.remainChance,
+  );
 
   const minusRemainChance = () => {
     if (remainChance < 1) return;

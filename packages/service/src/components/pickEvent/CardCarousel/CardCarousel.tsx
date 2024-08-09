@@ -11,8 +11,7 @@ export const CardCarousel = () => {
     slidesToScroll: 1,
     initialSlide: 0,
     autoplay: true,
-    autoplaySpeed: 2000,
-    pauseOnHover: false,
+    autoplaySpeed: 1500,
     arrows: false,
 
     responsive: [
