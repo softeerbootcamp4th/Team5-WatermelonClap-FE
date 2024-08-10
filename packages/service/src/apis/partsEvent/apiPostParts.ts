@@ -1,3 +1,4 @@
+import { getAccessToken } from "@service/common/utils";
 import { IParts } from "./type";
 
 export const apiPostParts = (): Promise<IParts> =>
@@ -8,7 +9,7 @@ export const apiPostParts = (): Promise<IParts> =>
     {
       method: "POST",
       headers: {
-        Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+        Authorization: `Bearer ${getAccessToken()}`,
       },
     },
   )
