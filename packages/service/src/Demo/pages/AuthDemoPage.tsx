@@ -1,1 +1,3 @@
-export const AuthDemoPage = () => {};
+export const AuthDemoPage = () => {
+  return <></>;
+};
