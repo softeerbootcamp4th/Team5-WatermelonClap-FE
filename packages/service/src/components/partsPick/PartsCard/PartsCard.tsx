@@ -9,6 +9,7 @@ import {
 } from "@service/common/utils/confettiCrafter";
 import { apiPostParts } from "@service/apis/partsEvent";
 import { IParts } from "@service/apis/partsEvent/type";
+import { useAuth } from "@service/common/hooks/useAuth";
 
 interface CardProps {
   frontImage: string;
@@ -60,6 +61,7 @@ export const PartsCard = ({
   const [isFlipped, setIsFlipped] = useState(false);
   const [isFrontShow, setIsFrontShow] = useState(false);
   const [partsInfo, setPartsInfo] = useState<IParts>();
+  const { getIsLogin } = useAuth();
 
   const handleMouseMove = (e: React.MouseEvent | React.TouchEvent) => {
     const $card = cardRef.current;
@@ -118,7 +120,7 @@ export const PartsCard = ({
   };
 
   const handleClick = () => {
-    if (remainChance < 0) return;
+    if (remainChance < 0 || !getIsLogin()) return;
 
     if (isFrontShow) {
       craftFireworks(1);

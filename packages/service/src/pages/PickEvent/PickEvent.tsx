@@ -23,7 +23,7 @@ export const PickEvent = () => {
       );
     };
 
-    if (!getIsLogin()) login(handleLogin);
+    if (!getIsLogin()) login().then(handleLogin);
     else handleLogin();
   };
 
