@@ -9,11 +9,9 @@ import { ModalContainer } from "./common/components/ModalContainer";
 import { globalStyles } from "@watermelon-clap/core";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
-  <React.StrictMode>
-    <ModalProvider>
-      <Global styles={globalStyles} />
-      <RouterProvider router={router} />
-      <ModalContainer />
-    </ModalProvider>
-  </React.StrictMode>,
+  <ModalProvider>
+    <Global styles={globalStyles} />
+    <RouterProvider router={router} />
+    <ModalContainer />
+  </ModalProvider>,
 );
