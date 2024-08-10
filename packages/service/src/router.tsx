@@ -13,6 +13,7 @@ import {
   NEW_CAR_PAGE_ROUTE,
   PICK_EVENT_PAGE_ROUTE,
   N_PARTS_PICK_PAGE_ROUTE,
+  PARTS_COLLECTION_PAGE_ROUTE,
 } from "./constants/routes";
 import { RotateDemoPage } from "./Demo/pages/RotateDemoPage";
 import { AuthDemoPage } from "./Demo/pages/AuthDemoPage";
@@ -28,6 +29,7 @@ import { NQuizEvent } from "./pages/NQuizEvent";
 import { NewCar } from "./pages/NewCar";
 import { PickEvent } from "./pages/PickEvent";
 import { PartsPick } from "./pages/PartsPick";
+import { PartsCollection } from "./pages/PartsCollection";
 
 export const router = createBrowserRouter([
   {
@@ -39,6 +41,7 @@ export const router = createBrowserRouter([
       { path: PICK_EVENT_PAGE_ROUTE, element: <PickEvent /> },
       { path: NEW_CAR_PAGE_ROUTE, element: <NewCar /> },
       { path: N_PARTS_PICK_PAGE_ROUTE, element: <PartsPick /> },
+      { path: PARTS_COLLECTION_PAGE_ROUTE, element: <PartsCollection /> },
     ],
   },
   {
