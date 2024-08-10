@@ -22,19 +22,24 @@ const provider = new GoogleAuthProvider();
 
 export const useAuth = () => {
   return {
-    login: (callback: () => void = () => {}) => {
-      signInWithPopup(fbAuth, provider).then((res) =>
-        res.user.getIdToken().then((token) => {
-          localStorage.setItem("accessToken", token);
-          callback();
-        }),
-      );
+    login: () => {
+      return new Promise((resolve, reject) => {
+        signInWithPopup(fbAuth, provider)
+          .then((res) => res.user.getIdToken())
+          .then((token) => {
+            localStorage.setItem("accessToken", token);
+            resolve(token);
+          })
+          .catch((error) => reject(error));
+      });
     },
+
     logout: () => {
       signOut(fbAuth).then(() => {
         localStorage.removeItem("accessToken");
       });
     },
+
     getIsLogin: () => Boolean(localStorage.getItem("accessToken")),
   };
 };
