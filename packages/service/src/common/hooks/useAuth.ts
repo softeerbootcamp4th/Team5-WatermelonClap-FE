@@ -36,6 +36,5 @@ export const useAuth = () => {
       });
     },
     getIsLogin: () => Boolean(localStorage.getItem("accessToken")),
-    getAccessToken: () => localStorage.getItem("accessToken"),
   };
 };
