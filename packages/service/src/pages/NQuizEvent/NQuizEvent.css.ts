@@ -36,7 +36,11 @@ export const gridStyle = css`
   gap: 16px;
 
   ${mobile(css`
-    min-width: 350px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    min-width: 0px;
     margin: 41px 0;
     gap: 8px;
   `)}
