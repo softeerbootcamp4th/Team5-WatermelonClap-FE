@@ -27,7 +27,7 @@ export const backgroundStyle = css`
   `)}
 `;
 
-export const gridStyle = css`
+export const rewardWrapStyle = css`
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   width: 100%;
