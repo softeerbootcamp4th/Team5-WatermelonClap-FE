@@ -1,1 +1,1 @@
-export type eventStatusType = "upcoming" | "open" | "closed" | "end";
+export type EventStatusType = "UPCOMING" | "OPEN" | "CLOSED" | "END";

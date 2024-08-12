@@ -7,12 +7,12 @@ import {
   nQuizSectionBodyContainerStyles,
 } from "./NQuizSection.css";
 
-import { eventStatusType } from "../NQuizReward/type";
+import { EventStatusType } from "../NQuizReward/type";
 
 export interface NQuizSectionProps {
   imgSrc: string;
   startDate: string;
-  status: eventStatusType;
+  status: EventStatusType;
 }
 
 export const NQuizSection = ({

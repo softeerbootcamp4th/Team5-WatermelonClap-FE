@@ -7,13 +7,13 @@ import {
   openExpectedDateStyle,
   endTextStyle,
 } from "./NQuizReward.css";
-import { eventStatusType } from "./type";
+import { EventStatusType } from "./type";
 
 export interface NQuizRewardProps {
   imgSrc: string;
   name: string;
   startDate: string;
-  status: eventStatusType;
+  status: EventStatusType;
 }
 
 export const NQuizReward = ({
