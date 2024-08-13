@@ -1,11 +1,14 @@
 import { IOrderEvent } from "./type";
+import { customFetch } from "@service/common/utils/customFetch";
 
 export const apiGetOrderEvent = async (id?: string): Promise<IOrderEvent[]> => {
   const url = id
     ? `${import.meta.env.VITE_BACK_BASE_URL}/event/order/${id}`
     : `${import.meta.env.VITE_BACK_BASE_URL}/event/order`;
 
-  const res = await fetch(url);
-  const data: IOrderEvent[] = await res.json();
-  return data;
+  return customFetch(url)
+    .then((response) => response.json())
+    .catch((error) => {
+      throw error;
+    });
 };
