@@ -14,6 +14,7 @@ export const containerStyle = (status: eventStatusType) => css`
 
   ${mobile(css`
     gap: 6px;
+    width: 26vw;
   `)};
 `;
 
@@ -23,7 +24,7 @@ export const dateStyle = (status: eventStatusType) => css`
   ${status === "upcoming" && "opacity: 0.6;"}
 
   ${mobile(css`
-    font-size: 10px;
+    font-size: 14px;
   `)}
 `;
 
@@ -54,26 +55,26 @@ export const imgStyle = css`
 
 export const nameStyle = css`
   ${theme.font.preB16}
+  text-align: center;
   font-size: 12px;
-  white-space: nowrap;
   color: black;
   padding-top: 7%;
   padding-bottom: 7%;
+  word-break: keep-all;
 
   ${mobile(css`
-    font-size: 4px;
+    font-size: 10px;
   `)}
 `;
 
 export const openExpectedDateStyle = (status: eventStatusType) => css`
   ${theme.font.preB16}
-  white-space: nowrap;
 
   ${status === "upcoming" && "opacity: 0.6;"}
   ${status !== "upcoming" && "visibility: hidden;"}
 
   ${mobile(css`
-    font-size: 6px;
+    font-size: 8px;
   `)}
 `;
 
@@ -86,6 +87,6 @@ export const endTextStyle = (status: eventStatusType) => css`
   ${(status === "open" || status === "upcoming") && "visibility: hidden;"}
 
   ${mobile(css`
-    font-size: 12px;
+    font-size: 18px;
   `)}
 `;
