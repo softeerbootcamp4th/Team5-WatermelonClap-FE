@@ -1,8 +1,8 @@
 import { createContext, Dispatch, SetStateAction } from "react";
 
 export interface ModalState {
-  type: string | null;
-  props?: Record<string, unknown> | null;
+  type: any;
+  props?: any;
 }
 
 export const ModalStateContext = createContext<ModalState | null>(null);
