@@ -1,16 +1,16 @@
 import { css } from "@emotion/react";
 import { mobile } from "@service/common/responsive/responsive";
 import { theme } from "@watermelon-clap/core";
-import { eventStatusType } from "./type";
+import { EventStatusType } from "./type";
 
-export const containerStyle = (status: eventStatusType) => css`
+export const containerStyle = (status: EventStatusType) => css`
   ${theme.flex.center}
   ${theme.flex.column}
   width: 100%;
   color: ${theme.color.white};
   gap: 12px;
 
-  ${status === "open" && `color: ${theme.color.eventBlue};`}
+  ${status === "OPEN" && `color: ${theme.color.eventBlue};`}
 
   ${mobile(css`
     gap: 6px;
@@ -18,17 +18,17 @@ export const containerStyle = (status: eventStatusType) => css`
   `)};
 `;
 
-export const dateStyle = (status: eventStatusType) => css`
+export const dateStyle = (status: EventStatusType) => css`
   ${theme.font.pcpL28}
-  ${(status === "closed" || status === "end") && "opacity: 0.3;"}
-  ${status === "upcoming" && "opacity: 0.6;"}
+  ${(status === "CLOSED" || status === "END") && "opacity: 0.3;"}
+  ${status === "UPCOMING" && "opacity: 0.6;"}
 
   ${mobile(css`
     font-size: 14px;
   `)}
 `;
 
-export const rewardContainerStyle = (status: eventStatusType) => css`
+export const rewardContainerStyle = (status: EventStatusType) => css`
   position: relative;
   ${theme.flex.center}
   ${theme.flex.column}
@@ -38,18 +38,18 @@ export const rewardContainerStyle = (status: eventStatusType) => css`
   width: 100%;
   aspect-ratio: 1 / 1;
 
-  ${(status === "closed" || status === "end") && "opacity: 0.3;"}
-  ${status === "upcoming" && "opacity: 0.6;"}
-  ${status === "open" && `border: 4px solid ${theme.color.eventBlue};`}
+  ${(status === "CLOSED" || status === "END") && "opacity: 0.3;"}
+  ${status === "UPCOMING" && "opacity: 0.6;"}
+  ${status === "OPEN" && `border: 4px solid ${theme.color.eventBlue};`}
 
   ${mobile(css`
     border-radius: 4px;
-    ${status === "open" && `border: 2px solid ${theme.color.eventBlue};`}
+    ${status === "OPEN" && `border: 2px solid ${theme.color.eventBlue};`}
   `)}
 `;
 
 export const imgStyle = css`
-  width: 100%;
+  width: 80%;
   aspect-ratio: 2 / 1;
 `;
 
@@ -67,24 +67,26 @@ export const nameStyle = css`
   `)}
 `;
 
-export const openExpectedDateStyle = (status: eventStatusType) => css`
+export const openExpectedDateStyle = (status: EventStatusType) => css`
   ${theme.font.preB16}
 
-  ${status === "upcoming" && "opacity: 0.6;"}
-  ${status !== "upcoming" && "visibility: hidden;"}
+  ${status === "UPCOMING" && "opacity: 0.6;"}
+  ${status !== "UPCOMING" && "visibility: hidden;"}
+
+  white-space: nowrap;
 
   ${mobile(css`
-    font-size: 8px;
+    font-size: 10px;
   `)}
 `;
 
-export const endTextStyle = (status: eventStatusType) => css`
+export const endTextStyle = (status: EventStatusType) => css`
   position: absolute;
   margin: 0 auto;
   ${theme.font.preB28}
   color: ${theme.color.white};
 
-  ${(status === "open" || status === "upcoming") && "visibility: hidden;"}
+  ${(status === "OPEN" || status === "UPCOMING") && "visibility: hidden;"}
 
   ${mobile(css`
     font-size: 18px;

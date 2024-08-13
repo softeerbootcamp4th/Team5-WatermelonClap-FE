@@ -1,7 +1,7 @@
 import { css } from "@emotion/react";
 import { mobile } from "@service/common/responsive/responsive";
 import { theme } from "@watermelon-clap/core";
-import { eventStatusType } from "../NQuizReward/type";
+import { EventStatusType } from "../NQuizReward/type";
 
 export const nQuizSectionStyles = css`
   ${theme.flex.center}
@@ -24,14 +24,16 @@ export const nQuizSectionHeaderContainerStyles = css`
   height: 14%;
 `;
 
-export const nQuizSectionBodyContainerStyles = (status: eventStatusType) => css`
+export const nQuizSectionBodyContainerStyles = (status: EventStatusType) => css`
   position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   width: 100%;
   height: 86%;
   padding-top: 10px;
-  gap: 40px;
 
-  ${(status === "end" || status === "closed") && "visibility: hidden;"}
+  ${(status === "END" || status === "CLOSED") && "visibility: hidden;"}
 
   ${mobile(css`
     padding-top: 0;

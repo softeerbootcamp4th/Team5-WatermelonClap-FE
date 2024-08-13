@@ -1,5 +1,5 @@
 import Modal from "react-modal";
-import { Button, ButtonVariant } from "../../Button";
+import { Button, ButtonVariant } from "../../../Button";
 import { useScrollStop } from "@service/common/hooks/useScrollStop";
 import { useAuth } from "@service/common/hooks/useAuth";
 import {
@@ -7,7 +7,7 @@ import {
   googleLoginModalBodyStyles,
 } from "./GoogleLoginModal.css";
 import { theme } from "@watermelon-clap/core";
-import { DefaultModalProps } from "../ModalContainer";
+import { DefaultModalProps } from "../../ModalContainer";
 
 export const GoogleLoginModal = ({
   isOpen,
