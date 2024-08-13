@@ -7,9 +7,11 @@ import {
   craftFireworks,
   craftSideCannons,
 } from "@service/common/utils/confettiCrafter";
+import { apiPostParts } from "@service/apis/partsEvent";
+import { IParts } from "@service/apis/partsEvent/type";
+import { useAuth } from "@service/common/hooks/useAuth";
 
 interface CardProps {
-  frontImage: string;
   backImage: string;
   color1?: string;
   color2?: string;
@@ -45,7 +47,6 @@ const CardSide = styled.div`
 `;
 
 export const PartsCard = ({
-  frontImage,
   backImage,
   color1 = "",
   color2 = "",
@@ -57,6 +58,8 @@ export const PartsCard = ({
   const styleRef = useRef<HTMLStyleElement>(document.createElement("style"));
   const [isFlipped, setIsFlipped] = useState(false);
   const [isFrontShow, setIsFrontShow] = useState(false);
+  const [partsInfo, setPartsInfo] = useState<IParts>();
+  const { getIsLogin } = useAuth();
 
   const handleMouseMove = (e: React.MouseEvent | React.TouchEvent) => {
     const $card = cardRef.current;
@@ -115,12 +118,16 @@ export const PartsCard = ({
   };
 
   const handleClick = () => {
-    if (remainChance < 0) return;
+    if (remainChance < 0 || !getIsLogin()) return;
+
     if (isFrontShow) {
       craftFireworks(1);
       return;
     }
     setIsFlipped(true);
+
+    apiPostParts().then((data) => setPartsInfo(data));
+
     setTimeout(() => {
       craftSideCannons(1);
       setIsFrontShow(true);
@@ -159,7 +166,7 @@ export const PartsCard = ({
           background-repeat: no-repeat;
         `}
       >
-        <img src={frontImage} width={"100%"} height="auto"></img>
+        <img src={partsInfo?.imgSrc} width={"100%"} height="auto"></img>
       </CardSide>
       <CardSide
         className={`card-back ${isFrontShow ? "hidden" : "show"}`}

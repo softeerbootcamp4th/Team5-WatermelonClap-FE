@@ -15,6 +15,7 @@ const queryClient = new QueryClient({
 });
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
+
   <QueryClientProvider client={queryClient}>
     <ModalProvider>
       <Global styles={globalStyles} />

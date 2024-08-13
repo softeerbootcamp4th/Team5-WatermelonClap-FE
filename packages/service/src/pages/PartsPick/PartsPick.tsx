@@ -9,13 +9,19 @@ import { Space } from "@service/common/styles/Space";
 import { useEffect, useRef, useState } from "react";
 import { useModal } from "@service/common/hooks/useModal";
 import { useMobile } from "@service/common/hooks/useMobile";
+import { useLocation } from "react-router-dom";
+import { useAuth } from "@service/common/hooks/useAuth";
+import { apiGetPartsRemain } from "@service/apis/partsEvent";
 
 export const PartsPick = () => {
   const { openModal } = useModal();
   const isMobile = useMobile();
-  const [remainChance, setRemainChance] = useState(3);
   const [isPickComplete, setIsPickComplete] = useState(false);
   const initPickFlag = useRef(false);
+  const [remainChance, setRemainChance] = useState(
+    useLocation()?.state?.remainChance,
+  );
+  const { getIsLogin, login } = useAuth();
 
   const minusRemainChance = () => {
     if (remainChance < 1) return;
@@ -42,10 +48,21 @@ export const PartsPick = () => {
     minusRemainChance();
   };
 
+  const handleSetRemianChance = () => {
+    apiGetPartsRemain().then(({ remainChance }) =>
+      setRemainChance(!remainChance ? 0 : remainChance - 1),
+    );
+  };
+
   useEffect(() => {
     if (!initPickFlag.current) {
       handleOneMorePickButtonClick();
       initPickFlag.current = true;
+    }
+
+    // 로그인 안 하고 바로 페이지로 접근할 경우
+    if (!getIsLogin()) {
+      login().then(handleSetRemianChance);
     }
   }, []);
 
@@ -54,7 +71,6 @@ export const PartsPick = () => {
       <div css={partsPickBackgroundStyle}>
         <PickTitle />
         <PartsCard
-          frontImage="/images/parts/holo.svg"
           backImage="/images/parts/back.svg"
           isMouseOutAnimationEnabled={false}
           remainChance={remainChance}

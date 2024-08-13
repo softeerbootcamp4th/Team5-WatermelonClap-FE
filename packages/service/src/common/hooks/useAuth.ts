@@ -4,9 +4,8 @@ import {
   GoogleAuthProvider,
   signInWithPopup,
   signOut,
-  User,
 } from "firebase/auth";
-import { useEffect, useState } from "react";
+
 const firebaseConfig = {
   apiKey: import.meta.env.VITE_FB_API_KEY,
   authDomain: import.meta.env.VITE_FB_AUTH_DOMAIN,
@@ -22,24 +21,25 @@ const fbAuth = getAuth(app);
 const provider = new GoogleAuthProvider();
 
 export const useAuth = () => {
-  const [auth, setAuth] = useState<User | null>(null);
-  const [isAuthInit, setIsAuthInit] = useState(false);
-  useEffect(() => {
-    fbAuth.onAuthStateChanged((auth) => {
-      console.log(auth);
-      setAuth(auth);
-      setIsAuthInit(true);
-    });
-  }, []);
-
   return {
-    auth,
-    isAuthInit,
     login: () => {
-      signInWithPopup(fbAuth, provider);
+      return new Promise((resolve, reject) => {
+        signInWithPopup(fbAuth, provider)
+          .then((res) => res.user.getIdToken())
+          .then((token) => {
+            localStorage.setItem("accessToken", token);
+            resolve(token);
+          })
+          .catch((error) => reject(error));
+      });
     },
+
     logout: () => {
-      signOut(fbAuth);
+      signOut(fbAuth).then(() => {
+        localStorage.removeItem("accessToken");
+      });
     },
+
+    getIsLogin: () => Boolean(localStorage.getItem("accessToken")),
   };
 };

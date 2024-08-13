@@ -8,10 +8,24 @@ import { theme } from "@watermelon-clap/core";
 import { css } from "@emotion/react";
 import { Space } from "@service/common/styles/Space";
 import { useMobile } from "@service/common/hooks/useMobile";
+import { useAuth } from "@service/common/hooks/useAuth";
+import { apiGetPartsRemain } from "@service/apis/partsEvent/apiGetPartsRemain";
 
 export const PickEvent = () => {
   const navigate = useNavigate();
   const isMobile = useMobile();
+  const { login, getIsLogin } = useAuth();
+
+  const handleClickPickBtn = () => {
+    const handleLogin = () => {
+      apiGetPartsRemain().then(({ remainChance }) =>
+        navigate("/parts-pick", { state: { remainChance: remainChance } }),
+      );
+    };
+
+    if (!getIsLogin()) login().then(handleLogin);
+    else handleLogin();
+  };
 
   return (
     <div css={style.bg}>
@@ -35,7 +49,7 @@ export const PickEvent = () => {
       <Space size={!isMobile ? 200 : 100} />
       <CardCarousel />
 
-      <button css={style.btn} onClick={() => navigate("/parts-pick")}>
+      <button css={style.btn} onClick={handleClickPickBtn}>
         지금 바로 뽑기
       </button>
 
@@ -46,8 +60,8 @@ export const PickEvent = () => {
       <div css={style.termWrap}>
         <span css={style.termTitleStyle}>{pickEventTermsTitle}</span>
         <ul css={style.termListStyle}>
-          {pickEventTerms.map((term) => (
-            <li>{term}</li>
+          {pickEventTerms.map((term, idx) => (
+            <li key={idx}>{term}</li>
           ))}
         </ul>
       </div>
