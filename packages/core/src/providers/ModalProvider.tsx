@@ -3,7 +3,7 @@ import {
   ModalSetterContext,
   ModalStateContext,
   ModalState,
-} from "../contexts/ModalContext";
+} from "@core/contexts/ModalContext";
 
 interface ModalProviderProps {
   children: ReactNode;

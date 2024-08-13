@@ -1,12 +1,12 @@
 import Modal from "react-modal";
-import { useScrollStop } from "@service/common/hooks/useScrollStop";
+import { useScrollStop } from "@watermelon-clap/core/src/hooks";
+import { theme } from "@watermelon-clap/core/src/theme";
 import {
   pendingModalStyles,
   pendingModalBodyStyles,
   pendingImgStyle,
 } from "./PendingModal.css";
 import { DefaultModalProps } from "../../ModalContainer";
-import { theme } from "@watermelon-clap/core";
 import { css } from "@emotion/react";
 import { MODAL_N_QUIZ_TITLE } from "../../content/modalContent";
 

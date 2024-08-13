@@ -6,7 +6,7 @@ import {
 import { nQuizEventTermTitle, nQuizEventTerms } from "@service/constants/terms";
 import { useSuspenseQuery } from "@tanstack/react-query";
 import { apiGetOrderEvent } from "@service/apis/orderEvent";
-import { IOrderEvent } from "@watermelon-clap/core";
+import { IOrderEvent } from "@watermelon-clap/core/src/types";
 import {
   backgroundStyle,
   rewardWrapStyle,

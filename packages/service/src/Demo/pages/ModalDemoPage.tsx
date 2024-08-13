@@ -1,4 +1,4 @@
-import { useModal } from "@service/common/hooks/useModal";
+import { useModal } from "@watermelon-clap/core/src/hooks";
 import { Button } from "@service/common/components/Button";
 
 export const ModalDemoPage = () => {

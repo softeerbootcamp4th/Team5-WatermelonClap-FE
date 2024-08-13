@@ -1,6 +1,7 @@
 import Modal from "react-modal";
 import { Button, ButtonVariant } from "../../../Button";
-import { useScrollStop } from "@service/common/hooks/useScrollStop";
+import { useScrollStop } from "@watermelon-clap/core/src/hooks";
+import { theme } from "@watermelon-clap/core/src/theme";
 import {
   navigatgeModalStyles,
   navigatgeModalBodyStyles,
@@ -8,7 +9,6 @@ import {
 } from "./NavigateModal.css";
 import { ReactNode } from "react";
 import { DefaultModalProps } from "../../ModalContainer";
-import { theme } from "@watermelon-clap/core";
 import { NEW_CAR_PAGE_ROUTE } from "@service/constants/routes";
 
 export interface NavigateModalProps extends DefaultModalProps {

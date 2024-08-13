@@ -1,6 +1,6 @@
 import { css } from "@emotion/react";
 import { EventStatusType } from "../../NQuizReward/type";
-import { theme } from "@watermelon-clap/core";
+import { theme } from "@watermelon-clap/core/src/theme";
 
 export const alternativeBodyStyles = (status: EventStatusType) => css`
   position: absolute;

@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { createPortal } from "react-dom";
-import { ModalStateContext } from "@service/common/contexts/ModalContext";
-import { useModal } from "@service/common/hooks/useModal";
+import { ModalStateContext } from "@watermelon-clap/core/src/contexts";
+import { useModal } from "@watermelon-clap/core/src/hooks";
 import {
   GoogleLoginModal,
   PendingModal,

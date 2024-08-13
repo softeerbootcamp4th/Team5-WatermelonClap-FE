@@ -1,7 +1,7 @@
 import { FallbackProps } from "react-error-boundary";
 import { errorContainerStyle, errorMessageStyle } from "./Error.css";
 import { Button } from "@service/common/components/Button";
-import { theme } from "@watermelon-clap/core";
+import { theme } from "@watermelon-clap/core/src/theme";
 import { useNavigate } from "react-router-dom";
 
 export const Error = ({ error, resetErrorBoundary }: FallbackProps) => {

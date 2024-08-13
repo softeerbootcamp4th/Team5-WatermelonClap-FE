@@ -4,11 +4,11 @@ import { CardCarousel } from "@service/components/pickEvent/CardCarousel";
 import { pickEventTerms, pickEventTermsTitle } from "@service/constants/terms";
 import { useNavigate } from "react-router-dom";
 import { PrizeContainer } from "@service/components/pickEvent";
-import { theme } from "@watermelon-clap/core";
+import { theme } from "@watermelon-clap/core/src/theme";
+import { useAuth } from "@watermelon-clap/core/src/hooks";
 import { css } from "@emotion/react";
 import { Space } from "@service/common/styles/Space";
 import { useMobile } from "@service/common/hooks/useMobile";
-import { useAuth } from "@service/common/hooks/useAuth";
 import { apiGetPartsRemain } from "@service/apis/partsEvent/apiGetPartsRemain";
 
 export const PickEvent = () => {
