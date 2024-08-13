@@ -8,7 +8,7 @@ interface IPartsCardProps {
 export const PartsCard = ({ partsData }: IPartsCardProps) => {
   return (
     <div css={style.container}>
-      <div css={style.card}>
+      <div css={style.card(partsData.equipped)}>
         <img src={partsData.thumbnailImgSrc} />
       </div>
       <span css={style.name}>{partsData.name}</span>
