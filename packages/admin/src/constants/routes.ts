@@ -1,1 +1,1 @@
-export const MAIN_PAGE_ROUTE = "/" as const;
+export const ORDER_EVENT_MANAGEMENT_PAGE_ROUTE = "/" as const;
