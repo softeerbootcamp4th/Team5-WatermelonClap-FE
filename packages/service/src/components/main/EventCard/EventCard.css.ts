@@ -17,7 +17,6 @@ export const eventCard = (isMainEvent: boolean) => css`
     width: fit-content;
   `)}
 `;
-
 export const eventNumber = css`
   border-radius: 50%;
   background-color: ${theme.color.black};

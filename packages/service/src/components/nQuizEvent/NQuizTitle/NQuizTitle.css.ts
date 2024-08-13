@@ -65,7 +65,7 @@ export const contentContainerStyle = css`
 export const contentTextStyle = css`
   ${theme.font.preB28}
   color: ${theme.color.white};
-  white-space: nowrap;
+  text-align: center;
 
   ${mobile(css`
     font-size: 14px;
@@ -75,7 +75,7 @@ export const contentTextStyle = css`
 export const hintTextStyle = css`
   ${theme.font.preB28}
   color: ${theme.color.eventBlue};
-  white-space: nowrap;
+  text-align: center;
 
   ${mobile(css`
     font-size: 14px;
