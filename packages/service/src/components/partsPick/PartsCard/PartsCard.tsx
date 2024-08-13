@@ -12,7 +12,6 @@ import { IParts } from "@service/apis/partsEvent/type";
 import { useAuth } from "@service/common/hooks/useAuth";
 
 interface CardProps {
-  frontImage: string;
   backImage: string;
   color1?: string;
   color2?: string;
@@ -48,7 +47,6 @@ const CardSide = styled.div`
 `;
 
 export const PartsCard = ({
-  // frontImage,
   backImage,
   color1 = "",
   color2 = "",
