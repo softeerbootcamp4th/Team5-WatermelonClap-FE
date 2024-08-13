@@ -1,4 +1,4 @@
-import { IOrderEvent } from "./type";
+import { IOrderEvent } from "@watermelon-clap/core";
 import { customFetch } from "@service/common/utils/customFetch";
 
 export const apiGetOrderEvent = async (id?: string): Promise<IOrderEvent[]> => {

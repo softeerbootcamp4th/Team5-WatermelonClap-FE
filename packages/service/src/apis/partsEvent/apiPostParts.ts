@@ -1,5 +1,5 @@
 import { getAccessToken } from "@service/common/utils";
-import { IParts } from "./type";
+import { IParts } from "@watermelon-clap/core";
 
 export const apiPostParts = (): Promise<IParts> =>
   fetch(
