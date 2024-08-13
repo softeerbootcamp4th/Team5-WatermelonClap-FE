@@ -26,10 +26,12 @@ export const nQuizSectionHeaderContainerStyles = css`
 
 export const nQuizSectionBodyContainerStyles = (status: EventStatusType) => css`
   position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   width: 100%;
   height: 86%;
   padding-top: 10px;
-  gap: 40px;
 
   ${(status === "END" || status === "CLOSED") && "visibility: hidden;"}
 

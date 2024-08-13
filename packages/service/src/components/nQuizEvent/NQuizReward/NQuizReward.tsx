@@ -23,7 +23,7 @@ export const NQuizReward = ({
   status,
 }: NQuizRewardProps) => {
   const month = parseInt(startDate.slice(5, 7), 10);
-  const day = parseInt(startDate.slice(-2), 10);
+  const day = parseInt(startDate.slice(8, 10), 10);
   const formattedDate = `${month}월 ${day}일`;
   const openExpectedDate = `${day}일 오전 10시 오픈 예정`;
 

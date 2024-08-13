@@ -49,7 +49,7 @@ export const rewardContainerStyle = (status: EventStatusType) => css`
 `;
 
 export const imgStyle = css`
-  width: 100%;
+  width: 80%;
   aspect-ratio: 2 / 1;
 `;
 
@@ -73,8 +73,10 @@ export const openExpectedDateStyle = (status: EventStatusType) => css`
   ${status === "UPCOMING" && "opacity: 0.6;"}
   ${status !== "UPCOMING" && "visibility: hidden;"}
 
+  white-space: nowrap;
+
   ${mobile(css`
-    font-size: 8px;
+    font-size: 10px;
   `)}
 `;
 
