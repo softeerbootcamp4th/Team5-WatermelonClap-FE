@@ -5,9 +5,6 @@ export const container = css`
   ${theme.flex.column}
   width : 48%;
   cursor: pointer;
-
-  &:last-child {
-  }
 `;
 
 export const card = (equipped: boolean) => css`
