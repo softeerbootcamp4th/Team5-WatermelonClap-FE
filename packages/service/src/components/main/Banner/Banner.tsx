@@ -8,11 +8,11 @@ import { useNavigate } from "react-router-dom";
 import { NEW_CAR_PAGE_ROUTE } from "@service/constants/routes";
 
 const bannerImgs = [
-  "images/main/main-banner-1.svg",
-  "images/main/main-banner-2.svg",
-  "images/main/main-banner-3.svg",
-  "images/main/main-banner-4.svg",
-  "images/main/main-banner-5.svg",
+  "images/main/main-banner-1.webp",
+  "images/main/main-banner-2.webp",
+  "images/main/main-banner-3.webp",
+  "images/main/main-banner-4.webp",
+  "images/main/main-banner-5.webp",
 ];
 
 export const Banner = () => {

@@ -21,7 +21,7 @@ export const stickyWrap = css`
 
 export const infoImg = css`
   height: calc(300px + 10vw);
-  z-index: 999;
+  z-index: 3;
 `;
 
 export const imgWrap = css`
@@ -36,7 +36,7 @@ export const m_imgWrap = css`
 `;
 
 export const m_infoImg = (num: number) => css`
-  z-index: 999;
+  z-index: 3;
   width: 80%;
   align-self: ${num === 0 ? "start" : "end"};
 
