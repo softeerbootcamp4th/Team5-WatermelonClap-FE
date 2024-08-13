@@ -6,7 +6,7 @@ import {
 import { ReactComponent as LogoLong } from "public/images/gnb/logo-long.svg";
 import { useNavigate } from "react-router-dom";
 import GlobalNavs from "./GlobalNavs/GlobalNavs";
-import { MAIN_PAGE_ROUTE } from "@admin/constants/routes";
+import { ORDER_EVENT_MANAGEMENT_PAGE_ROUTE } from "@admin/constants/routes";
 import { theme } from "@watermelon-clap/core/src/theme";
 import { css } from "@emotion/react";
 
@@ -19,7 +19,7 @@ export const GlobalNavigationBar = () => {
           <LogoLong
             css={logoStyles}
             onClick={() => {
-              navigate(MAIN_PAGE_ROUTE);
+              navigate(ORDER_EVENT_MANAGEMENT_PAGE_ROUTE);
             }}
           />
           <span>Admin</span>
