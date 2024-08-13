@@ -1,9 +1,8 @@
 import { createContext, Dispatch, SetStateAction } from "react";
-import { ModalType } from "../components/ModalContainer/ModalContainer";
 
 export interface ModalState {
-  type: ModalType | null;
-  props?: any; // todo change any
+  type: any;
+  props?: any;
 }
 
 export const ModalStateContext = createContext<ModalState | null>(null);

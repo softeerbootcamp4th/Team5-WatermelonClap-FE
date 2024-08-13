@@ -1,7 +1,7 @@
 import { NQuizHeader } from "./NQuizHeader";
 import { NQuizInput } from "./NQuizInput";
 import { NQuizAlternativeBody } from "./NQuizAlternativeBody";
-import { IOrderEvent } from "@service/apis/orderEvent/type";
+import { IOrderEvent } from "@watermelon-clap/core/src/types";
 import {
   nQuizSectionStyles,
   nQuizSectionHeaderContainerStyles,

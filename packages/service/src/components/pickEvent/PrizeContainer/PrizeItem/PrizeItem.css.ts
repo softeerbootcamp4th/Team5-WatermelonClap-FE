@@ -1,7 +1,7 @@
 import { css } from "@emotion/react";
 import { mobile } from "@service/common/responsive/responsive";
 import { PICK_EVENT_PRIZE_CONTAINER_BREAKPOINT } from "@service/constants/breakpoints";
-import { theme } from "@watermelon-clap/core";
+import { theme } from "@watermelon-clap/core/src/theme";
 
 export const Container = css`
   color: ${theme.color.white};

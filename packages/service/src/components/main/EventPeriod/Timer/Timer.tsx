@@ -20,7 +20,7 @@ import {
   textStyles,
 } from "./Timer.css";
 import { mobile } from "@service/common/responsive/responsive";
-import { theme } from "@watermelon-clap/core";
+import { theme } from "@watermelon-clap/core/src/theme";
 
 export const Timer = ({ date }: CountdownProps) => {
   return <ReactCountdown date={date} renderer={renderer} />;

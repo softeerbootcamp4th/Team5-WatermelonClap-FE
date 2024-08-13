@@ -32,7 +32,5 @@
     "noFallthroughCasesInSwitch": true,
   },
   "files": [],
-  "include": [
-    "src"
-  ]
+  "include": ["src"]
 }

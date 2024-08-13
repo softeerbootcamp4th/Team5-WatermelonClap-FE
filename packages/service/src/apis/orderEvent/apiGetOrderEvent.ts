@@ -1,5 +1,5 @@
-import { IOrderEvent } from "./type";
-import { customFetch } from "@service/common/utils/customFetch";
+import { IOrderEvent } from "@watermelon-clap/core/src/types";
+import { customFetch } from "@watermelon-clap/core/src/utils";
 
 export const apiGetOrderEvent = async (id?: string): Promise<IOrderEvent[]> => {
   const url = id

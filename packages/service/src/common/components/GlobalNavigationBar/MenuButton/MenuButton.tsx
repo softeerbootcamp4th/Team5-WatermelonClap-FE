@@ -1,5 +1,5 @@
 import { css } from "@emotion/react";
-import { theme } from "@watermelon-clap/core";
+import { theme } from "@watermelon-clap/core/src/theme";
 import { motion, Transition } from "framer-motion";
 
 interface IMenuButtonProps {

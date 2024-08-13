@@ -1,5 +1,8 @@
-import { IPostOrderEventRequest, IPostOrderEventResponse } from "./type";
-import { customFetch } from "@service/common/utils/customFetch";
+import {
+  IPostOrderEventRequest,
+  IPostOrderEventResponse,
+} from "@watermelon-clap/core/src/types";
+import { customFetch } from "@watermelon-clap/core/src/utils";
 
 const DEFAULT_DELAY = 2000;
 

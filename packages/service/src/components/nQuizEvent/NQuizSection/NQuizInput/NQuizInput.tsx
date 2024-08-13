@@ -1,13 +1,13 @@
 import { useState, ChangeEvent, KeyboardEvent } from "react";
 import { Button } from "@service/common/components/Button";
 import { nQuizInputStyles, nQuizSubmitButtonStyles } from "./NQuizInput.css";
-import { theme } from "@watermelon-clap/core";
 import {
   IOrderEvent,
   IPostOrderEventResponse,
-} from "@service/apis/orderEvent/type";
+} from "@watermelon-clap/core/src/types";
+import { theme } from "@watermelon-clap/core/src/theme";
+import { useModal } from "@watermelon-clap/core/src/hooks";
 import { apiPostOrderEvent } from "@service/apis/orderEvent";
-import { useModal } from "@service/common/hooks/useModal";
 import { craftSideCannons } from "@service/common/utils/confettiCrafter";
 import {
   MODAL_CONTENT_QUIZ_CLOSED,

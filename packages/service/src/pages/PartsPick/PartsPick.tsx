@@ -7,10 +7,10 @@ import {
 import { PartsCard, PickTitle } from "@service/components/partsPick";
 import { Space } from "@service/common/styles/Space";
 import { useEffect, useRef, useState } from "react";
-import { useModal } from "@service/common/hooks/useModal";
+import { useModal } from "@watermelon-clap/core/src/hooks";
+import { useAuth } from "@watermelon-clap/core/src/hooks";
 import { useMobile } from "@service/common/hooks/useMobile";
 import { useLocation } from "react-router-dom";
-import { useAuth } from "@service/common/hooks/useAuth";
 import { apiGetPartsRemain } from "@service/apis/partsEvent";
 
 export const PartsPick = () => {

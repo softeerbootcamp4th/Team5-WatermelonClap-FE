@@ -1,6 +1,7 @@
 {
   "extends": "../../tsconfig.root.json",
   "compilerOptions": {
+    "jsx": "react-jsx",
     "paths": {
       "@core/*": [
         "src/*"
@@ -31,7 +32,5 @@
     "noFallthroughCasesInSwitch": true,
   },
   "files": [],
-  "include": [
-    "src",
-  ]
+"include": ["src", "./vite-env.d.ts"],
 }

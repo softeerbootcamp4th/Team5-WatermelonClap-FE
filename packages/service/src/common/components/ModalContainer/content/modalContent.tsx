@@ -1,6 +1,6 @@
 import { css } from "@emotion/react";
 import { Space } from "@service/common/styles/Space";
-import { theme } from "@watermelon-clap/core";
+import { theme } from "@watermelon-clap/core/src/theme";
 import { ReactComponent as NLogo } from "public/images/gnb/n-logo.svg";
 
 export const MODAL_N_QUIZ_TITLE = (
