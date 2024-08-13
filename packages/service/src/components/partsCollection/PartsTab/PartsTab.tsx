@@ -1,13 +1,12 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import * as style from "./PartsTab.css";
 import { IMyParts, PartsCateType } from "@service/apis/partsEvent/type";
-import { apiGetMyParts } from "@service/apis/partsEvent/apiGetMyParts";
-import { useQuery } from "@tanstack/react-query";
-import { getAccessToken } from "@service/common/utils";
-import { useAuth } from "@service/common/hooks/useAuth";
 import { PartsCard } from "./PartsCard";
 
-export const PartsTab = () => {
+interface IPartsTabProps {
+  partsData?: IMyParts[];
+}
+export const PartsTab = ({ partsData }: IPartsTabProps) => {
   const [partsTab, setPartsTab] = useState<PartsCateType>("COLOR");
 
   const tabBtn = [
@@ -40,31 +39,6 @@ export const PartsTab = () => {
       },
     },
   ];
-
-  const { getIsLogin, login } = useAuth();
-  useEffect(() => {
-    getIsLogin() ||
-      login().then(() => {
-        refetch();
-      });
-  }, []);
-
-  const token = getAccessToken();
-
-  const {
-    data: partsData,
-    error,
-    refetch,
-  } = useQuery<IMyParts[]>({
-    queryKey: ["myParts", token?.slice(0, 10)],
-    queryFn: () => apiGetMyParts(token as string),
-  });
-
-  if (error) {
-    login().then(() => {
-      refetch();
-    });
-  }
 
   return (
     <div css={style.container}>
