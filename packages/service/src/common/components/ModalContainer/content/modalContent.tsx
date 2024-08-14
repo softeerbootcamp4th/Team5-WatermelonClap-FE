@@ -40,3 +40,10 @@ export const MODAL_CONTENT_QUIZ_WRONG = (
     <p>아반떼 N 페이지에서 정답을 확인해 주세요.</p>
   </div>
 );
+
+export const MODAL_CONTENT_ORDER_EVENT_APPLY_SUCCESS = (
+  <div css={[theme.flex.center, theme.flex.column]}>
+    <p>신청되었습니다.</p>
+    <p>경품은 추후 문자를 통해 발송됩니다.</p>
+  </div>
+);
