@@ -2,11 +2,15 @@ import { useState } from "react";
 import * as style from "./PartsTab.css";
 import { IMyParts, PartsCateType } from "@service/apis/partsEvent/type";
 import { PartsCard } from "./PartsCard";
+import { QueryObserverResult, RefetchOptions } from "@tanstack/react-query";
 
 interface IPartsTabProps {
-  partsData?: IMyParts[];
+  partsDatas?: IMyParts[];
+  refetchGetMyParts: (
+    options?: RefetchOptions,
+  ) => Promise<QueryObserverResult<IMyParts[], Error>>;
 }
-export const PartsTab = ({ partsData }: IPartsTabProps) => {
+export const PartsTab = ({ partsDatas, refetchGetMyParts }: IPartsTabProps) => {
   const [partsTab, setPartsTab] = useState<PartsCateType>("COLOR");
 
   const tabBtn = [
@@ -43,20 +47,26 @@ export const PartsTab = ({ partsData }: IPartsTabProps) => {
   return (
     <div css={style.container}>
       <div css={style.tabWrap}>
-        {tabBtn.map((tab) => (
+        {tabBtn.map((tab, idx) => (
           <button
             css={style.tabBtn(partsTab === tab.value)}
             onClick={tab.onClick}
+            key={idx}
           >
             {tab.label}
           </button>
         ))}
       </div>
       <div css={style.partsCardWrap}>
-        {partsData?.map(
-          (it) =>
-            it?.category === partsTab &&
-            it?.parts?.map((partsData) => <PartsCard partsData={partsData} />),
+        {partsDatas?.map(
+          (cate) =>
+            cate?.category === partsTab &&
+            cate?.parts?.map((partsData) => (
+              <PartsCard
+                partsData={partsData}
+                refetchGetMyParts={refetchGetMyParts}
+              />
+            )),
         )}
       </div>
     </div>

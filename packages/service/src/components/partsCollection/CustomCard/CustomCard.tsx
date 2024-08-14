@@ -1,6 +1,6 @@
 import * as style from "./CustomCard.css";
 
-interface ICustomCardProps {
+export interface ICustomCardProps {
   bgImg?: string;
   spoilerImg?: string;
   wheelImg?: string;
