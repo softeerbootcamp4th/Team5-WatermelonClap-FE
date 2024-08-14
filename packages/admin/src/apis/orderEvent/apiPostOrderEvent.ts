@@ -1,4 +1,4 @@
-import { IPostOrderEventResponse } from "@watermelon-clap/core/src/types";
+import { IOrderEvent } from "@watermelon-clap/core/src/types";
 import { IAdminPostOrderEventRequest } from "./type";
 import { customFetch, getAccessToken } from "@watermelon-clap/core/src/utils";
 
@@ -6,7 +6,7 @@ export const apiPostOrderEvent = async ({
   orderEvent,
   rewardImage,
   quizImage,
-}: IAdminPostOrderEventRequest): Promise<IPostOrderEventResponse> => {
+}: IAdminPostOrderEventRequest): Promise<IOrderEvent> => {
   const formdata = new FormData();
 
   formdata.append(
