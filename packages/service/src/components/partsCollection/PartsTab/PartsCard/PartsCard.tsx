@@ -3,6 +3,7 @@ import * as style from "./PartsCard.css";
 import { getAccessToken } from "@service/common/utils";
 import { apiPatchMyParts } from "@service/apis/partsEvent/apiPatchMyParts";
 import { RefetchOptions, QueryObserverResult } from "@tanstack/react-query";
+import { css } from "@emotion/react";
 
 interface IPartsCardProps {
   partsData: IParts;
@@ -24,7 +25,10 @@ export const PartsCard = ({
   return (
     <div css={style.container} onClick={handleClickCard}>
       <div css={style.card(partsData.equipped)}>
-        <img src={partsData.thumbnailImgSrc} />
+        <img
+          src={partsData.thumbnailImgSrc}
+          css={style.img(partsData.category)}
+        />
       </div>
       <span css={style.name}>{partsData.name}</span>
     </div>

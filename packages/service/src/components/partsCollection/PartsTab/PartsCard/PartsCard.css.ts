@@ -17,12 +17,8 @@ export const card = (equipped: boolean) => css`
   aspect-ratio: 16 / 9;
   overflow: hidden;
   position: relative;
-
   background-color: ${theme.color.white};
   ${theme.flex.center};
-  > img {
-    width: 100%;
-  }
 
   &::after {
     visibility: ${equipped ? "hidden" : "visible"};
@@ -38,6 +34,11 @@ export const card = (equipped: boolean) => css`
     height: 100%;
     background-color: rgba(0, 0, 0, 0.6);
   }
+`;
+
+export const img = (cate: string) => css`
+  width: 100%;
+  width: ${(cate === "REAR" || cate === "WHEEL") && "80%"};
 `;
 
 export const name = css`
