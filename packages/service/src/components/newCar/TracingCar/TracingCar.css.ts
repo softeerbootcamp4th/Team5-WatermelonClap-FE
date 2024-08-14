@@ -1,5 +1,6 @@
 import { css } from "@emotion/react";
 import { mobile } from "@service/common/responsive/responsive";
+
 export const bodyStyles = css`
   height: 3000vh;
   width: 100%;

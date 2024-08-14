@@ -1,8 +1,8 @@
 import { css } from "@emotion/react";
 import { mobile } from "@service/common/responsive/responsive";
-import { theme } from "@watermelon-clap/core";
+import { theme } from "@watermelon-clap/core/src/theme";
 
-export const alertModalStyles = {
+export const pendingModalStyles = {
   content: {
     top: "50%",
     left: "50%",
@@ -19,14 +19,23 @@ export const alertModalStyles = {
   },
 };
 
-export const alertModalBodyStyles = css`
+export const pendingModalBodyStyles = css`
   ${theme.flex.center}
   ${theme.flex.column}
   gap: 48.5px;
   padding: 23px 46px;
+  text-align: center;
 
   ${mobile(css`
     gap: 30px;
     padding: 12px 23px;
+  `)}
+`;
+
+export const pendingImgStyle = css`
+  width: 60%;
+
+  ${mobile(css`
+    width: 40%;
   `)}
 `;

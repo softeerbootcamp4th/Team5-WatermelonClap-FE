@@ -5,11 +5,11 @@ import {
   nQuizLogoStyles,
   nQuizHeaderTextStyles,
 } from "./NQuizHeader.css";
-import { eventStatusType } from "../../NQuizReward/type";
+import { EventStatusType } from "../../NQuizReward/type";
 
 interface NQuizHeaderProps {
   date: string;
-  status: eventStatusType;
+  status: EventStatusType;
 }
 
 export const NQuizHeader = ({ date, status }: NQuizHeaderProps) => {
@@ -19,7 +19,7 @@ export const NQuizHeader = ({ date, status }: NQuizHeaderProps) => {
         <NLogo css={nLogoStyles} />
         <span css={nQuizHeaderTextStyles}>퀴즈</span>
       </div>
-      <span css={nQuizHeaderTextStyles}>{status === "open" && date}</span>
+      <span css={nQuizHeaderTextStyles}>{status === "OPEN" && date}</span>
     </div>
   );
 };

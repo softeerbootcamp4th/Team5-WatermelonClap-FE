@@ -1,11 +1,11 @@
 import { css } from "@emotion/react";
-import { eventStatusType } from "../../NQuizReward/type";
-import { theme } from "@watermelon-clap/core";
+import { EventStatusType } from "../../NQuizReward/type";
+import { theme } from "@watermelon-clap/core/src/theme";
 
-export const alternativeBodyStyles = (status: eventStatusType) => css`
+export const alternativeBodyStyles = (status: EventStatusType) => css`
   position: absolute;
   margin: 0 auto;
   ${theme.font.preB38}
 
-  ${(status === "open" || status === "upcoming") && "visibility: hidden;"}
+  ${(status === "OPEN" || status === "UPCOMING") && "visibility: hidden;"}
 `;

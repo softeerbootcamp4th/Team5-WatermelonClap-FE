@@ -1,15 +1,15 @@
 import React, { useEffect, useRef, useState } from "react";
 import styled from "@emotion/styled";
 import { cardBaseStyles } from "./PartsCard.css";
-import { theme } from "@watermelon-clap/core";
+import { theme } from "@watermelon-clap/core/src/theme";
+import { useAuth } from "@watermelon-clap/core/src/hooks";
+import { IParts } from "@watermelon-clap/core/src/types";
 import { css } from "@emotion/react";
 import {
   craftFireworks,
   craftSideCannons,
 } from "@service/common/utils/confettiCrafter";
 import { apiPostParts } from "@service/apis/partsEvent";
-import { IParts } from "@service/apis/partsEvent/type";
-import { useAuth } from "@service/common/hooks/useAuth";
 
 interface CardProps {
   backImage: string;

@@ -1,5 +1,5 @@
 import { Button, ButtonVariant } from "@service/common/components/Button";
-import { theme } from "@watermelon-clap/core";
+import { theme } from "@watermelon-clap/core/src/theme";
 import { css } from "@emotion/react";
 import { ClipBoardButton } from "@service/common/components/ClipBoardButton";
 import { CheckBox } from "@service/common/components/CheckBox";

@@ -1,5 +1,5 @@
 import { css } from "@emotion/react";
-import { theme } from "@watermelon-clap/core";
+import { theme } from "@watermelon-clap/core/src/theme";
 
 export const clipButtonStyle = css`
   ${theme.flex.center}

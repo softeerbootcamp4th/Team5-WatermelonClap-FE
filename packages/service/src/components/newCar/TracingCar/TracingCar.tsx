@@ -1,7 +1,7 @@
 import { css } from "@emotion/react";
 import { motion, MotionValue } from "framer-motion";
 import { useEffect, useState, useMemo, RefObject } from "react";
-import { theme } from "@watermelon-clap/core";
+import { theme } from "@watermelon-clap/core/src/theme";
 import { bodyStyles, carStyles, containerStyles } from "./TracingCar.css";
 import { useMobile } from "@service/common/hooks/useMobile";
 import {

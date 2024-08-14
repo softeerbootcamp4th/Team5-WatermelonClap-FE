@@ -1,5 +1,5 @@
 import * as style from "./EventPeriod.css";
-import { theme } from "@watermelon-clap/core";
+import { theme } from "@watermelon-clap/core/src/theme";
 import { Timer } from "./Timer";
 
 export const EventPeriod = () => {

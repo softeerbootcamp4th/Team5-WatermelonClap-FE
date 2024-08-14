@@ -1,5 +1,6 @@
 import { css } from "@emotion/react";
-import { theme } from "@watermelon-clap/core";
+import { mobile } from "@service/common/responsive/responsive";
+import { theme } from "@watermelon-clap/core/src/theme";
 
 export const googleLoginModalStyles = {
   content: {
@@ -23,4 +24,9 @@ export const googleLoginModalBodyStyles = css`
   ${theme.flex.column}
   gap: 48.5px;
   padding: 23px 94px;
+
+  ${mobile(css`
+    gap: 30px;
+    padding: 12px 23px;
+  `)}
 `;
