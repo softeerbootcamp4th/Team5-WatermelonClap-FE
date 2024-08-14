@@ -10,3 +10,9 @@ export interface IAdminPostOrderEventRequest {
   rewardImage: File;
   quizImage: File;
 }
+
+export interface Winner {
+  phoneNumber: string;
+  applyDate: string | null;
+  applyAnswer: string;
+}
