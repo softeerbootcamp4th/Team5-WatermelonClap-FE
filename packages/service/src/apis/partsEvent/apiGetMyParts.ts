@@ -1,6 +1,5 @@
-import { customFetch } from "@service/common/utils/customFetch";
-import { IMyParts } from "./type";
-import { getAccessToken } from "@service/common/utils";
+import { IMyParts } from "@watermelon-clap/core/src/types";
+import { getAccessToken, customFetch } from "@watermelon-clap/core/src/utils";
 
 export const apiGetMyParts: () => Promise<IMyParts[]> = () => {
   const token = getAccessToken();

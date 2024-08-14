@@ -1,8 +1,8 @@
-import { IMyParts, IParts } from "@service/apis/partsEvent/type";
 import * as style from "./PartsCard.css";
-import { getAccessToken } from "@service/common/utils";
 import { apiPatchMyParts } from "@service/apis/partsEvent/apiPatchMyParts";
 import { RefetchOptions, QueryObserverResult } from "@tanstack/react-query";
+import { IParts, IMyParts } from "@watermelon-clap/core/src/types";
+import { getAccessToken } from "@watermelon-clap/core/src/utils";
 
 interface IPartsCardProps {
   partsData: IParts;

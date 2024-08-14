@@ -1,8 +1,8 @@
 import { useState } from "react";
 import * as style from "./PartsTab.css";
-import { IMyParts, PartsCateType } from "@service/apis/partsEvent/type";
 import { PartsCard } from "./PartsCard";
 import { QueryObserverResult, RefetchOptions } from "@tanstack/react-query";
+import { IMyParts, PartsCateType } from "@watermelon-clap/core/src/types";
 
 interface IPartsTabProps {
   partsDatas?: IMyParts[];

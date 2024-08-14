@@ -2,12 +2,12 @@ import { CustomCard } from "@service/components/partsCollection";
 import * as style from "./PartsCollection.css";
 import { PartsTab } from "@service/components/partsCollection/PartsTab";
 import { useQuery } from "@tanstack/react-query";
-import { IMyParts } from "@service/apis/partsEvent/type";
 import { apiGetMyParts } from "@service/apis/partsEvent/apiGetMyParts";
-import { useAuth } from "@service/common/hooks/useAuth";
 import { useEffect, useState } from "react";
 import { ICustomCardProps } from "@service/components/partsCollection/CustomCard/CustomCard";
-import { getAccessToken } from "@service/common/utils";
+import { useAuth } from "@watermelon-clap/core/src/hooks";
+import { IMyParts } from "@watermelon-clap/core/src/types";
+import { getAccessToken } from "@watermelon-clap/core/src/utils";
 
 export const PartsCollection = () => {
   const { getIsLogin, login, reLogin } = useAuth();
