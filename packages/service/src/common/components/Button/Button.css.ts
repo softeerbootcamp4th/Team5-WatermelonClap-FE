@@ -4,7 +4,7 @@ import { theme } from "@watermelon-clap/core/src/theme";
 export const longButtonStyle = css`
   ${theme.flex.center}
   ${theme.font.preM20}
-  background: ${theme.color.black};
+  background: ${theme.color.eventBlue};
   color: ${theme.color.white};
   width: 360px;
   height: 70px;
@@ -15,11 +15,10 @@ export const longButtonStyle = css`
   border: none;
 
   &:hover {
-    opacity: 0.8;
+    opacity: 0.9;
   }
   &:active {
-    background: ${theme.color.black};
-    color: ${theme.color.gray400};
+    background: ${theme.color.eventSkyblue};
   }
 `;
 
