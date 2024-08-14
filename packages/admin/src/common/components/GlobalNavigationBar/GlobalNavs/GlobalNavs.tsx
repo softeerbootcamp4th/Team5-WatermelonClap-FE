@@ -9,10 +9,10 @@ const GlobalNavs = () => {
   return (
     <div css={navsContainerStyles}>
       <Link to={ORDER_EVENT_MANAGEMENT_PAGE_ROUTE} css={linkStyles}>
-        퀴즈 관리
+        이벤트 관리
       </Link>
       <Link to={ORDER_EVENT_GENERATION_PAGE_ROTUE} css={linkStyles}>
-        퀴즈 생성
+        이벤트 생성
       </Link>
       <Link to="#" css={linkStyles}>
         당첨자 관리

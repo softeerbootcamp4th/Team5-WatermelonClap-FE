@@ -61,7 +61,7 @@ export const OrderEventGeneration = () => {
   const handleRegisterClick = () => {
     // Check if required fields are filled
     if (!date) {
-      alert("퀴즈 진행 날짜를 입력해 주세요.");
+      alert("이벤트 진행 날짜를 입력해 주세요.");
       dateRef.current?.focus();
       return;
     }
@@ -81,11 +81,11 @@ export const OrderEventGeneration = () => {
       return;
     }
     if (!quizFile) {
-      alert("퀴즈 문제 파일을 업로드해 주세요.");
+      alert("이벤트 문제 파일을 업로드해 주세요.");
       return;
     }
     if (!quizAnswer) {
-      alert("퀴즈 정답을 입력해 주세요.");
+      alert("이벤트 정답을 입력해 주세요.");
       quizAnswerRef.current?.focus();
       return;
     }
@@ -128,7 +128,7 @@ export const OrderEventGeneration = () => {
       {/* 날짜 설정 섹션 */}
       <FlexBetween>
         <LabelWrapper>
-          <Label htmlFor="quiz-date">퀴즈 진행 날짜</Label>
+          <Label htmlFor="quiz-date">이벤트 진행 날짜</Label>
           <DatePicker value={date} onChange={(newValue) => setDate(newValue)} />
         </LabelWrapper>
 
@@ -181,15 +181,15 @@ export const OrderEventGeneration = () => {
 
       <hr css={hrStyle} />
 
-      {/* 퀴즈 섹션 */}
+      {/* 이벤트 섹션 */}
       <FlexBetween>
         <LabelWrapper>
-          <Label>퀴즈 문제 업로드</Label>
+          <Label>이벤트 문제 업로드</Label>
           <div css={quizImageStyle}>
             {!quizImageUrl ? (
               <Skeleton variant="rectangular" width={100} height={100} />
             ) : (
-              <img src={quizImageUrl} alt="퀴즈 이미지" />
+              <img src={quizImageUrl} alt="이벤트 이미지" />
             )}
           </div>
           <Button
@@ -211,7 +211,7 @@ export const OrderEventGeneration = () => {
 
       <FlexBetween>
         <LabelWrapper>
-          <Label htmlFor="quiz-answer">퀴즈 정답</Label>
+          <Label htmlFor="quiz-answer">이벤트 정답</Label>
           <TextField
             id="quiz-answer"
             value={quizAnswer}
