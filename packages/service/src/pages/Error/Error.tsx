@@ -3,9 +3,12 @@ import { errorContainerStyle, errorMessageStyle } from "./Error.css";
 import { Button } from "@service/common/components/Button";
 import { theme } from "@watermelon-clap/core/src/theme";
 import { useNavigate } from "react-router-dom";
+import { useErrorBoundary } from "react-error-boundary";
+import { GlobalNavigationBar } from "@service/common/components/GlobalNavigationBar";
 
 export const Error = ({ error, resetErrorBoundary }: FallbackProps) => {
   const navigate = useNavigate();
+  const { resetBoundary } = useErrorBoundary();
   let errorMessage;
 
   switch (error.message) {
@@ -29,16 +32,19 @@ export const Error = ({ error, resetErrorBoundary }: FallbackProps) => {
 
   const handleHomeRedirect = () => {
     navigate("/");
-    window.location.reload();
+    resetBoundary();
   };
 
   return (
-    <div role="alert" css={errorContainerStyle}>
-      <pre css={errorMessageStyle}>{errorMessage}</pre>
-      <div css={[theme.flex.center, theme.gap.gap24]}>
-        <Button onClick={handleHomeRedirect}>홈으로</Button>
-        <Button onClick={resetErrorBoundary}>다시 시도</Button>
+    <>
+      <GlobalNavigationBar />
+      <div role="alert" css={errorContainerStyle}>
+        <pre css={errorMessageStyle}>{errorMessage}</pre>
+        <div css={[theme.flex.center, theme.gap.gap24]}>
+          <Button onClick={handleHomeRedirect}>홈으로</Button>
+          <Button onClick={resetErrorBoundary}>다시 시도</Button>
+        </div>
       </div>
-    </div>
+    </>
   );
 };

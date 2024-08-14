@@ -9,8 +9,8 @@ import { ErrorBoundary } from "react-error-boundary";
 export const App = () => {
   return (
     <div>
-      <GlobalNavigationBar />
       <ErrorBoundary FallbackComponent={Error}>
+        <GlobalNavigationBar />
         <Suspense fallback={<Loading />}>
           <Outlet />
         </Suspense>

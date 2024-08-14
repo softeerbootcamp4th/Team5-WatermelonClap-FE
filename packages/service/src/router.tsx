@@ -14,6 +14,7 @@ import {
   PICK_EVENT_PAGE_ROUTE,
   N_PARTS_PICK_PAGE_ROUTE,
   PARTS_COLLECTION_PAGE_ROUTE,
+  SHARE_PAGE_ROUTE,
   N_QUIZ_EVENT_PAGE_WINNER_APLLY_PAGE_ROUTE,
 } from "./constants/routes";
 import { RotateDemoPage } from "./Demo/pages/RotateDemoPage";
@@ -32,6 +33,7 @@ import {
   NewCar,
   PartsPick,
   PartsCollection,
+  Share,
   NQuizEventWinnerApply,
 } from "./pages";
 
@@ -46,6 +48,7 @@ export const router = createBrowserRouter([
       { path: NEW_CAR_PAGE_ROUTE, element: <NewCar /> },
       { path: N_PARTS_PICK_PAGE_ROUTE, element: <PartsPick /> },
       { path: PARTS_COLLECTION_PAGE_ROUTE, element: <PartsCollection /> },
+      { path: SHARE_PAGE_ROUTE, element: <Share /> },
       {
         path: N_QUIZ_EVENT_PAGE_WINNER_APLLY_PAGE_ROUTE,
         element: <NQuizEventWinnerApply />,

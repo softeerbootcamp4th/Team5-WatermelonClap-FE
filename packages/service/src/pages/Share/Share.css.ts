@@ -20,3 +20,11 @@ export const pageTitle = css`
     padding: 100px 0 50px 0;
   `)}
 `;
+
+export const btn = css`
+  margin: 0 auto;
+  ${mobile(css`
+    width: fit-content;
+    padding: 10px 20px;
+  `)}
+`;

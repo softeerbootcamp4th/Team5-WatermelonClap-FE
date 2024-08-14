@@ -43,6 +43,7 @@ export const linkStyles = css`
   display: inline-flex;
   gap: 4px;
   flex-shrink: 0;
+  cursor: pointer;
 
   &:hover {
     transform: translateY(-1px);

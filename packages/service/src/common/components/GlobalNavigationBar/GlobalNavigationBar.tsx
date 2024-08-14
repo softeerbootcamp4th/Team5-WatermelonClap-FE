@@ -7,9 +7,11 @@ import { useState } from "react";
 import { MenuButton } from "./MenuButton";
 import { useMobile } from "@service/common/hooks/useMobile";
 import { GNB_BREAKPOINT } from "@service/constants/breakpoints";
+import { useErrorBoundary } from "react-error-boundary";
 
 export const GlobalNavigationBar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const { resetBoundary } = useErrorBoundary();
 
   // 800px보다 작아지면 햄버거 메뉴 생성
   const isMobile = useMobile(GNB_BREAKPOINT);
@@ -21,6 +23,7 @@ export const GlobalNavigationBar = () => {
         css={logoStyles}
         onClick={() => {
           navigate(MAIN_PAGE_ROUTE);
+          resetBoundary();
         }}
       />
 
