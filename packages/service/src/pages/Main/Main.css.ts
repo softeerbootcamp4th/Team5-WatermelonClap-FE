@@ -1,7 +1,7 @@
 import { css } from "@emotion/react";
 
 export const mainBg = css`
-  background-image: url("images/common/main-bg.svg");
+  background-image: url("images/common/main-bg.webp");
   background-size: cover;
   padding-bottom: 200px;
 `;

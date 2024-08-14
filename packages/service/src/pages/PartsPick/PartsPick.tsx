@@ -71,7 +71,6 @@ export const PartsPick = () => {
       <div css={partsPickBackgroundStyle}>
         <PickTitle />
         <PartsCard
-          frontImage="/images/parts/holo.svg"
           backImage="/images/parts/back.svg"
           isMouseOutAnimationEnabled={false}
           remainChance={remainChance}

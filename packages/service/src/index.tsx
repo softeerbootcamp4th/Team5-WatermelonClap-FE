@@ -6,11 +6,22 @@ import { RouterProvider } from "react-router-dom";
 import { ModalProvider } from "./common/providers/ModalProvider.tsx";
 import { ModalContainer } from "./common/components/ModalContainer";
 import { globalStyles } from "@watermelon-clap/core";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
+
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: { retry: 0 },
+  },
+});
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
-  <ModalProvider>
-    <Global styles={globalStyles} />
-    <RouterProvider router={router} />
-    <ModalContainer />
-  </ModalProvider>,
+  <QueryClientProvider client={queryClient}>
+    <ModalProvider>
+      <Global styles={globalStyles} />
+      <RouterProvider router={router} />
+      <ModalContainer />
+    </ModalProvider>
+    <ReactQueryDevtools initialIsOpen={false} />s
+  </QueryClientProvider>,
 );

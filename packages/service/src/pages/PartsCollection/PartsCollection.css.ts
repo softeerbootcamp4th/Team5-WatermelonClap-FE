@@ -2,7 +2,7 @@ import { css } from "@emotion/react";
 import { theme } from "@watermelon-clap/core";
 
 export const mainBg = css`
-  background-image: url("images/common/main-bg.svg");
+  background-image: url("images/common/main-bg.webp");
   background-size: cover;
   padding-bottom: 200px;
 `;

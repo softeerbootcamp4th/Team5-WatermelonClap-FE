@@ -12,6 +12,4 @@ export const apiPostParts = (): Promise<IParts> =>
         Authorization: `Bearer ${getAccessToken()}`,
       },
     },
-  )
-    .then((response) => response.json())
-    .then((data) => data);
+  ).then((response) => response.json());

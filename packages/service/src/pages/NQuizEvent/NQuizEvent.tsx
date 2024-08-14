@@ -6,7 +6,7 @@ import {
 } from "@service/components/nQuizEvent";
 import {
   backgroundStyle,
-  gridStyle,
+  rewardWrapStyle,
   termTitleStyle,
   termListStyle,
 } from "./NQuizEvent.css";
@@ -51,7 +51,7 @@ export const NQuizEvent = () => {
       <div css={backgroundStyle}>
         <NQuizTitle />
 
-        <div css={gridStyle}>
+        <div css={rewardWrapStyle}>
           {rewardList.map((reward, index) => (
             <NQuizReward
               key={index}

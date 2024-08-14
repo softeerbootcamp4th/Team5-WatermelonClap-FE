@@ -5,6 +5,4 @@ export const apiGetPartsRemain = () =>
     headers: {
       Authorization: `Bearer ${getAccessToken()}`,
     },
-  })
-    .then((res) => res.json())
-    .then((data) => data);
+  }).then((res) => res.json());
