@@ -1,10 +1,15 @@
 import { css } from "@emotion/react";
+import { mobile } from "@service/common/responsive/responsive";
 import { theme } from "@watermelon-clap/core";
 
 export const container = css`
   ${theme.flex.column}
   width : 48%;
   cursor: pointer;
+
+  ${mobile(css`
+    width: 100%;
+  `)}
 `;
 
 export const card = (equipped: boolean) => css`

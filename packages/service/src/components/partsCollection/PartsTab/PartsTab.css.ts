@@ -1,4 +1,5 @@
 import { css } from "@emotion/react";
+import { mobile } from "@service/common/responsive/responsive";
 import { theme } from "@watermelon-clap/core";
 
 export const container = css`
@@ -11,6 +12,13 @@ export const tabWrap = css`
   margin: 0 auto;
   margin-top: 80px;
   width: 700px;
+
+  ${mobile(css`
+    width: 100%;
+    flex-wrap: wrap;
+
+    justify-content: space-around;
+  `)}
 `;
 
 export const tabBtn = (isSelected: boolean) => css`
@@ -25,6 +33,10 @@ export const tabBtn = (isSelected: boolean) => css`
   background: none;
   color: ${isSelected ? theme.color.white : theme.color.gray300};
   outline: none;
+
+  ${mobile(css`
+    margin: 10px 8%;
+  `)}
 `;
 
 export const partsCardWrap = css`
@@ -34,4 +46,8 @@ export const partsCardWrap = css`
   width: 90%;
   max-width: 1000px;
   margin-top: 30px;
+
+  ${mobile(css`
+    justify-content: center;
+  `)}
 `;
