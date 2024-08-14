@@ -1,7 +1,11 @@
-import { apiGetOrderEvent } from "@admin/apis/orderEvent";
+import { apiGetOrderEvent, apiDeleteOrderEvent } from "@admin/apis/orderEvent";
 import { Button } from "@admin/common/components/Button";
 import { DataGrid, GridColDef, GridRowId } from "@mui/x-data-grid";
-import { useSuspenseQuery } from "@tanstack/react-query";
+import {
+  useSuspenseQuery,
+  useMutation,
+  useQueryClient,
+} from "@tanstack/react-query";
 import { useModal } from "@watermelon-clap/core/src/hooks";
 import { IOrderEvent } from "@watermelon-clap/core/src/types";
 import { useState } from "react";
@@ -10,6 +14,8 @@ import {
   buttonContainerStyle,
   headerStyle,
 } from "./OrderEventManagementcss";
+import { useNavigate } from "react-router-dom";
+import { ORDER_EVENT_GENERATION_PAGE_ROTUE } from "@admin/constants/routes";
 
 interface OrderEvnetDataProps {
   id: string;
@@ -34,13 +40,14 @@ function mapDataToGrid(data: IOrderEvent[]): OrderEvnetDataProps[] {
 }
 
 export const OrderEventManagement = () => {
+  const navigate = useNavigate();
+  const queryClient = useQueryClient();
   const { data: quizList } = useSuspenseQuery<IOrderEvent[]>({
     queryKey: ["orderEvent"],
     queryFn: () => apiGetOrderEvent(),
     staleTime: Infinity,
   });
   const { openModal } = useModal();
-
   const [selectionModel, setSelectionModel] = useState<readonly GridRowId[]>(
     [],
   );
@@ -52,10 +59,10 @@ export const OrderEventManagement = () => {
     { field: "endDate", headerName: "종료 날짜", width: 250 },
     { field: "status", headerName: "상태", width: 120 },
     { field: "reward", headerName: "상품", width: 220 },
-    { field: "quizAnswer", headerName: "퀴즈 정답", width: 160 },
+    { field: "quizAnswer", headerName: "이벤트 정답", width: 160 },
     {
       field: "quizImgSrc",
-      headerName: "퀴즈 이미지",
+      headerName: "이벤트 이미지",
       width: 100,
       renderCell: (params) => (
         <div css={buttonContainerStyle}>
@@ -88,18 +95,52 @@ export const OrderEventManagement = () => {
     },
   ];
 
+  const deleteMutation = useMutation({
+    mutationFn: async (ids: string[]) => {
+      for (const id of ids) {
+        await apiDeleteOrderEvent(id);
+      }
+    },
+    onSuccess: () => {
+      try {
+        queryClient.invalidateQueries({ queryKey: ["orderEvent"] });
+      } catch (error) {
+        console.error("Failed to invalidate query:", error);
+      }
+    },
+    onError: (error) => {
+      console.error("Delete mutation failed:", error);
+    },
+  });
+
+  const handleDeleteButtonClick = () => {
+    openModal({
+      type: "confirm",
+      props: {
+        title: "이벤트 삭제",
+        content: "정말로 삭제하시겠습니까??",
+        confirmEvent: handleDeleteSelected,
+      },
+    });
+  };
+
+  const handleDeleteSelected = () => {
+    const idsToDelete = selectionModel.map((id) => id.toString());
+    deleteMutation.mutate(idsToDelete);
+  };
+
   return (
     <div css={mainContainerStyle}>
       <div css={headerStyle}>
         <Button
-          onClick={() => {
-            console.log("선택된 퀴즈:", selectionModel);
-            // todo 선택된 퀴즈 삭제 로직
-          }}
+          onClick={handleDeleteButtonClick}
+          disabled={selectionModel.length === 0 || deleteMutation.isPending}
         >
-          선택 퀴즈 삭제
+          {deleteMutation.isPending ? "삭제 중..." : "선택 이벤트 삭제"}
         </Button>
-        <Button>퀴즈 생성</Button>
+        <Button onClick={() => navigate(ORDER_EVENT_GENERATION_PAGE_ROTUE)}>
+          이벤트 생성
+        </Button>
       </div>
       <div
         style={{
