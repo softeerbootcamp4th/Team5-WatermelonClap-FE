@@ -30,5 +30,5 @@ export interface IPostOrderEventRequest {
 
 export interface IPostOrderEventResponse {
   result: OrderEventResultType;
-  ApplyTicket?: string;
+  applyTicket?: string;
 }
