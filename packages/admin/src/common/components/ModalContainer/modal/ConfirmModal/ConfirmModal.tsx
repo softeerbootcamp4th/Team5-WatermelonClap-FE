@@ -4,10 +4,12 @@ import { useScrollStop } from "@watermelon-clap/core/src/hooks";
 import { confirmModalStyles, confirmModalBodyStyles } from "./ConfirmModal.css";
 import { ReactNode } from "react";
 import { DefaultModalProps } from "../../ModalContainer";
+import { theme } from "@watermelon-clap/core/src/theme";
 
 export interface ConfirmModalProps extends DefaultModalProps {
   title: ReactNode;
   content: ReactNode;
+  confirmEvent: () => void;
 }
 
 export const ConfirmModal = ({
@@ -15,8 +17,14 @@ export const ConfirmModal = ({
   onRequestClose,
   title,
   content,
+  confirmEvent,
 }: ConfirmModalProps) => {
   useScrollStop(isOpen);
+
+  const handleConfirmClick = () => {
+    confirmEvent();
+    onRequestClose();
+  };
 
   return (
     <Modal
@@ -29,7 +37,10 @@ export const ConfirmModal = ({
       <div css={confirmModalBodyStyles}>
         {title}
         <div>{content}</div>
-        <Button onClick={onRequestClose}>확인</Button>
+        <div css={[theme.flex.center, theme.gap.gap12]}>
+          <Button onClick={onRequestClose}>취소</Button>
+          <Button onClick={handleConfirmClick}>확인</Button>
+        </div>
       </div>
     </Modal>
   );
