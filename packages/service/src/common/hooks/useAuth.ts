@@ -40,6 +40,22 @@ export const useAuth = () => {
       });
     },
 
+    reLogin: () => {
+      return signOut(fbAuth).then(() => {
+        localStorage.removeItem("accessToken");
+
+        return new Promise((resolve, reject) => {
+          signInWithPopup(fbAuth, provider)
+            .then((res) => res.user.getIdToken())
+            .then((token) => {
+              localStorage.setItem("accessToken", token);
+              resolve(token);
+            })
+            .catch((error) => reject(error));
+        });
+      });
+    },
+
     getIsLogin: () => Boolean(localStorage.getItem("accessToken")),
   };
 };
