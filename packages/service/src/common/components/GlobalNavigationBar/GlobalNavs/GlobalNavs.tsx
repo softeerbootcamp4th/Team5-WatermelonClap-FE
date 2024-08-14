@@ -1,6 +1,7 @@
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { ReactComponent as NLogo } from "public/images/gnb/n-logo.svg";
 import { linkStyles, navsContainerStyles, nLogoStyles } from "./GlobalNavs.css";
+import { useErrorBoundary } from "react-error-boundary";
 import {
   NEW_CAR_PAGE_ROUTE,
   PICK_EVENT_PAGE_ROUTE,
@@ -9,23 +10,43 @@ import {
 } from "@service/constants/routes";
 
 const GlobalNavs = ({ isOpen }: { isOpen: boolean }) => {
+  const navigate = useNavigate();
+  const { resetBoundary } = useErrorBoundary();
+
+  const handleNavigation = (route: string) => {
+    navigate(route);
+    resetBoundary();
+  };
+
   return (
     <div css={navsContainerStyles(isOpen)}>
-      <Link to={NEW_CAR_PAGE_ROUTE} css={linkStyles}>
+      <div
+        css={linkStyles}
+        onClick={() => handleNavigation(NEW_CAR_PAGE_ROUTE)}
+      >
         아반떼 N
-      </Link>
-      <Link to={PICK_EVENT_PAGE_ROUTE} css={linkStyles}>
+      </div>
+      <div
+        css={linkStyles}
+        onClick={() => handleNavigation(PICK_EVENT_PAGE_ROUTE)}
+      >
         내 아반떼 N 뽑기
-      </Link>
-      <Link to={N_QUIZ_EVENT_PAGE_ROUTE} css={linkStyles}>
+      </div>
+      <div
+        css={linkStyles}
+        onClick={() => handleNavigation(N_QUIZ_EVENT_PAGE_ROUTE)}
+      >
         <NLogo css={nLogoStyles} /> 퀴즈
-      </Link>
-      <Link to={PARTS_COLLECTION_PAGE_ROUTE} css={linkStyles}>
+      </div>
+      <div
+        css={linkStyles}
+        onClick={() => handleNavigation(PARTS_COLLECTION_PAGE_ROUTE)}
+      >
         내 컬렉션
-      </Link>
-      <Link to="#" css={linkStyles}>
+      </div>
+      <div css={linkStyles} onClick={() => handleNavigation("#")}>
         응모 내역 확인
-      </Link>
+      </div>
     </div>
   );
 };
