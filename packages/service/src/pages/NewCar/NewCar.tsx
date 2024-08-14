@@ -1,4 +1,4 @@
-import { NewCarInfo } from "@service/components/newCar/NewCarInfo/NewCarInfo";
+import { NewCarInfo } from "@service/components/newCar";
 import * as style from "./NewCar.css";
 
 export const NewCar = () => {

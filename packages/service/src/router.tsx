@@ -13,21 +13,25 @@ import {
   NEW_CAR_PAGE_ROUTE,
   PICK_EVENT_PAGE_ROUTE,
   N_PARTS_PICK_PAGE_ROUTE,
+  PARTS_COLLECTION_PAGE_ROUTE,
 } from "./constants/routes";
 import { RotateDemoPage } from "./Demo/pages/RotateDemoPage";
 import { AuthDemoPage } from "./Demo/pages/AuthDemoPage";
 import { ScrollTextPage } from "./Demo/pages/ScrollTextPage";
 import { MarqueeDemoPage } from "./Demo/pages/MarqueeDemoPage";
-import { Main } from "./pages/Main/Main";
-import { DemoPage } from "./Demo/pages/DemoPage";
-import { ScrollDemoPage } from "./Demo/pages/ScrollDemoPage";
-import ButtonDemoPage from "./Demo/pages/ButtonDemoPage";
 import { App } from "./App";
+import ButtonDemoPage from "./Demo/pages/ButtonDemoPage";
+import { DemoPage } from "./Demo/pages/DemoPage";
 import { ModalDemoPage } from "./Demo/pages/ModalDemoPage";
-import { NQuizEvent } from "./pages/NQuizEvent";
-import { NewCar } from "./pages/NewCar";
-import { PickEvent } from "./pages/PickEvent";
-import { PartsPick } from "./pages/PartsPick";
+import { ScrollDemoPage } from "./Demo/pages/ScrollDemoPage";
+import {
+  Main,
+  NQuizEvent,
+  PickEvent,
+  NewCar,
+  PartsPick,
+  PartsCollection,
+} from "./pages";
 
 export const router = createBrowserRouter([
   {
@@ -39,6 +43,7 @@ export const router = createBrowserRouter([
       { path: PICK_EVENT_PAGE_ROUTE, element: <PickEvent /> },
       { path: NEW_CAR_PAGE_ROUTE, element: <NewCar /> },
       { path: N_PARTS_PICK_PAGE_ROUTE, element: <PartsPick /> },
+      { path: PARTS_COLLECTION_PAGE_ROUTE, element: <PartsCollection /> },
     ],
   },
   {

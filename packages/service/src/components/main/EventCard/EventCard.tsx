@@ -3,12 +3,24 @@ import * as style from "./EventCard.css";
 import { IEventData } from "@service/pages/Main/eventData";
 import { Button, ButtonVariant } from "@service/common/components/Button";
 import { useMobile } from "@service/common/hooks/useMobile";
+import { useNavigate } from "react-router-dom";
+import {
+  N_QUIZ_EVENT_PAGE_ROUTE,
+  PICK_EVENT_PAGE_ROUTE,
+} from "@service/constants/routes";
 
 interface IEventDataProps {
   eventData: IEventData;
 }
 export const EventCard = ({ eventData }: IEventDataProps) => {
   const isMobile = useMobile();
+
+  const navigate = useNavigate();
+
+  const handleEventRoute = () =>
+    navigate(
+      eventData.id === 1 ? PICK_EVENT_PAGE_ROUTE : N_QUIZ_EVENT_PAGE_ROUTE,
+    );
 
   return (
     <div css={style.eventCard(eventData.id === 1)}>
@@ -23,7 +35,11 @@ export const EventCard = ({ eventData }: IEventDataProps) => {
 
         <p css={style.desc}>{eventData.desc}</p>
 
-        <Button variant={ButtonVariant.LONG} css={style.joinButton}>
+        <Button
+          onClick={handleEventRoute}
+          variant={ButtonVariant.LONG}
+          css={style.joinButton}
+        >
           참여하기
         </Button>
       </div>

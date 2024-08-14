@@ -5,6 +5,7 @@ import {
   NEW_CAR_PAGE_ROUTE,
   PICK_EVENT_PAGE_ROUTE,
   N_QUIZ_EVENT_PAGE_ROUTE,
+  PARTS_COLLECTION_PAGE_ROUTE,
 } from "@service/constants/routes";
 
 const GlobalNavs = ({ isOpen }: { isOpen: boolean }) => {
@@ -19,7 +20,7 @@ const GlobalNavs = ({ isOpen }: { isOpen: boolean }) => {
       <Link to={N_QUIZ_EVENT_PAGE_ROUTE} css={linkStyles}>
         <NLogo css={nLogoStyles} /> 퀴즈
       </Link>
-      <Link to="#" css={linkStyles}>
+      <Link to={PARTS_COLLECTION_PAGE_ROUTE} css={linkStyles}>
         내 컬렉션
       </Link>
       <Link to="#" css={linkStyles}>

@@ -126,14 +126,16 @@ export const PartsCard = ({
     }
     setIsFlipped(true);
 
-    apiPostParts().then((data) => setPartsInfo(data));
+    apiPostParts().then((data) => {
+      setPartsInfo(data);
 
-    setTimeout(() => {
-      craftSideCannons(1);
-      setIsFrontShow(true);
-      setIsFlipped(false);
-      setIsPickComplete(true);
-    }, 3000);
+      setTimeout(() => {
+        craftSideCannons(1);
+        setIsFrontShow(true);
+        setIsFlipped(false);
+        setIsPickComplete(true);
+      }, 3000);
+    });
   };
 
   useEffect(() => {
@@ -166,7 +168,16 @@ export const PartsCard = ({
           background-repeat: no-repeat;
         `}
       >
-        <img src={partsInfo?.imgSrc} width={"100%"} height="auto"></img>
+        <img
+          src={partsInfo?.thumbnailImgSrc}
+          width={
+            partsInfo?.category === "COLOR" ||
+            partsInfo?.category === "DRIVE_MODE"
+              ? "100%"
+              : "70%"
+          }
+          height="auto"
+        ></img>
       </CardSide>
       <CardSide
         className={`card-back ${isFrontShow ? "hidden" : "show"}`}
