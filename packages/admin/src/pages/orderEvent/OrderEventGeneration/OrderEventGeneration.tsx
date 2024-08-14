@@ -21,8 +21,10 @@ import {
 } from "./OrderEventGeneration.css";
 import { Space } from "../../../common/components/Space";
 import { apiPostOrderEvent } from "@admin/apis/orderEvent/apiPostOrderEvent";
+import { useModal } from "@watermelon-clap/core/src/hooks";
 
 export const OrderEventGeneration = () => {
+  const { openModal } = useModal();
   const [date, setDate] = useState<Dayjs | null>(dayjs(new Date()));
   const [startTime, setStartTime] = useState<Dayjs | null>(
     dayjs().hour(10).minute(0).second(0),
@@ -31,11 +33,9 @@ export const OrderEventGeneration = () => {
     dayjs().hour(23).minute(59).second(59),
   );
   const [maxParticipants, setMaxParticipants] = useState<number | null>(null);
-
   const [quizFile, setQuizFile] = useState<File | null>(null);
   const [quizImageUrl, setQuizImageUrl] = useState<string | null>(null);
   const [quizAnswer, setQuizAnswer] = useState<string>("");
-
   const [rewardFile, setrewardFile] = useState<File | null>(null);
   const [rewardImageUrl, setrewardImageUrl] = useState<string | null>(null);
   const [reward, setreward] = useState<string>("");
@@ -114,8 +114,11 @@ export const OrderEventGeneration = () => {
       orderEvent: orderEventData,
       rewardImage: rewardFile,
       quizImage: quizFile,
-    }).then((response) => {
-      console.log(response);
+    }).then(() => {
+      openModal({
+        type: "alert",
+        props: { title: "이벤트 등록", content: "등록이 완료되었습니다.!" },
+      });
     });
   };
 
