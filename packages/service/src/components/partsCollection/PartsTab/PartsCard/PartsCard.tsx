@@ -3,7 +3,6 @@ import * as style from "./PartsCard.css";
 import { getAccessToken } from "@service/common/utils";
 import { apiPatchMyParts } from "@service/apis/partsEvent/apiPatchMyParts";
 import { RefetchOptions, QueryObserverResult } from "@tanstack/react-query";
-import { css } from "@emotion/react";
 
 interface IPartsCardProps {
   partsData: IParts;
