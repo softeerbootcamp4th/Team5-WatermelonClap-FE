@@ -13,3 +13,4 @@ export const NEW_CAR_PAGE_ROUTE = "/new-car" as const;
 export const N_PARTS_PICK_PAGE_ROUTE = "/parts-pick" as const;
 export const PICK_EVENT_PAGE_ROUTE = "/pick-event" as const;
 export const PARTS_COLLECTION_PAGE_ROUTE = "/parts-collection" as const;
+export const SHARE_PAGE_ROUTE = "/share" as const;
