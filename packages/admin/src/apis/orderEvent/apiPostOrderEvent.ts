@@ -33,7 +33,6 @@ export const apiPostOrderEvent = async ({
       return response.json();
     })
     .catch((error) => {
-      console.error("Error during API call:", error);
       throw error;
     });
 };
