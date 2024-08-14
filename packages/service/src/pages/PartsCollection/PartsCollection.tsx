@@ -3,22 +3,31 @@ import * as style from "./PartsCollection.css";
 import { PartsTab } from "@service/components/partsCollection/PartsTab";
 import { useQuery } from "@tanstack/react-query";
 import { IMyParts } from "@service/apis/partsEvent/type";
-import { getAccessToken } from "@service/common/utils";
 import { apiGetMyParts } from "@service/apis/partsEvent/apiGetMyParts";
 import { useAuth } from "@service/common/hooks/useAuth";
 import { useEffect, useState } from "react";
 import { ICustomCardProps } from "@service/components/partsCollection/CustomCard/CustomCard";
+import { getAccessToken } from "@service/common/utils";
 
 export const PartsCollection = () => {
-  const token = getAccessToken();
-
-  const { getIsLogin, login } = useAuth();
+  const { getIsLogin, login, reLogin } = useAuth();
 
   const [equippedPartsImg, setEquippedPartsImg] = useState<ICustomCardProps>();
 
+  const getPartsData = async () => {
+    try {
+      return await apiGetMyParts();
+    } catch (error: any) {
+      if (error.message === "403") {
+        reLogin().then(() => refetch());
+      }
+      throw error;
+    }
+  };
+
   const { data: partsDatas, refetch } = useQuery<IMyParts[]>({
-    queryKey: ["myParts", token],
-    queryFn: () => apiGetMyParts(token as string),
+    queryKey: ["myParts", getAccessToken()],
+    queryFn: getPartsData,
   });
 
   useEffect(() => {
