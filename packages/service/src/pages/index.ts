@@ -4,3 +4,4 @@ export { NewCar } from "./NewCar";
 export { PartsCollection } from "./PartsCollection";
 export { PartsPick } from "./PartsPick";
 export { PickEvent } from "./PickEvent";
+export { NQuizEventWinnerApply } from "./NQuizEventWinnerApply";

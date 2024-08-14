@@ -15,6 +15,8 @@ import {
   MODAL_N_QUIZ_TITLE,
 } from "@service/common/components/ModalContainer/content/modalContent";
 import { useErrorBoundary } from "react-error-boundary";
+import { useNavigate } from "react-router-dom";
+import { N_QUIZ_EVENT_PAGE_WINNER_APLLY_PAGE_ROUTE } from "@service/constants/routes";
 
 interface NQuizInputProps {
   openedQuiz: IOrderEvent;
@@ -24,6 +26,7 @@ export const NQuizInput = ({ openedQuiz }: NQuizInputProps) => {
   const [inputValue, setInputValue] = useState<string>("");
   const { showBoundary } = useErrorBoundary();
   const { closeModal, openModal } = useModal();
+  const navigate = useNavigate();
 
   const handleSubmit = () => {
     if (inputValue.trim() === "") return;
@@ -46,32 +49,14 @@ export const NQuizInput = ({ openedQuiz }: NQuizInputProps) => {
   const handleApiResponse = (response: IPostOrderEventResponse) => {
     switch (response.result) {
       case "SUCCESS":
-        craftSideCannons(2);
-        openModal({
-          type: "alert",
-          props: {
-            title: MODAL_N_QUIZ_TITLE,
-            content: "정답!! 너 재능있어~",
-          },
-        });
+        handleSuccessResponse(response.applyTicket as string);
         break;
       case "WRONG":
-        openModal({
-          type: "navigate",
-          props: {
-            title: MODAL_N_QUIZ_TITLE,
-            content: MODAL_CONTENT_QUIZ_WRONG,
-          },
-        });
+        handleWrongResponse();
         break;
       case "CLOSED":
-        openModal({
-          type: "alert",
-          props: {
-            title: MODAL_N_QUIZ_TITLE,
-            content: MODAL_CONTENT_QUIZ_CLOSED,
-          },
-        });
+        handleClosedResponse();
+        break;
     }
   };
 
@@ -88,6 +73,33 @@ export const NQuizInput = ({ openedQuiz }: NQuizInputProps) => {
     if (event.key === "Enter") {
       handleSubmit();
     }
+  };
+
+  const handleSuccessResponse = (applyTicket: string) => {
+    localStorage.setItem("ApplyTicket", applyTicket);
+    closeModal();
+    navigate(N_QUIZ_EVENT_PAGE_WINNER_APLLY_PAGE_ROUTE);
+    craftSideCannons(2);
+  };
+
+  const handleWrongResponse = () => {
+    openModal({
+      type: "navigate",
+      props: {
+        title: MODAL_N_QUIZ_TITLE,
+        content: MODAL_CONTENT_QUIZ_WRONG,
+      },
+    });
+  };
+
+  const handleClosedResponse = () => {
+    openModal({
+      type: "alert",
+      props: {
+        title: MODAL_N_QUIZ_TITLE,
+        content: MODAL_CONTENT_QUIZ_CLOSED,
+      },
+    });
   };
 
   return (
