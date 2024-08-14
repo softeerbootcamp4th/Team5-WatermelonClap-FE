@@ -15,7 +15,10 @@ import {
   headerStyle,
 } from "./OrderEventManagementcss";
 import { useNavigate } from "react-router-dom";
-import { ORDER_EVENT_GENERATION_PAGE_ROTUE } from "@admin/constants/routes";
+import {
+  ORDER_EVENT_GENERATION_PAGE_ROTUE,
+  ORDER_EVENT_WINNER_MANAGEMENT_PATE_ROUTE,
+} from "@admin/constants/routes";
 
 interface OrderEvnetDataProps {
   id: string;
@@ -81,11 +84,15 @@ export const OrderEventManagement = () => {
       field: "showWinner",
       headerName: "당첨자 리스트",
       width: 200,
-      renderCell: () => (
+      renderCell: (params) => (
         <div css={buttonContainerStyle}>
           <Button
             onClick={(event) => {
+              console.log(params.id);
               event.stopPropagation();
+              navigate(ORDER_EVENT_WINNER_MANAGEMENT_PATE_ROUTE, {
+                state: params.id,
+              });
             }}
           >
             당첨자 보러가기
