@@ -20,6 +20,8 @@ export const bgImg = css`
   top: 0;
   left: 0;
   z-index: 1;
+  border-radius: 20px;
+  height: 100%;
 
   ${mobile(css`
     width: 400px;
