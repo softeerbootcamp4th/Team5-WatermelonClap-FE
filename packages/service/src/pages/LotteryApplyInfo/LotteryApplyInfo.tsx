@@ -10,16 +10,22 @@ import { useEffect, useRef, useState } from "react";
 import { mobile } from "@service/common/responsive/responsive";
 import { useMobile } from "@service/common/hooks/useMobile";
 import { apiGetMyShareLink } from "@service/apis/link/apiGetMyShareLink";
+import { apiGetPartsRemain } from "@service/apis/partsEvent";
 
 export const LotteryApplyInfo = () => {
   const navigate = useNavigate();
   const shareLinkRef = useRef(null);
   const [shareLink, setShareLink] = useState<string>();
+  const [remainChance, setRemainChance] = useState<number>();
 
   useEffect(() => {
     apiGetMyShareLink().then(({ link }) => {
       setShareLink(link);
     });
+
+    apiGetPartsRemain().then(({ remainChance }) =>
+      setRemainChance(remainChance),
+    );
   }, []);
 
   const isMobile = useMobile();
@@ -68,13 +74,13 @@ export const LotteryApplyInfo = () => {
             <span css={[theme.font.pcB28]}>남은 뽑기권</span>
             <span
               css={[
-                theme.font.pcpB82,
+                theme.font.pcB40,
                 mobile(css`
                   font-size: 30px;
                 `),
               ]}
             >
-              32
+              {remainChance}
             </span>
           </div>
         </div>

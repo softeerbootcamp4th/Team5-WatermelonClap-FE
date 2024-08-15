@@ -64,7 +64,7 @@ export const shareLinkBox = css`
   overflow: hidden;
   text-overflow: ellipsis;
   padding: 16px 18px;
-  width: 400px;
+  width: 500px;
 
   ${mobile(css`
     width: 100%;
