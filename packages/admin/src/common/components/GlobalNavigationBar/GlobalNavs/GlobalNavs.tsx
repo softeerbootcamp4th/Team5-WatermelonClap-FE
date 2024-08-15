@@ -18,7 +18,7 @@ interface GlobalNavsProps {
 
 const GlobalNavs = ({ selectedCategory }: GlobalNavsProps) => {
   const location = useLocation();
-  const isActive = (path: string) => location.pathname === path;
+  const isActive = (path: string) => location.pathname.includes(path);
 
   return selectedCategory === "quiz" ? (
     <div css={navsContainerStyles}>
