@@ -31,7 +31,10 @@ export const LotteryApplyFinish = () => {
     const text = event.currentTarget.value;
     setIsExpectationNull(!text.length ? true : false);
     if (text.length >= 50) {
-      alert("기대평은 50자 이내 작성 가능합니다.");
+      openModal({
+        type: "alert",
+        props: { content: "기대평은 50자 이내 작성 가능합니다" },
+      });
       return;
     }
     setExpectation(text);
