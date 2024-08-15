@@ -11,6 +11,7 @@ import { mobile } from "@service/common/responsive/responsive";
 import { useMobile } from "@service/common/hooks/useMobile";
 import { apiGetMyShareLink } from "@service/apis/link/apiGetMyShareLink";
 import { apiGetPartsRemain } from "@service/apis/partsEvent";
+import { useAuth } from "@watermelon-clap/core/src/hooks";
 
 export const LotteryApplyInfo = () => {
   const navigate = useNavigate();
@@ -18,10 +19,17 @@ export const LotteryApplyInfo = () => {
   const [shareLink, setShareLink] = useState<string>();
   const [remainChance, setRemainChance] = useState<number>();
 
+  const { reLogin } = useAuth();
+
   useEffect(() => {
-    apiGetMyShareLink().then(({ link }) => {
-      setShareLink(link);
-    });
+    apiGetMyShareLink()
+      .then(({ link }) => setShareLink(link))
+      .catch((error: Error) => {
+        if (error.message === "403") {
+          reLogin().then(() => location.reload());
+        }
+        throw error;
+      });
 
     apiGetPartsRemain().then(({ remainChance }) =>
       setRemainChance(remainChance),
@@ -98,14 +106,3 @@ export const LotteryApplyInfo = () => {
     </div>
   );
 };
-
-// const getPartsData = async () => {
-//   try {
-//     return await apiGetMyParts();
-//   } catch (error: any) {
-//     if (error.message === "403") {
-//       reLogin().then(() => refetch());
-//     }
-//     throw error;
-//   }
-// };
