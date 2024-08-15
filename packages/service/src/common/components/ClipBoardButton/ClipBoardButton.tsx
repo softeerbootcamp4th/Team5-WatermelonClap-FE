@@ -9,7 +9,7 @@ import {
 import { ReactComponent as ClipBoardIcon } from "public/icons/clipboard.svg";
 
 interface IClipBoardButton {
-  copyRef: React.MutableRefObject<null>;
+  copyRef: any;
 }
 const ClipBoardButton = ({ copyRef }: IClipBoardButton) => {
   const [isCliped, setIsCliped] = useState<boolean>(false);
@@ -18,7 +18,7 @@ const ClipBoardButton = ({ copyRef }: IClipBoardButton) => {
 
   const handleCopy = () => {
     const textToCopy = copyRef?.current?.textContent;
-    navigator.clipboard.writeText(textToCopy);
+    navigator.clipboard.writeText(textToCopy as string);
   };
 
   return (
