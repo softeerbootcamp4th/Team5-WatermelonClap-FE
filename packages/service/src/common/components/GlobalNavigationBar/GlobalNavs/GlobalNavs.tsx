@@ -7,6 +7,7 @@ import {
   PICK_EVENT_PAGE_ROUTE,
   N_QUIZ_EVENT_PAGE_ROUTE,
   PARTS_COLLECTION_PAGE_ROUTE,
+  LOTTER_APPLY_INFO_PAGE_ROUTE,
 } from "@service/constants/routes";
 
 const GlobalNavs = ({ isOpen }: { isOpen: boolean }) => {
@@ -44,7 +45,10 @@ const GlobalNavs = ({ isOpen }: { isOpen: boolean }) => {
       >
         내 컬렉션
       </div>
-      <div css={linkStyles} onClick={() => handleNavigation("#")}>
+      <div
+        css={linkStyles}
+        onClick={() => handleNavigation(LOTTER_APPLY_INFO_PAGE_ROUTE)}
+      >
         응모 내역 확인
       </div>
     </div>

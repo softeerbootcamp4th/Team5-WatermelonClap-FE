@@ -11,6 +11,4 @@ export const apiGetLotteryStatus = (): Promise<IApiGetLotteryStatus> =>
     headers: {
       Authorization: `Bearer ${getAccessToken()}`,
     },
-  }).then((res) => {
-    return res.json();
-  });
+  }).then((res) => res.json());
