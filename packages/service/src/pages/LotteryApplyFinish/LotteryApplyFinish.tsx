@@ -8,6 +8,8 @@ import { css } from "@emotion/react";
 import { MAIN_PAGE_ROUTE } from "@service/constants/routes";
 import { ChangeEvent, useEffect, useRef, useState } from "react";
 import { apiGetMyShareLink } from "@service/apis/link/apiGetMyShareLink";
+import { apiPostExpectation } from "@service/apis/expectation/apiPostExpectation";
+import { useModal } from "@watermelon-clap/core/src/hooks";
 
 export const LotteryApplyFinish = () => {
   const navigate = useNavigate();
@@ -15,6 +17,9 @@ export const LotteryApplyFinish = () => {
   const [shareLink, setShareLink] = useState<string>();
   const [expectation, setExpectation] = useState("");
   const [isExpectationNull, setIsExpectationNull] = useState(true);
+  const [isPostExpectation, setIsPostExpectation] = useState(false);
+
+  const { openModal } = useModal();
 
   useEffect(() => {
     apiGetMyShareLink().then(({ link }) => {
@@ -25,14 +30,36 @@ export const LotteryApplyFinish = () => {
   const handleChange = (event: ChangeEvent<HTMLTextAreaElement>) => {
     const text = event.currentTarget.value;
     setIsExpectationNull(!text.length ? true : false);
+    if (text.length >= 50) {
+      alert("기대평은 50자 이내 작성 가능합니다.");
+      return;
+    }
     setExpectation(text);
   };
-  console.log(isExpectationNull);
 
-  const handleSubmit = async () => {
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
     if (!expectation) {
       return;
     }
+
+    apiPostExpectation(expectation)
+      .then(() => {
+        openModal({
+          type: "alert",
+          props: {
+            content: "기대평을 성공적으로 등록하였습니다",
+          },
+        });
+        setIsPostExpectation(true);
+        setIsExpectationNull(true);
+      })
+      .catch(() =>
+        openModal({
+          type: "alert",
+          props: { content: "기대평 등록에 실패했습니다" },
+        }),
+      );
   };
 
   return (
@@ -102,6 +129,7 @@ export const LotteryApplyFinish = () => {
               css={style.expectationInput}
               value={expectation}
               onChange={handleChange}
+              disabled={isPostExpectation && true}
             />
             <Button
               type="submit"
