@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import {
   headerContainerStyles,
   logoStyles,
@@ -6,7 +6,7 @@ import {
   buttonStyles,
 } from "./GlobalNavigationBar.css";
 import { ReactComponent as LogoLong } from "public/images/gnb/logo-long.svg";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import GlobalNavs from "./GlobalNavs/GlobalNavs";
 import {
   ORDER_EVENT_MANAGEMENT_PAGE_ROUTE,
@@ -17,9 +17,18 @@ import { css } from "@emotion/react";
 
 export const GlobalNavigationBar = () => {
   const navigate = useNavigate();
-  const [selectedCategory, setSelectedCategory] = useState<"quiz" | "lottery">(
-    "quiz",
+  const location = useLocation();
+  const [selectedCategory, setSelectedCategory] = useState<"order" | "parts">(
+    "order",
   );
+
+  useEffect(() => {
+    if (location.pathname.includes("order")) {
+      setSelectedCategory("order");
+    } else if (location.pathname.includes("parts")) {
+      setSelectedCategory("parts");
+    }
+  }, [location]);
 
   return (
     <header css={headerContainerStyles}>
@@ -46,18 +55,18 @@ export const GlobalNavigationBar = () => {
         `}
       >
         <button
-          css={buttonStyles(selectedCategory === "quiz")}
+          css={buttonStyles(selectedCategory === "order")}
           onClick={() => {
-            setSelectedCategory("quiz");
+            setSelectedCategory("order");
             navigate(ORDER_EVENT_MANAGEMENT_PAGE_ROUTE);
           }}
         >
           N 퀴즈 선착순 이벤트
         </button>
         <button
-          css={buttonStyles(selectedCategory === "lottery")}
+          css={buttonStyles(selectedCategory === "parts")}
           onClick={() => {
-            setSelectedCategory("lottery");
+            setSelectedCategory("parts");
             navigate(PARTS_EVENT_GENERATION_PAGE_ROUTE);
           }}
         >

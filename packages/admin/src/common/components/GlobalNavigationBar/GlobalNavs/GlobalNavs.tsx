@@ -13,14 +13,14 @@ import {
 } from "@admin/constants/routes";
 
 interface GlobalNavsProps {
-  selectedCategory: "quiz" | "lottery";
+  selectedCategory: "order" | "parts";
 }
 
 const GlobalNavs = ({ selectedCategory }: GlobalNavsProps) => {
   const location = useLocation();
   const isActive = (path: string) => location.pathname.includes(path);
 
-  return selectedCategory === "quiz" ? (
+  return selectedCategory === "order" ? (
     <div css={navsContainerStyles}>
       <Link
         to={ORDER_EVENT_MANAGEMENT_PAGE_ROUTE}
