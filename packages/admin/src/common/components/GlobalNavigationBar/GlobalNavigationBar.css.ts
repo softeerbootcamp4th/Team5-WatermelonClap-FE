@@ -29,3 +29,17 @@ export const topStyle = css`
   justify-content: space-between;
   padding-bottom: 20px;
 `;
+
+export const buttonStyles = (isSelected: boolean) => css`
+  background-color: ${isSelected ? theme.color.gray400 : "transparent"};
+  color: ${isSelected ? "white" : theme.color.gray300};
+  border: none;
+  padding: 8px 16px;
+  cursor: pointer;
+  font-weight: bold;
+  border-radius: 8px;
+  &:hover {
+    background-color: ${theme.color.gray400};
+    color: white;
+  }
+`;

@@ -22,6 +22,7 @@ export const linkStyles = css`
   display: inline-flex;
   gap: 4px;
   flex-shrink: 0;
+  color: ${theme.color.gray300};
 
   &:hover {
     transform: translateY(-1px);
@@ -29,4 +30,9 @@ export const linkStyles = css`
   &:active {
     transform: translateY(1px);
   }
+`;
+
+export const activeLinkStyles = css`
+  color: white;
+  font-weight: bold;
 `;
