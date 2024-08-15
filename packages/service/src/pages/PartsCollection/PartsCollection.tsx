@@ -10,20 +10,12 @@ import { IMyParts } from "@watermelon-clap/core/src/types";
 import { getAccessToken } from "@watermelon-clap/core/src/utils";
 
 export const PartsCollection = () => {
-  const { getIsLogin, login, reLogin } = useAuth();
+  const { getIsLogin, login, handleTokenError } = useAuth();
 
   const [equippedPartsImg, setEquippedPartsImg] = useState<ICustomCardProps>();
 
-  const getPartsData = async () => {
-    try {
-      return await apiGetMyParts();
-    } catch (error: any) {
-      if (error.message === "403") {
-        reLogin().then(() => refetch());
-      }
-      throw error;
-    }
-  };
+  const getPartsData = () =>
+    apiGetMyParts().catch(handleTokenError) as Promise<IMyParts[]>;
 
   const { data: partsDatas, refetch } = useQuery<IMyParts[]>({
     queryKey: ["myParts", getAccessToken()],

@@ -21,41 +21,46 @@ const fbAuth = getAuth(app);
 const provider = new GoogleAuthProvider();
 
 export const useAuth = () => {
+  const login = () => {
+    return new Promise((resolve, reject) => {
+      signInWithPopup(fbAuth, provider)
+        .then((res) => res.user.getIdToken())
+        .then((token) => {
+          localStorage.setItem("accessToken", token);
+          resolve(token);
+        })
+        .catch((error) => reject(error));
+    });
+  };
+
+  const logout = () =>
+    signOut(fbAuth).then(() => {
+      localStorage.removeItem("accessToken");
+    });
+
+  const reLogin = () => logout().then(() => login());
+  const getIsLogin = () => Boolean(localStorage.getItem("accessToken"));
+
+  /**
+   * 유효하지 않은 토큰으로 API 호출 시 로그인 시키는 함수
+   *
+   * API 호출 후 catch에서 받아온 Error 객체를 인자로 넣어주세요
+   */
+  const handleTokenError = async (error: Error) => {
+    const TOKEN_ERROR_STATUS = "403";
+    if (error.message === TOKEN_ERROR_STATUS) {
+      await reLogin();
+      location.reload();
+    } else {
+      throw error;
+    }
+  };
+
   return {
-    login: () => {
-      return new Promise((resolve, reject) => {
-        signInWithPopup(fbAuth, provider)
-          .then((res) => res.user.getIdToken())
-          .then((token) => {
-            localStorage.setItem("accessToken", token);
-            resolve(token);
-          })
-          .catch((error) => reject(error));
-      });
-    },
-
-    logout: () => {
-      signOut(fbAuth).then(() => {
-        localStorage.removeItem("accessToken");
-      });
-    },
-
-    reLogin: () => {
-      return signOut(fbAuth).then(() => {
-        localStorage.removeItem("accessToken");
-
-        return new Promise((resolve, reject) => {
-          signInWithPopup(fbAuth, provider)
-            .then((res) => res.user.getIdToken())
-            .then((token) => {
-              localStorage.setItem("accessToken", token);
-              resolve(token);
-            })
-            .catch((error) => reject(error));
-        });
-      });
-    },
-
-    getIsLogin: () => Boolean(localStorage.getItem("accessToken")),
+    login,
+    logout,
+    reLogin,
+    getIsLogin,
+    handleTokenError,
   };
 };
