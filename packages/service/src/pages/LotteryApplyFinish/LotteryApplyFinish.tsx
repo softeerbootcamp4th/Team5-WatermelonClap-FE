@@ -6,19 +6,34 @@ import { theme } from "@watermelon-clap/core/src/theme";
 import { Space } from "@service/common/styles/Space";
 import { css } from "@emotion/react";
 import { MAIN_PAGE_ROUTE } from "@service/constants/routes";
-import { useEffect, useRef, useState } from "react";
+import { ChangeEvent, useEffect, useRef, useState } from "react";
 import { apiGetMyShareLink } from "@service/apis/link/apiGetMyShareLink";
 
 export const LotteryApplyFinish = () => {
   const navigate = useNavigate();
   const shareLinkRef = useRef(null);
   const [shareLink, setShareLink] = useState<string>();
+  const [expectation, setExpectation] = useState("");
+  const [isExpectationNull, setIsExpectationNull] = useState(true);
 
   useEffect(() => {
     apiGetMyShareLink().then(({ link }) => {
       setShareLink(link);
     });
   }, []);
+
+  const handleChange = (event: ChangeEvent<HTMLTextAreaElement>) => {
+    const text = event.currentTarget.value;
+    setIsExpectationNull(!text.length ? true : false);
+    setExpectation(text);
+  };
+  console.log(isExpectationNull);
+
+  const handleSubmit = async () => {
+    if (!expectation) {
+      return;
+    }
+  };
 
   return (
     <div css={style.mainBg}>
@@ -78,15 +93,25 @@ export const LotteryApplyFinish = () => {
             수 있어요.
           </span>
 
-          <div css={[theme.flex.center, theme.gap.gap16]}>
+          <form
+            onSubmit={handleSubmit}
+            css={[theme.flex.center, theme.gap.gap16]}
+          >
             <textarea
               placeholder="여기에 기대평을 작성해주세요"
               css={style.expectationInput}
+              value={expectation}
+              onChange={handleChange}
             />
-            <Button variant={ButtonVariant.LONG} css={style.applyBtn}>
+            <Button
+              type="submit"
+              variant={ButtonVariant.LONG}
+              css={style.applyBtn(isExpectationNull)}
+              disabled={isExpectationNull}
+            >
               제출하기
             </Button>
-          </div>
+          </form>
         </div>
       </section>
 

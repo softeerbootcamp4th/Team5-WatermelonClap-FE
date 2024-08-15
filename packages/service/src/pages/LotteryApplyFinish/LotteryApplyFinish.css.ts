@@ -22,9 +22,18 @@ export const pageTitle = css`
     padding: 100px 0 50px 0;
   `)}
 `;
-export const applyBtn = css`
+export const applyBtn = (isExpectationNull: boolean) => css`
   padding: 50px 50px;
   height: 100px;
+  background-color: ${isExpectationNull
+    ? theme.color.gray400
+    : theme.color.eventBlue};
+  color: ${isExpectationNull ? theme.color.gray300 : theme.color.white};
+  cursor: ${isExpectationNull ? "default" : "pointer"};
+
+  &:active {
+    background-color: ${isExpectationNull && theme.color.gray400};
+  }
 
   width: fit-content;
 `;
