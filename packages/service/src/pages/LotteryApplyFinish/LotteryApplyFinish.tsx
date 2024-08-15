@@ -6,9 +6,20 @@ import { theme } from "@watermelon-clap/core/src/theme";
 import { Space } from "@service/common/styles/Space";
 import { css } from "@emotion/react";
 import { MAIN_PAGE_ROUTE } from "@service/constants/routes";
+import { useEffect, useRef, useState } from "react";
+import { apiGetMyShareLink } from "@service/apis/link/apiGetMyShareLink";
 
 export const LotteryApplyFinish = () => {
-  const navigator = useNavigate();
+  const navigate = useNavigate();
+  const shareLinkRef = useRef(null);
+  const [shareLink, setShareLink] = useState<string>();
+
+  useEffect(() => {
+    apiGetMyShareLink().then(({ link }) => {
+      setShareLink(link);
+    });
+  }, []);
+
   return (
     <div css={style.mainBg}>
       <h1 css={style.pageTitle}>응모완료</h1>
@@ -41,8 +52,10 @@ export const LotteryApplyFinish = () => {
             링크를 통해 친구가 이벤트를 참여하면 추가 뽑기권을 드려요!
           </span>
           <div css={[theme.flex.center, theme.gap.gap12]}>
-            <div css={style.shareLinkBox}>공유링크</div>
-            <ClipBoardButton />
+            <div css={style.shareLinkBox} ref={shareLinkRef}>
+              {shareLink}
+            </div>
+            <ClipBoardButton copyRef={shareLinkRef} />
           </div>
         </div>
 
@@ -82,7 +95,7 @@ export const LotteryApplyFinish = () => {
       <Button
         variant={ButtonVariant.LONG}
         css={style.btn}
-        onClick={() => navigator(MAIN_PAGE_ROUTE)}
+        onClick={() => navigate(MAIN_PAGE_ROUTE)}
       >
         홈으로 가기
       </Button>
