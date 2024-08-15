@@ -3,7 +3,7 @@ import { RewardInfo } from "../RewardInfo";
 export const MainEventDrawForm = () => {
   return (
     <>
-      <RewardInfo rank={1} winnerCount={1} reward="아반뗴 N" />
+      <RewardInfo rank={1} winnerCount={1} reward="아반떼 N" />
       <RewardInfo
         rank={2}
         winnerCount={2}
