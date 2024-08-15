@@ -10,6 +10,8 @@ import { ChangeEvent, useEffect, useRef, useState } from "react";
 import { apiGetMyShareLink } from "@service/apis/link/apiGetMyShareLink";
 import { apiPostExpectation } from "@service/apis/expectation/apiPostExpectation";
 import { useModal } from "@watermelon-clap/core/src/hooks";
+import { mobile } from "@service/common/responsive/responsive";
+import { useMobile } from "@service/common/hooks/useMobile";
 
 export const LotteryApplyFinish = () => {
   const navigate = useNavigate();
@@ -65,11 +67,13 @@ export const LotteryApplyFinish = () => {
       );
   };
 
+  const isMobile = useMobile();
+
   return (
     <div css={style.mainBg}>
       <h1 css={style.pageTitle}>응모완료</h1>
 
-      <Space size={100} />
+      <Space size={isMobile ? 40 : 100} />
 
       <section
         css={[
@@ -89,14 +93,25 @@ export const LotteryApplyFinish = () => {
             css`
               align-items: start;
               gap: 14px;
+              width: 100%;
             `,
           ]}
         >
-          <span css={theme.font.pcB28}>내 컬렉션 URL</span>
+          <span css={style.sectionTitle}>내 컬렉션 URL</span>
           <span>
             링크를 통해 친구가 이벤트를 참여하면 추가 뽑기권을 드려요!
           </span>
-          <div css={[theme.flex.center, theme.gap.gap12]}>
+          <div
+            css={[
+              theme.flex.center,
+              theme.gap.gap12,
+              mobile(css`
+                flex-direction: column;
+                width: 100%;
+                align-items: start;
+              `),
+            ]}
+          >
             <div css={style.shareLinkBox} ref={shareLinkRef}>
               {shareLink}
             </div>
@@ -111,11 +126,11 @@ export const LotteryApplyFinish = () => {
             theme.flex.column,
             css`
               align-items: start;
-              gap: 14px;
+              gap: 24px;
             `,
           ]}
         >
-          <span css={theme.font.pcB28}>
+          <span css={style.sectionTitle}>
             새롭게 출시된 아반떼 N에 대한 기대평을 남겨주세요 🥳
           </span>
           <span css={theme.font.preM18}>
@@ -125,7 +140,14 @@ export const LotteryApplyFinish = () => {
 
           <form
             onSubmit={handleSubmit}
-            css={[theme.flex.center, theme.gap.gap16]}
+            css={[
+              theme.flex.center,
+              theme.gap.gap16,
+              mobile(css`
+                flex-direction: column;
+                width: 100%;
+              `),
+            ]}
           >
             <textarea
               placeholder="여기에 기대평을 작성해주세요"

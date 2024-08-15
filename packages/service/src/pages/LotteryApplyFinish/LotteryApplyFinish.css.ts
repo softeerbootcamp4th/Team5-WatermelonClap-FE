@@ -8,6 +8,10 @@ export const mainBg = css`
   padding-bottom: 200px;
 
   color: white;
+
+  ${mobile(css`
+    padding-bottom: 100px;
+  `)}
 `;
 
 export const pageTitle = css`
@@ -38,6 +42,13 @@ export const applyBtn = (isExpectationNull: boolean) => css`
   width: fit-content;
 `;
 
+export const sectionTitle = css`
+  ${theme.font.pcB28};
+  ${mobile(css`
+    font-size: 24px;
+  `)}
+`;
+
 export const btn = css`
   margin: 0 auto;
   background-color: ${theme.color.gray100};
@@ -49,8 +60,8 @@ export const btn = css`
     background-color: ${theme.color.gray200};
   }
   ${mobile(css`
-    width: fit-content;
     padding: 10px 20px;
+    width: 200px;
   `)}
 `;
 
@@ -63,8 +74,12 @@ export const shareLinkBox = css`
   overflow: hidden;
   text-overflow: ellipsis;
   padding: 16px 18px;
-
   width: 400px;
+
+  ${mobile(css`
+    width: 100%;
+    padding: 10px;
+  `)}
 `;
 
 export const expectationInput = css`
@@ -75,4 +90,8 @@ export const expectationInput = css`
   border-radius: 14px;
   background-color: ${theme.color.gray100};
   outline: none;
+
+  ${mobile(css`
+    width: 100%;
+  `)}
 `;

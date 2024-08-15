@@ -23,6 +23,6 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
       <RouterProvider router={router} />
       <ModalContainer />
     </ModalProvider>
-    <ReactQueryDevtools initialIsOpen={false} />s
+    <ReactQueryDevtools initialIsOpen={false} />
   </QueryClientProvider>,
 );
