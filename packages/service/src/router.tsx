@@ -16,6 +16,7 @@ import {
   PARTS_COLLECTION_PAGE_ROUTE,
   SHARE_PAGE_ROUTE,
   N_QUIZ_EVENT_PAGE_WINNER_APLLY_PAGE_ROUTE,
+  LOTTER_APPLY_FINISH_PAGE_ROUTE,
 } from "./constants/routes";
 import { RotateDemoPage } from "./Demo/pages/RotateDemoPage";
 import { AuthDemoPage } from "./Demo/pages/AuthDemoPage";
@@ -36,6 +37,7 @@ import {
   Share,
   NQuizEventWinnerApply,
 } from "./pages";
+import { LotteryApplyFinish } from "./pages/LotteryApplyFinish";
 
 export const router = createBrowserRouter([
   {
@@ -52,6 +54,10 @@ export const router = createBrowserRouter([
       {
         path: N_QUIZ_EVENT_PAGE_WINNER_APLLY_PAGE_ROUTE,
         element: <NQuizEventWinnerApply />,
+      },
+      {
+        path: LOTTER_APPLY_FINISH_PAGE_ROUTE,
+        element: <LotteryApplyFinish />,
       },
     ],
   },

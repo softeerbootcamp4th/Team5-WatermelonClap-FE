@@ -10,8 +10,10 @@ import { useEffect, useRef, useState } from "react";
 import { useModal } from "@watermelon-clap/core/src/hooks";
 import { useAuth } from "@watermelon-clap/core/src/hooks";
 import { useMobile } from "@service/common/hooks/useMobile";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { apiGetPartsRemain } from "@service/apis/partsEvent";
+import { LOTTER_APPLY_FINISH_PAGE_ROUTE } from "@service/constants/routes";
+import { apiGetLotteryStatus } from "@service/apis/lottery/apiGetLotteryStatus";
 
 export const PartsPick = () => {
   const { openModal } = useModal();
@@ -22,6 +24,8 @@ export const PartsPick = () => {
     useLocation()?.state?.remainChance,
   );
   const { getIsLogin, login } = useAuth();
+  const navigate = useNavigate();
+  const isApplied = useRef(false);
 
   const minusRemainChance = () => {
     if (remainChance < 1) return;
@@ -64,6 +68,8 @@ export const PartsPick = () => {
     if (!getIsLogin()) {
       login().then(handleSetRemianChance);
     }
+
+    apiGetLotteryStatus().then(({ applied }) => (isApplied.current = applied));
   }, []);
 
   return (
@@ -82,7 +88,11 @@ export const PartsPick = () => {
             <Button
               variant={ButtonVariant.LONG}
               css={partsPickButtonStyle}
-              onClick={() => {}}
+              onClick={() => {
+                navigate(LOTTER_APPLY_FINISH_PAGE_ROUTE, {
+                  state: { isApplied: isApplied.current },
+                });
+              }}
             >
               URL 공유하고 아반떼 N 받으러 가기
             </Button>
