@@ -40,7 +40,7 @@ export const tabBtn = (isSelected: boolean) => css`
 `;
 
 export const partsCardWrap = css`
-  ${theme.flex.between}
+  ${theme.flex.center}
   gap: 80px 20px;
   flex-wrap: wrap;
   width: 90%;
