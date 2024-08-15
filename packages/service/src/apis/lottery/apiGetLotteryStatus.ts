@@ -1,4 +1,4 @@
-import { customFetch } from "@watermelon-clap/core/src/utils";
+import { customFetch, getAccessToken } from "@watermelon-clap/core/src/utils";
 
 interface IApiGetLotteryStatus {
   rank: number;
@@ -9,5 +9,10 @@ interface IApiGetLotteryStatus {
 export const apiGetLotteryStatus = (): Promise<IApiGetLotteryStatus> => {
   return customFetch(
     `${import.meta.env.VITE_BACK_BASE_URL}/event/lotteries/rank`,
+    {
+      headers: {
+        Authorization: `Bearer ${getAccessToken()}`,
+      },
+    },
   ).then((res) => res.json());
 };

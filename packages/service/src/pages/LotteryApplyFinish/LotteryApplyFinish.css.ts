@@ -67,7 +67,7 @@ export const btn = css`
 
 export const shareLinkBox = css`
   background-color: ${theme.color.gray100};
-  color: ${theme.color.gray300};
+  color: ${theme.color.gray500};
   ${theme.font.preM14}
   border-radius: 10px;
   white-space: nowrap;
