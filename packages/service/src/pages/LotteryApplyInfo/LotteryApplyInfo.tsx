@@ -9,9 +9,9 @@ import { PARTS_COLLECTION_PAGE_ROUTE } from "@service/constants/routes";
 import { useEffect, useRef, useState } from "react";
 import { mobile } from "@service/common/responsive/responsive";
 import { useMobile } from "@service/common/hooks/useMobile";
-import { apiGetMyShareLink } from "@service/apis/link/apiGetMyShareLink";
 import { apiGetPartsRemain } from "@service/apis/partsEvent";
 import { useAuth } from "@watermelon-clap/core/src/hooks";
+import { apiGetMyShareLink } from "@service/apis/link/apiGetMyShareLink";
 
 export const LotteryApplyInfo = () => {
   const navigate = useNavigate();
@@ -19,17 +19,12 @@ export const LotteryApplyInfo = () => {
   const [shareLink, setShareLink] = useState<string>();
   const [remainChance, setRemainChance] = useState<number>();
 
-  const { reLogin } = useAuth();
+  const { handleTokenError } = useAuth();
 
   useEffect(() => {
     apiGetMyShareLink()
       .then(({ link }) => setShareLink(link))
-      .catch((error: Error) => {
-        if (error.message === "403") {
-          reLogin().then(() => location.reload());
-        }
-        throw error;
-      });
+      .catch((error: Error) => handleTokenError(error));
 
     apiGetPartsRemain().then(({ remainChance }) =>
       setRemainChance(remainChance),
