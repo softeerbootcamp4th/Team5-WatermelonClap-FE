@@ -39,7 +39,7 @@ import {
   NQuizEventWinnerApply,
 } from "./pages";
 import { LotteryApplyFinish } from "./pages/LotteryApplyFinish";
-import { LotteryApplyInfo } from "./pages/LotteryApplyInfo/LotteryApplyInfo";
+import { LotteryApplyInfo } from "./pages/LotteryApplyInfo";
 
 export const router = createBrowserRouter([
   {
