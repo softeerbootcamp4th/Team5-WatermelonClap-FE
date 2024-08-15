@@ -1,4 +1,5 @@
 import { createBrowserRouter } from "react-router-dom";
+import { App } from "./App";
 import {
   OrderEventManagement,
   OrderEventGeneration,
@@ -8,9 +9,8 @@ import {
   PartsEventGeneration,
   PartsEventParticipantManagement,
   PartsEventDraw,
+  PartsEventWinnerManagement,
 } from "./pages/partsEvent";
-
-import { App } from "./App";
 import {
   ORDER_EVENT_MANAGEMENT_PAGE_ROUTE,
   ORDER_EVENT_GENERATION_PAGE_ROUTE,
@@ -18,6 +18,7 @@ import {
   PARTS_EVENT_GENERATION_PAGE_ROUTE,
   PARTS_EVENT_PARTICIPANT_MANAGEMENT_PAGE_ROUTE,
   PARTS_EVENT_DRAW_PAGE_ROUTE,
+  PARTS_EVENT_WINNER_MANAGEMENT_PAGE_ROUTE,
 } from "./constants/routes";
 export const router = createBrowserRouter([
   {
@@ -58,6 +59,10 @@ export const router = createBrowserRouter([
       {
         path: PARTS_EVENT_DRAW_PAGE_ROUTE,
         element: <PartsEventDraw />,
+      },
+      {
+        path: PARTS_EVENT_WINNER_MANAGEMENT_PAGE_ROUTE,
+        element: <PartsEventWinnerManagement />,
       },
     ],
   },

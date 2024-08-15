@@ -11,6 +11,7 @@ import {
   PARTS_EVENT_GENERATION_PAGE_ROUTE,
   PARTS_EVENT_PARTICIPANT_MANAGEMENT_PAGE_ROUTE,
   PARTS_EVENT_DRAW_PAGE_ROUTE,
+  PARTS_EVENT_WINNER_MANAGEMENT_PAGE_ROUTE,
 } from "@admin/constants/routes";
 
 interface GlobalNavsProps {
@@ -83,10 +84,10 @@ const GlobalNavs = ({ selectedCategory }: GlobalNavsProps) => {
         당첨자 뽑기
       </Link>
       <Link
-        to={ORDER_EVENT_WINNER_MANAGEMENT_PAGE_ROUTE}
+        to={PARTS_EVENT_WINNER_MANAGEMENT_PAGE_ROUTE}
         css={[
           linkStyles,
-          isActive(ORDER_EVENT_WINNER_MANAGEMENT_PAGE_ROUTE) &&
+          isActive(PARTS_EVENT_WINNER_MANAGEMENT_PAGE_ROUTE) &&
             activeLinkStyles,
         ]}
       >

@@ -10,3 +10,5 @@ export const PARTS_EVENT_GENERATION_PAGE_ROUTE =
 export const PARTS_EVENT_PARTICIPANT_MANAGEMENT_PAGE_ROUTE =
   "/parts-event-participant-management" as const;
 export const PARTS_EVENT_DRAW_PAGE_ROUTE = "parts-event-draw" as const;
+export const PARTS_EVENT_WINNER_MANAGEMENT_PAGE_ROUTE =
+  "parts-event-winner-management" as const;
