@@ -23,7 +23,7 @@ export const pageTitle = css`
 
   ${mobile(css`
     font-size: calc(20px + 2vw);
-    padding: 100px 0 50px 0;
+    padding: 100px 0 20px 0;
   `)}
 `;
 
@@ -31,6 +31,10 @@ export const subtitle = css`
   ${theme.font.preB}
   font-size : calc(16px + 0.5vw);
   text-align: center;
+
+  ${mobile(css`
+    font-size: calc(14px);
+  `)}
 `;
 
 export const sectionTitle = css`

@@ -29,7 +29,7 @@ export const LotteryApplyInfo = () => {
       <h1 css={style.pageTitle}>응모 내역 확인</h1>
       <h2 css={style.subtitle}>내 아반떼 N 뽑기 이벤트 응모 내역 입니다.</h2>
 
-      <Space size={isMobile ? 40 : 130} />
+      <Space size={isMobile ? 100 : 130} />
 
       <section css={[theme.flex.center]}>
         <div
@@ -39,6 +39,9 @@ export const LotteryApplyInfo = () => {
               align-items: start;
               gap: 20px;
             `,
+            mobile(css`
+              width: 80%;
+            `),
           ]}
         >
           <span css={style.sectionTitle}>내 컬렉션 URL</span>
@@ -63,7 +66,16 @@ export const LotteryApplyInfo = () => {
 
           <div css={[theme.flex.center, theme.gap.gap24]}>
             <span css={[theme.font.pcB28]}>남은 뽑기권</span>
-            <span css={[theme.font.pcpB82]}>32</span>
+            <span
+              css={[
+                theme.font.pcpB82,
+                mobile(css`
+                  font-size: 30px;
+                `),
+              ]}
+            >
+              32
+            </span>
           </div>
         </div>
       </section>
