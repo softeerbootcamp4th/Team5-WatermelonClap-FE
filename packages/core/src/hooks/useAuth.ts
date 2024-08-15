@@ -47,7 +47,8 @@ export const useAuth = () => {
    * API 호출 후 catch에서 받아온 Error 객체를 인자로 넣어주세요
    */
   const handleTokenError = async (error: Error) => {
-    if (error.message === "403") {
+    const TOKEN_ERROR_STATUS = "403";
+    if (error.message === TOKEN_ERROR_STATUS) {
       await reLogin();
       location.reload();
     } else {
