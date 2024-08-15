@@ -6,13 +6,9 @@ interface IApiGetLotteryStatus {
   applied: boolean;
 }
 
-export const apiGetLotteryStatus = (): Promise<IApiGetLotteryStatus> => {
-  return customFetch(
-    `${import.meta.env.VITE_BACK_BASE_URL}/event/lotteries/rank`,
-    {
-      headers: {
-        Authorization: `Bearer ${getAccessToken()}`,
-      },
+export const apiGetLotteryStatus = (): Promise<IApiGetLotteryStatus> =>
+  customFetch(`${import.meta.env.VITE_BACK_BASE_URL}/event/lotteries/rank`, {
+    headers: {
+      Authorization: `Bearer ${getAccessToken()}`,
     },
-  ).then((res) => res.json());
-};
+  }).then((res) => res.json());

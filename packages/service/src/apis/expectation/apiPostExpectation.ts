@@ -11,6 +11,7 @@ export const apiPostExpectation = (expectation: string) =>
         expectation: expectation,
       }),
       headers: {
+        "Content-Type": "application/json",
         Authorization: `Bearer ${getAccessToken()}`,
       },
     },
