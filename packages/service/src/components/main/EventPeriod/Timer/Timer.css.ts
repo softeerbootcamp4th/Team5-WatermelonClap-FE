@@ -15,7 +15,7 @@ export const staticCardStyles = (position: "upper" | "lower") => css`
 `;
 
 export const textStyles = (translateY?: string, title?: string) => css`
-  font-family: "PyeongChang Peace";
+  ${theme.font.pcpL}
   font-size: calc(20px + 3vw);
   -webkit-text-stroke-width: 2px;
   font-weight: normal;
@@ -96,6 +96,7 @@ export const rendererWrap2 = css`
   align-items: center;
   gap: calc(10px + 2vw);
   justify-content: center;
+
   ${mobile(css`
     gap: 0.3rem;
   `)};
