@@ -57,7 +57,10 @@ export const OrderEventManagement = () => {
           <Button
             onClick={(event) => {
               event.stopPropagation();
-              openModal({ type: "image", props: { src: params.value } });
+              openModal({
+                type: "image",
+                props: { title: "이벤트 이미지", src: params.value },
+              });
             }}
           >
             이미지

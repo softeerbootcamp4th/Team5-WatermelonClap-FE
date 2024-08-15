@@ -9,12 +9,14 @@ import {
 import { DefaultModalProps } from "../../ModalContainer";
 
 export interface ImageModalProps extends DefaultModalProps {
+  title: string;
   src: string;
 }
 
 export const ImageModal = ({
   isOpen,
   onRequestClose,
+  title,
   src,
 }: ImageModalProps) => {
   useScrollStop(isOpen);
@@ -28,8 +30,8 @@ export const ImageModal = ({
       ariaHideApp={false}
     >
       <div css={imageModalBodyStyles}>
-        <h2>경품 이미지</h2>
-        <img css={imageStyle} src={src} alt="격품 이미지"></img>
+        <h2>{title}</h2>
+        <img css={imageStyle} src={src} alt={title}></img>
         <Button onClick={onRequestClose}>확인</Button>
       </div>
     </Modal>
