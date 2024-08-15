@@ -9,7 +9,7 @@ import {
   mainContainerStyle,
   buttonContainerStyle,
   headerStyle,
-} from "./OrderEventManagementcss";
+} from "./OrderEventManagement.css";
 import { useNavigate } from "react-router-dom";
 import {
   ORDER_EVENT_GENERATION_PAGE_ROUTE,
