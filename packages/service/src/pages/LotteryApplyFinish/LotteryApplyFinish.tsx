@@ -11,31 +11,52 @@ export const LotteryApplyFinish = () => {
   const navigator = useNavigate();
   return (
     <div css={style.mainBg}>
-      <section>
-        <h1 css={style.pageTitle}>응모완료</h1>
-        <span>이벤트에 응모되었습니다.</span>
-      </section>
+      <h1 css={style.pageTitle}>응모완료</h1>
+
+      <Space size={100} />
 
       <section
-        css={css`
-          margin: 0 auto;
-        `}
+        css={[
+          theme.flex.column,
+          css`
+            margin: 0 auto;
+            width: 70%;
+            max-width: 1000px;
+            justify-content: start;
+            align-items: start;
+          `,
+        ]}
       >
-        <div>
-          <span>내 컬렉션 URL</span>
+        <div
+          css={[
+            theme.flex.column,
+            css`
+              align-items: start;
+              gap: 14px;
+            `,
+          ]}
+        >
+          <span css={theme.font.pcB28}>내 컬렉션 URL</span>
           <span>
             링크를 통해 친구가 이벤트를 참여하면 추가 뽑기권을 드려요!
           </span>
-
           <div css={[theme.flex.center, theme.gap.gap12]}>
             <div css={style.shareLinkBox}>공유링크</div>
             <ClipBoardButton />
           </div>
         </div>
 
-        <Space size={100} />
+        <Space size={40} />
 
-        <div>
+        <div
+          css={[
+            theme.flex.column,
+            css`
+              align-items: start;
+              gap: 14px;
+            `,
+          ]}
+        >
           <span css={theme.font.pcB28}>
             새롭게 출시된 아반떼 N에 대한 기대평을 남겨주세요 🥳
           </span>
@@ -44,7 +65,7 @@ export const LotteryApplyFinish = () => {
             수 있어요.
           </span>
 
-          <div css={[theme.flex.center, theme.gap.gap12]}>
+          <div css={[theme.flex.center, theme.gap.gap16]}>
             <textarea
               placeholder="여기에 기대평을 작성해주세요"
               css={style.expectationInput}
