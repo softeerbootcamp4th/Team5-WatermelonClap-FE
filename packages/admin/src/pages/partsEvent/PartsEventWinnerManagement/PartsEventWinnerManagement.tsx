@@ -5,6 +5,7 @@ import {
 } from "./PartsEventWinnerManagement.css";
 import { css } from "@emotion/react";
 import { Button } from "@admin/common/components/Button";
+import { WinnerDataGrid } from "@admin/components/partsEvent";
 
 export const PartsEventWinnerManagement = () => {
   const [activeTab, setActiveTab] = useState<"main" | "miniature">("main");
@@ -42,9 +43,9 @@ export const PartsEventWinnerManagement = () => {
           gap: 20px;
         `}
       >
-        {activeTab === "main" && <></>}
+        {activeTab === "main" && <WinnerDataGrid />}
 
-        {activeTab === "miniature" && <></>}
+        {activeTab === "miniature" && <WinnerDataGrid />}
       </div>
     </div>
   );
