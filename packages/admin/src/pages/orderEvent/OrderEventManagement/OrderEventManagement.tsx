@@ -1,11 +1,7 @@
 import { apiGetOrderEvent, apiDeleteOrderEvent } from "@admin/apis/orderEvent";
 import { Button } from "@admin/common/components/Button";
 import { DataGrid, GridColDef, GridRowId } from "@mui/x-data-grid";
-import {
-  useSuspenseQuery,
-  useMutation,
-  useQueryClient,
-} from "@tanstack/react-query";
+import { useMutation, useQueryClient, useQuery } from "@tanstack/react-query";
 import { useModal } from "@watermelon-clap/core/src/hooks";
 import { IOrderEvent } from "@watermelon-clap/core/src/types";
 import { useState } from "react";
@@ -16,22 +12,12 @@ import {
 } from "./OrderEventManagementcss";
 import { useNavigate } from "react-router-dom";
 import {
-  ORDER_EVENT_GENERATION_PAGE_ROTUE,
-  ORDER_EVENT_WINNER_MANAGEMENT_PATE_ROUTE,
+  ORDER_EVENT_GENERATION_PAGE_ROUTE,
+  ORDER_EVENT_WINNER_MANAGEMENT_PAGE_ROUTE,
 } from "@admin/constants/routes";
 
-interface OrderEvnetDataProps {
-  id: string;
-  startDate: string;
-  endDate: string;
-  status: string;
-  reward: string;
-  quizImgSrc: string | undefined;
-  quizAnswer: string | undefined;
-}
-
-function mapDataToGrid(data: IOrderEvent[]): OrderEvnetDataProps[] {
-  return data.map((item) => ({
+function mapDataToGrid(data: IOrderEvent[] | undefined) {
+  return data?.map((item) => ({
     id: item.eventId,
     startDate: item.startDate,
     endDate: item.endDate,
@@ -45,10 +31,9 @@ function mapDataToGrid(data: IOrderEvent[]): OrderEvnetDataProps[] {
 export const OrderEventManagement = () => {
   const navigate = useNavigate();
   const queryClient = useQueryClient();
-  const { data: quizList } = useSuspenseQuery<IOrderEvent[]>({
+  const { data: quizList } = useQuery<IOrderEvent[]>({
     queryKey: ["orderEvent"],
     queryFn: () => apiGetOrderEvent(),
-    staleTime: Infinity,
   });
   const { openModal } = useModal();
   const [selectionModel, setSelectionModel] = useState<readonly GridRowId[]>(
@@ -90,7 +75,7 @@ export const OrderEventManagement = () => {
             onClick={(event) => {
               console.log(params.id);
               event.stopPropagation();
-              navigate(ORDER_EVENT_WINNER_MANAGEMENT_PATE_ROUTE, {
+              navigate(ORDER_EVENT_WINNER_MANAGEMENT_PAGE_ROUTE, {
                 state: params.id,
               });
             }}
@@ -145,7 +130,7 @@ export const OrderEventManagement = () => {
         >
           {deleteMutation.isPending ? "삭제 중..." : "선택 이벤트 삭제"}
         </Button>
-        <Button onClick={() => navigate(ORDER_EVENT_GENERATION_PAGE_ROTUE)}>
+        <Button onClick={() => navigate(ORDER_EVENT_GENERATION_PAGE_ROUTE)}>
           이벤트 생성
         </Button>
       </div>
