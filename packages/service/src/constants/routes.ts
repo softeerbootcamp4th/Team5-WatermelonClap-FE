@@ -17,3 +17,4 @@ export const SHARE_PAGE_ROUTE = "/share/:linkKey" as const;
 export const N_QUIZ_EVENT_PAGE_WINNER_APLLY_PAGE_ROUTE =
   "/quiz-event-apply" as const;
 export const LOTTER_APPLY_FINISH_PAGE_ROUTE = "/lottery/apply-finish" as const;
+export const LOTTER_APPLY_INFO_PAGE_ROUTE = "/lottery/apply-info" as const;
