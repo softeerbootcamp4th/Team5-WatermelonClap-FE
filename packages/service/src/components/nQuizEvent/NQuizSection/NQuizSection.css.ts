@@ -3,6 +3,12 @@ import { mobile } from "@service/common/responsive/responsive";
 import { theme } from "@watermelon-clap/core/src/theme";
 import { EventStatusType } from "../NQuizReward/type";
 
+export const nQuizContainerStyle = css`
+  ${theme.flex.center}
+  width: 100%;
+  overflow: hidden;
+`;
+
 export const nQuizSectionStyles = (status: EventStatusType) => css`
   position: relative;
   ${theme.flex.center}
@@ -20,6 +26,11 @@ export const nQuizSectionStyles = (status: EventStatusType) => css`
     padding: 20px 21px;
     border-radius: 10px;
   `)}
+`;
+
+export const nQuizImageStyle = css`
+  overflow: hidden;
+  width: 80%;
 `;
 
 export const nQuizSectionHeaderContainerStyles = css`

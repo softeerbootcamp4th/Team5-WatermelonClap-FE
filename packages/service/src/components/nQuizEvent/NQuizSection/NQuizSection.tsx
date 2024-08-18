@@ -6,9 +6,9 @@ import {
   nQuizSectionStyles,
   nQuizSectionHeaderContainerStyles,
   nQuizSectionBodyContainerStyles,
+  nQuizContainerStyle,
+  nQuizImageStyle,
 } from "./NQuizSection.css";
-import { css } from "@emotion/react";
-import { theme } from "@watermelon-clap/core/src/theme";
 
 interface NQuizSectionProps {
   openedQuiz: IOrderEvent;
@@ -16,13 +16,7 @@ interface NQuizSectionProps {
 
 export const NQuizSection = ({ openedQuiz }: NQuizSectionProps) => {
   return (
-    <div
-      css={css`
-        ${theme.flex.center}
-        width: 100%;
-        overflow: hidden;
-      `}
-    >
+    <div css={nQuizContainerStyle}>
       <section css={nQuizSectionStyles(openedQuiz.status)}>
         <div css={nQuizSectionHeaderContainerStyles}>
           <NQuizHeader
@@ -33,12 +27,9 @@ export const NQuizSection = ({ openedQuiz }: NQuizSectionProps) => {
 
         <div css={nQuizSectionBodyContainerStyles(openedQuiz.status)}>
           <img
-            css={css`
-              overflow: hidden;
-            `}
+            css={nQuizImageStyle}
             src={openedQuiz.quiz?.imgSrc}
             alt="N뽑기 이벤트 퀴즈 이미지"
-            width="80%"
           />
           <NQuizInput openedQuiz={openedQuiz} />
         </div>
