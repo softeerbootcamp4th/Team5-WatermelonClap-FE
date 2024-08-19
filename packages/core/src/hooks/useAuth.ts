@@ -24,10 +24,15 @@ export const useAuth = () => {
   const login = () => {
     return new Promise((resolve, reject) => {
       signInWithPopup(fbAuth, provider)
-        .then((res) => res.user.getIdToken())
-        .then((token) => {
+        .then((res) => res.user.getIdTokenResult())
+        .then(({ token, expirationTime }) => {
+          const utcDate = new Date(expirationTime);
+          const localDate = utcDate.toLocaleString();
+
           localStorage.setItem("accessToken", token);
-          resolve(token);
+          localStorage.setItem("expirationTime", localDate);
+
+          resolve({ token, expirationTime: localDate });
         })
         .catch((error) => reject(error));
     });
