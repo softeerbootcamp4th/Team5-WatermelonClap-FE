@@ -6,7 +6,7 @@ import { IExpectation } from "@service/apis/expectation/type";
 
 export const Expectations = () => {
   const { data: reviews } = useSuspenseQuery<IExpectation[]>({
-    queryKey: ["orderEvent"],
+    queryKey: ["reviews"],
     queryFn: () => apiGetExpectation(),
   });
 

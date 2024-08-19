@@ -50,6 +50,8 @@ export const rewardContainerStyle = (status: EventStatusType) => css`
 
 export const imgStyle = css`
   width: 70%;
+  aspect-ratio: 1 / 1;
+  object-fit: contain;
 
   ${mobile(css`
     width: 65%;
