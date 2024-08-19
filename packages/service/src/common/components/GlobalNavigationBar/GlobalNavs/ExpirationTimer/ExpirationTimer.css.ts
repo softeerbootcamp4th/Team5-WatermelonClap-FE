@@ -1,13 +1,17 @@
 import { css } from "@emotion/react";
 import { theme } from "@watermelon-clap/core/src/theme";
 
+export const container = css`
+  ${theme.flex.center}
+  gap : 10px;
+`;
+
 export const timer = css`
   border: 1px solid white;
   border-radius: 100px;
   align-items: center;
-  width: 100px;
   gap: 8px;
-  padding: 4px 10px;
+  padding: 6px 18px;
   justify-content: center;
   color: white;
   ${theme.font.preM}

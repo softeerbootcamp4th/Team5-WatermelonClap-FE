@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
 import * as style from "./ExpirationTimer.css";
 import { PiTimerBold } from "react-icons/pi";
+import { useAuth } from "@watermelon-clap/core/src/hooks";
+import { css } from "@emotion/react";
 
 interface IExpirationTimerProps {
   diffMs: number;
@@ -8,6 +10,13 @@ interface IExpirationTimerProps {
 
 export const ExpirationTimer = ({ diffMs }: IExpirationTimerProps) => {
   const [remainingTime, setRemainingTime] = useState(diffMs);
+
+  const { refresh, getExpirationTime } = useAuth();
+
+  const handleRefreshToken = () => {
+    refresh()?.then(() => setRemainingTime(getExpirationTime() as number));
+  };
+
   useEffect(() => {
     if (remainingTime <= 0) return;
 
@@ -25,13 +34,10 @@ export const ExpirationTimer = ({ diffMs }: IExpirationTimerProps) => {
     return () => clearInterval(timerId);
   }, [remainingTime]);
 
-  if (remainingTime <= 0) {
-    return <span>Expired</span>;
-  }
-
   const diffMins = String(
     Math.floor((remainingTime % (1000 * 60 * 60)) / (1000 * 60)),
   ).padStart(2, "0");
+
   const diffSecs = String(
     Math.floor((remainingTime % (1000 * 60)) / 1000),
   ).padStart(2, "0");
@@ -39,7 +45,18 @@ export const ExpirationTimer = ({ diffMs }: IExpirationTimerProps) => {
   return (
     <span css={style.timer}>
       <PiTimerBold />
-      {diffMins} : {diffSecs}
+      <div>
+        {diffMins} : {diffSecs}
+      </div>
+      |
+      <span
+        onClick={handleRefreshToken}
+        css={css`
+          cursor: pointer;
+        `}
+      >
+        갱신
+      </span>
     </span>
   );
 };
