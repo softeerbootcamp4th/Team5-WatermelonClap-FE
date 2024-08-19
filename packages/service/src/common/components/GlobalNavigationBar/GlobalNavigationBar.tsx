@@ -13,7 +13,6 @@ export const GlobalNavigationBar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const { resetBoundary } = useErrorBoundary();
 
-  // 800px보다 작아지면 햄버거 메뉴 생성
   const isMobile = useMobile(GNB_BREAKPOINT);
 
   const navigate = useNavigate();

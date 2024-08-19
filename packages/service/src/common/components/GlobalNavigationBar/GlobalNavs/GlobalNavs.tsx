@@ -50,7 +50,7 @@ const GlobalNavs = ({ isOpen }: { isOpen: boolean }) => {
         css={linkStyles}
         onClick={() => handleNavigation(NEW_CAR_PAGE_ROUTE)}
       >
-        아반떼 N
+        아반떼 N 소개
       </div>
       <div
         css={linkStyles}
