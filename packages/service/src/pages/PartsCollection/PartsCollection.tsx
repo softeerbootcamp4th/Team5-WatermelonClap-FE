@@ -36,8 +36,11 @@ export const PartsCollection = () => {
   return (
     <div css={style.mainBg}>
       <h1 css={style.pageTitle}>내 아반떼 N 파츠 컬렉션</h1>
-      <CustomCard {...equippedPartsImg} />
-      <PartsTab partsDatas={partsDatas} refetchGetMyParts={refetch} />
+      <div css={style.partsContainer}>
+        <CustomCard {...equippedPartsImg} />
+
+        <PartsTab partsDatas={partsDatas} refetchGetMyParts={refetch} />
+      </div>
     </div>
   );
 };
