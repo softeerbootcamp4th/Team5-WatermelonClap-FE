@@ -9,22 +9,39 @@ import {
   PARTS_COLLECTION_PAGE_ROUTE,
   LOTTER_APPLY_INFO_PAGE_ROUTE,
 } from "@service/constants/routes";
-import { useAuth } from "@watermelon-clap/core/src/hooks";
+import { useAuth, useModal } from "@watermelon-clap/core/src/hooks";
 import { ExpirationTimer } from "./ExpirationTimer";
+import { theme } from "@watermelon-clap/core/src/theme";
+import { FaPowerOff } from "react-icons/fa";
+import { useState } from "react";
 
 const GlobalNavs = ({ isOpen }: { isOpen: boolean }) => {
   const navigate = useNavigate();
   const { resetBoundary } = useErrorBoundary();
-  const { getExpirationTime } = useAuth();
+  const { getExpirationTime, getIsLogin } = useAuth();
 
   const handleNavigation = (route: string) => {
     navigate(route);
     resetBoundary();
   };
 
-  const { login } = useAuth();
+  const { login, logout } = useAuth();
+  const { openModal } = useModal();
+  const [isLogin, setIsLogin] = useState(getIsLogin());
+
   const handleLogin = () => {
-    login();
+    login().then(() => setIsLogin(true));
+  };
+
+  const handleLogout = () => {
+    openModal({
+      type: "confirm",
+      props: {
+        title: "로그아웃",
+        content: "정말 로그아웃 하시겠습니까???",
+        confirmEvent: () => logout().then(() => setIsLogin(false)),
+      },
+    });
   };
 
   return (
@@ -47,22 +64,35 @@ const GlobalNavs = ({ isOpen }: { isOpen: boolean }) => {
       >
         <NLogo css={nLogoStyles} /> 퀴즈
       </div>
-      <div
-        css={linkStyles}
-        onClick={() => handleNavigation(PARTS_COLLECTION_PAGE_ROUTE)}
-      >
-        내 컬렉션
-      </div>
-      <div
-        css={linkStyles}
-        onClick={() => handleNavigation(LOTTER_APPLY_INFO_PAGE_ROUTE)}
-      >
-        응모 내역 확인
-      </div>
-      <div css={linkStyles} onClick={handleLogin}>
-        로그인
-      </div>
-      <ExpirationTimer diffMs={getExpirationTime() as number} />
+      {isLogin && (
+        <>
+          <div
+            css={linkStyles}
+            onClick={() => handleNavigation(PARTS_COLLECTION_PAGE_ROUTE)}
+          >
+            내 컬렉션
+          </div>
+          <div
+            css={linkStyles}
+            onClick={() => handleNavigation(LOTTER_APPLY_INFO_PAGE_ROUTE)}
+          >
+            응모 내역 확인
+          </div>
+        </>
+      )}
+
+      {isLogin ? (
+        <div css={[theme.flex.center, theme.gap.gap16]}>
+          <ExpirationTimer diffMs={getExpirationTime() as number} />
+          <FaPowerOff css={linkStyles} onClick={handleLogout} />
+        </div>
+      ) : (
+        <>
+          <div css={linkStyles} onClick={handleLogin}>
+            로그인
+          </div>
+        </>
+      )}
     </div>
   );
 };
