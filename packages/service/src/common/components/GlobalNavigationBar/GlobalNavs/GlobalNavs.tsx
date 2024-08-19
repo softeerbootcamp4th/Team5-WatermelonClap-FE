@@ -9,14 +9,22 @@ import {
   PARTS_COLLECTION_PAGE_ROUTE,
   LOTTER_APPLY_INFO_PAGE_ROUTE,
 } from "@service/constants/routes";
+import { useAuth } from "@watermelon-clap/core/src/hooks";
+import { ExpirationTimer } from "./ExpirationTimer";
 
 const GlobalNavs = ({ isOpen }: { isOpen: boolean }) => {
   const navigate = useNavigate();
   const { resetBoundary } = useErrorBoundary();
+  const { getExpirationTime } = useAuth();
 
   const handleNavigation = (route: string) => {
     navigate(route);
     resetBoundary();
+  };
+
+  const { login } = useAuth();
+  const handleLogin = () => {
+    login();
   };
 
   return (
@@ -51,6 +59,10 @@ const GlobalNavs = ({ isOpen }: { isOpen: boolean }) => {
       >
         응모 내역 확인
       </div>
+      <div css={linkStyles} onClick={handleLogin}>
+        로그인
+      </div>
+      <ExpirationTimer diffMs={getExpirationTime()} />
     </div>
   );
 };
