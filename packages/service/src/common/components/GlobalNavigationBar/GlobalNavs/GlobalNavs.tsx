@@ -62,7 +62,7 @@ const GlobalNavs = ({ isOpen }: { isOpen: boolean }) => {
       <div css={linkStyles} onClick={handleLogin}>
         로그인
       </div>
-      <ExpirationTimer diffMs={getExpirationTime()} />
+      <ExpirationTimer diffMs={getExpirationTime() as number} />
     </div>
   );
 };

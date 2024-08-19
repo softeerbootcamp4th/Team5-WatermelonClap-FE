@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import * as style from "./ExpirationTimer.css";
+import { PiTimerBold } from "react-icons/pi";
 
 interface IExpirationTimerProps {
   diffMs: number;
@@ -28,10 +29,6 @@ export const ExpirationTimer = ({ diffMs }: IExpirationTimerProps) => {
     return <span>Expired</span>;
   }
 
-  const diffHrs = String(Math.floor(remainingTime / (1000 * 60 * 60))).padStart(
-    2,
-    "0",
-  );
   const diffMins = String(
     Math.floor((remainingTime % (1000 * 60 * 60)) / (1000 * 60)),
   ).padStart(2, "0");
@@ -41,7 +38,8 @@ export const ExpirationTimer = ({ diffMs }: IExpirationTimerProps) => {
 
   return (
     <span css={style.timer}>
-      {diffHrs} : {diffMins} : {diffSecs}
+      <PiTimerBold />
+      {diffMins} : {diffSecs}
     </span>
   );
 };
