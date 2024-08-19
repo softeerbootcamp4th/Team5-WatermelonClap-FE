@@ -13,27 +13,28 @@ import { useAuth, useModal } from "@watermelon-clap/core/src/hooks";
 import { ExpirationTimer } from "./ExpirationTimer";
 import { theme } from "@watermelon-clap/core/src/theme";
 import { FaPowerOff } from "react-icons/fa";
-import { useMobile } from "@service/common/hooks/useMobile";
-import { GNB_BREAKPOINT } from "@service/constants/breakpoints";
+import { useState } from "react";
+import { css } from "@emotion/react";
 
 interface IGlobalNavsProps {
   isOpen: boolean;
-  isLogin: boolean;
-  setIsLogin: React.Dispatch<React.SetStateAction<boolean>>;
+  setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-const GlobalNavs = ({ isOpen, isLogin, setIsLogin }: IGlobalNavsProps) => {
+const GlobalNavs = ({ isOpen, setIsOpen }: IGlobalNavsProps) => {
   const navigate = useNavigate();
   const { resetBoundary } = useErrorBoundary();
-  const { getExpirationTime, login, logout } = useAuth();
-  const isMobile = useMobile(GNB_BREAKPOINT);
+  const { getExpirationTime, getIsLogin } = useAuth();
 
   const handleNavigation = (route: string) => {
+    setIsOpen(false);
     navigate(route);
     resetBoundary();
   };
 
+  const { login, logout } = useAuth();
   const { openModal } = useModal();
+  const [isLogin, setIsLogin] = useState(getIsLogin());
 
   const handleLogin = () => {
     login().then(() => setIsLogin(true));
@@ -88,12 +89,16 @@ const GlobalNavs = ({ isOpen, isLogin, setIsLogin }: IGlobalNavsProps) => {
       )}
 
       {isLogin ? (
-        !isMobile && (
-          <div css={[theme.flex.center, theme.gap.gap16]}>
-            <ExpirationTimer diffMs={getExpirationTime() as number} />
-            <FaPowerOff css={linkStyles} onClick={handleLogout} />
-          </div>
-        )
+        <div css={[theme.flex.center, theme.gap.gap16]}>
+          <ExpirationTimer diffMs={getExpirationTime() as number} />
+          <FaPowerOff
+            css={css`
+              color: white;
+              cursor: pointer;
+            `}
+            onClick={handleLogout}
+          />
+        </div>
       ) : (
         <div css={linkStyles} onClick={handleLogin}>
           로그인
