@@ -6,6 +6,8 @@ import {
   nQuizSectionStyles,
   nQuizSectionHeaderContainerStyles,
   nQuizSectionBodyContainerStyles,
+  nQuizContainerStyle,
+  nQuizImageStyle,
 } from "./NQuizSection.css";
 
 interface NQuizSectionProps {
@@ -14,24 +16,25 @@ interface NQuizSectionProps {
 
 export const NQuizSection = ({ openedQuiz }: NQuizSectionProps) => {
   return (
-    <section css={nQuizSectionStyles}>
-      <div css={nQuizSectionHeaderContainerStyles}>
-        <NQuizHeader
-          date={openedQuiz.startDate.slice(0, 10)}
-          status={openedQuiz.status}
-        />
-      </div>
+    <div css={nQuizContainerStyle}>
+      <section css={nQuizSectionStyles(openedQuiz.status)}>
+        <div css={nQuizSectionHeaderContainerStyles}>
+          <NQuizHeader
+            date={openedQuiz.startDate.slice(0, 10)}
+            status={openedQuiz.status}
+          />
+        </div>
 
-      <div css={nQuizSectionBodyContainerStyles(openedQuiz.status)}>
-        <img
-          src={openedQuiz.quiz?.imgSrc}
-          alt="N뽑기 이벤트 퀴즈 이미지"
-          width="80%"
-        />
-        <NQuizInput openedQuiz={openedQuiz} />
-      </div>
-
+        <div css={nQuizSectionBodyContainerStyles(openedQuiz.status)}>
+          <img
+            css={nQuizImageStyle}
+            src={openedQuiz.quiz?.imgSrc}
+            alt="N뽑기 이벤트 퀴즈 이미지"
+          />
+          <NQuizInput openedQuiz={openedQuiz} />
+        </div>
+      </section>
       <NQuizAlternativeBody status={openedQuiz.status} />
-    </section>
+    </div>
   );
 };

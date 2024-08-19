@@ -49,8 +49,13 @@ export const rewardContainerStyle = (status: EventStatusType) => css`
 `;
 
 export const imgStyle = css`
-  width: 80%;
-  aspect-ratio: 2 / 1;
+  width: 70%;
+  aspect-ratio: 1 / 1;
+  object-fit: contain;
+
+  ${mobile(css`
+    width: 65%;
+  `)}
 `;
 
 export const nameStyle = css`

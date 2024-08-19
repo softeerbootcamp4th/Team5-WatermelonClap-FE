@@ -1,10 +1,11 @@
-import { GlobalProvider } from "./common/providers/GlobalProvider";
-import { RouterProvider } from "react-router-dom";
-import { router } from "./router";
+import { Outlet } from "react-router-dom";
+import { GlobalNavigationBar } from "./common/components/GlobalNavigationBar";
+
 export const App = () => {
   return (
-    <GlobalProvider>
-      <RouterProvider router={router} />
-    </GlobalProvider>
+    <div>
+      <GlobalNavigationBar />
+      <Outlet />
+    </div>
   );
 };
