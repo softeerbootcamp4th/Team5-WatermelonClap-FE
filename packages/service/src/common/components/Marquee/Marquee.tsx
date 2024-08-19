@@ -1,4 +1,4 @@
-import { ReactNode, ReactElement, Children } from "react";
+import { ReactNode, ReactElement } from "react";
 import { marqueeStyles, marqueeItemStyles } from "./Marquee.css";
 import { toPx, toS } from "@service/common/utils/formatter";
 
@@ -31,8 +31,8 @@ const Marquee = ({
   const formattedDuration = toS(duration);
   const formattedGap = toPx(gap);
 
-  const repeatedChildren = Children.toArray(children).flatMap((child) =>
-    Array(repeat).fill(child),
+  const repeatedChildren = Array.from({ length: repeat }).flatMap(
+    () => children,
   );
 
   return (
