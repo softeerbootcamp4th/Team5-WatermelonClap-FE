@@ -41,6 +41,16 @@ export const useAuth = () => {
     });
 
   const reLogin = () => logout().then(() => login());
+
+  const refresh = () => {
+    return fbAuth.currentUser
+      ?.getIdTokenResult(true)
+      .then(({ token, expirationTime }) => {
+        const expirationMs = new Date(expirationTime).getTime();
+        localStorage.setItem("accessToken", token);
+        localStorage.setItem("expirationTime", String(expirationMs));
+      });
+  };
   const getIsLogin = () => Boolean(localStorage.getItem("accessToken"));
 
   const getExpirationTime = () => {
@@ -76,5 +86,6 @@ export const useAuth = () => {
     getIsLogin,
     handleTokenError,
     getExpirationTime,
+    refresh,
   };
 };
