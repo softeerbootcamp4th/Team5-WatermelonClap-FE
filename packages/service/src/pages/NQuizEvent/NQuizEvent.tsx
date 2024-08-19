@@ -33,8 +33,6 @@ export const NQuizEvent = () => {
     (quiz) => quiz.status === "UPCOMING",
   ) as IOrderEvent;
 
-  openedQuiz.status = "CLOSED";
-
   return (
     <>
       <div css={backgroundStyle}>
