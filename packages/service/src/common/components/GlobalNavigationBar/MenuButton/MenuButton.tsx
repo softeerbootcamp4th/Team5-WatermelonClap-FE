@@ -61,7 +61,7 @@ export const MenuButton = ({ isOpen = false, onClick }: IMenuButtonProps) => {
       css={css`
         cursor: pointer;
         position: absolute;
-        right: 30px;
+        left: 30px;
         z-index: 2;
       `}
     >

@@ -13,21 +13,27 @@ import { useAuth, useModal } from "@watermelon-clap/core/src/hooks";
 import { ExpirationTimer } from "./ExpirationTimer";
 import { theme } from "@watermelon-clap/core/src/theme";
 import { FaPowerOff } from "react-icons/fa";
-import { useState } from "react";
+import { useMobile } from "@service/common/hooks/useMobile";
+import { GNB_BREAKPOINT } from "@service/constants/breakpoints";
 
-const GlobalNavs = ({ isOpen }: { isOpen: boolean }) => {
+interface IGlobalNavsProps {
+  isOpen: boolean;
+  isLogin: boolean;
+  setIsLogin: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
+const GlobalNavs = ({ isOpen, isLogin, setIsLogin }: IGlobalNavsProps) => {
   const navigate = useNavigate();
   const { resetBoundary } = useErrorBoundary();
-  const { getExpirationTime, getIsLogin } = useAuth();
+  const { getExpirationTime, login, logout } = useAuth();
+  const isMobile = useMobile(GNB_BREAKPOINT);
 
   const handleNavigation = (route: string) => {
     navigate(route);
     resetBoundary();
   };
 
-  const { login, logout } = useAuth();
   const { openModal } = useModal();
-  const [isLogin, setIsLogin] = useState(getIsLogin());
 
   const handleLogin = () => {
     login().then(() => setIsLogin(true));
@@ -82,16 +88,16 @@ const GlobalNavs = ({ isOpen }: { isOpen: boolean }) => {
       )}
 
       {isLogin ? (
-        <div css={[theme.flex.center, theme.gap.gap16]}>
-          <ExpirationTimer diffMs={getExpirationTime() as number} />
-          <FaPowerOff css={linkStyles} onClick={handleLogout} />
-        </div>
-      ) : (
-        <>
-          <div css={linkStyles} onClick={handleLogin}>
-            로그인
+        !isMobile && (
+          <div css={[theme.flex.center, theme.gap.gap16]}>
+            <ExpirationTimer diffMs={getExpirationTime() as number} />
+            <FaPowerOff css={linkStyles} onClick={handleLogout} />
           </div>
-        </>
+        )
+      ) : (
+        <div css={linkStyles} onClick={handleLogin}>
+          로그인
+        </div>
       )}
     </div>
   );
