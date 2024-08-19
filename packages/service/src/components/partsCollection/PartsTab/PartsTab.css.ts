@@ -6,18 +6,19 @@ export const container = css`
   ${theme.flex.column}
   margin: 0 auto;
 `;
+
 export const tabWrap = css`
   display: flex;
   justify-content: space-between;
   margin: 0 auto;
-  margin-top: 80px;
   width: 700px;
 
   ${mobile(css`
-    width: 100%;
-    flex-wrap: wrap;
-
-    justify-content: space-around;
+    width: 80vw;
+    gap: 10px;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
   `)}
 `;
 
@@ -35,19 +36,33 @@ export const tabBtn = (isSelected: boolean) => css`
   outline: none;
 
   ${mobile(css`
-    margin: 10px 8%;
+    border: ${isSelected ? `1px solid ${theme.color.white}` : `none`};
+    width: fit-content;
+    height: fit-content;
+    border-radius: 10px;
+    padding: 6px 12px;
+    font-size: 14px;
   `)}
 `;
 
 export const partsCardWrap = css`
-  ${theme.flex.between}
-  gap: 80px 20px;
+  display: flex;
+  align-items: baseline;
+  justify-content: flex-start;
+
+  gap: 20px 20px;
   flex-wrap: wrap;
-  width: 90%;
-  max-width: 1000px;
+  width: 700px;
   margin-top: 30px;
+  height: 540px;
+  border: 2px solid ${theme.color.gray200};
+  padding: 20px;
+  border-radius: 16px;
 
   ${mobile(css`
-    justify-content: center;
+    border: none;
+    padding: 0;
+    max-width: 350px;
+    height: fit-content;
   `)}
 `;
