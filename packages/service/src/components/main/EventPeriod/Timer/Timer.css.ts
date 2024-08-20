@@ -16,7 +16,7 @@ export const staticCardStyles = (position: "upper" | "lower") => css`
 
 export const textStyles = (translateY?: string, title?: string) => css`
   ${theme.font.pcpL}
-  font-size: calc(20px + 3vw);
+  font-size: calc(10px + 3vw);
   -webkit-text-stroke-width: 2px;
   font-weight: normal;
   transform: translateY(${translateY});
@@ -89,6 +89,16 @@ export const rendererWrap1 = css`
   margin: 0 auto;
   box-shadow: 0 0 220px 10px ${theme.color.black};
   width: 70%;
+  padding: 8px 50px;
+  width: fit-content;
+  margin-top: 90px;
+  border: 1px solid ${theme.color.gray400};
+
+  ${mobile(css`
+    border-radius: 30px;
+    padding: 8px 20px;
+    margin-top: 0px;
+  `)}
 `;
 
 export const rendererWrap2 = css`
