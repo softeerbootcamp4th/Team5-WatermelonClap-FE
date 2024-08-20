@@ -14,6 +14,8 @@ import {
 } from "@admin/constants/routes";
 import { theme } from "@watermelon-clap/core/src/theme";
 import { css } from "@emotion/react";
+import { apiGetAdminAuth } from "@admin/apis/auth/apiGetAdminAuth";
+import { useErrorBoundary } from "react-error-boundary";
 
 export const GlobalNavigationBar = () => {
   const navigate = useNavigate();
@@ -21,6 +23,7 @@ export const GlobalNavigationBar = () => {
   const [selectedCategory, setSelectedCategory] = useState<"order" | "parts">(
     "order",
   );
+  const { showBoundary } = useErrorBoundary();
 
   useEffect(() => {
     if (location.pathname.includes("order")) {
@@ -29,6 +32,12 @@ export const GlobalNavigationBar = () => {
       setSelectedCategory("parts");
     }
   }, [location]);
+
+  useEffect(() => {
+    apiGetAdminAuth().catch((error) => {
+      showBoundary(error);
+    });
+  }, [location, selectedCategory]);
 
   return (
     <header css={headerContainerStyles}>
