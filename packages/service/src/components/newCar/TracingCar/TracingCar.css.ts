@@ -2,7 +2,7 @@ import { css } from "@emotion/react";
 import { mobile } from "@service/common/responsive/responsive";
 
 export const bodyStyles = css`
-  height: 3000vh;
+  height: 2000vh;
   width: 100%;
   position: absolute;
   opacity: 0.6;
