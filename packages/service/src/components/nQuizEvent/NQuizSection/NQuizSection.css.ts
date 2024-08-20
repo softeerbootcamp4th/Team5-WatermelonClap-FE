@@ -3,7 +3,14 @@ import { mobile } from "@service/common/responsive/responsive";
 import { theme } from "@watermelon-clap/core/src/theme";
 import { EventStatusType } from "../NQuizReward/type";
 
-export const nQuizSectionStyles = css`
+export const nQuizContainerStyle = css`
+  ${theme.flex.center}
+  width: 100%;
+  overflow: hidden;
+`;
+
+export const nQuizSectionStyles = (status: EventStatusType) => css`
+  position: relative;
   ${theme.flex.center}
   ${theme.flex.column}
   width: 100%;
@@ -13,10 +20,17 @@ export const nQuizSectionStyles = css`
   background-color: ${theme.color.white};
   padding: 40px 48px;
 
+  ${status !== "OPEN" && "opacity: 0.3;"}
+
   ${mobile(css`
     padding: 20px 21px;
     border-radius: 10px;
   `)}
+`;
+
+export const nQuizImageStyle = css`
+  overflow: hidden;
+  width: 80%;
 `;
 
 export const nQuizSectionHeaderContainerStyles = css`
@@ -33,7 +47,7 @@ export const nQuizSectionBodyContainerStyles = (status: EventStatusType) => css`
   height: 86%;
   padding-top: 10px;
 
-  ${(status === "END" || status === "CLOSED") && "visibility: hidden;"}
+  ${(status === "END" || status === "UPCOMING") && "visibility: hidden;"}
 
   ${mobile(css`
     padding-top: 0;

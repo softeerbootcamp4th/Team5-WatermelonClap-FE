@@ -24,16 +24,22 @@ import {
   listItemStyle,
   rewardContainerStyle,
   centeredContainerStyle,
+  submitButtonStyle,
+  termListWrapStyle,
 } from "./NQuizEventWinnerApply.css";
 import { useModal } from "@watermelon-clap/core/src/hooks";
 import {
+  MODAL_CONTENT_ORDER_EVENT_APPLY_DUPPLICATION,
   MODAL_CONTENT_ORDER_EVENT_APPLY_SUCCESS,
   MODAL_N_QUIZ_TITLE,
 } from "@service/common/components/ModalContainer/content/modalContent";
+import { isValidPhoneNumber } from "@service/common/utils/regex";
 
 export const NQuizEventWinnerApply = () => {
   const [isChecked, setIsChecked] = useState<boolean>(false);
   const [phoneNumber, setPhoneNumber] = useState<string>("");
+  const [isPhoneNumberValid, setIsPhoneNumberValid] = useState<boolean>(true);
+  const [isSubmitDisabled, setIsSubmitDisabled] = useState<boolean>(true);
   const { openModal } = useModal();
   const navigate = useNavigate();
 
@@ -46,11 +52,6 @@ export const NQuizEventWinnerApply = () => {
   const openedQuiz = quizList.find(
     (quiz) => quiz.status === "OPEN",
   ) as IOrderEvent;
-
-  const handlePhoneNumberChange = (e: ChangeEvent<HTMLInputElement>) => {
-    const targetValue = phoneNumberAutoFormat(e.target.value);
-    setPhoneNumber(targetValue);
-  };
 
   const handleSubmit = () => {
     if (!localStorage.getItem("ApplyTicket") || !openedQuiz) {
@@ -80,8 +81,22 @@ export const NQuizEventWinnerApply = () => {
             content: MODAL_CONTENT_ORDER_EVENT_APPLY_SUCCESS,
           },
         });
+      } else {
+        openModal({
+          type: "alert",
+          props: {
+            title: MODAL_N_QUIZ_TITLE,
+            content: MODAL_CONTENT_ORDER_EVENT_APPLY_DUPPLICATION,
+          },
+        });
       }
     });
+  };
+
+  const handlePhoneNumberChange = (e: ChangeEvent<HTMLInputElement>) => {
+    const targetValue = phoneNumberAutoFormat(e.target.value);
+    setPhoneNumber(targetValue);
+    setIsPhoneNumberValid(isValidPhoneNumber(targetValue));
   };
 
   useEffect(() => {
@@ -90,6 +105,14 @@ export const NQuizEventWinnerApply = () => {
       navigate(MAIN_PAGE_ROUTE);
     }
   }, [navigate]);
+
+  useEffect(() => {
+    if (isValidPhoneNumber(phoneNumber) && isChecked) {
+      setIsSubmitDisabled(false);
+    } else {
+      setIsSubmitDisabled(true);
+    }
+  }, [phoneNumber, isChecked]);
 
   return (
     <div css={backgroundStyle}>
@@ -116,7 +139,8 @@ export const NQuizEventWinnerApply = () => {
 
       <div css={inputContainerStyle}>
         <input
-          css={inputStyle}
+          autoFocus
+          css={inputStyle(isPhoneNumberValid)}
           placeholder="전화번호 입력"
           value={phoneNumber}
           onChange={handlePhoneNumberChange}
@@ -125,19 +149,27 @@ export const NQuizEventWinnerApply = () => {
         />
       </div>
 
-      <CheckBox
-        isChecked={isChecked}
-        setIsChecked={setIsChecked}
-        text="개인정보 수집 및 이용 약관에 동의합니다. (이벤트 참가자 식별 및 경품 발송)"
-      />
-      <ul css={listStyle}>
-        <li css={listItemStyle}>경품은 추후 문자를 통해 발송됩니다.</li>
-        <li css={listItemStyle}>
-          번호 제출 전 페이지를 이탈하면 당첨이 취소됩니다.
-        </li>
-      </ul>
+      <div css={termListWrapStyle}>
+        <CheckBox
+          isChecked={isChecked}
+          setIsChecked={setIsChecked}
+          text="개인정보 수집 및 이용 약관에 동의합니다. (이벤트 참가자 식별 및 경품 발송)"
+        />
+        <ul css={listStyle}>
+          <li css={listItemStyle}>경품은 추후 문자를 통해 발송됩니다.</li>
+          <li css={listItemStyle}>
+            번호 제출 전 페이지를 이탈하면 당첨이 취소됩니다.
+          </li>
+        </ul>
+      </div>
 
-      <Button onClick={handleSubmit}>제출하기</Button>
+      <Button
+        css={submitButtonStyle}
+        onClick={handleSubmit}
+        disabled={isSubmitDisabled}
+      >
+        제출하기
+      </Button>
     </div>
   );
 };

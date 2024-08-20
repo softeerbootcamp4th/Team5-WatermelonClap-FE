@@ -8,9 +8,12 @@ export const card = css`
   background-color: white;
   margin: 0 auto;
   position: relative;
+  flex-shrink: 0;
+  margin-top: 60px;
 
   ${mobile(css`
-    width: 400px;
+    width: 350px;
+    margin: 0 auto;
   `)}
 `;
 
@@ -24,7 +27,7 @@ export const bgImg = css`
   height: 100%;
 
   ${mobile(css`
-    width: 400px;
+    width: 350px;
   `)}
 `;
 
@@ -38,7 +41,7 @@ export const carImg = css`
   transform: translate(-50%, -50%);
 
   ${mobile(css`
-    width: 450px;
+    width: 350px;
   `)}
 `;
 
@@ -52,7 +55,7 @@ export const colorImg = css`
   transform: translate(-50%, -50%);
 
   ${mobile(css`
-    width: 450px;
+    width: 350px;
   `)}
 `;
 
@@ -65,9 +68,9 @@ export const wheelImg = css`
   left: 305px;
 
   ${mobile(css`
-    bottom: 45px;
-    left: 170px;
-    width: 161px;
+    bottom: 47px;
+    left: 153px;
+    width: 123px;
   `)}
 `;
 
@@ -79,8 +82,8 @@ export const spoilerImg = css`
   right: 118px;
 
   ${mobile(css`
-    width: 30px;
-    top: 78px;
-    right: 53px;
+    width: 26.7px;
+    top: 72px;
+    right: 57.1px;
   `)}
 `;

@@ -1,10 +1,13 @@
-import { GlobalProvider } from "./common/providers/GlobalProvider";
-import { RouterProvider } from "react-router-dom";
-import { router } from "./router";
+import { Outlet } from "react-router-dom";
+import { GlobalNavigationBar } from "./common/components/GlobalNavigationBar";
+import { ErrorBoundary } from "react-error-boundary";
+import { Error } from "./pages/Error";
+
 export const App = () => {
   return (
-    <GlobalProvider>
-      <RouterProvider router={router} />
-    </GlobalProvider>
+    <ErrorBoundary FallbackComponent={Error}>
+      <GlobalNavigationBar />
+      <Outlet />
+    </ErrorBoundary>
   );
 };

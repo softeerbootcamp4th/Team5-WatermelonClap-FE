@@ -6,8 +6,8 @@ export const PrizeContainer = () => {
   return (
     <div css={style.prizeContainer}>
       <div css={style.container}>
-        <h1 css={style.title}>경품 안내</h1>
-        <PrizeItem {...winnerPrizeData} imgSize="500px" />
+        <h1 css={style.title}>추첨 경품</h1>
+        <PrizeItem {...winnerPrizeData} winner />
         <div css={style.prizeWrap}>
           {prizeData.map((info, idx) => (
             <PrizeItem {...info} key={idx} />
@@ -15,8 +15,8 @@ export const PrizeContainer = () => {
         </div>
       </div>
       <div css={style.container}>
-        <h1 css={style.title}>미니어처 이벤트 경품 안내</h1>
-        <PrizeItem {...miniatureData} />
+        <h1 css={style.title}>미니어처 경품</h1>
+        <PrizeItem winner {...miniatureData} />
       </div>
     </div>
   );

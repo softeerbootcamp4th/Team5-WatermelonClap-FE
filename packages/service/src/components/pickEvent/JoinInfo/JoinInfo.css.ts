@@ -14,6 +14,7 @@ export const iconWrap = css`
 
   ${mobile(css`
     gap: 28px;
+    margin: 0 80px;
   `)}
 `;
 

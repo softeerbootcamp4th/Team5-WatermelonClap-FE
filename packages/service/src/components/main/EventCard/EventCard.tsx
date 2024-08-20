@@ -25,13 +25,13 @@ export const EventCard = ({ eventData }: IEventDataProps) => {
   return (
     <div css={style.eventCard(eventData.id === 1)}>
       <div css={style.eventNumber}>{eventData.id}</div>
-      <div css={[theme.flex.column, theme.gap.gap32]}>
+      <div css={[theme.flex.column, theme.gap.gap24]}>
         <div>
           <h2 css={style.eventType}>{eventData.eventType}</h2>
           <h1 css={style.eventTitle}>{eventData.title}</h1>
           <h3 css={style.subTitle}> {eventData.subTitle}</h3>
         </div>
-        <img src={eventData.img} width={isMobile ? 200 : 300} />
+        <img src={eventData.img} width={isMobile ? 140 : 240} />
 
         <p css={style.desc}>{eventData.desc}</p>
 

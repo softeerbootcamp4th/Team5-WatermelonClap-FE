@@ -25,6 +25,14 @@ export const NQuizEvent = () => {
     (quiz) => quiz.status === "OPEN",
   ) as IOrderEvent;
 
+  const closedQuiz = quizList.find(
+    (quiz) => quiz.status === "CLOSED",
+  ) as IOrderEvent;
+
+  const upcomingQuiz = quizList.find(
+    (quiz) => quiz.status === "UPCOMING",
+  ) as IOrderEvent;
+
   return (
     <>
       <div css={backgroundStyle}>
@@ -42,7 +50,17 @@ export const NQuizEvent = () => {
           ))}
         </div>
 
-        <NQuizSection openedQuiz={openedQuiz} />
+        {openedQuiz && <NQuizSection openedQuiz={openedQuiz} />}
+
+        {!openedQuiz && closedQuiz && <NQuizSection openedQuiz={closedQuiz} />}
+
+        {!openedQuiz && upcomingQuiz && (
+          <NQuizSection openedQuiz={upcomingQuiz} />
+        )}
+
+        {!openedQuiz && !closedQuiz && !upcomingQuiz && (
+          <NQuizSection openedQuiz={quizList[0]} />
+        )}
 
         <span css={termTitleStyle}>{nQuizEventTermTitle}</span>
         <ul css={termListStyle}>

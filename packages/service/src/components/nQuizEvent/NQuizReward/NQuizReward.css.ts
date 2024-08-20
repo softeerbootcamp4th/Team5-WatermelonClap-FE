@@ -49,21 +49,26 @@ export const rewardContainerStyle = (status: EventStatusType) => css`
 `;
 
 export const imgStyle = css`
-  width: 80%;
-  aspect-ratio: 2 / 1;
+  width: 65%;
+  aspect-ratio: 1 / 1;
+  object-fit: contain;
+
+  ${mobile(css`
+    width: 55%;
+  `)}
 `;
 
 export const nameStyle = css`
   ${theme.font.preB16}
   text-align: center;
-  font-size: 12px;
+  font-size: calc(10px + 0.4vw);
   color: black;
   padding-top: 7%;
   padding-bottom: 7%;
   word-break: keep-all;
 
   ${mobile(css`
-    font-size: 10px;
+    font-size: calc(10px + 0.6vw);
   `)}
 `;
 

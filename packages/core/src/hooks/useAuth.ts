@@ -24,10 +24,12 @@ export const useAuth = () => {
   const login = () => {
     return new Promise((resolve, reject) => {
       signInWithPopup(fbAuth, provider)
-        .then((res) => res.user.getIdToken())
-        .then((token) => {
+        .then((res) => res.user.getIdTokenResult())
+        .then(({ token, expirationTime }) => {
+          const expirationMs = new Date(expirationTime).getTime();
           localStorage.setItem("accessToken", token);
-          resolve(token);
+          localStorage.setItem("expirationTime", String(expirationMs));
+          resolve({ token });
         })
         .catch((error) => reject(error));
     });
@@ -39,7 +41,28 @@ export const useAuth = () => {
     });
 
   const reLogin = () => logout().then(() => login());
+
+  const refresh = () => {
+    return fbAuth.currentUser
+      ?.getIdTokenResult(true)
+      .then(({ token, expirationTime }) => {
+        const expirationMs = new Date(expirationTime).getTime();
+        localStorage.setItem("accessToken", token);
+        localStorage.setItem("expirationTime", String(expirationMs));
+      });
+  };
   const getIsLogin = () => Boolean(localStorage.getItem("accessToken"));
+
+  const getExpirationTime = () => {
+    const expirationTime = localStorage.getItem("expirationTime");
+
+    if (!expirationTime) {
+      return;
+    }
+
+    const currentDate = new Date();
+    return Number(expirationTime) - currentDate.getTime();
+  };
 
   /**
    * 유효하지 않은 토큰으로 API 호출 시 로그인 시키는 함수
@@ -62,5 +85,7 @@ export const useAuth = () => {
     reLogin,
     getIsLogin,
     handleTokenError,
+    getExpirationTime,
+    refresh,
   };
 };

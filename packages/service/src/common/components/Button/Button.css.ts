@@ -43,7 +43,7 @@ export const shortButtonStyle = css`
     color: ${theme.color.gray300};
   }
   &:disabled {
-    background: ${theme.color.gray500};
+    background: ${theme.color.gray300};
     pointer-events: none;
   }
 `;

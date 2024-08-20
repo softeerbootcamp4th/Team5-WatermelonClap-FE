@@ -3,6 +3,7 @@ import {
   partsPickBackgroundStyle,
   partsPickButtonStyle,
   partsPickModalContentStyle,
+  partsNameStyle,
 } from "./PartsPick.css";
 import { PartsCard, PickTitle } from "@service/components/partsPick";
 import { Space } from "@service/common/styles/Space";
@@ -15,12 +16,25 @@ import { LOTTER_APPLY_FINISH_PAGE_ROUTE } from "@service/constants/routes";
 import { apiGetLotteryStatus } from "@service/apis/lottery/apiGetLotteryStatus";
 import { useSuspenseQuery } from "@tanstack/react-query";
 import { getAccessToken } from "@watermelon-clap/core/src/utils";
+import { IParts } from "@watermelon-clap/core/src/types";
+
+enum Category {
+  REAR = "스포일러",
+  COLOR = "색상",
+  DRIVE_MODE = "배경",
+  WHEEL = "휠",
+}
 
 export const PartsPick = () => {
   const { openModal } = useModal();
   const isMobile = useMobile();
   const [isPickComplete, setIsPickComplete] = useState(false);
   const initPickFlag = useRef(false);
+  const [remainChance, setRemainChance] = useState(
+    useLocation()?.state?.remainChance,
+  );
+  const [partsInfo, setPartsInfo] = useState<IParts>();
+  const { getIsLogin, login } = useAuth();
   const navigate = useNavigate();
 
   const handleOneMorePickButtonClick = () => {
@@ -94,6 +108,25 @@ export const PartsPick = () => {
             </>
           )}
           {isPickComplete && (
+        <PickTitle />
+        <PartsCard
+          backImage="/images/parts/back.svg"
+          isMouseOutAnimationEnabled={false}
+          remainChance={remainChance}
+          setIsPickComplete={setIsPickComplete}
+          partsInfo={partsInfo}
+          setPartsInfo={setPartsInfo}
+        />
+        <Space size={isMobile ? 4 : 6} />
+        {isPickComplete && (
+          <p css={partsNameStyle}>
+            "{partsInfo?.name}" &nbsp;
+            {Category[partsInfo?.category as keyof typeof Category]} 당첨!
+          </p>
+        )}
+        <Space size={isMobile ? 16 : 32} />
+        {(isPickComplete || remainChance < 0) && (
+          <>
             <Button
               variant={ButtonVariant.LONG}
               css={partsPickButtonStyle}

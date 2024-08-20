@@ -110,8 +110,13 @@ export const NQuizInput = ({ openedQuiz }: NQuizInputProps) => {
         value={inputValue}
         onChange={handleInputChange}
         onKeyPress={handleKeyDown}
+        disabled={openedQuiz.status === "OPEN" ? false : true}
       />
-      <Button css={nQuizSubmitButtonStyles} onClick={handleSubmit}>
+      <Button
+        css={nQuizSubmitButtonStyles}
+        onClick={handleSubmit}
+        disabled={openedQuiz.status === "OPEN" ? false : true}
+      >
         제출하기
       </Button>
     </div>

@@ -1,6 +1,5 @@
 import { css } from "@emotion/react";
 import { mobile } from "@service/common/responsive/responsive";
-import { PICK_EVENT_PRIZE_CONTAINER_BREAKPOINT } from "@service/constants/breakpoints";
 import { theme } from "@watermelon-clap/core/src/theme";
 
 export const Container = css`
@@ -9,27 +8,31 @@ export const Container = css`
   ${theme.flex.column}
   text-align: center;
   width: fit-content;
-  width: 350px;
 `;
 
-export const img = css`
-  margin-bottom: 40px;
+export const img = (winner?: boolean) => css`
+  margin-bottom: 10px;
+  width: ${winner ? "300px" : "180px"};
 
-  ${mobile(
-    css`
-      width: 300px;
-      margin-bottom: 20px;
-    `,
-    PICK_EVENT_PRIZE_CONTAINER_BREAKPOINT,
-  )}
+  ${mobile(css`
+    width: ${winner ? "200px" : "90px"};
+    margin-bottom: 20px;
+  `)}
 `;
 
 export const rank = css`
-  font-size: 24px;
+  font-size: 16px;
   margin-bottom: 14px;
+  ${mobile(css`
+    font-size: 12px;
+  `)}
 `;
 
 export const name = css`
-  font-size: 32px;
-  width: 280px;
+  font-size: 22px;
+  width: 180px;
+  ${mobile(css`
+    font-size: 16px;
+    width: 140px;
+  `)}
 `;

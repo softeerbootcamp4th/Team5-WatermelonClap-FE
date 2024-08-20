@@ -6,6 +6,7 @@ import * as style from "./Banner.css";
 import { mobile } from "@service/common/responsive/responsive";
 import { useNavigate } from "react-router-dom";
 import { NEW_CAR_PAGE_ROUTE } from "@service/constants/routes";
+import { scroller } from "react-scroll";
 
 const bannerImgs = [
   "images/main/main-banner-1.webp",
@@ -58,6 +59,14 @@ export const Banner = () => {
     };
   }, [handleResize]);
 
+  const handleClickToMoveScroll = () => {
+    scroller.scrollTo("scrollMove", {
+      duration: 700,
+      smooth: true,
+      offset: -60,
+    });
+  };
+
   return (
     <section css={style.container}>
       <div ref={bannerDivRef}>
@@ -105,7 +114,12 @@ export const Banner = () => {
           >
             자세히 보기
           </Button>
-          <Button variant={ButtonVariant.SMALL_LIGHT}>이벤트 바로 가기</Button>
+          <Button
+            variant={ButtonVariant.SMALL_LIGHT}
+            onClick={handleClickToMoveScroll}
+          >
+            이벤트 바로 가기
+          </Button>
         </div>
       </div>
     </section>

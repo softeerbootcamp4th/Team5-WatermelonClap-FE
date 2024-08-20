@@ -8,10 +8,28 @@ import { theme } from "@watermelon-clap/core/src/theme";
 import { css } from "@emotion/react";
 import { Space } from "@service/common/styles/Space";
 import { useMobile } from "@service/common/hooks/useMobile";
+import { apiGetPartsRemain } from "@service/apis/partsEvent/apiGetPartsRemain";
+import { useRef } from "react";
+import { useInView } from "framer-motion";
 
 export const PickEvent = () => {
   const navigate = useNavigate();
   const isMobile = useMobile();
+  const { login, getIsLogin } = useAuth();
+
+  const btnRef = useRef(null);
+  const btnIsInView = useInView(btnRef);
+
+  const handleClickPickBtn = () => {
+    const handleLogin = () => {
+      apiGetPartsRemain().then(({ remainChance }) =>
+        navigate("/parts-pick", { state: { remainChance: remainChance } }),
+      );
+    };
+
+    if (!getIsLogin()) login().then(handleLogin);
+    else handleLogin();
+  };
 
   return (
     <div css={style.bg}>
@@ -28,21 +46,25 @@ export const PickEvent = () => {
         <span>당첨자 발표 {textData.winnerDate}</span>
         <pre>{textData.desc}</pre>
       </div>
+      <Space size={!isMobile ? 20 : 50} />
 
-      <Space size={!isMobile ? 200 : 100} />
-      <JoinInfo />
-
-      <Space size={!isMobile ? 200 : 100} />
       <CardCarousel />
 
       <button css={style.btn} onClick={() => navigate("/parts-pick")}>
+      <Space size={!isMobile ? 20 : 10} />
+
+      <div ref={btnRef} />
+      <button css={style.btn(btnIsInView)} onClick={handleClickPickBtn}>
         지금 바로 뽑기
       </button>
+      <Space size={!isMobile ? 200 : 100} />
 
-      <Space size={!isMobile ? 300 : 100} />
+      <JoinInfo />
+      <Space size={!isMobile ? 100 : 100} />
       <PrizeContainer />
 
-      <Space size={100} />
+      <Space size={30} />
+
       <div css={style.termWrap}>
         <span css={style.termTitleStyle}>{pickEventTermsTitle}</span>
         <ul css={style.termListStyle}>
@@ -56,7 +78,7 @@ export const PickEvent = () => {
 };
 
 const textData = {
-  period: "2024. 07. 29 ~ 08. 18",
-  winnerDate: "2024. 08. 26",
+  period: "2024. 08. 19 ~ 09. 08",
+  winnerDate: "2024. 09. 16",
   desc: "파츠를 모아 아반떼 N을 완성해 보세요!\n공유하기 링크를 통해 친구가 이벤트에 참여할 경우 추가 뽑기권이 증정됩니다!\n또, 모든 카테고리별 1개 이상의 파츠를 장착하여 추가적인 경품을 노려보세요!",
 };
