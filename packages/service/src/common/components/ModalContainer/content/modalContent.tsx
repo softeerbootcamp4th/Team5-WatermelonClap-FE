@@ -47,3 +47,10 @@ export const MODAL_CONTENT_ORDER_EVENT_APPLY_SUCCESS = (
     <p>경품은 추후 문자를 통해 발송됩니다.</p>
   </div>
 );
+
+export const MODAL_CONTENT_ORDER_EVENT_APPLY_DUPPLICATION = (
+  <div css={[theme.flex.center, theme.flex.column]}>
+    <p>이미 신청이 완료되었습니다.</p>
+    <p>하루에 한 번만 참여할 수 있습니다.</p>
+  </div>
+);

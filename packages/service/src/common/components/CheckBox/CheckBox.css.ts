@@ -1,8 +1,10 @@
 import { css } from "@emotion/react";
+import { mobile } from "@service/common/responsive/responsive";
 import { theme } from "@watermelon-clap/core/src/theme";
 
 export const checkBoxContainerStyle = css`
-  ${theme.flex.center}
+  display: flex;
+  align-items: center;
 `;
 
 export const checkBoxButtonStyle = css`
@@ -29,6 +31,11 @@ export const checkBoxStyle = (isChecked: boolean) => {
     cursor: pointer;
     background-color: ${isChecked ? white : "transparent"};
     border-color: ${isChecked ? white : gray300};
+
+    ${mobile(css`
+      height: 20px;
+      width: 20px;
+    `)}
   `;
 };
 
@@ -45,4 +52,8 @@ export const checkBoxLabelStyle = css`
   color: ${theme.color.gray300};
   margin-left: 8px;
   transition: color 0.3s ease-out;
+
+  ${mobile(css`
+    font-size: 14px;
+  `)}
 `;
