@@ -20,6 +20,7 @@
     "@tsparticles/react": "^3.0.0",
     "@tsparticles/slim": "^3.5.0",
     "@types/canvas-confetti": "^1.6.4",
+    "@types/react-scroll": "^1.8.10",
     "@types/three": "^0.166.0",
     "@watermelon-clap/core": "workspace:*",
     "canvas-confetti": "^1.9.3",
