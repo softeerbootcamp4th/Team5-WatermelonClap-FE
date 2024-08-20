@@ -16,14 +16,14 @@ export const staticCardStyles = (position: "upper" | "lower") => css`
 
 export const textStyles = (translateY?: string, title?: string) => css`
   ${theme.font.pcpL}
-  font-size: calc(10px + 3vw);
+  font-size: calc(10px + 2vw);
   -webkit-text-stroke-width: 2px;
-  font-weight: normal;
   transform: translateY(${translateY});
   color: ${title === "days" ? theme.color.eventBlue : theme.color.white};
 
   ${mobile(css`
-    font-size: 30px;
+    font-size: 20px;
+    -webkit-text-stroke-width: 2px;
   `)}
 `;
 
@@ -41,8 +41,6 @@ export const animatedCardStyles = css`
   transform-origin: 50% 100%;
   background-color: #000000;
   border-radius: 6px 6px 0 0;
-
-  ${mobile(css``)}
 `;
 
 export const animatedCardBottomStyles = css`
@@ -104,10 +102,10 @@ export const rendererWrap1 = css`
 export const rendererWrap2 = css`
   display: flex;
   align-items: center;
-  gap: calc(10px + 2vw);
+  gap: calc(10px + 1.3vw);
   justify-content: center;
 
   ${mobile(css`
-    gap: 0.3rem;
+    gap: 0.2rem;
   `)};
 `;
