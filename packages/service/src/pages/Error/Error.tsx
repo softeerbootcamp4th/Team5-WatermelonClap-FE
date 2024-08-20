@@ -32,8 +32,10 @@ export const Error = ({ error, resetErrorBoundary }: FallbackProps) => {
   }
 
   const handleLogin = () => {
-    login();
-    resetBoundary();
+    login().then(() => {
+      resetBoundary();
+      location.reload();
+    });
   };
   const handleHomeRedirect = () => {
     navigate("/");

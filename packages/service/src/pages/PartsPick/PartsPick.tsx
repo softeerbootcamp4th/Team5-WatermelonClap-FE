@@ -8,29 +8,20 @@ import { PartsCard, PickTitle } from "@service/components/partsPick";
 import { Space } from "@service/common/styles/Space";
 import { useEffect, useRef, useState } from "react";
 import { useModal } from "@watermelon-clap/core/src/hooks";
-import { useAuth } from "@watermelon-clap/core/src/hooks";
 import { useMobile } from "@service/common/hooks/useMobile";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { apiGetPartsRemain } from "@service/apis/partsEvent";
 import { LOTTER_APPLY_FINISH_PAGE_ROUTE } from "@service/constants/routes";
 import { apiGetLotteryStatus } from "@service/apis/lottery/apiGetLotteryStatus";
+import { useSuspenseQuery } from "@tanstack/react-query";
+import { getAccessToken } from "@watermelon-clap/core/src/utils";
 
 export const PartsPick = () => {
   const { openModal } = useModal();
   const isMobile = useMobile();
   const [isPickComplete, setIsPickComplete] = useState(false);
   const initPickFlag = useRef(false);
-  const [remainChance, setRemainChance] = useState(
-    useLocation()?.state?.remainChance,
-  );
-  const { getIsLogin, login } = useAuth();
   const navigate = useNavigate();
-  const isApplied = useRef(false);
-
-  const minusRemainChance = () => {
-    if (remainChance < 1) return;
-    setRemainChance(remainChance - 1);
-  };
 
   const handleOneMorePickButtonClick = () => {
     if (!isPickComplete && !initPickFlag) return;
@@ -49,65 +40,69 @@ export const PartsPick = () => {
         },
       });
     }
-    minusRemainChance();
+    refetchRemainChance();
   };
 
-  const handleSetRemianChance = () => {
-    apiGetPartsRemain().then(({ remainChance }) =>
-      setRemainChance(!remainChance ? 0 : remainChance - 1),
-    );
-  };
+  const {
+    data: { remainChance },
+    refetch: refetchRemainChance,
+  } = useSuspenseQuery({
+    queryKey: ["remainChance", getAccessToken()],
+    queryFn: apiGetPartsRemain,
+  });
+
+  const {
+    data: { applied: isApplied },
+  } = useSuspenseQuery({
+    queryKey: ["isApplied", getAccessToken()],
+    queryFn: apiGetLotteryStatus,
+  });
 
   useEffect(() => {
     if (!initPickFlag.current) {
       handleOneMorePickButtonClick();
       initPickFlag.current = true;
     }
-
-    // 로그인 안 하고 바로 페이지로 접근할 경우
-    if (!getIsLogin()) {
-      login().then(handleSetRemianChance);
-    }
-
-    apiGetLotteryStatus().then(({ applied }) => (isApplied.current = applied));
   }, []);
 
   return (
     <>
       <div css={partsPickBackgroundStyle}>
-        <PickTitle />
-        <PartsCard
-          backImage="/images/parts/back.svg"
-          isMouseOutAnimationEnabled={false}
-          remainChance={remainChance}
-          setIsPickComplete={setIsPickComplete}
-        />
-        <Space size={isMobile ? 16 : 32} />
-        {(isPickComplete || remainChance < 0) && (
-          <>
+        <>
+          <PickTitle />
+          <PartsCard
+            backImage="/images/parts/back.svg"
+            isMouseOutAnimationEnabled={false}
+            remainChance={remainChance}
+            setIsPickComplete={setIsPickComplete}
+          />
+          <Space size={isMobile ? 16 : 32} />
+          {(isPickComplete || remainChance < 0) && (
+            <>
+              <Button
+                variant={ButtonVariant.LONG}
+                css={partsPickButtonStyle}
+                onClick={() => {
+                  navigate(LOTTER_APPLY_FINISH_PAGE_ROUTE, {
+                    state: { isApplied: isApplied },
+                  });
+                }}
+              >
+                URL 공유하고 아반떼 N 받으러 가기
+              </Button>
+              <Space size={isMobile ? 4 : 12} />
+            </>
+          )}
+          {isPickComplete && (
             <Button
               variant={ButtonVariant.LONG}
               css={partsPickButtonStyle}
-              onClick={() => {
-                navigate(LOTTER_APPLY_FINISH_PAGE_ROUTE, {
-                  state: { isApplied: isApplied.current },
-                });
-              }}
+              onClick={handleOneMorePickButtonClick}
             >
-              URL 공유하고 아반떼 N 받으러 가기
+              한 번 더 뽑기 ({remainChance}회)
             </Button>
-            <Space size={isMobile ? 4 : 12} />
-          </>
-        )}
-        {isPickComplete && (
-          <Button
-            variant={ButtonVariant.LONG}
-            css={partsPickButtonStyle}
-            onClick={handleOneMorePickButtonClick}
-          >
-            한 번 더 뽑기 ({remainChance}회)
-          </Button>
-        )}
+          )}
+        </>
       </div>
     </>
   );
