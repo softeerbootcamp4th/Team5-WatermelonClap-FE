@@ -13,24 +13,26 @@ import { useEffect, useRef, useState } from "react";
 import { mobile } from "@service/common/responsive/responsive";
 import { useMobile } from "@service/common/hooks/useMobile";
 import { apiGetPartsRemain } from "@service/apis/partsEvent";
-import { useAuth } from "@watermelon-clap/core/src/hooks";
 import { apiGetMyShareLink } from "@service/apis/link/apiGetMyShareLink";
 import { apiGetLotteryStatus } from "@service/apis/lottery/apiGetLotteryStatus";
+import { useSuspenseQuery } from "@tanstack/react-query";
+import { getAccessToken } from "@watermelon-clap/core/src/utils";
 
 export const LotteryApplyInfo = () => {
   const navigate = useNavigate();
   const shareLinkRef = useRef(null);
   const [shareLink, setShareLink] = useState<string>();
   const [remainChance, setRemainChance] = useState<number>();
-  const [isApplied, setIsApplied] = useState<boolean>();
 
-  const { handleTokenError } = useAuth();
+  const {
+    data: { applied: isApplied },
+  } = useSuspenseQuery({
+    queryKey: ["isApplied", getAccessToken()],
+    queryFn: apiGetLotteryStatus,
+    staleTime: 0,
+  });
 
   useEffect(() => {
-    apiGetLotteryStatus()
-      .then(({ applied }) => setIsApplied(applied))
-      .catch((error: Error) => handleTokenError(error));
-
     apiGetMyShareLink().then(({ link }) => setShareLink(link));
 
     apiGetPartsRemain().then(({ remainChance }) =>
