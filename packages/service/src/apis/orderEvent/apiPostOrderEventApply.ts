@@ -1,4 +1,3 @@
-import { customFetch } from "@watermelon-clap/core/src/utils";
 import { IPostOrderEventApplyRequest } from "./type";
 
 export const apiPostOrderEventApply = async ({
@@ -7,7 +6,7 @@ export const apiPostOrderEventApply = async ({
   phoneNumber,
   appplyTicket,
 }: IPostOrderEventApplyRequest): Promise<Response> => {
-  return customFetch(
+  return fetch(
     `${import.meta.env.VITE_BACK_BASE_URL}/event/order/${eventId}/${quizId}/apply`,
     {
       method: "POST",
