@@ -5,6 +5,7 @@ import { Error } from "./pages/Error";
 import { Loading } from "./pages/Loading";
 import { Suspense } from "react";
 import { ErrorBoundary } from "react-error-boundary";
+import { ScrollToTop } from "./common/components/ScrollToTop";
 
 export const App = () => {
   return (
@@ -12,6 +13,7 @@ export const App = () => {
       <ErrorBoundary FallbackComponent={Error}>
         <GlobalNavigationBar />
         <Suspense fallback={<Loading />}>
+          <ScrollToTop />
           <Outlet />
         </Suspense>
       </ErrorBoundary>
