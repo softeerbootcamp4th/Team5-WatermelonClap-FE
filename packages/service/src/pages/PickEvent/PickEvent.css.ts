@@ -81,7 +81,7 @@ export const termListStyle = css`
   `)}
 `;
 
-export const btn = css`
+export const btn = (btnIsInView: boolean) => css`
   padding: 24px 76px;
   border-radius: 20px;
   background-color: ${theme.color.eventBlue};
@@ -93,9 +93,9 @@ export const btn = css`
   transition: all 0.2s;
   margin: 0 auto;
   display: block;
+  z-index: 20;
 
   &:hover {
-    transform: scale(1.02);
     background-color: ${theme.color.eventSkyblue};
   }
 
@@ -103,6 +103,15 @@ export const btn = css`
     font-size: 14px;
     padding: 12px 30px;
   `)}
+
+  ${btnIsInView ||
+  css`
+    position: fixed;
+    bottom: 50px;
+    left: 50%;
+    transform: translate(-50%, 0);
+    box-shadow: 0 0 20px 6px ${theme.color.black};
+  `}
 `;
 
 export const termWrap = css`
