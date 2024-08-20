@@ -91,7 +91,7 @@ export const inputContainerStyle = css`
   justify-content: center;
 `;
 
-export const inputStyle = css`
+export const inputStyle = (isPhoneNumberValid: boolean) => css`
   display: flex;
   width: 566px;
   height: 52px;
@@ -101,6 +101,8 @@ export const inputStyle = css`
   align-self: stretch;
   border-radius: 8px;
   background: var(--Gray-100, #ececec);
+
+  outline: 1px solid ${isPhoneNumberValid ? theme.color.eventBlue : "#FF6B6B"};
 `;
 
 export const listStyle = css`

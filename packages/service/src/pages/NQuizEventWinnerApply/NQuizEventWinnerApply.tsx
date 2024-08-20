@@ -30,10 +30,13 @@ import {
   MODAL_CONTENT_ORDER_EVENT_APPLY_SUCCESS,
   MODAL_N_QUIZ_TITLE,
 } from "@service/common/components/ModalContainer/content/modalContent";
+import { isValidPhoneNumber } from "@service/common/utils/regex";
 
 export const NQuizEventWinnerApply = () => {
   const [isChecked, setIsChecked] = useState<boolean>(false);
   const [phoneNumber, setPhoneNumber] = useState<string>("");
+  const [isPhoneNumberValid, setIsPhoneNumberValid] = useState<boolean>(true);
+  const [isSubmitDisabled, setIsSubmitDisabled] = useState<boolean>(true);
   const { openModal } = useModal();
   const navigate = useNavigate();
 
@@ -46,11 +49,6 @@ export const NQuizEventWinnerApply = () => {
   const openedQuiz = quizList.find(
     (quiz) => quiz.status === "OPEN",
   ) as IOrderEvent;
-
-  const handlePhoneNumberChange = (e: ChangeEvent<HTMLInputElement>) => {
-    const targetValue = phoneNumberAutoFormat(e.target.value);
-    setPhoneNumber(targetValue);
-  };
 
   const handleSubmit = () => {
     if (!localStorage.getItem("ApplyTicket") || !openedQuiz) {
@@ -84,12 +82,26 @@ export const NQuizEventWinnerApply = () => {
     });
   };
 
+  const handlePhoneNumberChange = (e: ChangeEvent<HTMLInputElement>) => {
+    const targetValue = phoneNumberAutoFormat(e.target.value);
+    setPhoneNumber(targetValue);
+    setIsPhoneNumberValid(isValidPhoneNumber(targetValue));
+  };
+
   useEffect(() => {
     if (!localStorage.getItem("ApplyTicket")) {
       alert("권한이 없습니다.");
       navigate(MAIN_PAGE_ROUTE);
     }
   }, [navigate]);
+
+  useEffect(() => {
+    if (isValidPhoneNumber(phoneNumber) && isChecked) {
+      setIsSubmitDisabled(false);
+    } else {
+      setIsSubmitDisabled(true);
+    }
+  }, [phoneNumber, isChecked]);
 
   return (
     <div css={backgroundStyle}>
@@ -116,7 +128,8 @@ export const NQuizEventWinnerApply = () => {
 
       <div css={inputContainerStyle}>
         <input
-          css={inputStyle}
+          autoFocus
+          css={inputStyle(isPhoneNumberValid)}
           placeholder="전화번호 입력"
           value={phoneNumber}
           onChange={handlePhoneNumberChange}
@@ -137,7 +150,9 @@ export const NQuizEventWinnerApply = () => {
         </li>
       </ul>
 
-      <Button onClick={handleSubmit}>제출하기</Button>
+      <Button onClick={handleSubmit} disabled={isSubmitDisabled}>
+        제출하기
+      </Button>
     </div>
   );
 };
