@@ -30,11 +30,8 @@ export const PartsPick = () => {
   const isMobile = useMobile();
   const [isPickComplete, setIsPickComplete] = useState(false);
   const initPickFlag = useRef(false);
-  const [remainChance, setRemainChance] = useState(
-    useLocation()?.state?.remainChance,
-  );
+
   const [partsInfo, setPartsInfo] = useState<IParts>();
-  const { getIsLogin, login } = useAuth();
   const navigate = useNavigate();
 
   const handleOneMorePickButtonClick = () => {
@@ -82,32 +79,6 @@ export const PartsPick = () => {
   return (
     <>
       <div css={partsPickBackgroundStyle}>
-        <>
-          <PickTitle />
-          <PartsCard
-            backImage="/images/parts/back.svg"
-            isMouseOutAnimationEnabled={false}
-            remainChance={remainChance}
-            setIsPickComplete={setIsPickComplete}
-          />
-          <Space size={isMobile ? 16 : 32} />
-          {(isPickComplete || remainChance < 0) && (
-            <>
-              <Button
-                variant={ButtonVariant.LONG}
-                css={partsPickButtonStyle}
-                onClick={() => {
-                  navigate(LOTTER_APPLY_FINISH_PAGE_ROUTE, {
-                    state: { isApplied: isApplied },
-                  });
-                }}
-              >
-                URL 공유하고 아반떼 N 받으러 가기
-              </Button>
-              <Space size={isMobile ? 4 : 12} />
-            </>
-          )}
-          {isPickComplete && (
         <PickTitle />
         <PartsCard
           backImage="/images/parts/back.svg"
@@ -130,12 +101,26 @@ export const PartsPick = () => {
             <Button
               variant={ButtonVariant.LONG}
               css={partsPickButtonStyle}
-              onClick={handleOneMorePickButtonClick}
+              onClick={() => {
+                navigate(LOTTER_APPLY_FINISH_PAGE_ROUTE, {
+                  state: { isApplied: isApplied },
+                });
+              }}
             >
-              한 번 더 뽑기 ({remainChance}회)
+              URL 공유하고 아반떼 N 받으러 가기
             </Button>
-          )}
-        </>
+            <Space size={isMobile ? 4 : 12} />
+          </>
+        )}
+        {isPickComplete && (
+          <Button
+            variant={ButtonVariant.LONG}
+            css={partsPickButtonStyle}
+            onClick={handleOneMorePickButtonClick}
+          >
+            한 번 더 뽑기 ({remainChance}회)
+          </Button>
+        )}
       </div>
     </>
   );

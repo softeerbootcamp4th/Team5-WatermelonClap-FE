@@ -8,28 +8,15 @@ import { theme } from "@watermelon-clap/core/src/theme";
 import { css } from "@emotion/react";
 import { Space } from "@service/common/styles/Space";
 import { useMobile } from "@service/common/hooks/useMobile";
-import { apiGetPartsRemain } from "@service/apis/partsEvent/apiGetPartsRemain";
 import { useRef } from "react";
 import { useInView } from "framer-motion";
 
 export const PickEvent = () => {
   const navigate = useNavigate();
   const isMobile = useMobile();
-  const { login, getIsLogin } = useAuth();
 
   const btnRef = useRef(null);
   const btnIsInView = useInView(btnRef);
-
-  const handleClickPickBtn = () => {
-    const handleLogin = () => {
-      apiGetPartsRemain().then(({ remainChance }) =>
-        navigate("/parts-pick", { state: { remainChance: remainChance } }),
-      );
-    };
-
-    if (!getIsLogin()) login().then(handleLogin);
-    else handleLogin();
-  };
 
   return (
     <div css={style.bg}>
@@ -50,11 +37,14 @@ export const PickEvent = () => {
 
       <CardCarousel />
 
-      <button css={style.btn} onClick={() => navigate("/parts-pick")}>
       <Space size={!isMobile ? 20 : 10} />
 
       <div ref={btnRef} />
-      <button css={style.btn(btnIsInView)} onClick={handleClickPickBtn}>
+
+      <button
+        css={style.btn(btnIsInView)}
+        onClick={() => navigate("/parts-pick")}
+      >
         지금 바로 뽑기
       </button>
       <Space size={!isMobile ? 200 : 100} />
