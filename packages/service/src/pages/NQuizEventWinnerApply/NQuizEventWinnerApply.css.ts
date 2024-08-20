@@ -134,3 +134,11 @@ export const centeredContainerStyle = css`
   align-items: center;
   justify-content: center;
 `;
+
+export const submitButtonStyle = css`
+  background-color: ${theme.color.eventBlue};
+
+  :hover {
+    background-color: ${theme.color.eventSkyblue};
+  }
+`;
