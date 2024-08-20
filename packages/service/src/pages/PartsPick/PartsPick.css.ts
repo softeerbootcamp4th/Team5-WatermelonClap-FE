@@ -36,3 +36,17 @@ export const partsPickModalContentStyle = css`
     margin: 0;
   }
 `;
+
+export const partsNameStyle = css`
+  color: var(--White, #fff);
+  text-align: center;
+  text-shadow: 0px 0px 40px #ffb7ff;
+  -webkit-text-stroke-width: 1;
+  -webkit-text-stroke-color: #fed2ff;
+  ${theme.font.pcpB}
+  font-size: 40px;
+
+  ${mobile(css`
+    font-size: 24px;
+  `)}
+`;
