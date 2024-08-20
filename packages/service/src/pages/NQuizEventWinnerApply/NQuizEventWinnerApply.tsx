@@ -24,9 +24,11 @@ import {
   listItemStyle,
   rewardContainerStyle,
   centeredContainerStyle,
+  submitButtonStyle,
 } from "./NQuizEventWinnerApply.css";
 import { useModal } from "@watermelon-clap/core/src/hooks";
 import {
+  MODAL_CONTENT_ORDER_EVENT_APPLY_DUPPLICATION,
   MODAL_CONTENT_ORDER_EVENT_APPLY_SUCCESS,
   MODAL_N_QUIZ_TITLE,
 } from "@service/common/components/ModalContainer/content/modalContent";
@@ -76,6 +78,14 @@ export const NQuizEventWinnerApply = () => {
           props: {
             title: MODAL_N_QUIZ_TITLE,
             content: MODAL_CONTENT_ORDER_EVENT_APPLY_SUCCESS,
+          },
+        });
+      } else {
+        openModal({
+          type: "alert",
+          props: {
+            title: MODAL_N_QUIZ_TITLE,
+            content: MODAL_CONTENT_ORDER_EVENT_APPLY_DUPPLICATION,
           },
         });
       }
@@ -150,7 +160,11 @@ export const NQuizEventWinnerApply = () => {
         </li>
       </ul>
 
-      <Button onClick={handleSubmit} disabled={isSubmitDisabled}>
+      <Button
+        css={submitButtonStyle}
+        onClick={handleSubmit}
+        disabled={isSubmitDisabled}
+      >
         제출하기
       </Button>
     </div>
