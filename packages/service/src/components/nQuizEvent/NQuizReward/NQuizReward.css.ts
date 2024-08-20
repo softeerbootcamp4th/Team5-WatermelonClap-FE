@@ -54,7 +54,7 @@ export const imgStyle = css`
   object-fit: contain;
 
   ${mobile(css`
-    width: 65%;
+    width: 55%;
   `)}
 `;
 
