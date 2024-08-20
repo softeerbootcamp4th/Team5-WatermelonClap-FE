@@ -15,7 +15,7 @@ export const img = (winner?: boolean) => css`
   width: ${winner ? "300px" : "180px"};
 
   ${mobile(css`
-    width: ${winner ? "200px" : "140px"};
+    width: ${winner ? "200px" : "90px"};
     margin-bottom: 20px;
   `)}
 `;
@@ -23,9 +23,16 @@ export const img = (winner?: boolean) => css`
 export const rank = css`
   font-size: 16px;
   margin-bottom: 14px;
+  ${mobile(css`
+    font-size: 12px;
+  `)}
 `;
 
 export const name = css`
   font-size: 22px;
   width: 180px;
+  ${mobile(css`
+    font-size: 16px;
+    width: 140px;
+  `)}
 `;

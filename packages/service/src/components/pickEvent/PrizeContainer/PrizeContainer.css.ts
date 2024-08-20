@@ -57,6 +57,6 @@ export const prizeWrap = css`
   grid-template-columns: repeat(2, 1fr);
 
   ${mobile(css`
-    grid-template-columns: 1fr;
+    gap: 50px 30px;
   `)}
 `;
