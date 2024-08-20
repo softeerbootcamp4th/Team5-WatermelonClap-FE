@@ -50,7 +50,7 @@ export const MODAL_CONTENT_ORDER_EVENT_APPLY_SUCCESS = (
 
 export const MODAL_CONTENT_ORDER_EVENT_APPLY_DUPPLICATION = (
   <div css={[theme.flex.center, theme.flex.column]}>
-    <p>이미 신청이 완료된 번호입니다.</p>
-    <p>하루에 한 번 참여가 가능합니다.</p>
+    <p>이미 신청이 완료되었습니다.</p>
+    <p>하루에 한 번만 참여할 수 있습니다.</p>
   </div>
 );
