@@ -25,6 +25,7 @@ import {
   rewardContainerStyle,
   centeredContainerStyle,
   submitButtonStyle,
+  termListWrapStyle,
 } from "./NQuizEventWinnerApply.css";
 import { useModal } from "@watermelon-clap/core/src/hooks";
 import {
@@ -148,17 +149,19 @@ export const NQuizEventWinnerApply = () => {
         />
       </div>
 
-      <CheckBox
-        isChecked={isChecked}
-        setIsChecked={setIsChecked}
-        text="개인정보 수집 및 이용 약관에 동의합니다. (이벤트 참가자 식별 및 경품 발송)"
-      />
-      <ul css={listStyle}>
-        <li css={listItemStyle}>경품은 추후 문자를 통해 발송됩니다.</li>
-        <li css={listItemStyle}>
-          번호 제출 전 페이지를 이탈하면 당첨이 취소됩니다.
-        </li>
-      </ul>
+      <div css={termListWrapStyle}>
+        <CheckBox
+          isChecked={isChecked}
+          setIsChecked={setIsChecked}
+          text="개인정보 수집 및 이용 약관에 동의합니다. (이벤트 참가자 식별 및 경품 발송)"
+        />
+        <ul css={listStyle}>
+          <li css={listItemStyle}>경품은 추후 문자를 통해 발송됩니다.</li>
+          <li css={listItemStyle}>
+            번호 제출 전 페이지를 이탈하면 당첨이 취소됩니다.
+          </li>
+        </ul>
+      </div>
 
       <Button
         css={submitButtonStyle}

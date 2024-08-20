@@ -12,13 +12,13 @@ export const backgroundStyle = css`
   ${theme.flex.center}
   ${theme.flex.column}
 
-  padding: 100px 18vw;
+  padding: 100px 20%;
   padding-bottom: 94px;
 
   gap: 20px;
 
   ${mobile(css`
-    min-width: 0px;
+    min-height: calc(100vh - 122px);
     padding: 20vw 6vw;
     padding-bottom: 47px;
   `)};
@@ -56,7 +56,7 @@ export const titleStyle = css`
 
 export const contentContainerStyle = css`
   ${theme.flex.center};
-  ${theme.flex.column};
+  ${theme.flex.column}
   ${theme.gap.gap8};
 
   ${mobile(css`
@@ -70,7 +70,7 @@ export const cheersTextStyle = css`
   text-align: center;
 
   ${mobile(css`
-    font-size: 14px;
+    font-size: 28px;
   `)}
 `;
 
@@ -105,24 +105,38 @@ export const inputStyle = (isPhoneNumberValid: boolean) => css`
   outline: 1px solid ${isPhoneNumberValid ? theme.color.eventBlue : "#FF6B6B"};
 `;
 
+export const termListWrapStyle = css`
+  display: flex;
+  flex-direction: column;
+  width: 96%;
+  max-width: 570px;
+  gap: 10px;
+`;
+
 export const listStyle = css`
-  width: 566px;
   display: flex;
   flex-direction: column;
   color: ${theme.color.gray300};
   align-items: start;
-  gap: 10px;
+  width: 100%;
+  gap: 4px;
 `;
 
 export const listItemStyle = css`
-  ${theme.font.preM18}
+  ${theme.font.preM}
   color: ${theme.color.gray300};
+  font-size: 16px;
   margin-left: 22px;
+
+  ${mobile(css`
+    font-size: 12px;
+    margin-left: 18px;
+  `)}
 `;
 
 export const rewardContainerStyle = css`
   width: 200px;
-  height: 300px;
+  height: fit-content;
   display: flex;
   align-items: center;
   justify-content: center;
