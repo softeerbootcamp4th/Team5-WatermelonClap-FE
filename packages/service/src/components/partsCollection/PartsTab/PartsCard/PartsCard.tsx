@@ -1,8 +1,12 @@
+import { Button } from "@service/common/components/Button";
 import * as style from "./PartsCard.css";
 import { apiPatchMyParts } from "@service/apis/partsEvent/apiPatchMyParts";
 import { RefetchOptions, QueryObserverResult } from "@tanstack/react-query";
 import { IParts, IMyParts } from "@watermelon-clap/core/src/types";
 import { getAccessToken } from "@watermelon-clap/core/src/utils";
+import { useState } from "react";
+import { useMobile } from "@service/common/hooks/useMobile";
+import { useModal } from "@watermelon-clap/core/src/hooks";
 
 interface IPartsCardProps {
   partsData: IParts;
@@ -15,6 +19,21 @@ export const PartsCard = ({
   partsData,
   refetchGetMyParts,
 }: IPartsCardProps) => {
+  const [isHovered, setIsHovered] = useState(false);
+  const isMobile = useMobile();
+  const { openModal } = useModal();
+
+  const handleDescriptionButtonClick = () => {
+    openModal({
+      type: "description",
+      props: {
+        src: partsData.thumbnailImgSrc,
+        name: partsData.name,
+        description: partsData.description,
+      },
+    });
+  };
+
   const handleClickCard = () => {
     apiPatchMyParts(getAccessToken() as string, partsData.partsId).then(() =>
       refetchGetMyParts(),
@@ -22,14 +41,34 @@ export const PartsCard = ({
   };
 
   return (
-    <div css={style.container} onClick={handleClickCard}>
-      <div css={style.card(partsData.equipped)}>
+    <div
+      css={style.container}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+    >
+      <div css={style.card(partsData.equipped)} onClick={handleClickCard}>
         <img
           src={partsData.thumbnailImgSrc}
           css={style.img(partsData.category)}
         />
       </div>
-      <span css={style.name}>{partsData.name}</span>
+      {isHovered ? (
+        <div css={style.buttonWrap}>
+          <Button
+            css={style.partsDescriptionButton}
+            onClick={handleDescriptionButtonClick}
+          >
+            상세설명
+          </Button>
+          {!isMobile && (
+            <Button css={style.partsEquipButton} onClick={handleClickCard}>
+              {partsData.equipped ? "장착해제" : "장착하기"}
+            </Button>
+          )}
+        </div>
+      ) : (
+        <span css={style.name}>{partsData.name}</span>
+      )}
     </div>
   );
 };

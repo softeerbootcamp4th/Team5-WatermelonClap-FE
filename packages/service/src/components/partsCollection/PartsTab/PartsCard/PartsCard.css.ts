@@ -6,10 +6,11 @@ export const container = css`
   ${theme.flex.column}
   width : 31.2%;
   cursor: pointer;
+  gap: 6px;
 
   ${mobile(css`
     width: 46%;
-  `)}
+  `)};
 `;
 
 export const card = (equipped: boolean) => css`
@@ -43,11 +44,11 @@ export const card = (equipped: boolean) => css`
     color: ${theme.color.white};
     ${theme.font.preB24}
     font-size: 16px;
-    background-color: ${theme.color.eventBlue};
+    background-color: ${theme.color.gray400};
     padding: 10px 20px;
     animation: fadeInOut 1s infinite alternate;
 
-    width: 80%;
+    width: 100%;
     height: 5%;
     bottom: 0;
 
@@ -75,10 +76,51 @@ export const img = (cate: string) => css`
 export const name = css`
   ${theme.font.preB16};
   color: ${theme.color.white};
-  margin-top: 20px;
+  margin-top: 6px;
 
   ${mobile(css`
     font-size: 14px;
-    margin-top: 10px;
   `)}
+`;
+
+export const buttonWrap = css`
+  width: 100%;
+  ${theme.flex.center}
+  gap: 4px;
+`;
+
+export const partsDescriptionButton = css`
+  width: 48%;
+  font-size: 14px;
+  height: fit-content;
+  padding: 4px 10px;
+  background-color: ${theme.color.white};
+  color: ${theme.color.black};
+
+  :active {
+    background-color: ${theme.color.gray200};
+    color: ${theme.color.black};
+  }
+
+  ${mobile(css`
+    font-size: 14px;
+    margin-top: 2px;
+    padding: 2px 4px;
+    width: 50%;
+  `)}
+`;
+
+export const partsEquipButton = css`
+  width: 48%;
+  font-size: 14px;
+  height: fit-content;
+  padding: 4px 10px;
+
+  background-color: ${theme.color.eventBlue};
+  color: ${theme.color.white};
+
+  :active {
+    background-color: ${theme.color.eventSkyblue};
+    color: ${theme.color.white};
+  }
 `;

@@ -49,6 +49,7 @@ export const partsCardWrap = css`
   display: flex;
   align-items: baseline;
   justify-content: flex-start;
+  align-content: start;
 
   gap: 20px 20px;
   flex-wrap: wrap;
