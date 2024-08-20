@@ -63,7 +63,7 @@ export const Banner = () => {
     scroller.scrollTo("scrollMove", {
       duration: 700,
       smooth: true,
-      offset: -50,
+      offset: -60,
     });
   };
 
