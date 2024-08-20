@@ -16,7 +16,7 @@ export const Main = () => {
         <Space size={isMobile ? 30 : 100} />
         <Expectations />
         <Space size={isMobile ? 30 : 120} />
-        <div css={style.eventCardWrap}>
+        <div id="scrollMove" css={style.eventCardWrap}>
           {eventData.map((data) => (
             <EventCard eventData={data} key={data.id} />
           ))}
