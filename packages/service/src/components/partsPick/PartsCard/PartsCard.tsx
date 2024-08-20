@@ -18,6 +18,8 @@ interface CardProps {
   isMouseOutAnimationEnabled: boolean;
   remainChance: number;
   setIsPickComplete: React.Dispatch<React.SetStateAction<boolean>>;
+  partsInfo: IParts | undefined;
+  setPartsInfo: React.Dispatch<React.SetStateAction<IParts | undefined>>;
 }
 
 const CardWrapper = styled.div<{ color1: string; color2: string }>`
@@ -53,12 +55,13 @@ export const PartsCard = ({
   isMouseOutAnimationEnabled,
   remainChance,
   setIsPickComplete,
+  partsInfo,
+  setPartsInfo,
 }: CardProps) => {
   const cardRef = useRef<HTMLDivElement>(null);
   const styleRef = useRef<HTMLStyleElement>(document.createElement("style"));
   const [isFlipped, setIsFlipped] = useState(false);
   const [isFrontShow, setIsFrontShow] = useState(false);
-  const [partsInfo, setPartsInfo] = useState<IParts>();
   const { getIsLogin } = useAuth();
 
   const handleMouseMove = (e: React.MouseEvent | React.TouchEvent) => {
