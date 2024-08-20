@@ -17,3 +17,7 @@ export const errorMessageStyle = css`
   ${theme.font.preB24}
   color: ${theme.color.white};
 `;
+
+export const loginText = css`
+  color: white;
+`;

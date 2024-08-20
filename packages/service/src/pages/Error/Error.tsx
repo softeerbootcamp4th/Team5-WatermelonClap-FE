@@ -1,20 +1,21 @@
 import { FallbackProps } from "react-error-boundary";
-import { errorContainerStyle, errorMessageStyle } from "./Error.css";
-import { Button } from "@service/common/components/Button";
+import { errorContainerStyle, errorMessageStyle, loginText } from "./Error.css";
+import { Button, ButtonVariant } from "@service/common/components/Button";
 import { theme } from "@watermelon-clap/core/src/theme";
 import { useNavigate } from "react-router-dom";
 import { useErrorBoundary } from "react-error-boundary";
 import { GlobalNavigationBar } from "@service/common/components/GlobalNavigationBar";
+import { Space } from "@service/common/styles/Space";
+import { useAuth } from "@watermelon-clap/core/src/hooks";
 
 export const Error = ({ error, resetErrorBoundary }: FallbackProps) => {
   const navigate = useNavigate();
   const { resetBoundary } = useErrorBoundary();
   let errorMessage;
 
+  const { login } = useAuth();
+
   switch (error.message) {
-    case "403":
-      errorMessage = "접근 금지: 이 리소스에 접근할 권한이 없습니다.";
-      break;
     case "404":
       errorMessage =
         "페이지를 찾을 수 없습니다: 요청하신 리소스를 찾을 수 없습니다.";
@@ -30,6 +31,10 @@ export const Error = ({ error, resetErrorBoundary }: FallbackProps) => {
       errorMessage = "예기치 못한 오류가 발생했습니다.";
   }
 
+  const handleLogin = () => {
+    login();
+    resetBoundary();
+  };
   const handleHomeRedirect = () => {
     navigate("/");
     resetBoundary();
@@ -39,11 +44,23 @@ export const Error = ({ error, resetErrorBoundary }: FallbackProps) => {
     <>
       <GlobalNavigationBar />
       <div role="alert" css={errorContainerStyle}>
-        <pre css={errorMessageStyle}>{errorMessage}</pre>
-        <div css={[theme.flex.center, theme.gap.gap24]}>
-          <Button onClick={handleHomeRedirect}>홈으로</Button>
-          <Button onClick={resetErrorBoundary}>다시 시도</Button>
-        </div>
+        {error.message === "403" ? (
+          <div css={theme.flex.column}>
+            <h1 css={loginText}>로그인이 필요한 서비스입니다</h1>
+            <Space size={20} />
+            <Button variant={ButtonVariant.LONG} onClick={handleLogin}>
+              로그인
+            </Button>
+          </div>
+        ) : (
+          <>
+            <pre css={errorMessageStyle}>{errorMessage}</pre>
+            <div css={[theme.flex.center, theme.gap.gap24]}>
+              <Button onClick={handleHomeRedirect}>홈으로</Button>
+              <Button onClick={resetErrorBoundary}>다시 시도</Button>
+            </div>
+          </>
+        )}
       </div>
     </>
   );
