@@ -10,11 +10,16 @@ import { css } from "@emotion/react";
 import { Space } from "@service/common/styles/Space";
 import { useMobile } from "@service/common/hooks/useMobile";
 import { apiGetPartsRemain } from "@service/apis/partsEvent/apiGetPartsRemain";
+import { useRef } from "react";
+import { useInView } from "framer-motion";
 
 export const PickEvent = () => {
   const navigate = useNavigate();
   const isMobile = useMobile();
   const { login, getIsLogin } = useAuth();
+
+  const btnRef = useRef(null);
+  const btnIsInView = useInView(btnRef);
 
   const handleClickPickBtn = () => {
     const handleLogin = () => {
@@ -42,21 +47,24 @@ export const PickEvent = () => {
         <span>당첨자 발표 {textData.winnerDate}</span>
         <pre>{textData.desc}</pre>
       </div>
+      <Space size={!isMobile ? 20 : 50} />
 
-      <Space size={!isMobile ? 200 : 100} />
-      <JoinInfo />
-
-      <Space size={!isMobile ? 200 : 100} />
       <CardCarousel />
 
-      <button css={style.btn} onClick={handleClickPickBtn}>
+      <Space size={!isMobile ? 20 : 10} />
+
+      <div ref={btnRef} />
+      <button css={style.btn(btnIsInView)} onClick={handleClickPickBtn}>
         지금 바로 뽑기
       </button>
+      <Space size={!isMobile ? 200 : 100} />
 
-      <Space size={!isMobile ? 300 : 100} />
+      <JoinInfo />
+      <Space size={!isMobile ? 100 : 100} />
       <PrizeContainer />
 
-      <Space size={100} />
+      <Space size={30} />
+
       <div css={style.termWrap}>
         <span css={style.termTitleStyle}>{pickEventTermsTitle}</span>
         <ul css={style.termListStyle}>

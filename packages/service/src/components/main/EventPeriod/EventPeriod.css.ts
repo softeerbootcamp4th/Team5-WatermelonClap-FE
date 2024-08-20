@@ -12,9 +12,9 @@ export const container = css`
 `;
 
 export const period = css`
-  ${theme.font.pcpL32};
+  ${theme.font.pcpL};
   -webkit-text-stroke-width: 1px;
-  font-size: calc(20px + 2vw);
+  font-size: calc(10px + 2vw);
   color: ${theme.color.eventSkyblue};
   margin-top: 10px;
 
@@ -25,7 +25,7 @@ export const period = css`
 
 export const title = css`
   ${theme.font.pcpB};
-  font-size: calc(40px + 3vw);
+  font-size: calc(20px + 3vw);
 
   ${mobile(css`
     font-size: 26px;
