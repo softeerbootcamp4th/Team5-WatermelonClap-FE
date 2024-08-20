@@ -1,24 +1,19 @@
 import { CustomCard } from "@service/components/partsCollection";
 import * as style from "./PartsCollection.css";
 import { PartsTab } from "@service/components/partsCollection/PartsTab";
-import { useQuery } from "@tanstack/react-query";
+import { useSuspenseQuery } from "@tanstack/react-query";
 import { apiGetMyParts } from "@service/apis/partsEvent/apiGetMyParts";
 import { useEffect, useState } from "react";
 import { ICustomCardProps } from "@service/components/partsCollection/CustomCard/CustomCard";
-import { useAuth } from "@watermelon-clap/core/src/hooks";
 import { IMyParts } from "@watermelon-clap/core/src/types";
 import { getAccessToken } from "@watermelon-clap/core/src/utils";
 
 export const PartsCollection = () => {
   const [equippedPartsImg, setEquippedPartsImg] = useState<ICustomCardProps>();
-  const { handleTokenError } = useAuth();
 
-  const getPartsData = () =>
-    apiGetMyParts().catch(handleTokenError) as Promise<IMyParts[]>;
-
-  const { data: partsDatas, refetch } = useQuery<IMyParts[]>({
+  const { data: partsDatas, refetch } = useSuspenseQuery<IMyParts[]>({
     queryKey: ["myParts", getAccessToken()],
-    queryFn: getPartsData,
+    queryFn: apiGetMyParts,
   });
 
   useEffect(() => {
