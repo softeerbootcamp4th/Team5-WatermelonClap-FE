@@ -1,7 +1,7 @@
 import { css } from "@emotion/react";
 import { theme } from "@watermelon-clap/core/src/theme";
 
-const SCROLL_SPEED = "3000vh";
+const SCROLL_SPEED = "2000vh";
 
 export const scrollContainer = css`
   height: ${SCROLL_SPEED};
