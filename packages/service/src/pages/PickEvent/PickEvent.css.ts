@@ -19,20 +19,22 @@ export const textWrap = css`
   text-align: center;
 
   h1 {
-    ${theme.font.pcpB82}
-    margin-bottom : 12px;
+    ${theme.font.pcpB}
+    font-size : 62px;
+    margin-bottom: 12px;
     text-shadow: 0 0 40px rgba(255, 255, 255, 0.4);
   }
 
   span {
-    ${theme.font.pcpL32}
-    word-spacing : 2px;
+    ${theme.font.pcpL}
+    font-size : 28px;
+    word-spacing: 2px;
     letter-spacing: 2px;
     -webkit-text-stroke: 2px;
   }
 
   pre {
-    ${theme.font.preM20}
+    ${theme.font.preM18}
     line-height: 24px;
   }
 
@@ -80,11 +82,12 @@ export const termListStyle = css`
 `;
 
 export const btn = css`
-  padding: 30px 110px;
+  padding: 24px 76px;
   border-radius: 20px;
   background-color: ${theme.color.eventBlue};
   color: ${theme.color.white};
-  ${theme.font.preB38}
+  ${theme.font.preB}
+  font-size : 28px;
   cursor: pointer;
   border: none;
   transition: all 0.2s;
@@ -103,7 +106,7 @@ export const btn = css`
 `;
 
 export const termWrap = css`
-  padding: 100px;
+  padding: 200px;
   padding-bottom: 0px;
 
   ${mobile(css`

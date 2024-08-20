@@ -42,21 +42,23 @@ export const PickEvent = () => {
         <span>당첨자 발표 {textData.winnerDate}</span>
         <pre>{textData.desc}</pre>
       </div>
+      <Space size={!isMobile ? 20 : 50} />
 
-      <Space size={!isMobile ? 200 : 100} />
-      <JoinInfo />
-
-      <Space size={!isMobile ? 200 : 100} />
       <CardCarousel />
+
+      <Space size={!isMobile ? 20 : 10} />
 
       <button css={style.btn} onClick={handleClickPickBtn}>
         지금 바로 뽑기
       </button>
+      <Space size={!isMobile ? 200 : 100} />
 
-      <Space size={!isMobile ? 300 : 100} />
+      <JoinInfo />
+      <Space size={!isMobile ? 100 : 100} />
       <PrizeContainer />
 
-      <Space size={100} />
+      <Space size={30} />
+
       <div css={style.termWrap}>
         <span css={style.termTitleStyle}>{pickEventTermsTitle}</span>
         <ul css={style.termListStyle}>
