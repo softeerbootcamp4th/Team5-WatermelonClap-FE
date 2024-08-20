@@ -11,9 +11,17 @@ import {
   NavigateModalProps,
   ConfirmModal,
   ConfirmModalProps,
+  DescriptionModal,
+  DescriptionModalProps,
 } from "./modal";
 
-export type ModalType = "login" | "alert" | "pending" | "navigate" | "confirm";
+export type ModalType =
+  | "login"
+  | "alert"
+  | "pending"
+  | "navigate"
+  | "confirm"
+  | "description";
 
 export interface DefaultModalProps {
   isOpen: boolean;
@@ -26,6 +34,7 @@ interface ModalComponentMap {
   pending: React.FC<DefaultModalProps>;
   navigate: React.FC<NavigateModalProps>;
   confirm: React.FC<ConfirmModalProps>;
+  description: React.FC<DescriptionModalProps>;
 }
 
 const MODAL_COMPONENT_MAP: ModalComponentMap = {
@@ -34,6 +43,7 @@ const MODAL_COMPONENT_MAP: ModalComponentMap = {
   pending: PendingModal,
   navigate: NavigateModal,
   confirm: ConfirmModal,
+  description: DescriptionModal,
 };
 
 export const ModalContainer = () => {
