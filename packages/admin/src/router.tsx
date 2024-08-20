@@ -1,4 +1,4 @@
-import { createBrowserRouter } from "react-router-dom";
+import { createBrowserRouter, Navigate } from "react-router-dom";
 import { App } from "./App";
 import {
   OrderEventManagement,
@@ -26,6 +26,10 @@ export const router = createBrowserRouter([
     element: <App />,
     children: [
       /* Order Event */
+      {
+        path: "/",
+        element: <Navigate to={ORDER_EVENT_MANAGEMENT_PAGE_ROUTE} replace />,
+      },
       {
         path: ORDER_EVENT_MANAGEMENT_PAGE_ROUTE,
         element: <OrderEventManagement />,
