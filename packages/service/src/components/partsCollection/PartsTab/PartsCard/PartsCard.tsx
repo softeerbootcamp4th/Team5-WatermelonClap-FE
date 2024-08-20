@@ -5,8 +5,8 @@ import { RefetchOptions, QueryObserverResult } from "@tanstack/react-query";
 import { IParts, IMyParts } from "@watermelon-clap/core/src/types";
 import { getAccessToken } from "@watermelon-clap/core/src/utils";
 import { useState } from "react";
-import { useMobile } from "@service/common/hooks/useMobile";
 import { useModal } from "@watermelon-clap/core/src/hooks";
+import { useMobile } from "@service/common/hooks/useMobile";
 
 interface IPartsCardProps {
   partsData: IParts;
@@ -20,8 +20,8 @@ export const PartsCard = ({
   refetchGetMyParts,
 }: IPartsCardProps) => {
   const [isHovered, setIsHovered] = useState(false);
-  const isMobile = useMobile();
   const { openModal } = useModal();
+  const isMobile = useMobile();
 
   const handleDescriptionButtonClick = () => {
     openModal({
@@ -46,7 +46,10 @@ export const PartsCard = ({
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
-      <div css={style.card(partsData.equipped)} onClick={handleClickCard}>
+      <div
+        css={style.card(partsData.equipped)}
+        onClick={isMobile ? () => {} : handleClickCard}
+      >
         <img
           src={partsData.thumbnailImgSrc}
           css={style.img(partsData.category)}
@@ -60,11 +63,9 @@ export const PartsCard = ({
           >
             상세설명
           </Button>
-          {!isMobile && (
-            <Button css={style.partsEquipButton} onClick={handleClickCard}>
-              {partsData.equipped ? "장착해제" : "장착하기"}
-            </Button>
-          )}
+          <Button css={style.partsEquipButton} onClick={handleClickCard}>
+            {partsData.equipped ? "장착해제" : "장착하기"}
+          </Button>
         </div>
       ) : (
         <span css={style.name}>{partsData.name}</span>

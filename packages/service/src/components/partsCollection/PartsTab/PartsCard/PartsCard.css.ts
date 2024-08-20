@@ -103,10 +103,9 @@ export const partsDescriptionButton = css`
   }
 
   ${mobile(css`
-    font-size: 14px;
     margin-top: 2px;
     padding: 2px 4px;
-    width: 50%;
+    width: 48%;
   `)}
 `;
 
@@ -123,4 +122,10 @@ export const partsEquipButton = css`
     background-color: ${theme.color.eventSkyblue};
     color: ${theme.color.white};
   }
+
+  ${mobile(css`
+    margin-top: 2px;
+    padding: 2px 4px;
+    width: 48%;
+  `)}
 `;
