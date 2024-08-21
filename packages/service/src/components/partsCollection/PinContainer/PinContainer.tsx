@@ -46,33 +46,42 @@ export const PinContainer = ({
           </div>
         </div>
         {/* 색상 */}
-        <Pin
-          parts={equippedParts?.colorParts}
-          opacity={perspectiveOpacity}
-          imgCss={styles.pinCommonImg}
-          customCss={styles.pinCommonCustom}
-        />
+
+        {equippedParts?.colorParts && (
+          <Pin
+            parts={equippedParts.colorParts}
+            opacity={perspectiveOpacity}
+            imgCss={styles.pinCommonImg}
+            customCss={styles.pinCommonCustom}
+          />
+        )}
         {/* 배경 */}
-        <Pin
-          parts={equippedParts?.bgParts}
-          opacity={perspectiveOpacity}
-          imgCss={styles.pinBgImg}
-          customCss={styles.pinBgCustom}
-        />
+        {equippedParts?.bgParts && (
+          <Pin
+            parts={equippedParts.bgParts}
+            opacity={perspectiveOpacity}
+            imgCss={styles.pinBgImg}
+            customCss={styles.pinBgCustom}
+          />
+        )}
         {/* 휠 */}
-        <Pin
-          parts={equippedParts?.wheelParts}
-          opacity={perspectiveOpacity}
-          imgCss={styles.pinWheelImg}
-          customCss={styles.pinWheelCustom}
-        />
+        {equippedParts?.wheelParts && (
+          <Pin
+            parts={equippedParts.wheelParts}
+            opacity={perspectiveOpacity}
+            imgCss={styles.pinWheelImg}
+            customCss={styles.pinWheelCustom}
+          />
+        )}
         {/* 스포일러 */}
-        <Pin
-          parts={equippedParts?.spoilerParts}
-          opacity={perspectiveOpacity}
-          imgCss={styles.pinSpoilerImg}
-          customCss={styles.pinSpoilerCustom}
-        />
+        {equippedParts?.spoilerParts && (
+          <Pin
+            parts={equippedParts.spoilerParts}
+            opacity={perspectiveOpacity}
+            imgCss={styles.pinSpoilerImg}
+            customCss={styles.pinSpoilerCustom}
+          />
+        )}
       </div>
     </div>
   );
