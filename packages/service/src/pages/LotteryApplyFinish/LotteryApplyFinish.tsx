@@ -16,6 +16,7 @@ import { IApiGetCheckExpectation } from "@service/apis/expectation/type";
 import { apiGetCheckExpectation } from "@service/apis/expectation/apiGetCheckExpectation";
 import { useSuspenseQuery } from "@tanstack/react-query";
 import { getAccessToken } from "@watermelon-clap/core/src/utils";
+import { motion } from "framer-motion";
 
 export const LotteryApplyFinish = () => {
   const navigate = useNavigate();
@@ -102,11 +103,13 @@ export const LotteryApplyFinish = () => {
           theme.flex.column,
           css`
             margin: 0 auto;
-            width: 70%;
-            max-width: 1000px;
-            justify-content: start;
+            width: fit-content;
+            justify-content: center;
             align-items: start;
           `,
+          mobile(css`
+            width: 84%;
+          `),
         ]}
       >
         <div
@@ -141,7 +144,7 @@ export const LotteryApplyFinish = () => {
           </div>
         </div>
 
-        <Space size={40} />
+        <Space size={60} />
 
         <div
           css={[
