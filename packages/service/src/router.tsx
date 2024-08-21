@@ -1,4 +1,4 @@
-import { createBrowserRouter } from "react-router-dom";
+import { createBrowserRouter, Navigate } from "react-router-dom";
 import {
   AUTH_DEMO_PAGE_ROUTE,
   DEMO_PAGE_ROUTE,
@@ -18,6 +18,7 @@ import {
   N_QUIZ_EVENT_PAGE_WINNER_APLLY_PAGE_ROUTE,
   LOTTER_APPLY_FINISH_PAGE_ROUTE,
   LOTTER_APPLY_INFO_PAGE_ROUTE,
+  NOT_FOUND_PAGE_ROUTE,
 } from "./constants/routes";
 import { RotateDemoPage } from "./Demo/pages/RotateDemoPage";
 import { AuthDemoPage } from "./Demo/pages/AuthDemoPage";
@@ -66,6 +67,10 @@ export const router = createBrowserRouter([
         element: <LotteryApplyInfo />,
       },
     ],
+  },
+  {
+    path: NOT_FOUND_PAGE_ROUTE,
+    element: <Navigate to={MAIN_PAGE_ROUTE} />,
   },
   {
     path: DEMO_PAGE_ROUTE,
