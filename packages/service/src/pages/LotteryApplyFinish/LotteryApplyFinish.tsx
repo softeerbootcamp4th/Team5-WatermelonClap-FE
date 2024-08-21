@@ -16,7 +16,6 @@ import { IApiGetCheckExpectation } from "@service/apis/expectation/type";
 import { apiGetCheckExpectation } from "@service/apis/expectation/apiGetCheckExpectation";
 import { useSuspenseQuery } from "@tanstack/react-query";
 import { getAccessToken } from "@watermelon-clap/core/src/utils";
-import { motion } from "framer-motion";
 
 export const LotteryApplyFinish = () => {
   const navigate = useNavigate();
