@@ -9,7 +9,7 @@ import { MAIN_PAGE_ROUTE } from "@service/constants/routes";
 import { ChangeEvent, useEffect, useRef, useState } from "react";
 import { apiGetMyShareLink } from "@service/apis/link/apiGetMyShareLink";
 import { apiPostExpectation } from "@service/apis/expectation/apiPostExpectation";
-import { useModal } from "@watermelon-clap/core/src/hooks";
+import { useAuth, useModal } from "@watermelon-clap/core/src/hooks";
 import { mobile } from "@service/common/responsive/responsive";
 import { useMobile } from "@service/common/hooks/useMobile";
 
@@ -20,6 +20,7 @@ export const LotteryApplyFinish = () => {
   const [expectation, setExpectation] = useState("");
   const [isExpectationNull, setIsExpectationNull] = useState(true);
   const [isPostExpectation, setIsPostExpectation] = useState(false);
+  const { handleTokenError } = useAuth();
 
   const { openModal } = useModal();
   const {
@@ -27,9 +28,11 @@ export const LotteryApplyFinish = () => {
   } = useLocation();
 
   useEffect(() => {
-    apiGetMyShareLink().then(({ link }) => {
-      setShareLink(link);
-    });
+    apiGetMyShareLink()
+      .then(({ link }) => {
+        setShareLink(link);
+      })
+      .catch(handleTokenError);
   }, []);
 
   const handleChange = (event: ChangeEvent<HTMLTextAreaElement>) => {
@@ -62,12 +65,14 @@ export const LotteryApplyFinish = () => {
         setIsPostExpectation(true);
         setIsExpectationNull(true);
       })
-      .catch(() =>
+      .catch((error) => {
+        handleTokenError(error);
+
         openModal({
           type: "alert",
           props: { content: "기대평 등록에 실패했습니다" },
-        }),
-      );
+        });
+      });
   };
 
   const isMobile = useMobile();

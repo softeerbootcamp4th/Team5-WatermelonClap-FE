@@ -90,7 +90,7 @@ export const btn = (btnIsInView: boolean) => css`
   font-size : 28px;
   cursor: pointer;
   border: none;
-  transition: all 0.2s;
+  transition: background-color 0.2s;
   margin: 0 auto;
   display: block;
   z-index: 20;

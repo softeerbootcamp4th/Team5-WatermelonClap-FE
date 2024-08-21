@@ -10,10 +10,10 @@ import { ScrollToTop } from "./common/components/ScrollToTop";
 export const App = () => {
   return (
     <div>
+      <ScrollToTop />
       <ErrorBoundary FallbackComponent={Error}>
         <GlobalNavigationBar />
         <Suspense fallback={<Loading />}>
-          <ScrollToTop />
           <Outlet />
         </Suspense>
       </ErrorBoundary>
