@@ -1,3 +1,7 @@
+export interface IApiGetCheckExpectation {
+  exist: false;
+}
+
 export interface IExpectation {
   uploadDate: string;
   uid: string;
