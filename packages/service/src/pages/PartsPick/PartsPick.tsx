@@ -17,6 +17,7 @@ import { apiGetLotteryStatus } from "@service/apis/lottery/apiGetLotteryStatus";
 import { useSuspenseQuery } from "@tanstack/react-query";
 import { getAccessToken } from "@watermelon-clap/core/src/utils";
 import { IParts } from "@watermelon-clap/core/src/types";
+import { ClickInduceIcon } from "@service/components/ClickInduceIcon";
 
 enum Category {
   REAR = "스포일러",
@@ -51,6 +52,7 @@ export const PartsPick = () => {
         },
       });
     }
+    setPartsInfo(undefined);
     refetchRemainChance();
   };
 
@@ -80,6 +82,7 @@ export const PartsPick = () => {
     <>
       <div css={partsPickBackgroundStyle}>
         <PickTitle />
+
         <PartsCard
           backImage="/images/parts/back.svg"
           isMouseOutAnimationEnabled={false}
@@ -88,6 +91,9 @@ export const PartsPick = () => {
           partsInfo={partsInfo}
           setPartsInfo={setPartsInfo}
         />
+
+        {!partsInfo && <ClickInduceIcon />}
+
         <Space size={isMobile ? 4 : 6} />
         {isPickComplete && (
           <p css={partsNameStyle}>
