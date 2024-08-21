@@ -1,26 +1,27 @@
+import { IParts } from "@watermelon-clap/core/src/types";
 import * as style from "./CustomCard.css";
 
 export interface ICustomCardProps {
-  bgImg?: string;
-  spoilerImg?: string;
-  wheelImg?: string;
-  colorImg?: string;
+  bgParts?: IParts;
+  spoilerParts?: IParts;
+  wheelParts?: IParts;
+  colorParts?: IParts;
 }
 
 export const CustomCard = ({
-  bgImg,
-  spoilerImg,
-  wheelImg,
-  colorImg,
+  bgParts,
+  spoilerParts,
+  wheelParts,
+  colorParts,
 }: ICustomCardProps) => {
   return (
     <div css={style.card}>
       <img css={style.carImg} src="images/partsCollection/defaultCar.svg" />
 
-      {bgImg && <img css={style.bgImg} src={bgImg} />}
-      <img css={style.spoilerImg} src={spoilerImg} />
-      <img css={style.wheelImg} src={wheelImg} />
-      <img css={style.colorImg} src={colorImg} />
+      {bgParts?.imgSrc && <img css={style.bgImg} src={bgParts.imgSrc} />}
+      <img css={style.spoilerImg} src={spoilerParts?.imgSrc} />
+      <img css={style.wheelImg} src={wheelParts?.imgSrc} />
+      <img css={style.colorImg} src={colorParts?.imgSrc} />
     </div>
   );
 };
