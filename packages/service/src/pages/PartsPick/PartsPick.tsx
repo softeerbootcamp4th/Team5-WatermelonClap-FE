@@ -57,13 +57,6 @@ export const PartsPick = () => {
     queryFn: apiGetPartsRemain,
   });
 
-  useEffect(() => {
-    if (!initPickFlag.current) {
-      handleOneMorePickButtonClick();
-      initPickFlag.current = true;
-    }
-  }, []);
-
   return (
     <>
       <div css={partsPickBackgroundStyle}>
