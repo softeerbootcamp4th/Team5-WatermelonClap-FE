@@ -3,7 +3,7 @@ import { theme } from "@watermelon-clap/core/src/theme";
 import { Timer } from "./Timer";
 
 export const EventPeriod = () => {
-  const endData = new Date("2024-09-08:23:59:59");
+  const endData = new Date("2024/09/08 23:59:59");
 
   return (
     <div css={style.container}>
