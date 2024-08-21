@@ -80,7 +80,7 @@ export const pinBgCustom = css`
   ${mobile(css`
     height: 94px;
     top: -50px;
-    left: 168px;
+    left: 162px;
   `)}
 `;
 
@@ -100,8 +100,8 @@ export const pinWheelCustom = css`
   left: 229px;
 
   ${mobile(css`
-    height: 92px;
-    top: -2px;
+    height: 100px;
+    top: -10px;
     left: 114px;
   `)}
 `;
@@ -117,13 +117,13 @@ export const pinSpoilerImg = css`
 `;
 
 export const pinSpoilerCustom = css`
-  height: 160px;
-  top: 10px;
+  height: 174px;
+  top: -14px;
   left: 410px;
 
   ${mobile(css`
-    height: 70px;
-    top: 0px;
+    height: 89px;
+    top: -18px;
     left: 218px;
   `)}
 `;
