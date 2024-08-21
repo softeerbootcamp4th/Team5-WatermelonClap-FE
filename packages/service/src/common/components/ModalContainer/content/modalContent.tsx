@@ -54,3 +54,11 @@ export const MODAL_CONTENT_ORDER_EVENT_APPLY_DUPPLICATION = (
     <p>하루에 한 번만 참여할 수 있습니다.</p>
   </div>
 );
+
+export const MODAL_CONTENT_NO_REMAINING_CHANCES = (
+  <div css={[theme.flex.center, theme.flex.column]}>
+    <p>뽑기권이 없습니다.</p>
+    <p>내 컬렉션 링크를 통해 친구를 초대해</p>
+    <p>뽑기권을 추가로 획득해보세요!</p>
+  </div>
+);

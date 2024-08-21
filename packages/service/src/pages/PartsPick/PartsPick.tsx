@@ -2,12 +2,11 @@ import { Button, ButtonVariant } from "@service/common/components/Button";
 import {
   partsPickBackgroundStyle,
   partsPickButtonStyle,
-  partsPickModalContentStyle,
   partsNameStyle,
 } from "./PartsPick.css";
 import { PartsCard, PickTitle } from "@service/components/partsPick";
 import { Space } from "@service/common/styles/Space";
-import { useEffect, useRef, useState } from "react";
+import { useState } from "react";
 import { useModal } from "@watermelon-clap/core/src/hooks";
 import { useMobile } from "@service/common/hooks/useMobile";
 import { useNavigate } from "react-router-dom";
@@ -17,6 +16,7 @@ import { useSuspenseQuery } from "@tanstack/react-query";
 import { getAccessToken } from "@watermelon-clap/core/src/utils";
 import { IParts } from "@watermelon-clap/core/src/types";
 import { ClickInduceIcon } from "@service/components/ClickInduceIcon";
+import { MODAL_CONTENT_NO_REMAINING_CHANCES } from "@service/common/components/ModalContainer/content/modalContent";
 
 enum Category {
   REAR = "스포일러",
@@ -29,27 +29,21 @@ export const PartsPick = () => {
   const { openModal } = useModal();
   const isMobile = useMobile();
   const [isPickComplete, setIsPickComplete] = useState(false);
-  const initPickFlag = useRef(false);
 
   const [partsInfo, setPartsInfo] = useState<IParts>();
   const navigate = useNavigate();
 
   const handleOneMorePickButtonClick = () => {
-    if (!isPickComplete && !initPickFlag) return;
-    if (remainChance < 1) {
+    if (!isPickComplete) return;
+    if (remainChance - 1 < 1) {
       openModal({
         type: "alert",
         props: {
           title: "내 아반떼 N 뽑기",
-          content: (
-            <div css={partsPickModalContentStyle}>
-              <p>뽑기권이 없습니다.</p>
-              <p>내 컬렉션 링크를 통해 친구를 초대해</p>
-              <p>뽑기권을 추가로 획득해보세요!</p>
-            </div>
-          ),
+          content: MODAL_CONTENT_NO_REMAINING_CHANCES,
         },
       });
+      return;
     }
     setPartsInfo(undefined);
     refetchRemainChance();
@@ -114,7 +108,7 @@ export const PartsPick = () => {
             css={partsPickButtonStyle}
             onClick={handleOneMorePickButtonClick}
           >
-            한 번 더 뽑기 ({remainChance}회)
+            한 번 더 뽑기 ({remainChance > 1 ? remainChance - 1 : 0}회)
           </Button>
         )}
       </div>

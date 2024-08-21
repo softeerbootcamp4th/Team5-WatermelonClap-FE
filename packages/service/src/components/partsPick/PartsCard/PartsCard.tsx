@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import styled from "@emotion/styled";
 import { cardBaseStyles } from "./PartsCard.css";
 import { theme } from "@watermelon-clap/core/src/theme";
-import { useAuth } from "@watermelon-clap/core/src/hooks";
+import { useAuth, useModal } from "@watermelon-clap/core/src/hooks";
 import { IParts } from "@watermelon-clap/core/src/types";
 import { css } from "@emotion/react";
 import {
@@ -10,6 +10,7 @@ import {
   craftSideCannons,
 } from "@service/common/utils/confettiCrafter";
 import { apiPostParts } from "@service/apis/partsEvent";
+import { MODAL_CONTENT_NO_REMAINING_CHANCES } from "@service/common/components/ModalContainer/content/modalContent";
 
 interface CardProps {
   backImage: string;
@@ -63,6 +64,7 @@ export const PartsCard = ({
   const [isFlipped, setIsFlipped] = useState(false);
   const [isFrontShow, setIsFrontShow] = useState(false);
   const { getIsLogin } = useAuth();
+  const { openModal } = useModal();
 
   const handleMouseMove = (e: React.MouseEvent | React.TouchEvent) => {
     const $card = cardRef.current;
@@ -122,8 +124,17 @@ export const PartsCard = ({
 
   const handleClick = () => {
     if (isFlipped) return;
-    if (remainChance < 0 || !getIsLogin()) return;
-
+    if (!getIsLogin()) return;
+    if (remainChance < 1) {
+      openModal({
+        type: "alert",
+        props: {
+          title: "내 아반떼 N 뽑기",
+          content: MODAL_CONTENT_NO_REMAINING_CHANCES,
+        },
+      });
+      return;
+    }
     if (isFrontShow) {
       craftFireworks(1);
       return;
@@ -143,7 +154,6 @@ export const PartsCard = ({
   };
 
   useEffect(() => {
-    if (remainChance < 0) return;
     setIsFlipped(false);
     setIsFrontShow(false);
     setIsPickComplete(false);
