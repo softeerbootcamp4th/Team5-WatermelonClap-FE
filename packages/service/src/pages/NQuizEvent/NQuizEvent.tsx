@@ -54,7 +54,7 @@ export const NQuizEvent = () => {
 
         {!openedQuiz && closedQuiz && <NQuizSection openedQuiz={closedQuiz} />}
 
-        {!openedQuiz && upcomingQuiz && (
+        {!openedQuiz && !closedQuiz && upcomingQuiz && (
           <NQuizSection openedQuiz={upcomingQuiz} />
         )}
 
