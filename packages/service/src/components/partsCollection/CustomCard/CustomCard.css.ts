@@ -9,7 +9,6 @@ export const card = css`
   margin: 0 auto;
   position: relative;
   flex-shrink: 0;
-  margin-top: 60px;
 
   ${mobile(css`
     width: 350px;

@@ -1,15 +1,16 @@
 import { CustomCard } from "@service/components/partsCollection";
 import * as style from "./PartsCollection.css";
 import { PartsTab } from "@service/components/partsCollection/PartsTab";
-import { useSuspenseQuery } from "@tanstack/react-query";
 import { apiGetMyParts } from "@service/apis/partsEvent/apiGetMyParts";
 import { useEffect, useState } from "react";
 import { ICustomCardProps } from "@service/components/partsCollection/CustomCard/CustomCard";
 import { IMyParts } from "@watermelon-clap/core/src/types";
 import { getAccessToken } from "@watermelon-clap/core/src/utils";
+import { PinContainer } from "@service/components/partsCollection/PinContainer";
+import { useSuspenseQuery } from "@tanstack/react-query";
 
 export const PartsCollection = () => {
-  const [equippedPartsImg, setEquippedPartsImg] = useState<ICustomCardProps>();
+  const [equippedParts, setEquippedParts] = useState<ICustomCardProps>();
 
   const { data: partsDatas, refetch } = useSuspenseQuery<IMyParts[]>({
     queryKey: ["myParts", getAccessToken()],
@@ -17,14 +18,18 @@ export const PartsCollection = () => {
   });
 
   useEffect(() => {
-    setEquippedPartsImg(getEquippedPartsImg(partsDatas));
+    setEquippedParts(getEquippedPartsImg(partsDatas));
   }, [partsDatas]);
 
   return (
     <div css={style.mainBg}>
       <h1 css={style.pageTitle}>내 아반떼 N 파츠 컬렉션</h1>
       <div css={style.partsContainer}>
-        <CustomCard {...equippedPartsImg} />
+        <div css={style.customCardContainer}>
+          <PinContainer equippedParts={equippedParts}>
+            <CustomCard {...equippedParts} />
+          </PinContainer>
+        </div>
 
         <PartsTab partsDatas={partsDatas} refetchGetMyParts={refetch} />
       </div>
@@ -33,27 +38,27 @@ export const PartsCollection = () => {
 };
 
 const getEquippedPartsImg = (partsDatas?: IMyParts[]) => {
-  const _equippedPartsImg: ICustomCardProps = {};
+  const _equippedParts: ICustomCardProps = {};
 
   partsDatas?.map((cate) =>
     cate.parts.map((parts) => {
       if (parts.equipped) {
         switch (parts.category) {
           case "DRIVE_MODE":
-            _equippedPartsImg.bgImg = parts.imgSrc;
+            _equippedParts.bgParts = parts;
             break;
           case "COLOR":
-            _equippedPartsImg.colorImg = parts.imgSrc;
+            _equippedParts.colorParts = parts;
             break;
           case "REAR":
-            _equippedPartsImg.spoilerImg = parts.imgSrc;
+            _equippedParts.spoilerParts = parts;
             break;
           case "WHEEL":
-            _equippedPartsImg.wheelImg = parts.imgSrc;
+            _equippedParts.wheelParts = parts;
             break;
         }
       }
     }),
   );
-  return _equippedPartsImg;
+  return _equippedParts;
 };

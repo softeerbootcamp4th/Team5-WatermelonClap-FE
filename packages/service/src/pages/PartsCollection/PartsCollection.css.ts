@@ -32,6 +32,17 @@ export const partsContainer = css`
   gap: 40px;
 
   ${mobile(css`
-    display: block;
+    ${theme.flex.column}
   `)};
+`;
+
+export const customCardContainer = css`
+  ${theme.flex.center}
+  width: 700px;
+  aspect-ratio: 16 / 9;
+  margin-top: 44px;
+
+  ${mobile(css`
+    width: 350px;
+  `)}
 `;
