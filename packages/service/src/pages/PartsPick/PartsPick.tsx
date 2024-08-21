@@ -52,6 +52,7 @@ export const PartsPick = () => {
         },
       });
     }
+    setPartsInfo(undefined);
     refetchRemainChance();
   };
 
@@ -91,7 +92,7 @@ export const PartsPick = () => {
           setPartsInfo={setPartsInfo}
         />
 
-        <ClickInduceIcon />
+        {!partsInfo && <ClickInduceIcon />}
 
         <Space size={isMobile ? 4 : 6} />
         {isPickComplete && (
