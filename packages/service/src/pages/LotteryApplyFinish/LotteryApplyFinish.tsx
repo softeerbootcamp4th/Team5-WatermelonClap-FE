@@ -1,4 +1,4 @@
-import { useLocation, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import * as style from "./LotteryApplyFinish.css";
 import { Button, ButtonVariant } from "@service/common/components/Button";
 import { ClipBoardButton } from "@service/common/components/ClipBoardButton";
@@ -12,6 +12,10 @@ import { apiPostExpectation } from "@service/apis/expectation/apiPostExpectation
 import { useAuth, useModal } from "@watermelon-clap/core/src/hooks";
 import { mobile } from "@service/common/responsive/responsive";
 import { useMobile } from "@service/common/hooks/useMobile";
+import { IApiGetCheckExpectation } from "@service/apis/expectation/type";
+import { apiGetCheckExpectation } from "@service/apis/expectation/apiGetCheckExpectation";
+import { useSuspenseQuery } from "@tanstack/react-query";
+import { getAccessToken } from "@watermelon-clap/core/src/utils";
 
 export const LotteryApplyFinish = () => {
   const navigate = useNavigate();
@@ -21,11 +25,14 @@ export const LotteryApplyFinish = () => {
   const [isExpectationNull, setIsExpectationNull] = useState(true);
   const [isPostExpectation, setIsPostExpectation] = useState(false);
   const { handleTokenError } = useAuth();
-
   const { openModal } = useModal();
+
   const {
-    state: { isApplied },
-  } = useLocation();
+    data: { exist: existExpectation },
+  } = useSuspenseQuery<IApiGetCheckExpectation>({
+    queryKey: ["existExpectation", getAccessToken()],
+    queryFn: apiGetCheckExpectation,
+  });
 
   useEffect(() => {
     apiGetMyShareLink()
@@ -52,6 +59,13 @@ export const LotteryApplyFinish = () => {
     event.preventDefault();
     if (!expectation) {
       return;
+    }
+
+    if (existExpectation) {
+      return openModal({
+        type: "alert",
+        props: { content: "이미 기대평을 작성한 유저입니다" },
+      });
     }
 
     apiPostExpectation(expectation)
@@ -129,53 +143,51 @@ export const LotteryApplyFinish = () => {
 
         <Space size={40} />
 
-        {isApplied || (
-          <div
+        <div
+          css={[
+            theme.flex.column,
+            css`
+              align-items: start;
+              gap: 24px;
+            `,
+          ]}
+        >
+          <span css={style.sectionTitle}>
+            새롭게 출시된 아반떼 N에 대한 기대평을 남겨주세요 🥳
+          </span>
+          <span css={theme.font.preM18}>
+            남겨주신 기대평은 홈화면에 노출될 수 있습니다! 최대 50자까지 작성할
+            수 있어요.
+          </span>
+
+          <form
+            onSubmit={handleSubmit}
             css={[
-              theme.flex.column,
-              css`
-                align-items: start;
-                gap: 24px;
-              `,
+              theme.flex.center,
+              theme.gap.gap16,
+              mobile(css`
+                flex-direction: column;
+                width: 100%;
+              `),
             ]}
           >
-            <span css={style.sectionTitle}>
-              새롭게 출시된 아반떼 N에 대한 기대평을 남겨주세요 🥳
-            </span>
-            <span css={theme.font.preM18}>
-              남겨주신 기대평은 홈화면에 노출될 수 있습니다! 최대 50자까지
-              작성할 수 있어요.
-            </span>
-
-            <form
-              onSubmit={handleSubmit}
-              css={[
-                theme.flex.center,
-                theme.gap.gap16,
-                mobile(css`
-                  flex-direction: column;
-                  width: 100%;
-                `),
-              ]}
+            <textarea
+              placeholder="여기에 기대평을 작성해주세요"
+              css={style.expectationInput}
+              value={expectation}
+              onChange={handleChange}
+              disabled={isPostExpectation && true}
+            />
+            <Button
+              type="submit"
+              variant={ButtonVariant.LONG}
+              css={style.applyBtn(isExpectationNull)}
+              disabled={isExpectationNull}
             >
-              <textarea
-                placeholder="여기에 기대평을 작성해주세요"
-                css={style.expectationInput}
-                value={expectation}
-                onChange={handleChange}
-                disabled={isPostExpectation && true}
-              />
-              <Button
-                type="submit"
-                variant={ButtonVariant.LONG}
-                css={style.applyBtn(isExpectationNull)}
-                disabled={isExpectationNull}
-              >
-                제출하기
-              </Button>
-            </form>
-          </div>
-        )}
+              제출하기
+            </Button>
+          </form>
+        </div>
       </section>
 
       <Space size={100} />
