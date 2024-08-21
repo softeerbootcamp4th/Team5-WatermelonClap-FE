@@ -121,6 +121,7 @@ export const PartsCard = ({
   };
 
   const handleClick = () => {
+    if (isFlipped) return;
     if (remainChance < 0 || !getIsLogin()) return;
 
     if (isFrontShow) {
