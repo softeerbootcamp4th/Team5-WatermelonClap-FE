@@ -1,34 +1,21 @@
 import { CustomCard } from "@service/components/partsCollection";
 import * as style from "./PartsCollection.css";
 import { PartsTab } from "@service/components/partsCollection/PartsTab";
-import { useQuery } from "@tanstack/react-query";
 import { apiGetMyParts } from "@service/apis/partsEvent/apiGetMyParts";
 import { useEffect, useState } from "react";
 import { ICustomCardProps } from "@service/components/partsCollection/CustomCard/CustomCard";
-import { useAuth } from "@watermelon-clap/core/src/hooks";
 import { IMyParts } from "@watermelon-clap/core/src/types";
 import { getAccessToken } from "@watermelon-clap/core/src/utils";
 import { PinContainer } from "@service/components/partsCollection/PinContainer";
+import { useSuspenseQuery } from "@tanstack/react-query";
 
 export const PartsCollection = () => {
-  const { getIsLogin, login, handleTokenError } = useAuth();
-
   const [equippedParts, setEquippedParts] = useState<ICustomCardProps>();
 
-  const getPartsData = () =>
-    apiGetMyParts().catch(handleTokenError) as Promise<IMyParts[]>;
-
-  const { data: partsDatas, refetch } = useQuery<IMyParts[]>({
+  const { data: partsDatas, refetch } = useSuspenseQuery<IMyParts[]>({
     queryKey: ["myParts", getAccessToken()],
-    queryFn: getPartsData,
+    queryFn: apiGetMyParts,
   });
-
-  useEffect(() => {
-    getIsLogin() ||
-      login().then(() => {
-        refetch();
-      });
-  }, []);
 
   useEffect(() => {
     setEquippedParts(getEquippedPartsImg(partsDatas));
