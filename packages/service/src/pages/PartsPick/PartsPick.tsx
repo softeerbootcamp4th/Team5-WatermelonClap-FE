@@ -17,6 +17,7 @@ import { getAccessToken } from "@watermelon-clap/core/src/utils";
 import { IParts } from "@watermelon-clap/core/src/types";
 import { ClickInduceIcon } from "@service/components/ClickInduceIcon";
 import { MODAL_CONTENT_NO_REMAINING_CHANCES } from "@service/common/components/ModalContainer/content/modalContent";
+import { Helmet } from "react-helmet";
 
 enum Category {
   REAR = "스포일러",
@@ -59,6 +60,12 @@ export const PartsPick = () => {
 
   return (
     <>
+      <Helmet>
+        <title>
+          파츠 뽑기 이벤트 | 현대자동차 - 아반떼 N 2024 | 고성능 컴팩트 스포츠카
+        </title>
+        <meta name="description" content="파츠 뽑기 이벤트 페이지" />
+      </Helmet>
       <div css={partsPickBackgroundStyle}>
         <PickTitle />
 

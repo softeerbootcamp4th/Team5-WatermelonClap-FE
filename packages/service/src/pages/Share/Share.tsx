@@ -13,6 +13,7 @@ import { MAIN_PAGE_ROUTE } from "@service/constants/routes";
 import { PinContainer } from "@service/components/partsCollection/PinContainer";
 import { ICustomCardProps } from "@service/components/partsCollection/CustomCard/CustomCard";
 import { useMobile } from "@service/common/hooks/useMobile";
+import { Helmet } from "react-helmet";
 
 export const Share = () => {
   const navigator = useNavigate();
@@ -30,31 +31,39 @@ export const Share = () => {
   }, [partsDatas]);
 
   return (
-    <div css={style.mainBg}>
-      <h1 css={style.pageTitle}>아반떼 N 파츠 컬렉션</h1>
+    <>
+      <Helmet>
+        <title>
+          내 컬렉션 공유 | 현대자동차 - 아반떼 N 2024 | 고성능 컴팩트 스포츠카
+        </title>
+        <meta name="description" content="내 컬렉션 공유 페이지" />
+      </Helmet>
+      <div css={style.mainBg}>
+        <h1 css={style.pageTitle}>아반떼 N 파츠 컬렉션</h1>
 
-      <div css={style.flexContainer}>
-        <div css={style.customCardContainer}>
-          <div css={style.customCardWrap}>
-            <PinContainer equippedParts={equippedParts}>
-              <CustomCard {...equippedParts} />
-            </PinContainer>
+        <div css={style.flexContainer}>
+          <div css={style.customCardContainer}>
+            <div css={style.customCardWrap}>
+              <PinContainer equippedParts={equippedParts}>
+                <CustomCard {...equippedParts} />
+              </PinContainer>
+            </div>
           </div>
+
+          <PartsWrap equippedParts={equippedParts} />
         </div>
 
-        <PartsWrap equippedParts={equippedParts} />
+        <Space size={isMobile ? 40 : 40} />
+
+        <Button
+          onClick={() => navigator(MAIN_PAGE_ROUTE)}
+          variant={ButtonVariant.LONG}
+          css={style.btn}
+        >
+          내 아반떼 N 뽑으러가기
+        </Button>
       </div>
-
-      <Space size={isMobile ? 40 : 40} />
-
-      <Button
-        onClick={() => navigator(MAIN_PAGE_ROUTE)}
-        variant={ButtonVariant.LONG}
-        css={style.btn}
-      >
-        내 아반떼 N 뽑으러가기
-      </Button>
-    </div>
+    </>
   );
 };
 

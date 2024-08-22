@@ -16,6 +16,7 @@ import { IApiGetCheckExpectation } from "@service/apis/expectation/type";
 import { apiGetCheckExpectation } from "@service/apis/expectation/apiGetCheckExpectation";
 import { useSuspenseQuery } from "@tanstack/react-query";
 import { getAccessToken } from "@watermelon-clap/core/src/utils";
+import { Helmet } from "react-helmet";
 
 export const LotteryApplyFinish = () => {
   const navigate = useNavigate();
@@ -92,119 +93,128 @@ export const LotteryApplyFinish = () => {
   const isMobile = useMobile();
 
   return (
-    <div css={style.mainBg}>
-      <h1 css={style.pageTitle}>응모완료</h1>
+    <>
+      <Helmet>
+        <title>
+          응모완료 | 현대자동차 - 아반떼 N 2024 | 고성능 컴팩트 스포츠카
+        </title>
+        <meta name="description" content="응모 완료 페이지" />
+      </Helmet>
 
-      <Space size={isMobile ? 40 : 100} />
+      <div css={style.mainBg}>
+        <h1 css={style.pageTitle}>응모완료</h1>
 
-      <section
-        css={[
-          theme.flex.column,
-          css`
-            margin: 0 auto;
-            width: fit-content;
-            justify-content: center;
-            align-items: start;
-          `,
-          mobile(css`
-            width: 84%;
-          `),
-        ]}
-      >
-        <div
+        <Space size={isMobile ? 40 : 100} />
+
+        <section
           css={[
             theme.flex.column,
             css`
+              margin: 0 auto;
+              width: fit-content;
+              justify-content: center;
               align-items: start;
-              gap: 14px;
-              width: 100%;
             `,
+            mobile(css`
+              width: 84%;
+            `),
           ]}
         >
-          <span css={style.sectionTitle}>내 컬렉션 URL</span>
-          <span>
-            링크를 통해 친구가 이벤트를 참여하면 추가 뽑기권을 드려요!
-          </span>
           <div
             css={[
-              theme.flex.center,
-              theme.gap.gap12,
-              mobile(css`
-                flex-direction: column;
-                width: 100%;
+              theme.flex.column,
+              css`
                 align-items: start;
-              `),
+                gap: 14px;
+                width: 100%;
+              `,
             ]}
           >
-            <div css={style.shareLinkBox} ref={shareLinkRef}>
-              {shareLink}
-            </div>
-            <ClipBoardButton copyRef={shareLinkRef} />
-          </div>
-        </div>
-
-        {existExpectation || (
-          <>
-            <Space size={60} />
-
+            <span css={style.sectionTitle}>내 컬렉션 URL</span>
+            <span>
+              링크를 통해 친구가 이벤트를 참여하면 추가 뽑기권을 드려요!
+            </span>
             <div
               css={[
-                theme.flex.column,
-                css`
+                theme.flex.center,
+                theme.gap.gap12,
+                mobile(css`
+                  flex-direction: column;
+                  width: 100%;
                   align-items: start;
-                  gap: 24px;
-                `,
+                `),
               ]}
             >
-              <span css={style.sectionTitle}>
-                새롭게 출시된 아반떼 N에 대한 기대평을 남겨주세요 🥳
-              </span>
-              <span css={theme.font.preM18}>
-                남겨주신 기대평은 홈화면에 노출될 수 있습니다! 최대 50자까지
-                작성할 수 있어요.
-              </span>
+              <div css={style.shareLinkBox} ref={shareLinkRef}>
+                {shareLink}
+              </div>
+              <ClipBoardButton copyRef={shareLinkRef} />
+            </div>
+          </div>
 
-              <form
-                onSubmit={handleSubmit}
+          {existExpectation || (
+            <>
+              <Space size={60} />
+
+              <div
                 css={[
-                  theme.flex.center,
-                  theme.gap.gap16,
-                  mobile(css`
-                    flex-direction: column;
-                    width: 100%;
-                  `),
+                  theme.flex.column,
+                  css`
+                    align-items: start;
+                    gap: 24px;
+                  `,
                 ]}
               >
-                <textarea
-                  placeholder="여기에 기대평을 작성해주세요"
-                  css={style.expectationInput}
-                  value={expectation}
-                  onChange={handleChange}
-                  disabled={isPostExpectation && true}
-                />
-                <Button
-                  type="submit"
-                  variant={ButtonVariant.LONG}
-                  css={style.applyBtn(isExpectationNull)}
-                  disabled={isExpectationNull}
+                <span css={style.sectionTitle}>
+                  새롭게 출시된 아반떼 N에 대한 기대평을 남겨주세요 🥳
+                </span>
+                <span css={theme.font.preM18}>
+                  남겨주신 기대평은 홈화면에 노출될 수 있습니다! 최대 50자까지
+                  작성할 수 있어요.
+                </span>
+
+                <form
+                  onSubmit={handleSubmit}
+                  css={[
+                    theme.flex.center,
+                    theme.gap.gap16,
+                    mobile(css`
+                      flex-direction: column;
+                      width: 100%;
+                    `),
+                  ]}
                 >
-                  제출하기
-                </Button>
-              </form>
-            </div>
-          </>
-        )}
-      </section>
+                  <textarea
+                    placeholder="여기에 기대평을 작성해주세요"
+                    css={style.expectationInput}
+                    value={expectation}
+                    onChange={handleChange}
+                    disabled={isPostExpectation && true}
+                  />
+                  <Button
+                    type="submit"
+                    variant={ButtonVariant.LONG}
+                    css={style.applyBtn(isExpectationNull)}
+                    disabled={isExpectationNull}
+                  >
+                    제출하기
+                  </Button>
+                </form>
+              </div>
+            </>
+          )}
+        </section>
 
-      <Space size={100} />
+        <Space size={100} />
 
-      <Button
-        variant={ButtonVariant.LONG}
-        css={style.btn}
-        onClick={() => navigate(MAIN_PAGE_ROUTE)}
-      >
-        홈으로 가기
-      </Button>
-    </div>
+        <Button
+          variant={ButtonVariant.LONG}
+          css={style.btn}
+          onClick={() => navigate(MAIN_PAGE_ROUTE)}
+        >
+          홈으로 가기
+        </Button>
+      </div>
+    </>
   );
 };

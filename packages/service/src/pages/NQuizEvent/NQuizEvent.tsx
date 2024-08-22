@@ -13,6 +13,7 @@ import {
   termTitleStyle,
   termListStyle,
 } from "./NQuizEvent.css";
+import { Helmet } from "react-helmet";
 
 export const NQuizEvent = () => {
   const { data: quizList } = useSuspenseQuery<IOrderEvent[]>({
@@ -35,6 +36,13 @@ export const NQuizEvent = () => {
 
   return (
     <>
+      <Helmet>
+        <title>
+          선착순 퀴즈 이벤트 | 현대자동차 - 아반떼 N 2024 | 고성능 컴팩트
+          스포츠카
+        </title>
+        <meta name="description" content="선착순 퀴즈 이벤트 페이지" />
+      </Helmet>
       <div css={backgroundStyle}>
         <NQuizTitle />
 
