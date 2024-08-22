@@ -7,6 +7,11 @@ export const mainBg = css`
   background-image: url("/images/common/main-bg.webp");
   background-size: cover;
   padding-bottom: 200px;
+
+  ${mobile(css`
+    min-height: calc(100vh - 120px);
+    padding-bottom: 120px;
+  `)}
 `;
 
 export const pageTitle = css`
