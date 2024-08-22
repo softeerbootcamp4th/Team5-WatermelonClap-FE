@@ -16,7 +16,7 @@ export const CustomCard = ({
 }: ICustomCardProps) => {
   return (
     <div css={style.card}>
-      <img css={style.carImg} src="images/partsCollection/defaultCar.svg" />
+      <img css={style.carImg} src="/images/partsCollection/defaultCar.svg" />
 
       {bgParts?.imgSrc && <img css={style.bgImg} src={bgParts.imgSrc} />}
       <img css={style.spoilerImg} src={spoilerParts?.imgSrc} />

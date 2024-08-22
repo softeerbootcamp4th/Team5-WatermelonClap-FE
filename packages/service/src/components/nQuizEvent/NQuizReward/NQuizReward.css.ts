@@ -33,7 +33,7 @@ export const rewardContainerStyle = (status: EventStatusType) => css`
   ${theme.flex.center}
   ${theme.flex.column}
   background-color: ${theme.color.white};
-  border-radius: 8px;
+  border-radius: 10px;
   padding-top: 7%;
   width: 100%;
   aspect-ratio: 1 / 1;
@@ -43,13 +43,12 @@ export const rewardContainerStyle = (status: EventStatusType) => css`
   ${status === "OPEN" && `border: 4px solid ${theme.color.eventBlue};`}
 
   ${mobile(css`
-    border-radius: 4px;
     ${status === "OPEN" && `border: 2px solid ${theme.color.eventBlue};`}
   `)}
 `;
 
 export const imgStyle = css`
-  width: 65%;
+  width: 60%;
   aspect-ratio: 1 / 1;
   object-fit: contain;
 
@@ -61,10 +60,9 @@ export const imgStyle = css`
 export const nameStyle = css`
   ${theme.font.preB16}
   text-align: center;
-  font-size: calc(10px + 0.4vw);
+  font-size: calc(12px + 0.2vw);
   color: black;
-  padding-top: 7%;
-  padding-bottom: 7%;
+  padding: 10px;
   word-break: keep-all;
 
   ${mobile(css`
