@@ -56,9 +56,6 @@ export const TracingCar = ({
         const curY = x.get();
         const diffY = prevY - curY;
         const offsetY = diffY > 0 ? innerHeight * 0.1 : innerHeight * 0.6;
-
-        console.log(offsetY);
-
         newOffset =
           ((x.get() * pivotHeight + offsetY) / (pivotHeight + offsetY)) * 100;
       } else {
