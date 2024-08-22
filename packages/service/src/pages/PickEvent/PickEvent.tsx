@@ -18,6 +18,9 @@ export const PickEvent = () => {
   const btnRef = useRef(null);
   const btnIsInView = useInView(btnRef);
 
+  const btnEndRef = useRef(null);
+  const btnEndIsInView = useInView(btnEndRef);
+
   return (
     <div css={style.bg}>
       <Space size={80} />
@@ -39,10 +42,10 @@ export const PickEvent = () => {
 
       <Space size={!isMobile ? 20 : 10} />
 
-      <div ref={btnRef} />
+      <div className="btn-detect" ref={btnRef} />
 
       <button
-        css={style.btn(btnIsInView)}
+        css={style.btn(btnIsInView, btnEndIsInView)}
         onClick={() => navigate("/parts-pick")}
       >
         지금 바로 뽑기
@@ -63,6 +66,7 @@ export const PickEvent = () => {
           ))}
         </ul>
       </div>
+      <div className="btn-detect" ref={btnEndRef} />
     </div>
   );
 };
