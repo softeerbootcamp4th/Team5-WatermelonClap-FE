@@ -5,7 +5,7 @@ import { theme } from "@watermelon-clap/core/src/theme";
 export const footerStyles = css`
   position: relative;
   z-index: 2;
-  padding: 40px 20px;
+  padding: 40px 10%;
   background-color: #1c1b1b;
   ${theme.font.preM14}
   color: ${theme.color.white};
