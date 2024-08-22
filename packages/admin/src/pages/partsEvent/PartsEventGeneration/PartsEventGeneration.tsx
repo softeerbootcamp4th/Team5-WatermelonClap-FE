@@ -3,7 +3,7 @@ import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 import dayjs, { Dayjs } from "dayjs";
 import { useState, useRef } from "react";
 import Button from "@mui/material/Button";
-import { Skeleton } from "@mui/material";
+import { css, Skeleton } from "@mui/material";
 import CloudUploadIcon from "@mui/icons-material/CloudUpload";
 import TextField from "@mui/material/TextField";
 import {
@@ -19,11 +19,13 @@ import {
 import { Space } from "../../../common/components/Space";
 import { useModal } from "@watermelon-clap/core/src/hooks";
 import { handleFileChange } from "@admin/common/utils/fileUtil";
+import { theme } from "@watermelon-clap/core/src/theme";
+import { apiPostPartsEvent } from "@admin/apis/partsEvent";
+import { formatDateTime } from "@admin/common/utils/timeFormatter";
 
 export const PartsEventGeneration = () => {
   const { openModal } = useModal();
 
-  // Updated state variable names
   const [eventTitle, setEventTitle] = useState<string>("");
   const [eventStartDate, setEventStartDate] = useState<Dayjs | null>(
     dayjs(new Date()),
@@ -37,13 +39,25 @@ export const PartsEventGeneration = () => {
   const [eventEndTime, setEventEndTime] = useState<Dayjs | null>(
     dayjs().hour(23).minute(59).second(59),
   );
+
   const [rewardName, setRewardName] = useState<string>("");
   const [rewardRank, setRewardRank] = useState<string>("");
   const [winnerCount, setWinnerCount] = useState<number | string>("");
   const [rewardFile, setRewardFile] = useState<File | null>(null);
   const [rewardImageUrl, setRewardImageUrl] = useState<string | null>(null);
 
-  // References for focus
+  const [rewards, setRewards] = useState<
+    {
+      rewardName: string;
+      rewardRank: string;
+      winnerCount: number | string;
+      rewardFile: File | null;
+      rewardImageUrl: string | null;
+    }[]
+  >([]);
+
+  const maxRewards = 5;
+
   const eventTitleRef = useRef<HTMLInputElement>(null);
   const eventStartDateRef = useRef<HTMLInputElement>(null);
   const eventStartTimeRef = useRef<HTMLInputElement>(null);
@@ -57,6 +71,35 @@ export const PartsEventGeneration = () => {
     event: React.ChangeEvent<HTMLInputElement>,
   ) => {
     handleFileChange(event, setRewardFile, setRewardImageUrl);
+  };
+
+  const handleAddReward = () => {
+    if (rewards.length >= maxRewards) {
+      alert(`최대 ${maxRewards}개의 경품만 등록할 수 있습니다.`);
+      return;
+    }
+
+    if (!rewardRank || !winnerCount || !rewardName || !rewardFile) {
+      alert("모든 경품 정보를 입력해주세요.");
+      return;
+    }
+
+    const newReward = {
+      rewardName,
+      rewardRank,
+      winnerCount,
+      rewardFile,
+      rewardImageUrl,
+    };
+
+    setRewards([...rewards, newReward]);
+
+    // Reset reward form fields
+    setRewardName("");
+    setRewardRank("");
+    setWinnerCount("");
+    setRewardFile(null);
+    setRewardImageUrl(null);
   };
 
   const handleRegisterClick = () => {
@@ -85,32 +128,40 @@ export const PartsEventGeneration = () => {
       eventEndTimeRef.current?.focus();
       return;
     }
-    if (!rewardRank) {
-      alert("경품 순위를 입력해 주세요.");
-      rewardRankRef.current?.focus();
+    if (rewards.length === 0) {
+      alert("경품을 최소 1개 이상 추가해 주세요.");
       return;
     }
-    if (!winnerCount) {
-      alert("당첨자 수를 입력해 주세요.");
-      winnerCountRef.current?.focus();
-      return;
-    }
-    if (!rewardName) {
-      alert("경품 이름을 입력해 주세요.");
-      rewardNameRef.current?.focus();
-      return;
-    }
-    if (!rewardFile) {
-      alert("경품 파일을 업로드해 주세요.");
-      return;
-    }
+
+    const combinedStartDateTime = formatDateTime(
+      eventStartDate,
+      eventStartTime,
+    );
+    const combinedEndDateTime = formatDateTime(eventEndDate, eventEndTime);
 
     openModal({
       type: "confirm",
       props: {
         title: "이벤트 관리",
         content: "등록하시겠습니까?",
-        confirmEvent: () => {},
+        confirmEvent: () => {
+          apiPostPartsEvent({
+            name: eventTitle,
+            startTime: combinedStartDateTime,
+            endTime: combinedEndDateTime,
+            rewards: rewards,
+          }).then((res) => {
+            if (res.ok) {
+              openModal({
+                type: "alert",
+                props: {
+                  title: "이벤트 등록",
+                  content: "등록이 완료되었습니다!",
+                },
+              });
+            }
+          });
+        },
       },
     });
   };
@@ -176,8 +227,44 @@ export const PartsEventGeneration = () => {
 
       <hr css={hrStyle} />
 
-      {/* 경품 섹션 */}
+      {/* 추가된 경품 목록 표시 */}
+      {rewards.length > 0 && (
+        <>
+          <h3>추가된 경품 목록</h3>
+          <div css={[theme.flex.center, theme.gap.gap24]}>
+            {rewards.map((reward, index) => (
+              <div
+                key={index}
+                css={css`
+                  border: 1px solid gainsboro;
+                  border-radius: 10px;
+                  aspect-ratio: 1 / 1;
+                `}
+              >
+                <p>
+                  <strong>순위:</strong> {reward.rewardRank}
+                </p>
+                <p>
+                  <strong>이름:</strong> {reward.rewardName}
+                </p>
+                <p>
+                  <strong>당첨자 수:</strong> {reward.winnerCount}
+                </p>
+                {reward.rewardImageUrl && (
+                  <img
+                    src={reward.rewardImageUrl}
+                    alt={`경품 ${reward.rewardName}`}
+                    width={100}
+                  />
+                )}
+                <hr />
+              </div>
+            ))}
+          </div>
+        </>
+      )}
 
+      {/* 경품 섹션 */}
       <FlexBetween>
         <LabelWrapper>
           <Label htmlFor="reward-rank">경품 순위</Label>
@@ -203,6 +290,7 @@ export const PartsEventGeneration = () => {
           />
         </LabelWrapper>
       </FlexBetween>
+
       <FlexBetween>
         <LabelWrapper>
           <Label htmlFor="reward-name">경품 이름</Label>
@@ -242,6 +330,14 @@ export const PartsEventGeneration = () => {
           </Button>
         </LabelWrapper>
       </FlexBetween>
+
+      <Button
+        variant="contained"
+        onClick={handleAddReward}
+        disabled={rewards.length >= maxRewards}
+      >
+        경품 추가하기
+      </Button>
 
       <Space size={120} />
     </div>
