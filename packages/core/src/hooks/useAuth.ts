@@ -1,8 +1,8 @@
+import { apiGetLoginValid } from "../apis/login/apiGetLoginValid";
 import { initializeApp } from "firebase/app";
 import {
   getAuth,
   GoogleAuthProvider,
-  reload,
   signInWithPopup,
   signOut,
 } from "firebase/auth";
@@ -30,7 +30,7 @@ export const useAuth = () => {
           const expirationMs = new Date(expirationTime).getTime();
           localStorage.setItem("accessToken", token);
           localStorage.setItem("expirationTime", String(expirationMs));
-          resolve({ token });
+          apiGetLoginValid().then(() => resolve({ token }));
         })
         .catch((error) => reject(error));
     });
