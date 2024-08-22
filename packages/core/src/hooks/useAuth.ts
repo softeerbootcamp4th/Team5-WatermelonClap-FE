@@ -1,4 +1,4 @@
-import { apiGetLoginValid } from "@core/apis/login/apiGetLoginValid";
+import { apiGetLoginValid } from "../apis/login/apiGetLoginValid";
 import { initializeApp } from "firebase/app";
 import {
   getAuth,
