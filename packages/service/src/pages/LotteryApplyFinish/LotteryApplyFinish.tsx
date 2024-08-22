@@ -64,7 +64,7 @@ export const LotteryApplyFinish = () => {
     if (existExpectation) {
       return openModal({
         type: "alert",
-        props: { content: "이미 기대평을 작성한 유저입니다" },
+        props: { content: "이미 기대평을 작성하셨습니다" },
       });
     }
 
@@ -73,7 +73,7 @@ export const LotteryApplyFinish = () => {
         openModal({
           type: "alert",
           props: {
-            content: "기대평을 성공적으로 등록하였습니다",
+            content: "기대평이 등록되었습니다",
           },
         });
         setIsPostExpectation(true);
