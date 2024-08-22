@@ -143,53 +143,57 @@ export const LotteryApplyFinish = () => {
           </div>
         </div>
 
-        <Space size={60} />
+        {existExpectation || (
+          <>
+            <Space size={60} />
 
-        <div
-          css={[
-            theme.flex.column,
-            css`
-              align-items: start;
-              gap: 24px;
-            `,
-          ]}
-        >
-          <span css={style.sectionTitle}>
-            새롭게 출시된 아반떼 N에 대한 기대평을 남겨주세요 🥳
-          </span>
-          <span css={theme.font.preM18}>
-            남겨주신 기대평은 홈화면에 노출될 수 있습니다! 최대 50자까지 작성할
-            수 있어요.
-          </span>
-
-          <form
-            onSubmit={handleSubmit}
-            css={[
-              theme.flex.center,
-              theme.gap.gap16,
-              mobile(css`
-                flex-direction: column;
-                width: 100%;
-              `),
-            ]}
-          >
-            <textarea
-              placeholder="여기에 기대평을 작성해주세요"
-              css={style.expectationInput}
-              value={expectation}
-              onChange={handleChange}
-              disabled={isPostExpectation && true}
-            />
-            <Button
-              type="submit"
-              variant={ButtonVariant.LONG}
-              css={style.applyBtn(isExpectationNull)}
-              disabled={isExpectationNull}
+            <div
+              css={[
+                theme.flex.column,
+                css`
+                  align-items: start;
+                  gap: 24px;
+                `,
+              ]}
             >
-              제출하기
-            </Button>
-          </form>
-        </div>
+              <span css={style.sectionTitle}>
+                새롭게 출시된 아반떼 N에 대한 기대평을 남겨주세요 🥳
+              </span>
+              <span css={theme.font.preM18}>
+                남겨주신 기대평은 홈화면에 노출될 수 있습니다! 최대 50자까지
+                작성할 수 있어요.
+              </span>
+
+              <form
+                onSubmit={handleSubmit}
+                css={[
+                  theme.flex.center,
+                  theme.gap.gap16,
+                  mobile(css`
+                    flex-direction: column;
+                    width: 100%;
+                  `),
+                ]}
+              >
+                <textarea
+                  placeholder="여기에 기대평을 작성해주세요"
+                  css={style.expectationInput}
+                  value={expectation}
+                  onChange={handleChange}
+                  disabled={isPostExpectation && true}
+                />
+                <Button
+                  type="submit"
+                  variant={ButtonVariant.LONG}
+                  css={style.applyBtn(isExpectationNull)}
+                  disabled={isExpectationNull}
+                >
+                  제출하기
+                </Button>
+              </form>
+            </div>
+          </>
+        )}
       </section>
 
       <Space size={100} />
