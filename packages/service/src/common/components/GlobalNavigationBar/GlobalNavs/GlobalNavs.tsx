@@ -45,7 +45,7 @@ const GlobalNavs = ({ isOpen, setIsOpen }: IGlobalNavsProps) => {
       type: "confirm",
       props: {
         title: "로그아웃",
-        content: "정말 로그아웃 하시겠습니까???",
+        content: "정말 로그아웃 하시겠습니까?",
         confirmEvent: () => logout().then(() => setIsLogin(false)),
       },
     });

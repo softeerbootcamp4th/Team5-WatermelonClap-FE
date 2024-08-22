@@ -109,7 +109,7 @@ export const PartsEventGeneration = () => {
       type: "confirm",
       props: {
         title: "이벤트 관리",
-        content: "등록하시겠습니까??",
+        content: "등록하시겠습니까?",
         confirmEvent: () => {},
       },
     });

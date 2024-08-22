@@ -117,7 +117,7 @@ export const OrderEventGeneration = () => {
     }).then(() => {
       openModal({
         type: "alert",
-        props: { title: "이벤트 등록", content: "등록이 완료되었습니다.!" },
+        props: { title: "이벤트 등록", content: "등록이 완료되었습니다!" },
       });
     });
   };
