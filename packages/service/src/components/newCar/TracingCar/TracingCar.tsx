@@ -11,13 +11,18 @@ import {
 
 interface TracingCarProps {
   x: MotionValue<number>;
-  parentRef: RefObject<HTMLDivElement>;
+  imgViewRef: RefObject<HTMLDivElement>;
+  screenViewRef?: RefObject<HTMLDivElement>;
 }
 
-export const TracingCar = ({ x, parentRef }: TracingCarProps) => {
+export const TracingCar = ({
+  x,
+  imgViewRef,
+  screenViewRef,
+}: TracingCarProps) => {
   const isMobile = useMobile();
-  const [width, setWidth] = useState(0); // pc 일때는 width 가 경로의 세로 길이
-  const [height, setHeight] = useState(0); // pc 일때는 height 가 경로의 가로 길이
+  const [width, setWidth] = useState(0);
+  const [height, setHeight] = useState(0);
   const [offsetDistance, setOffsetDistance] = useState(0);
 
   const pathData = useMemo(() => {
@@ -27,28 +32,45 @@ export const TracingCar = ({ x, parentRef }: TracingCarProps) => {
   }, [isMobile, width, height]);
 
   useEffect(() => {
-    setHeight(parentRef.current?.clientHeight as number);
-    setWidth(parentRef.current?.clientWidth as number);
-  }, [parentRef]);
+    if (isMobile) {
+      setHeight(imgViewRef.current?.clientHeight as number);
+      setWidth(imgViewRef.current?.clientWidth as number);
+    } else {
+      setHeight((imgViewRef.current?.clientWidth as number) - 400);
+      setWidth(screenViewRef?.current?.clientWidth as number);
+    }
+  }, [
+    imgViewRef.current?.clientHeight,
+    imgViewRef.current?.clientWidth,
+    screenViewRef?.current?.clientWidth,
+  ]);
 
   useEffect(() => {
     const updateOffsetDistance = () => {
-      if (isMobile) {
-        const offsetY = 54; // gnb height
+      let newOffset;
 
-        const newOffset =
-          ((Math.abs(x.get()) * height + offsetY) / height) * 100;
-        setOffsetDistance(newOffset);
+      if (isMobile) {
+        const pivotHeight = height - 270;
+        const innerHeight = window.innerHeight;
+        const prevY = x.getPrevious() as number;
+        const curY = x.get();
+        const diffY = prevY - curY;
+        const offsetY = diffY > 0 ? innerHeight * 0.1 : innerHeight * 0.6;
+        newOffset =
+          ((x.get() * pivotHeight + offsetY) / (pivotHeight + offsetY)) * 100;
       } else {
         const prevX = x.getPrevious() as number;
         const curX = x.get();
         const diffX = prevX - curX;
         const offsetX = diffX > 0 ? width * 0.8 : width * 0.2;
-
-        const newOffset = ((Math.abs(x.get()) + offsetX) / height) * 100;
-
-        setOffsetDistance(newOffset === Infinity ? 0 : newOffset);
+        newOffset = ((Math.abs(x.get()) + offsetX) / height) * 100;
       }
+
+      if (isNaN(newOffset) || !isFinite(newOffset)) {
+        newOffset = 0;
+      }
+
+      setOffsetDistance(newOffset);
     };
 
     const unsubscribe = x.onChange(() => {

@@ -54,7 +54,7 @@ export const NewCarInfo = () => {
           ))}
 
           <Space size={100} />
-          <TracingCar x={scrollYProgress} parentRef={ref} />
+          <TracingCar x={scrollYProgress} imgViewRef={ref} />
           {carInfoImgs.slice(4).map((imgSrc, idx) => (
             <motion.img
               transition={{
@@ -82,7 +82,7 @@ export const NewCarInfo = () => {
               margin-left: 200px;
             `}
           />
-          <TracingCar x={x} parentRef={ref} />s
+          <TracingCar x={x} imgViewRef={carouselRef} screenViewRef={ref} />
           {carInfoImgs.map((imgSrc, idx) => (
             <motion.img
               transition={{
@@ -95,6 +95,11 @@ export const NewCarInfo = () => {
               key={idx}
             />
           ))}
+          <div
+            css={css`
+              margin-right: 200px;
+            `}
+          />
         </motion.div>
       </div>
     </section>
