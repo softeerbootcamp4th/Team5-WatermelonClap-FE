@@ -2,6 +2,7 @@ import { initializeApp } from "firebase/app";
 import {
   getAuth,
   GoogleAuthProvider,
+  reload,
   signInWithPopup,
   signOut,
 } from "firebase/auth";
@@ -38,6 +39,7 @@ export const useAuth = () => {
   const logout = () =>
     signOut(fbAuth).then(() => {
       localStorage.removeItem("accessToken");
+      location.reload();
     });
 
   const reLogin = () => logout().then(() => login());
