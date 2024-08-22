@@ -1,1 +1,2 @@
-export { WinnerDataGrid } from "./WinnerDataGrid";
+export { MiniatureEventWinnerDataGrid } from "./MiniatureEventWinnerDataGrid";
+export { MainEventWinnerDataGrid } from "./MainEventWinnerDataGrid";

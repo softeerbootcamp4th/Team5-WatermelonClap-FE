@@ -8,3 +8,14 @@ export interface IParticipant {
 export interface IGetPartsEventResponse {
   content: IParticipant[];
 }
+
+export interface IWinner {
+  rank: number;
+  reward: string;
+  uid: string;
+  email: string;
+  name: string;
+  phoneNumber: string;
+  address: string;
+  status: "DONE" | "READY";
+}
