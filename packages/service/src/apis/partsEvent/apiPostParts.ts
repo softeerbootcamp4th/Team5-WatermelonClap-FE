@@ -8,9 +8,9 @@ export const apiPostParts = (): Promise<IParts> =>
     `,
     {
       method: "POST",
+      credentials: "include",
       headers: {
         Authorization: `Bearer ${getAccessToken()}`,
-        credentials: "include",
       },
     },
   ).then((response) => response.json());
