@@ -8,6 +8,7 @@ export const backgroundStyle = css`
   background-position: top;
   background-repeat: no-repeat;
   width: 100%;
+  min-height: calc(100vh - 356px);
 
   ${theme.flex.center}
   ${theme.flex.column}
