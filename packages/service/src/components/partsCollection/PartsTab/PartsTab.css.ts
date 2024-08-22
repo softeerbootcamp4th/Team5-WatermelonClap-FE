@@ -3,8 +3,8 @@ import { mobile } from "@service/common/responsive/responsive";
 import { theme } from "@watermelon-clap/core/src/theme";
 
 export const container = css`
+  ${theme.flex.center}
   ${theme.flex.column}
-  margin: 0 auto;
 `;
 
 export const tabWrap = css`

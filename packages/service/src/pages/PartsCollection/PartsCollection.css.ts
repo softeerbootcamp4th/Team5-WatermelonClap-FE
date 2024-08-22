@@ -8,6 +8,12 @@ export const mainBg = css`
   padding: 0 5%;
   padding-bottom: 100px;
 
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: calc(100vh - 356px);
+
   ${mobile(css`
     min-height: 100vh;
   `)}
@@ -29,10 +35,11 @@ export const pageTitle = css`
 export const partsContainer = css`
   ${theme.flex.center}
   flex-wrap: wrap;
-  gap: 40px;
+  gap: 100px;
 
   ${mobile(css`
     ${theme.flex.column}
+    gap: 40px;
   `)};
 `;
 
