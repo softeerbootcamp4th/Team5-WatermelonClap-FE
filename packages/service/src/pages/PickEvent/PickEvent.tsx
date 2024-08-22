@@ -18,52 +18,58 @@ export const PickEvent = () => {
   const btnRef = useRef(null);
   const btnIsInView = useInView(btnRef);
 
+  const btnEndRef = useRef(null);
+  const btnEndIsInView = useInView(btnEndRef);
+
   return (
-    <div css={style.bg}>
-      <Space size={80} />
-      <div css={style.textWrap}>
-        <h1>내 아반떼 N 뽑기</h1>
-        <span
-          css={css`
-            color: ${theme.color.eventSkyblue};
-          `}
+    <>
+      <div css={style.bg}>
+        <Space size={80} />
+        <div css={style.textWrap}>
+          <h1>내 아반떼 N 뽑기</h1>
+          <span
+            css={css`
+              color: ${theme.color.eventSkyblue};
+            `}
+          >
+            {textData.period}
+          </span>
+          <span>당첨자 발표 {textData.winnerDate}</span>
+          <pre>{textData.desc}</pre>
+        </div>
+        <Space size={!isMobile ? 20 : 50} />
+
+        <CardCarousel />
+
+        <Space size={!isMobile ? 20 : 10} />
+
+        <div className="btn-detect" ref={btnRef} />
+
+        <button
+          css={style.btn(btnIsInView, btnEndIsInView)}
+          onClick={() => navigate("/parts-pick")}
         >
-          {textData.period}
-        </span>
-        <span>당첨자 발표 {textData.winnerDate}</span>
-        <pre>{textData.desc}</pre>
+          지금 바로 뽑기
+        </button>
+        <Space size={!isMobile ? 200 : 100} />
+
+        <JoinInfo />
+        <Space size={!isMobile ? 100 : 100} />
+        <PrizeContainer />
+
+        <Space size={30} />
+
+        <div css={style.termWrap}>
+          <span css={style.termTitleStyle}>{pickEventTermsTitle}</span>
+          <ul css={style.termListStyle}>
+            {pickEventTerms.map((term, idx) => (
+              <li key={idx}>{term}</li>
+            ))}
+          </ul>
+        </div>
       </div>
-      <Space size={!isMobile ? 20 : 50} />
-
-      <CardCarousel />
-
-      <Space size={!isMobile ? 20 : 10} />
-
-      <div ref={btnRef} />
-
-      <button
-        css={style.btn(btnIsInView)}
-        onClick={() => navigate("/parts-pick")}
-      >
-        지금 바로 뽑기
-      </button>
-      <Space size={!isMobile ? 200 : 100} />
-
-      <JoinInfo />
-      <Space size={!isMobile ? 100 : 100} />
-      <PrizeContainer />
-
-      <Space size={30} />
-
-      <div css={style.termWrap}>
-        <span css={style.termTitleStyle}>{pickEventTermsTitle}</span>
-        <ul css={style.termListStyle}>
-          {pickEventTerms.map((term, idx) => (
-            <li key={idx}>{term}</li>
-          ))}
-        </ul>
-      </div>
-    </div>
+      <div className="btn-detect" ref={btnEndRef} />
+    </>
   );
 };
 

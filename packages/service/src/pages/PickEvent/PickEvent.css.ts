@@ -81,7 +81,7 @@ export const termListStyle = css`
   `)}
 `;
 
-export const btn = (btnIsInView: boolean) => css`
+export const btn = (btnIsInView: boolean, btnEndIsInView: boolean) => css`
   padding: 24px 76px;
   border-radius: 20px;
   background-color: ${theme.color.eventBlue};
@@ -90,7 +90,9 @@ export const btn = (btnIsInView: boolean) => css`
   font-size : 28px;
   cursor: pointer;
   border: none;
-  transition: background-color 0.2s;
+  transition:
+    background-color 0.2s,
+    opacity 0.2s ease-in-out;
   margin: 0 auto;
   display: block;
   z-index: 20;
@@ -111,6 +113,10 @@ export const btn = (btnIsInView: boolean) => css`
     left: 50%;
     transform: translate(-50%, 0);
     box-shadow: 0 0 20px 6px ${theme.color.black};
+  `}
+  ${btnEndIsInView &&
+  css`
+    opacity: 0;
   `}
 `;
 
