@@ -30,8 +30,7 @@ export const useAuth = () => {
           const expirationMs = new Date(expirationTime).getTime();
           localStorage.setItem("accessToken", token);
           localStorage.setItem("expirationTime", String(expirationMs));
-          apiGetLoginValid();
-          resolve({ token });
+          apiGetLoginValid().then(() => resolve({ token }));
         })
         .catch((error) => reject(error));
     });
