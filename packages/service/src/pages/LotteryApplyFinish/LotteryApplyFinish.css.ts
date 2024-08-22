@@ -17,12 +17,12 @@ export const mainBg = css`
 export const pageTitle = css`
   text-align: center;
   ${theme.font.pcpB}
-  font-size : calc(50px + 2vw);
+  font-size : calc(30px + 2vw);
   padding-top: 120px;
   color: ${theme.color.white};
 
   ${mobile(css`
-    font-size: calc(20px + 2vw);
+    font-size: calc(30px + 2vw);
     padding: 100px 0 50px 0;
   `)}
 `;
