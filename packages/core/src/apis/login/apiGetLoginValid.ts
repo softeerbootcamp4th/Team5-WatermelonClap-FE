@@ -1,7 +1,9 @@
+import { customFetch, getAccessToken } from "@core/utils";
+
 export const apiGetLoginValid = () =>
-  fetch(`${import.meta.env.VITE_BACK_BASE_URL}/event/lotteries/login`, {
+  customFetch(`${import.meta.env.VITE_BACK_BASE_URL}/event/lotteries/login`, {
     headers: {
-      Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+      Authorization: `Bearer ${getAccessToken()}`,
     },
     credentials: "include",
   });
