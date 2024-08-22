@@ -10,9 +10,10 @@ import {
   GoogleLoginModal,
   ImageModal,
   ImageModalProps,
+  PendingModal,
 } from "./modal";
 
-export type ModalType = "login" | "alert" | "confirm" | "image";
+export type ModalType = "login" | "alert" | "confirm" | "image" | "pending";
 
 export interface DefaultModalProps {
   isOpen: boolean;
@@ -24,6 +25,7 @@ interface ModalComponentMap {
   alert: React.FC<AlertModalProps>;
   confirm: React.FC<ConfirmModalProps>;
   image: React.FC<ImageModalProps>;
+  pending: React.FC<DefaultModalProps>;
 }
 
 const MODAL_COMPONENT_MAP: ModalComponentMap = {
@@ -31,6 +33,7 @@ const MODAL_COMPONENT_MAP: ModalComponentMap = {
   alert: AlertModal,
   confirm: ConfirmModal,
   image: ImageModal,
+  pending: PendingModal,
 };
 
 export const ModalContainer = () => {
