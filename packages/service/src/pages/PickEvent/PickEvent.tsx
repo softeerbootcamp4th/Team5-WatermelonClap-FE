@@ -10,6 +10,7 @@ import { Space } from "@service/common/styles/Space";
 import { useMobile } from "@service/common/hooks/useMobile";
 import { useRef } from "react";
 import { useInView } from "framer-motion";
+import { Helmet } from "react-helmet";
 
 export const PickEvent = () => {
   const navigate = useNavigate();
@@ -23,6 +24,13 @@ export const PickEvent = () => {
 
   return (
     <>
+      <Helmet>
+        <title>
+          파츠 뽑기 이벤트 | 현대자동차 - 아반떼 N 2024 | 고성능 컴팩트 스포츠카
+        </title>
+        <meta name="description" content="파츠 뽑기 이벤트 페이지" />
+      </Helmet>
+
       <div css={style.bg}>
         <Space size={80} />
         <div css={style.textWrap}>

@@ -34,6 +34,7 @@ import {
   MODAL_N_QUIZ_TITLE,
 } from "@service/common/components/ModalContainer/content/modalContent";
 import { isValidPhoneNumber } from "@service/common/utils/regex";
+import { Helmet } from "react-helmet";
 
 export const NQuizEventWinnerApply = () => {
   const [isChecked, setIsChecked] = useState<boolean>(false);
@@ -115,61 +116,74 @@ export const NQuizEventWinnerApply = () => {
   }, [phoneNumber, isChecked]);
 
   return (
-    <div css={backgroundStyle}>
-      <div css={logoContainerStyle}>
-        <NLogo css={logoStyle} />
-        <span css={titleStyle}>퀴즈</span>
-      </div>
-      <div css={centeredContainerStyle}>
-        <div css={rewardContainerStyle}>
-          <NQuizReward
-            imgSrc={openedQuiz.reward.imgSrc}
-            name={openedQuiz.reward.name}
-            startDate={openedQuiz.startDate}
-            status={openedQuiz.status}
+    <>
+      <Helmet>
+        <title>
+          선착순 이벤트 당첨자 | 현대자동차 - 아반떼 N 2024 | 고성능 컴팩트
+          스포츠카
+        </title>
+        <meta name="description" content="선착순 이벤트 당첨자 페이지" />
+      </Helmet>
+      <div css={backgroundStyle}>
+        <div css={logoContainerStyle}>
+          <NLogo css={logoStyle} />
+          <span css={titleStyle}>퀴즈</span>
+        </div>
+        <div css={centeredContainerStyle}>
+          <div css={rewardContainerStyle}>
+            <NQuizReward
+              imgSrc={openedQuiz.reward.imgSrc}
+              name={openedQuiz.reward.name}
+              startDate={openedQuiz.startDate}
+              status={openedQuiz.status}
+            />
+          </div>
+        </div>
+
+        <div css={contentContainerStyle}>
+          <div css={cheersTextStyle}>축하드립니다!</div>
+          <div css={contentTextStyle}>
+            선착순 이벤트 대상자에 선정되었습니다!
+          </div>
+          <div css={contentTextStyle}>
+            아래 칸에 휴대폰 번호를 입력해주세요.
+          </div>
+        </div>
+
+        <div css={inputContainerStyle}>
+          <input
+            autoFocus
+            css={inputStyle(isPhoneNumberValid)}
+            placeholder="전화번호 입력"
+            value={phoneNumber}
+            onChange={handlePhoneNumberChange}
+            type="tel"
+            maxLength={13}
           />
         </div>
-      </div>
 
-      <div css={contentContainerStyle}>
-        <div css={cheersTextStyle}>축하드립니다!</div>
-        <div css={contentTextStyle}>선착순 이벤트 대상자에 선정되었습니다!</div>
-        <div css={contentTextStyle}>아래 칸에 휴대폰 번호를 입력해주세요.</div>
-      </div>
+        <div css={termListWrapStyle}>
+          <CheckBox
+            isChecked={isChecked}
+            setIsChecked={setIsChecked}
+            text="개인정보 수집 및 이용 약관에 동의합니다. (이벤트 참가자 식별 및 경품 발송)"
+          />
+          <ul css={listStyle}>
+            <li css={listItemStyle}>경품은 추후 문자를 통해 발송됩니다.</li>
+            <li css={listItemStyle}>
+              번호 제출 전 페이지를 이탈하면 당첨이 취소됩니다.
+            </li>
+          </ul>
+        </div>
 
-      <div css={inputContainerStyle}>
-        <input
-          autoFocus
-          css={inputStyle(isPhoneNumberValid)}
-          placeholder="전화번호 입력"
-          value={phoneNumber}
-          onChange={handlePhoneNumberChange}
-          type="tel"
-          maxLength={13}
-        />
+        <Button
+          css={submitButtonStyle}
+          onClick={handleSubmit}
+          disabled={isSubmitDisabled}
+        >
+          제출하기
+        </Button>
       </div>
-
-      <div css={termListWrapStyle}>
-        <CheckBox
-          isChecked={isChecked}
-          setIsChecked={setIsChecked}
-          text="개인정보 수집 및 이용 약관에 동의합니다. (이벤트 참가자 식별 및 경품 발송)"
-        />
-        <ul css={listStyle}>
-          <li css={listItemStyle}>경품은 추후 문자를 통해 발송됩니다.</li>
-          <li css={listItemStyle}>
-            번호 제출 전 페이지를 이탈하면 당첨이 취소됩니다.
-          </li>
-        </ul>
-      </div>
-
-      <Button
-        css={submitButtonStyle}
-        onClick={handleSubmit}
-        disabled={isSubmitDisabled}
-      >
-        제출하기
-      </Button>
-    </div>
+    </>
   );
 };
