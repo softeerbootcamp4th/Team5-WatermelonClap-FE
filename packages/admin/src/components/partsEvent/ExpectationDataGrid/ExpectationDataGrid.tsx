@@ -37,7 +37,7 @@ export const ExpectationDataGrid = () => {
     event: ChangeEvent<HTMLInputElement>,
   ) => {
     event.stopPropagation();
-    apiPostExpectation(id).then((res) => console.log(res));
+    apiPostExpectation(id).then();
 
     setGridData((prevData) =>
       prevData.map((row) =>

@@ -76,7 +76,6 @@ export const OrderEventManagement = () => {
         <div css={buttonContainerStyle}>
           <Button
             onClick={(event) => {
-              console.log(params.id);
               event.stopPropagation();
               navigate(ORDER_EVENT_WINNER_MANAGEMENT_PAGE_ROUTE, {
                 state: params.id,
