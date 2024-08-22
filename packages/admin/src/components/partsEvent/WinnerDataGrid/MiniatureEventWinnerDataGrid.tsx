@@ -34,8 +34,7 @@ export const MiniatureEventWinnerDataGrid = () => {
   const columns: GridColDef[] = [
     { field: "rank", headerName: "순위", width: 60 },
     { field: "reward", headerName: "경품", width: 200 },
-    { field: "id", headerName: "수령인 ID", width: 200 },
-    { field: "email", headerName: "수령인 이메일", width: 200 },
+    { field: "email", headerName: "수령인 이메일", width: 280 },
     { field: "name", headerName: "수령인 이름", width: 200 },
     { field: "phoneNumber", headerName: "수령인 핸드폰번호", width: 200 },
     { field: "address", headerName: "수령인 주소", width: 200 },
