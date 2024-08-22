@@ -9,6 +9,7 @@ export const container = css`
   justify-content: start;
   flex-shrink: 1;
   text-align: center;
+  cursor: pointer;
 
   ${mobile(
     css`
