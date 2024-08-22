@@ -14,7 +14,7 @@ export const nQuizSectionStyles = (status: EventStatusType) => css`
   ${theme.flex.center}
   ${theme.flex.column}
   width: 100%;
-  aspect-ratio: 1.37 / 1;
+  aspect-ratio: 1.6 / 1;
   flex-shrink: 0;
   border-radius: 20px;
   background-color: ${theme.color.white};

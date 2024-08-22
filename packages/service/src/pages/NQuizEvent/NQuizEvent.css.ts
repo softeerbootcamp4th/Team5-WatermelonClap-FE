@@ -31,7 +31,6 @@ export const rewardWrapStyle = css`
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   width: 100%;
-  min-width: 800px;
   margin: 82px 0;
   gap: 16px;
 
