@@ -1,19 +1,38 @@
 import * as style from "./PartsWrap.css";
 import { PartsCard } from "./PartsCard";
-import { IParts } from "@watermelon-clap/core/src/types";
+import { ICustomCardProps } from "@service/components/partsCollection/CustomCard/CustomCard";
 
 export interface IPartsWrapProps {
-  equippedPartsData?: IParts[];
+  equippedParts?: ICustomCardProps | undefined;
 }
 
-export const PartsWrap = ({ equippedPartsData }: IPartsWrapProps) => {
+export const PartsWrap = ({ equippedParts }: IPartsWrapProps) => {
   return (
-    <div css={style.container}>
-      <div css={style.partsCardWrap}>
-        {equippedPartsData?.map((partsData, idx) => (
-          <PartsCard partsData={partsData} key={idx} />
-        ))}
-      </div>
+    <div css={style.partsCardWrap}>
+      {equippedParts?.colorParts && (
+        <PartsCard
+          partsData={equippedParts.colorParts}
+          key={equippedParts.colorParts.partsId}
+        />
+      )}
+      {equippedParts?.wheelParts && (
+        <PartsCard
+          partsData={equippedParts.wheelParts}
+          key={equippedParts.wheelParts.partsId}
+        />
+      )}
+      {equippedParts?.bgParts && (
+        <PartsCard
+          partsData={equippedParts.bgParts}
+          key={equippedParts.bgParts.partsId}
+        />
+      )}
+      {equippedParts?.spoilerParts && (
+        <PartsCard
+          partsData={equippedParts.spoilerParts}
+          key={equippedParts.spoilerParts.partsId}
+        />
+      )}
     </div>
   );
 };
