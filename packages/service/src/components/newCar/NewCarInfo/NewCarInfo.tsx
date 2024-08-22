@@ -110,6 +110,6 @@ export const NewCarInfo = () => {
 
 // 신차 소개 이미지 path
 const carInfoImgs = Array.from(
-  { length: 15 },
+  { length: 24 },
   (_, i) => `images/newCar/new-car-info-${i + 1}.webp`,
 );
