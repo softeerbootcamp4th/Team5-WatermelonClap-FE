@@ -6,11 +6,17 @@ export const mainBg = css`
   background-image: url("/images/common/main-bg.webp");
   background-size: cover;
   padding-bottom: 200px;
+  min-height: calc(100vh - 356px);
 
   color: white;
 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
   ${mobile(css`
     padding-bottom: 100px;
+    min-height: 100vh;
   `)}
 `;
 
