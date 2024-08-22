@@ -1,26 +1,41 @@
-import { IOrderEvent } from "@watermelon-clap/core/src/types";
 import { customFetch, getAccessToken } from "@watermelon-clap/core/src/utils";
-import { IAdminPostOrderEventRequest } from "../orderEvent/type";
+import { IAdminPostPartsEventRequest } from "./type";
 
 export const apiPostPartsEvent = async ({
-  orderEvent,
-  rewardImage,
-  quizImage,
-}: IAdminPostOrderEventRequest): Promise<IOrderEvent> => {
+  name,
+  startTime,
+  endTime,
+  rewards,
+}: IAdminPostPartsEventRequest): Promise<Response> => {
   const formdata = new FormData();
 
+  // rank와 name 속성만 추출
+  const processedRewards = rewards.map((reward) => ({
+    rank: reward.rewardRank,
+    winnerCount: reward.winnerCount,
+    name: reward.rewardName,
+  }));
+
+  const eventData = {
+    name: name,
+    startTime: startTime,
+    endTime: endTime,
+    rewards: processedRewards,
+  };
+
   formdata.append(
-    "orderEvent",
-    new Blob([JSON.stringify(orderEvent)], {
+    "event",
+    new Blob([JSON.stringify(eventData)], {
       type: "application/json",
     }),
   );
 
-  formdata.append("rewardImage", rewardImage);
-  formdata.append("quizImage", quizImage);
+  rewards.map((reward) => {
+    formdata.append("files", reward.rewardFile as File);
+  });
 
   return customFetch(
-    `${import.meta.env.VITE_BACK_BASE_URL}/admin/event/order`,
+    `${import.meta.env.VITE_BACK_BASE_URL}/admin/event/lotteries/create`,
     {
       method: "POST",
       headers: {
@@ -30,7 +45,7 @@ export const apiPostPartsEvent = async ({
     },
   )
     .then((response) => {
-      return response.json();
+      return response;
     })
     .catch((error) => {
       throw error;
