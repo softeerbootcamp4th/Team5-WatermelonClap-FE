@@ -18,3 +18,20 @@ body, img {
   -moz-user-drag: none;
   -o-user-drag: none;
 }
+
+::-webkit-scrollbar {
+    width: 4px;
+}
+
+::-webkit-scrollbar-track {
+    background: black;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #57adff; 
+    border-radius: 10px; 
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #027df1; 
+}
