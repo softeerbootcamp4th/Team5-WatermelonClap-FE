@@ -167,8 +167,10 @@ export const PartsCard = ({
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseOut}
       onTouchMove={handleMouseMove}
-      onTouchEnd={handleMouseOut}
-      onTouchCancel={handleMouseOut}
+      onTouchEnd={() => {
+        handleMouseOut();
+        handleClick();
+      }}
       color1={color1}
       color2={color2}
     >
