@@ -59,8 +59,8 @@ export const cardBaseStyles = css`
 
   &:after {
     opacity: 1;
-    background-image: url("https://assets.codepen.io/13471/sparkles.gif"),
-      url("https://assets.codepen.io/13471/holo.png"),
+    background-image: url("/images/parts/sparkles.gif"),
+      url("/images/parts/holo.png"),
       linear-gradient(
         125deg,
         #ff008450 15%,
