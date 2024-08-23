@@ -73,9 +73,9 @@ export const smallDarkButtonStyle = css`
 
 export const smallLightButtonStyle = css`
   ${theme.flex.center}
-  ${theme.font.preM20}
+  ${theme.font.preB}
+  font-size: 20;
   color: ${theme.color.black};
-  font-weight: 600;
   background: ${theme.color.white};
   width: 180px;
   height: 52px;
@@ -102,7 +102,6 @@ export const hugeButtonStyle = css`
   width: 597px;
   height: 115px;
   padding: 35px 138px;
-  font-weight: 700;
   gap: 10px;
   flex-shrink: 0;
   border: none;

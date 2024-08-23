@@ -34,7 +34,7 @@ export const eventNumber = css`
 `;
 
 export const eventTitle = css`
-  ${theme.font.pcpB};
+  ${theme.font.preB};
   ${theme.margin.mg12}
   font-size: 30px;
 
