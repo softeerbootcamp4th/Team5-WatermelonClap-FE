@@ -45,9 +45,13 @@ export const ExpirationTimer = ({ diffMs }: IExpirationTimerProps) => {
   return (
     <span css={style.timer}>
       <PiTimerBold />
-      <div>
-        {diffMins} : {diffSecs}
-      </div>
+      {remainingTime <= 0 ? (
+        <div>로그인 만료</div>
+      ) : (
+        <div>
+          {diffMins} : {diffSecs}
+        </div>
+      )}
       |
       <span
         onClick={handleRefreshToken}
