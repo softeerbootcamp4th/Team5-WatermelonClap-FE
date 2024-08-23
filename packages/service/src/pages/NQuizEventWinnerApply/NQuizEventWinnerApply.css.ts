@@ -3,7 +3,7 @@ import { mobile } from "@service/common/responsive/responsive";
 import { theme } from "@watermelon-clap/core/src/theme";
 
 export const backgroundStyle = css`
-  background-image: url("/images/quiz/nQuizBackground.png");
+  background-image: url("/images/quiz/nQuizBackground.webp");
   background-size: cover;
   background-position: top;
   background-repeat: no-repeat;

@@ -3,7 +3,8 @@ import { mobile } from "@service/common/responsive/responsive";
 import { theme } from "@watermelon-clap/core/src/theme";
 
 export const partsPickBackgroundStyle = css`
-  background-image: url("/images/parts/background.svg");
+  background-image: url("/images/common/main-bg.webp"),
+    url("/images/common/main-bg.webp");
   background-size: cover;
   background-position: center;
 

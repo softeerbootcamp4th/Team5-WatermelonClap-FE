@@ -3,15 +3,15 @@ import { css } from "@emotion/react";
 export const globalStyles = css`
   @font-face {
     font-family: "Pretendard-Bold";
-    src: url("/fonts/pretendard/Pretendard-Bold.woff") format("woff");
+    src: url("/fonts/pretendard/Pretendard-Bold.otf") format("opentype");
   }
   @font-face {
     font-family: "Pretendard-Medium";
-    src: url("/fonts/pretendard/Pretendard-Medium.woff") format("woff");
+    src: url("/fonts/pretendard/Pretendard-Medium.otf") format("opentype");
   }
   @font-face {
     font-family: "Pretendard-SemiBold";
-    src: url("/fonts/pretendard/Pretendard-SemiBold.woff") format("woff");
+    src: url("/fonts/pretendard/Pretendard-SemiBold.otf") format("opentype");
   }
   @font-face {
     font-family: "PyeongChang-Bold";

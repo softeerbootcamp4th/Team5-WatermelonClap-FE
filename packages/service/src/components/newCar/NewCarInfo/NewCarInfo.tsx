@@ -1,7 +1,6 @@
 import * as style from "./NewCarInfo.css";
 import { motion, useScroll, useTransform } from "framer-motion";
-import { throttle } from "throttle-debounce-ts";
-import { useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import { useMobile } from "@service/common/hooks/useMobile";
 import { Space } from "@service/common/styles/Space";
 import { css } from "@emotion/react";
@@ -18,7 +17,7 @@ export const NewCarInfo = () => {
   const x = useTransform(scrollYProgress, position, [0, carouselEndPosition]);
   const isMobile = useMobile();
 
-  useEffect(() => {
+  const initCarouselEndPosition = () => {
     if (!carouselRef || !carouselRef.current) return;
 
     const parent = carouselRef.current.parentElement;
@@ -38,11 +37,7 @@ export const NewCarInfo = () => {
     };
 
     resetCarouselEndPosition();
-    const handleResize = throttle(10, resetCarouselEndPosition);
-
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
+  };
 
   if (isMobile)
     return (
@@ -76,7 +71,14 @@ export const NewCarInfo = () => {
       <div css={style.stickyWrap}>
         <img css={style.bgCirlce1} src="/images/common/bg-circle-green.svg" />
         <img css={style.bgCirlce2} src="/images/common/bg-circle-blue.svg" />
-        <motion.div css={style.imgWrap} ref={carouselRef} style={{ x }}>
+        <motion.div
+          css={style.imgWrap}
+          ref={carouselRef}
+          style={{ x }}
+          onViewportEnter={() => {
+            initCarouselEndPosition();
+          }}
+        >
           <div
             css={css`
               margin-left: 200px;
@@ -108,6 +110,6 @@ export const NewCarInfo = () => {
 
 // 신차 소개 이미지 path
 const carInfoImgs = Array.from(
-  { length: 15 },
+  { length: 24 },
   (_, i) => `images/newCar/new-car-info-${i + 1}.webp`,
 );

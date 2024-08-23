@@ -27,8 +27,8 @@ export const TracingCar = ({
 
   const pathData = useMemo(() => {
     if (isMobile)
-      return generateVerticalSinPath(width / 3, 5, width, height, width);
-    else return generateSinPath(300, 10, height, 1000, width);
+      return generateVerticalSinPath(width / 3, 8, width, height, width);
+    else return generateSinPath(300, 16, height, 1000, width);
   }, [isMobile, width, height]);
 
   useEffect(() => {
