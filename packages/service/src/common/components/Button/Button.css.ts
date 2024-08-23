@@ -74,7 +74,7 @@ export const smallDarkButtonStyle = css`
 export const smallLightButtonStyle = css`
   ${theme.flex.center}
   ${theme.font.preB}
-  font-size: 20;
+  font-size: 20px;
   color: ${theme.color.black};
   background: ${theme.color.white};
   width: 180px;
