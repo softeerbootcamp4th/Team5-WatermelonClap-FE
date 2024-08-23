@@ -122,29 +122,34 @@ export const cardBaseStyles = css`
     animation: rotateCard 3s ease forwards;
   }
 
-  @keyframes rotateCard {
+  @-webkit-keyframes rotateCard {
     0% {
-      transform: perspective(800px) rotateY(0deg) rotateX(0deg) scale(1);
+      -webkit-transform: perspective(800px) rotateY(0deg) rotateX(0deg) scale(1);
       opacity: 1;
     }
     25% {
-      transform: perspective(800px) rotateY(20deg) rotateX(10deg) scale(1.1);
+      -webkit-transform: perspective(800px) rotateY(20deg) rotateX(10deg)
+        scale(1.1);
       opacity: 0.8;
     }
     50% {
-      transform: perspective(800px) rotateY(-20deg) rotateX(-10deg) scale(1.05);
+      -webkit-transform: perspective(800px) rotateY(-20deg) rotateX(-10deg)
+        scale(1.05);
       opacity: 0.6;
     }
     75% {
-      transform: perspective(800px) rotateY(0deg) rotateX(5deg) scale(1.1);
+      -webkit-transform: perspective(800px) rotateY(0deg) rotateX(5deg)
+        scale(1.1);
       opacity: 0.8;
     }
     95% {
-      transform: perspective(800px) rotateY(720deg) rotateX(0deg) scale(1.2);
+      -webkit-transform: perspective(800px) rotateY(720deg) rotateX(0deg)
+        scale(1.2);
       opacity: 0.9;
     }
     100% {
-      transform: perspective(800px) rotateY(720deg) rotateX(0deg) scale(1);
+      -webkit-transform: perspective(800px) rotateY(720deg) rotateX(0deg)
+        scale(1);
       opacity: 1;
     }
   }
