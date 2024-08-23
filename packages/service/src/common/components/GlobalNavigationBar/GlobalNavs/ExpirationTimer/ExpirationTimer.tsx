@@ -3,6 +3,7 @@ import * as style from "./ExpirationTimer.css";
 import { PiTimerBold } from "react-icons/pi";
 import { useAuth } from "@watermelon-clap/core/src/hooks";
 import { css } from "@emotion/react";
+import { theme } from "@watermelon-clap/core/src/theme";
 
 interface IExpirationTimerProps {
   diffMs: number;
@@ -57,6 +58,10 @@ export const ExpirationTimer = ({ diffMs }: IExpirationTimerProps) => {
         onClick={handleRefreshToken}
         css={css`
           cursor: pointer;
+          transition: all 0.2s;
+          :hover {
+            color: ${theme.color.gray200};
+          }
         `}
       >
         갱신
