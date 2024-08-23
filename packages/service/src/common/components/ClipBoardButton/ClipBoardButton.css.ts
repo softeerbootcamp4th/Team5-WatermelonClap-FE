@@ -8,7 +8,6 @@ export const clipButtonStyle = css`
   width: 265px;
   height: 50px;
   padding: 9px 57px;
-  font-weight: 500;
   gap: 10px;
   flex-shrink: 0;
   border-radius: 8px;
@@ -40,7 +39,6 @@ export const clipButtonContentStyle = css`
   ${theme.flex.center}
   ${theme.font.preB18}
   color: ${theme.color.black};
-  font-weight: 500;
   gap: 10px;
 `;
 
@@ -48,7 +46,6 @@ export const clipButtonSuccessContentStyle = css`
   ${theme.flex.center}
   ${theme.font.preB18}
   color: ${theme.color.eventBlue};
-  font-weight: 500;
   gap: 10px;
   rect {
     stroke: ${theme.color.eventBlue};
