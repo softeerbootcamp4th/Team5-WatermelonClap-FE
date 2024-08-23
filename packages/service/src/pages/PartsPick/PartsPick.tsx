@@ -15,7 +15,7 @@ import { LOTTER_APPLY_FINISH_PAGE_ROUTE } from "@service/constants/routes";
 import { useSuspenseQuery } from "@tanstack/react-query";
 import { getAccessToken } from "@watermelon-clap/core/src/utils";
 import { IParts } from "@watermelon-clap/core/src/types";
-import { ClickInduceIcon } from "@service/components/ClickInduceIcon";
+import { ClickInduceIcon } from "@service/common/components/ClickInduceIcon";
 import { MODAL_CONTENT_NO_REMAINING_CHANCES } from "@service/common/components/ModalContainer/content/modalContent";
 import { Helmet } from "react-helmet";
 
@@ -78,7 +78,7 @@ export const PartsPick = () => {
           setPartsInfo={setPartsInfo}
         />
 
-        {!partsInfo && <ClickInduceIcon />}
+        {!partsInfo && <ClickInduceIcon text="CLICK" />}
 
         <Space size={isMobile ? 4 : 6} />
         {isPickComplete && (

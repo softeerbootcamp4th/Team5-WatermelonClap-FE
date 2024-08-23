@@ -3,6 +3,7 @@ import { Pin } from "./Pin";
 import { useMobile } from "@service/common/hooks/useMobile";
 import { ICustomCardProps } from "@service/components/partsCollection/CustomCard/CustomCard";
 import * as styles from "./PinContainer.css";
+import { ClickInduceIcon } from "@service/common/components/ClickInduceIcon";
 
 interface PinContainerProps {
   children: React.ReactNode;
@@ -81,6 +82,10 @@ export const PinContainer = ({
             imgCss={styles.pinSpoilerImg}
             customCss={styles.pinSpoilerCustom}
           />
+        )}
+
+        {perspectiveOpacity === 0 && (
+          <ClickInduceIcon text={isMobile ? "CLICK" : "HOVER"} />
         )}
       </div>
     </div>
