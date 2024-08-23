@@ -67,3 +67,21 @@ export const partsCardWrap = css`
     height: fit-content;
   `)}
 `;
+
+export const alertContentStyle = css`
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  flex-direction: column;
+  color: white;
+  gap: 10px;
+
+  ${mobile(css`
+    padding-top: 20px;
+    font-size: 12px;
+    line-height: 12px;
+  `)}
+`;
