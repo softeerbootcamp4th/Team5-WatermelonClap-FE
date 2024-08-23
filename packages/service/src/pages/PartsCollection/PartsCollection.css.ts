@@ -3,7 +3,8 @@ import { mobile } from "@service/common/responsive/responsive";
 import { theme } from "@watermelon-clap/core/src/theme";
 
 export const mainBg = css`
-  background-image: url("/images/common/main-bg.webp");
+  background-image: url("/images/common/main-bg.webp"),
+    url("/images/common/main-bg.webp");
   background-size: cover;
   padding: 0 5%;
   padding-bottom: 100px;

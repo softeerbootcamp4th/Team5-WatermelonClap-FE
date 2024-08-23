@@ -38,5 +38,5 @@ export const CardCarousel = () => {
 
 const cardImgsPath = Array.from(
   { length: 7 },
-  (_, idx) => `images/pickEvent/card/card-${idx + 1}.svg`,
+  (_, idx) => `images/pickEvent/card/card-${idx + 1}.webp`,
 );

@@ -2,7 +2,8 @@ import { css } from "@emotion/react";
 import { theme } from "@watermelon-clap/core/src/theme";
 
 export const loadingStyle = css`
-  background-image: url("/images/parts/background.svg");
+  background-image: url("/images/common/main-bg.webpg"),
+    url("images/common/main-bg.webp");
   background-size: cover;
   background-position: center;
 

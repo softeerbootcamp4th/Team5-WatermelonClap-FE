@@ -7,7 +7,7 @@ export const containerStyle = css`
 `;
 
 export const backgroundStyle = css`
-  background-image: url("/images/quiz/nQuizBackground.png");
+  background-image: url("/images/quiz/nQuizBackground.webp");
   background-size: cover;
   background-position: top;
   background-repeat: no-repeat;
