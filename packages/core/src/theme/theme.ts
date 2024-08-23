@@ -101,94 +101,94 @@ export const theme: ITheme = {
   },
   font: {
     preM: css`
-      font-family: "Pretendard-Medium";
+      font-family: "Pretendard-Medium", serif;
     `,
     preSB: css`
-      font-family: "Pretendard-SemiBold";
+      font-family: "Pretendard-SemiBold", serif;
     `,
     preB: css`
-      font-family: "Pretendard-Bold";
+      font-family: "Pretendard-Bold", serif;
     `,
 
     preM20: css`
-      font-family: "Pretendard-Medium";
+      font-family: "Pretendard-Medium", serif;
       font-size: 20px;
     `,
     preM18: css`
-      font-family: "Pretendard-Medium";
+      font-family: "Pretendard-Medium", serif;
       font-size: 18px;
     `,
     preM14: css`
-      font-family: "Pretendard-Medium";
+      font-family: "Pretendard-Medium", serif;
       font-size: 14px;
     `,
     preSB86: css`
-      font-family: "Pretendard-SemiBold";
+      font-family: "Pretendard-SemiBold", serif;
       font-size: 86px;
     `,
     preB38: css`
-      font-family: "Pretendard-Bold";
+      font-family: "Pretendard-Bold", serif;
       font-size: 38px;
     `,
     preB28: css`
-      font-family: "Pretendard-Bold";
+      font-family: "Pretendard-Bold", serif;
       font-size: 28px;
     `,
     preB24: css`
-      font-family: "Pretendard-Bold";
+      font-family: "Pretendard-Bold", serif;
       font-size: 24px;
     `,
     preB18: css`
-      font-family: "Pretendard-Bold";
+      font-family: "Pretendard-Bold", serif;
       font-size: 18px;
     `,
     preB16: css`
-      font-family: "Pretendard-Bold";
+      font-family: "Pretendard-Bold", serif;
       font-size: 16px;
     `,
 
     pcpL: css`
-      font-family: "PyeongChangPeace-Light";
+      font-family: "PyeongChangPeace-Light", serif;
     `,
     pcpB: css`
-      font-family: "PyeongChangPeace-Bold";
+      font-family: "PyeongChangPeace-Bold", serif;
     `,
     pcpL80: css`
-      font-family: "PyeongChangPeace-Light";
+      font-family: "PyeongChangPeace-Light", serif;
       font-size: 80px;
     `,
     pcpL32: css`
-      font-family: "PyeongChangPeace-Light";
+      font-family: "PyeongChangPeace-Light", serif;
       font-size: 32px;
     `,
     pcpL28: css`
-      font-family: "PyeongChangPeace-Light";
+      font-family: "PyeongChangPeace-Light", serif;
       font-size: 28px;
     `,
 
     pcpB82: css`
-      font-family: "PyeongChangPeace-Bold";
+      font-family: "PyeongChangPeace-Bold", serif;
       font-size: 82px;
     `,
     pcpB28: css`
-      font-family: "PyeongChangPeace-Bold";
+      font-family: "PyeongChangPeace-Bold", serif;
       font-size: 28px;
     `,
 
     pcB: css`
-      font-family: "PyeongChang-Bold";
+      font-family: "PyeongChang-Bold", serif;
     `,
 
     pcB40: css`
-      font-family: "PyeongChang-Bold";
+      font-family: "PyeongChang-Bold", serif;
       font-size: 40px;
     `,
     pcB28: css`
-      font-family: "PyeongChang-Bold";
+      font-family: "PyeongChang-Bold", serif;
       font-size: 28px;
     `,
     pcB16: css`
-      font-family: "PyeongChang-Bold";
+      font-family: "PyeongChang-Bold", serif;
       font-size: 16px;
     `,
   },
