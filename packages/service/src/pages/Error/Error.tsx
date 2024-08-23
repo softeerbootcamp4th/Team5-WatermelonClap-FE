@@ -7,6 +7,7 @@ import { useErrorBoundary } from "react-error-boundary";
 import { GlobalNavigationBar } from "@service/common/components/GlobalNavigationBar";
 import { Space } from "@service/common/styles/Space";
 import { useAuth } from "@watermelon-clap/core/src/hooks";
+import { useMobile } from "@service/common/hooks/useMobile";
 
 export const Error = ({ error, resetErrorBoundary }: FallbackProps) => {
   const navigate = useNavigate();
@@ -14,6 +15,8 @@ export const Error = ({ error, resetErrorBoundary }: FallbackProps) => {
   let errorMessage;
 
   const { login } = useAuth();
+
+  const mobile = useMobile();
 
   switch (error.message) {
     case "404":
@@ -49,7 +52,7 @@ export const Error = ({ error, resetErrorBoundary }: FallbackProps) => {
         {error.message === "403" ? (
           <div css={theme.flex.column}>
             <h1 css={loginText}>로그인이 필요한 서비스입니다</h1>
-            <Space size={20} />
+            <Space size={mobile ? 10 : 20} />
             <Button variant={ButtonVariant.LONG} onClick={handleLogin}>
               로그인
             </Button>

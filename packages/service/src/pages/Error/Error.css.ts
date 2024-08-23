@@ -1,4 +1,5 @@
 import { css } from "@emotion/react";
+import { mobile } from "@service/common/responsive/responsive";
 import { theme } from "@watermelon-clap/core/src/theme";
 
 export const errorContainerStyle = css`
@@ -10,6 +11,7 @@ export const errorContainerStyle = css`
   ${theme.flex.column}
   ${theme.gap.gap32}
 
+
   height: 100vh;
 `;
 
@@ -20,4 +22,7 @@ export const errorMessageStyle = css`
 
 export const loginText = css`
   color: white;
+  ${mobile(css`
+    font-size: 24px;
+  `)}
 `;
