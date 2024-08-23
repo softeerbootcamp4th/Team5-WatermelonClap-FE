@@ -4,7 +4,10 @@ import { theme } from "@watermelon-clap/core/src/theme";
 
 export const eventCard = (isMainEvent: boolean) => css`
   padding: 72px;
-  background: ${isMainEvent ? theme.color.mainEventCardBg : theme.color.white};
+  background: ${isMainEvent
+    ? theme.color.mainEventCardBg
+    : "linear-gradient(194deg, #dffbdd 3.1%, #d2ecff 33.71%, #d2e5d8 78.87%, #e5c7f1 103.46%)"};
+
   width: 452px;
   border-radius: 20px;
   text-align: center;
