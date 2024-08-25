@@ -11,7 +11,7 @@ export const partsPickBackgroundStyle = css`
   ${theme.flex.column}
 
   min-height: 100vh;
-  padding: 0 18vw;
+  padding: 8vw 18vw;
 
   ${mobile(css`
     min-height: calc(100vh - 136.5px);
