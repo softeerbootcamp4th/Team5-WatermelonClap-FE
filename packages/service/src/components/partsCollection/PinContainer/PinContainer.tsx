@@ -34,12 +34,18 @@ export const PinContainer = ({
     setPerspectiveOpacity(0);
   };
 
+  const handleOnTouchEnd = () => {
+    if (perspectiveOpacity === 1) onMouseLeave();
+    else onMouseEnter();
+  };
+
   return (
     <div css={styles.mainContainer}>
       <div
         css={styles.pivotContainer}
         onMouseEnter={onMouseEnter}
         onMouseLeave={onMouseLeave}
+        onTouchEnd={handleOnTouchEnd}
       >
         <div css={styles.perspectiveContainer}>
           <div style={{ transform }} css={styles.innerContainer}>
