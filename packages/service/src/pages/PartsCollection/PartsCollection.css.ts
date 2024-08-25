@@ -23,7 +23,7 @@ export const pageTitle = css`
   text-align: center;
   ${theme.font.pcpB}
   font-size : calc(40px + 1vw);
-  padding: 100px 0;
+  padding: 100px 0 60px 0;
   color: ${theme.color.white};
 
   ${mobile(css`
@@ -51,5 +51,15 @@ export const customCardContainer = css`
 
   ${mobile(css`
     width: 350px;
+  `)}
+`;
+
+export const moveButton = css`
+  width: 300px;
+  height: 60px;
+
+  ${mobile(css`
+    width: 200px;
+    height: 40px;
   `)}
 `;

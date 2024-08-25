@@ -11,7 +11,7 @@ import { useModal } from "@watermelon-clap/core/src/hooks";
 import { useMobile } from "@service/common/hooks/useMobile";
 import { useNavigate } from "react-router-dom";
 import { apiGetPartsRemain } from "@service/apis/partsEvent";
-import { LOTTER_APPLY_FINISH_PAGE_ROUTE } from "@service/constants/routes";
+import { PARTS_COLLECTION_PAGE_ROUTE } from "@service/constants/routes";
 import { useSuspenseQuery } from "@tanstack/react-query";
 import { getAccessToken } from "@watermelon-clap/core/src/utils";
 import { IParts } from "@watermelon-clap/core/src/types";
@@ -94,10 +94,10 @@ export const PartsPick = () => {
               variant={ButtonVariant.LONG}
               css={partsPickButtonStyle}
               onClick={() => {
-                navigate(LOTTER_APPLY_FINISH_PAGE_ROUTE);
+                navigate(PARTS_COLLECTION_PAGE_ROUTE);
               }}
             >
-              URL 공유하고 아반떼 N 받으러 가기
+              파츠 장착하러 가기
             </Button>
             <Space size={isMobile ? 4 : 12} />
           </>

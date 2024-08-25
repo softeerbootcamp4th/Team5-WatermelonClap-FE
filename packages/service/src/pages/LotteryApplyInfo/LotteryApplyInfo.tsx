@@ -9,7 +9,7 @@ import {
   PARTS_COLLECTION_PAGE_ROUTE,
   PICK_EVENT_PAGE_ROUTE,
 } from "@service/constants/routes";
-import { useEffect, useRef, useState } from "react";
+import { ChangeEvent, useEffect, useRef, useState } from "react";
 import { mobile } from "@service/common/responsive/responsive";
 import { useMobile } from "@service/common/hooks/useMobile";
 import { apiGetPartsRemain } from "@service/apis/partsEvent";
@@ -18,12 +18,22 @@ import { apiGetLotteryStatus } from "@service/apis/lottery/apiGetLotteryStatus";
 import { useSuspenseQuery } from "@tanstack/react-query";
 import { Helmet } from "react-helmet";
 import { getAccessToken } from "@watermelon-clap/core/src/utils";
+import { useAuth, useModal } from "@watermelon-clap/core/src/hooks";
+import { IApiGetCheckExpectation } from "@service/apis/expectation/type";
+import { apiGetCheckExpectation } from "@service/apis/expectation/apiGetCheckExpectation";
+import { apiPostExpectation } from "@service/apis/expectation/apiPostExpectation";
 
 export const LotteryApplyInfo = () => {
   const navigate = useNavigate();
   const shareLinkRef = useRef(null);
   const [shareLink, setShareLink] = useState<string>();
   const [remainChance, setRemainChance] = useState<number>();
+  const [expectation, setExpectation] = useState("");
+  const [isExpectationNull, setIsExpectationNull] = useState(true);
+  const [isPostExpectation, setIsPostExpectation] = useState(false);
+  const { handleTokenError } = useAuth();
+  const { openModal } = useModal();
+  const isMobile = useMobile();
 
   const {
     data: { applied: isApplied },
@@ -33,6 +43,60 @@ export const LotteryApplyInfo = () => {
     staleTime: 0,
   });
 
+  const {
+    data: { exist: existExpectation },
+  } = useSuspenseQuery<IApiGetCheckExpectation>({
+    queryKey: ["existExpectation", getAccessToken()],
+    queryFn: apiGetCheckExpectation,
+  });
+
+  const handleChange = (event: ChangeEvent<HTMLTextAreaElement>) => {
+    const text = event.currentTarget.value;
+    setIsExpectationNull(!text.length ? true : false);
+    if (text.length >= 50) {
+      openModal({
+        type: "alert",
+        props: { content: "기대평은 50자 이내 작성 가능합니다" },
+      });
+      return;
+    }
+    setExpectation(text);
+  };
+
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    if (!expectation) {
+      return;
+    }
+
+    if (existExpectation) {
+      return openModal({
+        type: "alert",
+        props: { content: "이미 기대평을 작성하셨습니다" },
+      });
+    }
+
+    apiPostExpectation(expectation)
+      .then(() => {
+        openModal({
+          type: "alert",
+          props: {
+            content: "기대평이 등록되었습니다",
+          },
+        });
+        setIsPostExpectation(true);
+        setIsExpectationNull(true);
+      })
+      .catch((error) => {
+        handleTokenError(error);
+
+        openModal({
+          type: "alert",
+          props: { content: "기대평 등록에 실패했습니다" },
+        });
+      });
+  };
+
   useEffect(() => {
     apiGetMyShareLink().then(({ link }) => setShareLink(link));
 
@@ -41,24 +105,73 @@ export const LotteryApplyInfo = () => {
     );
   }, []);
 
-  const isMobile = useMobile();
-
   return (
     <>
       <Helmet>
         <title>
-          응모내역 확인 | 현대자동차 - 아반떼 N 2024 | 고성능 컴팩트 스포츠카
+          내 아반떼 N 자랑하기 | 현대자동차 - 아반떼 N 2024 | 고성능 컴팩트
+          스포츠카
         </title>
-        <meta name="description" content="응모 내역 확인 페이지" />
+        <meta name="description" content="내 아반떼 N 자랑하기 페이지" />
       </Helmet>
       <div css={style.mainBg}>
         <div>
-          <h1 css={style.pageTitle}>응모 내역 확인</h1>
-          <h2 css={style.subtitle}>
-            내 아반떼 N 뽑기 이벤트 응모 내역 입니다.
-          </h2>
+          <h1 css={style.pageTitle}>내 아반떼 N 자랑하기</h1>
 
-          <Space size={isMobile ? 100 : 130} />
+          {existExpectation || (
+            <>
+              <Space size={60} />
+
+              <div
+                css={[
+                  theme.flex.column,
+                  css`
+                    padding: 0 30px;
+                    align-items: start;
+                    gap: 24px;
+                  `,
+                ]}
+              >
+                <span css={style.sectionTitle}>
+                  새롭게 출시된 아반떼 N에 대한 기대평을 남겨주세요 🥳
+                </span>
+                <span css={theme.font.preM18}>
+                  남겨주신 기대평은 홈화면에 노출될 수 있습니다! 최대 50자까지
+                  작성할 수 있어요.
+                </span>
+
+                <form
+                  onSubmit={handleSubmit}
+                  css={[
+                    theme.flex.center,
+                    theme.gap.gap16,
+                    mobile(css`
+                      flex-direction: column;
+                      width: 100%;
+                    `),
+                  ]}
+                >
+                  <textarea
+                    placeholder="여기에 기대평을 작성해주세요"
+                    css={style.expectationInput}
+                    value={expectation}
+                    onChange={handleChange}
+                    disabled={isPostExpectation && true}
+                  />
+                  <Button
+                    type="submit"
+                    variant={ButtonVariant.LONG}
+                    css={style.applyBtn(isExpectationNull)}
+                    disabled={isExpectationNull}
+                  >
+                    제출하기
+                  </Button>
+                </form>
+              </div>
+            </>
+          )}
+
+          <Space size={isMobile ? 40 : 60} />
           {isApplied ? (
             <section css={[theme.flex.center]}>
               <div
@@ -126,7 +239,7 @@ export const LotteryApplyInfo = () => {
             </div>
           )}
 
-          <Space size={120} />
+          <Space size={isMobile ? 40 : 70} />
 
           {isApplied ? (
             <Button
