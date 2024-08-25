@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { css } from "@emotion/react";
+import { css, SerializedStyles } from "@emotion/react";
 import { PiMouseLeftClickFill } from "react-icons/pi";
 import { theme } from "@watermelon-clap/core/src/theme";
 import { mobile } from "@service/common/responsive/responsive";
@@ -7,9 +7,10 @@ import { useMobile } from "@service/common/hooks/useMobile";
 
 export interface ClickInduceIconProps {
   text: string;
+  customCss?: SerializedStyles;
 }
 
-export const ClickInduceIcon = ({ text }: ClickInduceIconProps) => {
+export const ClickInduceIcon = ({ text, customCss }: ClickInduceIconProps) => {
   const isMobile = useMobile();
   return (
     <motion.div
@@ -21,6 +22,8 @@ export const ClickInduceIcon = ({ text }: ClickInduceIconProps) => {
         ${mobile(css`
           top: 20px;
         `)}
+
+        ${customCss};
       `}
       transition={{
         duration: 0.8,
