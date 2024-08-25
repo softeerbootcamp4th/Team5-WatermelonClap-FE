@@ -23,6 +23,10 @@ export const partsPickButtonStyle = css`
   background-color: ${theme.color.white};
   color: ${theme.color.black};
 
+  :active {
+    background-color: ${theme.color.gray300};
+  }
+
   ${mobile(css`
     width: 80%;
     padding: 14px 10px;
