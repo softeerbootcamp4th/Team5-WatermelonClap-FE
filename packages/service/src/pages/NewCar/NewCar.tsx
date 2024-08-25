@@ -6,6 +6,7 @@ import { css } from "@emotion/react";
 import { useMobile } from "@service/common/hooks/useMobile";
 
 export const NewCar = () => {
+  const isMobile = useMobile();
   return (
     <>
       <Helmet>
@@ -16,12 +17,14 @@ export const NewCar = () => {
       </Helmet>
       <div css={style.bg}>
         <img src="images/newCar/new-car-main-img.webp" css={style.mainImg} />
-        <ClickInduceIcon
-          text={"SCROLL"}
-          customCss={css`
-            top: -100px;
-          `}
-        />
+        {isMobile || (
+          <ClickInduceIcon
+            text={"SCROLL"}
+            customCss={css`
+              top: -100px;
+            `}
+          />
+        )}
         <NewCarInfo />
       </div>
     </>

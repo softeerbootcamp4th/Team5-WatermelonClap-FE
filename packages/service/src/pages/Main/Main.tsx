@@ -20,12 +20,14 @@ export const Main = () => {
 
       <Banner />
       <div css={style.mainBg}>
-        <ClickInduceIcon
-          text={"SCROLL"}
-          customCss={css`
-            top: -100px;
-          `}
-        />
+        {isMobile || (
+          <ClickInduceIcon
+            text={"SCROLL"}
+            customCss={css`
+              top: -100px;
+            `}
+          />
+        )}
         <EventPeriod />
         <Space size={isMobile ? 30 : 100} />
         <Expectations />
