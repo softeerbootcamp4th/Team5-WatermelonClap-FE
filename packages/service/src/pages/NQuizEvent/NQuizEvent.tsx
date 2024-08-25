@@ -7,12 +7,7 @@ import { nQuizEventTermTitle, nQuizEventTerms } from "@service/constants/terms";
 import { useSuspenseQuery } from "@tanstack/react-query";
 import { apiGetOrderEvent } from "@service/apis/orderEvent";
 import { IOrderEvent } from "@watermelon-clap/core/src/types";
-import {
-  backgroundStyle,
-  rewardWrapStyle,
-  termTitleStyle,
-  termListStyle,
-} from "./NQuizEvent.css";
+import * as style from "./NQuizEvent.css";
 import { Helmet } from "react-helmet";
 
 export const NQuizEvent = () => {
@@ -43,10 +38,10 @@ export const NQuizEvent = () => {
         </title>
         <meta name="description" content="선착순 퀴즈 이벤트 페이지" />
       </Helmet>
-      <div css={backgroundStyle}>
+      <div css={style.backgroundStyle}>
         <NQuizTitle />
 
-        <div css={rewardWrapStyle}>
+        <div css={style.rewardWrapStyle}>
           {quizList.map((quiz, index) => (
             <NQuizReward
               key={index}
@@ -70,8 +65,8 @@ export const NQuizEvent = () => {
           <NQuizSection openedQuiz={quizList[0]} />
         )}
 
-        <span css={termTitleStyle}>{nQuizEventTermTitle}</span>
-        <ul css={termListStyle}>
+        <span css={style.termTitleStyle}>{nQuizEventTermTitle}</span>
+        <ul css={style.termListStyle}>
           {nQuizEventTerms.map((term, index) => (
             <li key={index}>{term}</li>
           ))}

@@ -1,6 +1,6 @@
 import { useState, ChangeEvent, KeyboardEvent } from "react";
 import { Button } from "@service/common/components/Button";
-import { nQuizInputStyles, nQuizSubmitButtonStyles } from "./NQuizInput.css";
+import * as style from "./NQuizInput.css";
 import {
   IOrderEvent,
   IPostOrderEventResponse,
@@ -105,7 +105,7 @@ export const NQuizInput = ({ openedQuiz }: NQuizInputProps) => {
   return (
     <div css={[theme.flex.between]}>
       <input
-        css={nQuizInputStyles}
+        css={style.nQuizInputStyles}
         placeholder="정답 입력하기"
         value={inputValue}
         onChange={handleInputChange}
@@ -113,7 +113,7 @@ export const NQuizInput = ({ openedQuiz }: NQuizInputProps) => {
         disabled={openedQuiz.status === "OPEN" ? false : true}
       />
       <Button
-        css={nQuizSubmitButtonStyles}
+        css={style.nQuizSubmitButtonStyles}
         onClick={handleSubmit}
         disabled={openedQuiz.status === "OPEN" ? false : true}
       >

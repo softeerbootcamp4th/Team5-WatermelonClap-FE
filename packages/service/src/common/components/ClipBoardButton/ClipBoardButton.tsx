@@ -1,11 +1,6 @@
 import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import {
-  clipButtonStyle,
-  clipButtonSuccessStyle,
-  clipButtonContentStyle,
-  clipButtonSuccessContentStyle,
-} from "./ClipBoardButton.css";
+import * as style from "./ClipBoardButton.css";
 import { ReactComponent as ClipBoardIcon } from "public/icons/clipboard.svg";
 
 interface IClipBoardButton {
@@ -26,14 +21,14 @@ const ClipBoardButton = ({ copyRef }: IClipBoardButton) => {
       <AnimatePresence mode="wait">
         {isCliped ? (
           <motion.button
-            css={clipButtonSuccessStyle}
+            css={style.clipButtonSuccessStyle}
             onClick={() => setIsCliped(false)}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
           >
             <motion.span
-              css={clipButtonSuccessContentStyle}
+              css={style.clipButtonSuccessContentStyle}
               key="action"
               initial={{ y: -50 }}
               animate={{ y: 0 }}
@@ -44,14 +39,14 @@ const ClipBoardButton = ({ copyRef }: IClipBoardButton) => {
           </motion.button>
         ) : (
           <motion.button
-            css={clipButtonStyle}
+            css={style.clipButtonStyle}
             onClick={() => setIsCliped(true)}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
           >
             <motion.span
-              css={clipButtonContentStyle}
+              css={style.clipButtonContentStyle}
               key="reaction"
               initial={{ x: 0 }}
               exit={{ x: 50, transition: { duration: 0.1 } }}

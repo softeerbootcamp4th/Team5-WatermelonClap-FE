@@ -2,10 +2,7 @@ import Modal from "react-modal";
 import { Button, ButtonVariant } from "../../../Button";
 import { useScrollStop, useAuth } from "@watermelon-clap/core/src/hooks";
 import { theme } from "@watermelon-clap/core/src/theme";
-import {
-  googleLoginModalStyles,
-  googleLoginModalBodyStyles,
-} from "./GoogleLoginModal.css";
+import * as style from "./GoogleLoginModal.css";
 import { DefaultModalProps } from "../../ModalContainer";
 
 export const GoogleLoginModal = ({
@@ -21,10 +18,10 @@ export const GoogleLoginModal = ({
       shouldCloseOnEsc
       isOpen={isOpen}
       onRequestClose={onRequestClose}
-      style={googleLoginModalStyles}
+      style={style.googleLoginModalStyles}
       ariaHideApp={false}
     >
-      <div css={googleLoginModalBodyStyles}>
+      <div css={style.googleLoginModalBodyStyles}>
         <h2 css={theme.font.preB28}>로그인하기</h2>
         <span>
           <p css={theme.font.preM20}>Google 로그인을 진행해야</p>

@@ -1,5 +1,5 @@
 import { FallbackProps } from "react-error-boundary";
-import { errorContainerStyle, errorMessageStyle, loginText } from "./Error.css";
+import * as style from "./Error.css";
 import { Button, ButtonVariant } from "@service/common/components/Button";
 import { theme } from "@watermelon-clap/core/src/theme";
 import { useLocation, useNavigate } from "react-router-dom";
@@ -58,10 +58,10 @@ export const Error = ({ error, resetErrorBoundary }: FallbackProps) => {
   return (
     <>
       <GlobalNavigationBar />
-      <div role="alert" css={errorContainerStyle}>
+      <div role="alert" css={style.errorContainerStyle}>
         {error.message === "403" ? (
           <div css={theme.flex.column}>
-            <h1 css={loginText}>로그인이 필요한 서비스입니다</h1>
+            <h1 css={style.loginText}>로그인이 필요한 서비스입니다</h1>
             <Space size={20} />
             <Button variant={ButtonVariant.LONG} onClick={handleLogin}>
               로그인
@@ -69,7 +69,7 @@ export const Error = ({ error, resetErrorBoundary }: FallbackProps) => {
           </div>
         ) : (
           <>
-            <pre css={errorMessageStyle}>{errorMessage}</pre>
+            <pre css={style.errorMessageStyle}>{errorMessage}</pre>
             <div css={[theme.flex.center, theme.gap.gap24]}>
               <Button onClick={handleHomeRedirect}>홈으로</Button>
               <Button onClick={resetErrorBoundary}>다시 시도</Button>

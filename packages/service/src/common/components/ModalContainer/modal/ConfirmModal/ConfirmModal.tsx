@@ -1,11 +1,7 @@
 import Modal from "react-modal";
 import { Button } from "../../../Button";
 import { useScrollStop } from "@watermelon-clap/core/src/hooks";
-import {
-  confirmModalStyles,
-  confirmModalBodyStyles,
-  btn,
-} from "./ConfirmModal.css";
+import * as style from "./ConfirmModal.css";
 import { ReactNode } from "react";
 import { DefaultModalProps } from "../../ModalContainer";
 import { theme } from "@watermelon-clap/core/src/theme";
@@ -35,17 +31,17 @@ export const ConfirmModal = ({
       shouldCloseOnEsc
       isOpen={isOpen}
       onRequestClose={onRequestClose}
-      style={confirmModalStyles}
+      style={style.confirmModalStyles}
       ariaHideApp={false}
     >
-      <div css={confirmModalBodyStyles}>
+      <div css={style.confirmModalBodyStyles}>
         <h3>{title}</h3>
         <div>{content}</div>
         <div css={[theme.flex.center, theme.gap.gap12]}>
-          <Button css={btn} onClick={onRequestClose}>
+          <Button css={style.btn} onClick={onRequestClose}>
             취소
           </Button>
-          <Button css={btn} onClick={handleConfirmClick}>
+          <Button css={style.btn} onClick={handleConfirmClick}>
             확인
           </Button>
         </div>

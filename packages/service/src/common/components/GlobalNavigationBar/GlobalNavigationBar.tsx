@@ -1,4 +1,4 @@
-import { headerContainerStyles, logoStyles } from "./GlobalNavigationBar.css";
+import * as style from "./GlobalNavigationBar.css";
 import { ReactComponent as LogoLong } from "public/images/gnb/logo-long.svg";
 import { useNavigate } from "react-router-dom";
 import { MAIN_PAGE_ROUTE } from "@service/constants/routes";
@@ -17,9 +17,9 @@ export const GlobalNavigationBar = () => {
 
   const navigate = useNavigate();
   return (
-    <header css={headerContainerStyles}>
+    <header css={style.headerContainerStyles}>
       <LogoLong
-        css={logoStyles}
+        css={style.logoStyles}
         onClick={() => {
           navigate(MAIN_PAGE_ROUTE);
           resetBoundary();

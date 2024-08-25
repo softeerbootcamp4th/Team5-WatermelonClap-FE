@@ -1,13 +1,7 @@
 import { css } from "@emotion/react";
 import { ButtonHTMLAttributes } from "react";
 import { ButtonVariant } from "./type";
-import {
-  hugeButtonStyle,
-  longButtonStyle,
-  shortButtonStyle,
-  smallDarkButtonStyle,
-  smallLightButtonStyle,
-} from "./Button.css";
+import * as style from "./Button.css";
 import { mobile } from "@service/common/responsive/responsive";
 
 export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
@@ -30,19 +24,19 @@ const getButtonVariantStyles = (variant: ButtonVariant) => {
 
   switch (variant) {
     case ButtonVariant.LONG:
-      eachStyle = longButtonStyle;
+      eachStyle = style.longButtonStyle;
       break;
     case ButtonVariant.SHORT:
-      eachStyle = shortButtonStyle;
+      eachStyle = style.shortButtonStyle;
       break;
     case ButtonVariant.SMALL_DARK:
-      eachStyle = smallDarkButtonStyle;
+      eachStyle = style.smallDarkButtonStyle;
       break;
     case ButtonVariant.SMALL_LIGHT:
-      eachStyle = smallLightButtonStyle;
+      eachStyle = style.smallLightButtonStyle;
       break;
     case ButtonVariant.HUGE:
-      eachStyle = hugeButtonStyle;
+      eachStyle = style.hugeButtonStyle;
       break;
   }
 

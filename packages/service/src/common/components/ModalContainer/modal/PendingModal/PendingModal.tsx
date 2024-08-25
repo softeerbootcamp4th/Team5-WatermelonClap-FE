@@ -1,11 +1,7 @@
 import Modal from "react-modal";
 import { useScrollStop } from "@watermelon-clap/core/src/hooks";
 import { theme } from "@watermelon-clap/core/src/theme";
-import {
-  pendingModalStyles,
-  pendingModalBodyStyles,
-  pendingImgStyle,
-} from "./PendingModal.css";
+import * as style from "./PendingModal.css";
 import { DefaultModalProps } from "../../ModalContainer";
 import { css } from "@emotion/react";
 import { MODAL_N_QUIZ_TITLE } from "../../content/modalContent";
@@ -19,10 +15,10 @@ export const PendingModal = ({ isOpen, onRequestClose }: DefaultModalProps) => {
       shouldCloseOnOverlayClick={false}
       isOpen={isOpen}
       onRequestClose={onRequestClose}
-      style={pendingModalStyles}
+      style={style.pendingModalStyles}
       ariaHideApp={false}
     >
-      <div css={pendingModalBodyStyles}>
+      <div css={style.pendingModalBodyStyles}>
         {MODAL_N_QUIZ_TITLE}
         <span>
           <p>선착순 이벤트에 참여 중입니다.</p>
@@ -36,7 +32,7 @@ export const PendingModal = ({ isOpen, onRequestClose }: DefaultModalProps) => {
           `}
         >
           <img
-            css={pendingImgStyle}
+            css={style.pendingImgStyle}
             src="/images/modal/pending.gif"
             alt="로딩중 이미지"
           />

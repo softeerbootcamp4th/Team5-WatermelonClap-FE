@@ -10,23 +10,7 @@ import { ReactComponent as NLogo } from "public/images/gnb/n-logo.svg";
 import { CheckBox } from "@service/common/components/CheckBox";
 import { Button } from "@service/common/components/Button";
 import { MAIN_PAGE_ROUTE } from "@service/constants/routes";
-import {
-  backgroundStyle,
-  logoContainerStyle,
-  logoStyle,
-  titleStyle,
-  contentContainerStyle,
-  cheersTextStyle,
-  contentTextStyle,
-  inputContainerStyle,
-  inputStyle,
-  listStyle,
-  listItemStyle,
-  rewardContainerStyle,
-  centeredContainerStyle,
-  submitButtonStyle,
-  termListWrapStyle,
-} from "./NQuizEventWinnerApply.css";
+import * as style from "./NQuizEventWinnerApply.css";
 import { useModal } from "@watermelon-clap/core/src/hooks";
 import {
   MODAL_CONTENT_ORDER_EVENT_APPLY_DUPPLICATION,
@@ -124,13 +108,13 @@ export const NQuizEventWinnerApply = () => {
         </title>
         <meta name="description" content="선착순 이벤트 당첨자 페이지" />
       </Helmet>
-      <div css={backgroundStyle}>
-        <div css={logoContainerStyle}>
-          <NLogo css={logoStyle} />
-          <span css={titleStyle}>퀴즈</span>
+      <div css={style.backgroundStyle}>
+        <div css={style.logoContainerStyle}>
+          <NLogo css={style.logoStyle} />
+          <span css={style.titleStyle}>퀴즈</span>
         </div>
-        <div css={centeredContainerStyle}>
-          <div css={rewardContainerStyle}>
+        <div css={style.centeredContainerStyle}>
+          <div css={style.rewardContainerStyle}>
             <NQuizReward
               imgSrc={openedQuiz.reward.imgSrc}
               name={openedQuiz.reward.name}
@@ -140,20 +124,20 @@ export const NQuizEventWinnerApply = () => {
           </div>
         </div>
 
-        <div css={contentContainerStyle}>
-          <div css={cheersTextStyle}>축하드립니다!</div>
-          <div css={contentTextStyle}>
+        <div css={style.contentContainerStyle}>
+          <div css={style.cheersTextStyle}>축하드립니다!</div>
+          <div css={style.contentTextStyle}>
             선착순 이벤트 대상자에 선정되었습니다!
           </div>
-          <div css={contentTextStyle}>
+          <div css={style.contentTextStyle}>
             아래 칸에 휴대폰 번호를 입력해주세요.
           </div>
         </div>
 
-        <div css={inputContainerStyle}>
+        <div css={style.inputContainerStyle}>
           <input
             autoFocus
-            css={inputStyle(isPhoneNumberValid)}
+            css={style.inputStyle(isPhoneNumberValid)}
             placeholder="전화번호 입력"
             value={phoneNumber}
             onChange={handlePhoneNumberChange}
@@ -162,22 +146,24 @@ export const NQuizEventWinnerApply = () => {
           />
         </div>
 
-        <div css={termListWrapStyle}>
+        <div css={style.termListWrapStyle}>
           <CheckBox
             isChecked={isChecked}
             setIsChecked={setIsChecked}
             text="개인정보 수집 및 이용 약관에 동의합니다. (이벤트 참가자 식별 및 경품 발송)"
           />
-          <ul css={listStyle}>
-            <li css={listItemStyle}>경품은 추후 문자를 통해 발송됩니다.</li>
-            <li css={listItemStyle}>
+          <ul css={style.listStyle}>
+            <li css={style.listItemStyle}>
+              경품은 추후 문자를 통해 발송됩니다.
+            </li>
+            <li css={style.listItemStyle}>
               번호 제출 전 페이지를 이탈하면 당첨이 취소됩니다.
             </li>
           </ul>
         </div>
 
         <Button
-          css={submitButtonStyle}
+          css={style.submitButtonStyle}
           onClick={handleSubmit}
           disabled={isSubmitDisabled}
         >

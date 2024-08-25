@@ -1,12 +1,4 @@
-import {
-  containerStyle,
-  dateStyle,
-  rewardContainerStyle,
-  imgStyle,
-  nameStyle,
-  openExpectedDateStyle,
-  endTextStyle,
-} from "./NQuizReward.css";
+import * as style from "./NQuizReward.css";
 import { EventStatusType } from "./type";
 
 export interface NQuizRewardProps {
@@ -28,14 +20,14 @@ export const NQuizReward = ({
   const openExpectedDate = `${day}일 오전 10시 오픈 예정`;
 
   return (
-    <div css={containerStyle(status)}>
-      <span css={dateStyle(status)}>{formattedDate}</span>
-      <div css={rewardContainerStyle(status)}>
-        <img src={imgSrc} alt="N퀴즈 이벤트 보상 이미지" css={imgStyle} />
-        <span css={nameStyle}>{name}</span>
+    <div css={style.containerStyle(status)}>
+      <span css={style.dateStyle(status)}>{formattedDate}</span>
+      <div css={style.rewardContainerStyle(status)}>
+        <img src={imgSrc} alt="N퀴즈 이벤트 보상 이미지" css={style.imgStyle} />
+        <span css={style.nameStyle}>{name}</span>
       </div>
-      <span css={endTextStyle(status)}>마감</span>
-      <span css={openExpectedDateStyle(status)}>{openExpectedDate}</span>
+      <span css={style.endTextStyle(status)}>마감</span>
+      <span css={style.openExpectedDateStyle(status)}>{openExpectedDate}</span>
     </div>
   );
 };

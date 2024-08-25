@@ -2,7 +2,7 @@ import { css } from "@emotion/react";
 import { motion, MotionValue } from "framer-motion";
 import { useEffect, useState, useMemo, RefObject } from "react";
 import { theme } from "@watermelon-clap/core/src/theme";
-import { bodyStyles, carStyles, containerStyles } from "./TracingCar.css";
+import * as style from "./TracingCar.css";
 import { useMobile } from "@service/common/hooks/useMobile";
 import {
   generateSinPath,
@@ -81,8 +81,8 @@ export const TracingCar = ({
   }, [x, isMobile, width, height]);
 
   return (
-    <div css={bodyStyles}>
-      <div css={containerStyles}>
+    <div css={style.bodyStyles}>
+      <div css={style.containerStyles}>
         <svg
           xmlns="http://www.w3.org/2000/svg"
           css={css`
@@ -128,7 +128,7 @@ export const TracingCar = ({
         </svg>
         <motion.img
           src="images/newCar/tracingCar.svg"
-          css={carStyles(pathData)}
+          css={style.carStyles(pathData)}
           initial={{ offsetDistance: "0%", scale: 1 }}
           animate={{
             offsetDistance: `${offsetDistance}%`,
