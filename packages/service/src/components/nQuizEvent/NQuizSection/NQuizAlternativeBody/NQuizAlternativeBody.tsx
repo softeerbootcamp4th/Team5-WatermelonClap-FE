@@ -7,12 +7,7 @@ import {
   QUIZ_ALERT_TITLE_UPCOMMING,
 } from "../../../../constants/quizContents";
 import { EventStatusType } from "../../NQuizReward/type";
-import {
-  alternativeBodyStyles,
-  titleStyle,
-  contentStyle,
-  hintStyle,
-} from "./NQuizAlternativeBody.css";
+import * as style from "./NQuizAlternativeBody.css";
 
 interface NQuizAlternativeBodyProps {
   status: EventStatusType;
@@ -42,10 +37,10 @@ export const NQuizAlternativeBody = ({ status }: NQuizAlternativeBodyProps) => {
   }
 
   return (
-    <div css={alternativeBodyStyles(status)}>
-      <h1 css={titleStyle}>{displayTitle}</h1>
-      <p css={contentStyle}>{displayText}</p>
-      {status === "UPCOMING" && <p css={hintStyle}>{QUIZ_ALERT_HINT}</p>}
+    <div css={style.alternativeBodyStyles(status)}>
+      <h1 css={style.titleStyle}>{displayTitle}</h1>
+      <p css={style.contentStyle}>{displayText}</p>
+      {status === "UPCOMING" && <p css={style.hintStyle}>{QUIZ_ALERT_HINT}</p>}
     </div>
   );
 };

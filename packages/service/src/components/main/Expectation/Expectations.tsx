@@ -1,6 +1,6 @@
 import { Marquee } from "@service/common/components/Marquee";
 import * as style from "./Expectations.css";
-import { apiGetExpectation } from "@service/apis/expectation/apiGetExpectation";
+import { apiGetExpectation } from "@service/apis/expectation";
 import { useSuspenseQuery } from "@tanstack/react-query";
 import { IExpectation } from "@service/apis/expectation/type";
 

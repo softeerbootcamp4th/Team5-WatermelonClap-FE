@@ -1,11 +1,6 @@
 import { useNavigate, useLocation } from "react-router-dom";
 import { ReactComponent as NLogo } from "public/images/gnb/n-logo.svg";
-import {
-  linkStyles,
-  navsContainerStyles,
-  nLogoStyles,
-  activeLinkStyles,
-} from "./GlobalNavs.css";
+import * as style from "./GlobalNavs.css";
 import { useErrorBoundary } from "react-error-boundary";
 import {
   NEW_CAR_PAGE_ROUTE,
@@ -60,11 +55,11 @@ const GlobalNavs = ({ isOpen, setIsOpen }: IGlobalNavsProps) => {
   const isActiveRoute = (route: string) => location.pathname === route;
 
   return (
-    <div css={navsContainerStyles(isOpen)}>
+    <div css={style.navsContainerStyles(isOpen)}>
       <div
         css={[
-          linkStyles,
-          isActiveRoute(NEW_CAR_PAGE_ROUTE) && activeLinkStyles,
+          style.linkStyles,
+          isActiveRoute(NEW_CAR_PAGE_ROUTE) && style.activeLinkStyles,
         ]}
         onClick={() => handleNavigation(NEW_CAR_PAGE_ROUTE)}
       >
@@ -72,8 +67,8 @@ const GlobalNavs = ({ isOpen, setIsOpen }: IGlobalNavsProps) => {
       </div>
       <div
         css={[
-          linkStyles,
-          isActiveRoute(PICK_EVENT_PAGE_ROUTE) && activeLinkStyles,
+          style.linkStyles,
+          isActiveRoute(PICK_EVENT_PAGE_ROUTE) && style.activeLinkStyles,
         ]}
         onClick={() => handleNavigation(PICK_EVENT_PAGE_ROUTE)}
       >
@@ -81,19 +76,20 @@ const GlobalNavs = ({ isOpen, setIsOpen }: IGlobalNavsProps) => {
       </div>
       <div
         css={[
-          linkStyles,
-          isActiveRoute(N_QUIZ_EVENT_PAGE_ROUTE) && activeLinkStyles,
+          style.linkStyles,
+          isActiveRoute(N_QUIZ_EVENT_PAGE_ROUTE) && style.activeLinkStyles,
         ]}
         onClick={() => handleNavigation(N_QUIZ_EVENT_PAGE_ROUTE)}
       >
-        <NLogo css={nLogoStyles} /> 퀴즈
+        <NLogo css={style.nLogoStyles} /> 퀴즈
       </div>
       {isLogin && (
         <>
           <div
             css={[
-              linkStyles,
-              isActiveRoute(PARTS_COLLECTION_PAGE_ROUTE) && activeLinkStyles,
+              style.linkStyles,
+              isActiveRoute(PARTS_COLLECTION_PAGE_ROUTE) &&
+                style.activeLinkStyles,
             ]}
             onClick={() => handleNavigation(PARTS_COLLECTION_PAGE_ROUTE)}
           >
@@ -101,8 +97,9 @@ const GlobalNavs = ({ isOpen, setIsOpen }: IGlobalNavsProps) => {
           </div>
           <div
             css={[
-              linkStyles,
-              isActiveRoute(LOTTER_APPLY_INFO_PAGE_ROUTE) && activeLinkStyles,
+              style.linkStyles,
+              isActiveRoute(LOTTER_APPLY_INFO_PAGE_ROUTE) &&
+                style.activeLinkStyles,
             ]}
             onClick={() => handleNavigation(LOTTER_APPLY_INFO_PAGE_ROUTE)}
           >
@@ -123,7 +120,7 @@ const GlobalNavs = ({ isOpen, setIsOpen }: IGlobalNavsProps) => {
           />
         </div>
       ) : (
-        <div css={linkStyles} onClick={handleLogin}>
+        <div css={style.linkStyles} onClick={handleLogin}>
           로그인
         </div>
       )}

@@ -7,7 +7,6 @@ import { ModalProvider } from "@watermelon-clap/core/src/providers";
 import { globalStyles } from "@watermelon-clap/core/src/theme";
 import { ModalContainer } from "./common/components/ModalContainer";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -22,6 +21,5 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
       <RouterProvider router={router} />
       <ModalContainer />
     </ModalProvider>
-    <ReactQueryDevtools initialIsOpen={false} />
   </QueryClientProvider>,
 );

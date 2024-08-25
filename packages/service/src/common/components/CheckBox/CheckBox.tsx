@@ -1,13 +1,7 @@
 import { ReactNode } from "react";
 import { SerializedStyles } from "@emotion/react";
 import { motion } from "framer-motion";
-import {
-  checkBoxContainerStyle,
-  checkBoxButtonStyle,
-  checkBoxLabelStyle,
-  checkBoxSvgStyle,
-  checkBoxStyle,
-} from "./CheckBox.css";
+import * as style from "./CheckBox.css";
 
 interface CheckBoxProps extends React.InputHTMLAttributes<HTMLInputElement> {
   isChecked: boolean;
@@ -50,14 +44,14 @@ export const CheckBox = ({
 }: CheckBoxProps) => {
   return (
     <div
-      css={checkBoxContainerStyle}
+      css={style.checkBoxContainerStyle}
       {...props}
       onClick={() => setIsChecked(!isChecked)}
     >
-      <button css={checkBoxButtonStyle}>
+      <button css={style.checkBoxButtonStyle}>
         <div
           css={[
-            checkBoxStyle(isChecked),
+            style.checkBoxStyle(isChecked),
             interpolation.checkBoxStyle?.(isChecked),
           ]}
         >
@@ -70,7 +64,7 @@ export const CheckBox = ({
               viewBox="0 0 24 24"
               strokeWidth="3.5"
               stroke="currentColor"
-              css={[checkBoxSvgStyle, interpolation.svgStyle]}
+              css={[style.checkBoxSvgStyle, interpolation.svgStyle]}
               initial={false}
               animate={isChecked ? "checked" : "unchecked"}
             >
@@ -85,7 +79,7 @@ export const CheckBox = ({
         </div>
       </button>
       <motion.label
-        css={[checkBoxLabelStyle, interpolation.labelStyle]}
+        css={[style.checkBoxLabelStyle, interpolation.labelStyle]}
         animate={{ x: isChecked ? [0, -4, 0] : [0, 4, 0] }}
         initial={false}
         transition={{ duration: 0.3, ease: "easeOut" }}

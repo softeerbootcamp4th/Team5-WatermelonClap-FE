@@ -1,5 +1,5 @@
 import { ReactNode, ReactElement } from "react";
-import { marqueeStyles, marqueeItemStyles } from "./Marquee.css";
+import * as style from "./Marquee.css";
 import { toPx, toS } from "@service/common/utils/formatter";
 
 interface MarqueeItemProps {
@@ -7,7 +7,7 @@ interface MarqueeItemProps {
 }
 
 const MarqueeItem = ({ children }: MarqueeItemProps) => {
-  return <div css={marqueeItemStyles}>{children}</div>;
+  return <div css={style.marqueeItemStyles}>{children}</div>;
 };
 
 interface MarqueeProps {
@@ -19,7 +19,7 @@ interface MarqueeProps {
   children: Array<ReactElement<typeof MarqueeItem>>;
 }
 
-const Marquee = ({
+export const Marquee = ({
   pauseOnHover = false,
   reverse = false,
   repeat = 4,
@@ -37,7 +37,7 @@ const Marquee = ({
 
   return (
     <div
-      css={marqueeStyles({
+      css={style.marqueeStyles({
         pauseOnHover,
         reverse,
         duration: formattedDuration,
@@ -51,5 +51,3 @@ const Marquee = ({
 };
 
 Marquee.Item = MarqueeItem;
-
-export default Marquee;

@@ -1,7 +1,7 @@
 import Modal from "react-modal";
 import { Button, ButtonVariant } from "../../../Button";
 import { useScrollStop } from "@watermelon-clap/core/src/hooks";
-import { alertModalStyles, alertModalBodyStyles } from "./AlertModal.css";
+import * as style from "./AlertModal.css";
 import { ReactNode } from "react";
 import { DefaultModalProps } from "../../ModalContainer";
 
@@ -23,10 +23,10 @@ export const AlertModal = ({
       shouldCloseOnEsc
       isOpen={isOpen}
       onRequestClose={onRequestClose}
-      style={alertModalStyles}
+      style={style.alertModalStyles}
       ariaHideApp={false}
     >
-      <div css={alertModalBodyStyles}>
+      <div css={style.alertModalBodyStyles}>
         {title}
         <div>{content}</div>
         <Button variant={ButtonVariant.SHORT} onClick={onRequestClose}>

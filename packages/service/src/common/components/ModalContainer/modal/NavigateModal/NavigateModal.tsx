@@ -2,11 +2,7 @@ import Modal from "react-modal";
 import { Button, ButtonVariant } from "../../../Button";
 import { useScrollStop } from "@watermelon-clap/core/src/hooks";
 import { theme } from "@watermelon-clap/core/src/theme";
-import {
-  navigatgeModalStyles,
-  navigatgeModalBodyStyles,
-  navigateButtonStyle,
-} from "./NavigateModal.css";
+import * as style from "./NavigateModal.css";
 import { ReactNode } from "react";
 import { DefaultModalProps } from "../../ModalContainer";
 import { NEW_CAR_PAGE_ROUTE } from "@service/constants/routes";
@@ -37,23 +33,23 @@ export const NavigateModal = ({
       shouldCloseOnEsc
       isOpen={isOpen}
       onRequestClose={onRequestClose}
-      style={navigatgeModalStyles}
+      style={style.navigatgeModalStyles}
       ariaHideApp={false}
     >
-      <div css={navigatgeModalBodyStyles}>
+      <div css={style.navigatgeModalBodyStyles}>
         {title}
         <div>{content}</div>
         <div css={[theme.flex.center, theme.gap.gap12]}>
           <Button
             variant={ButtonVariant.SHORT}
-            css={navigateButtonStyle}
+            css={style.navigateButtonStyle}
             onClick={handleNavigate}
           >
             {navigateButtonContent}
           </Button>
           <Button
             variant={ButtonVariant.SHORT}
-            css={navigateButtonStyle}
+            css={style.navigateButtonStyle}
             onClick={onRequestClose}
           >
             확인
