@@ -48,7 +48,7 @@ export const PartsCollection = () => {
 
           <PartsTab partsDatas={partsDatas} refetchGetMyParts={refetch} />
         </div>
-        <Space size={isMobile ? 20 : 12} />
+        <Space size={isMobile ? 20 : 20} />
         <Button
           variant={ButtonVariant.LONG}
           css={style.moveButton}

@@ -23,7 +23,7 @@ export const pageTitle = css`
   text-align: center;
   ${theme.font.pcpB}
   font-size : calc(40px + 1vw);
-  padding: 100px 0;
+  padding: 100px 0 60px 0;
   color: ${theme.color.white};
 
   ${mobile(css`
