@@ -32,7 +32,6 @@ export const sliderContainer = css`
 export const cardWrap = css``;
 
 export const cardItem = css`
-  cursor: pointer;
   transition: all 0.2s;
 
   :hover {
