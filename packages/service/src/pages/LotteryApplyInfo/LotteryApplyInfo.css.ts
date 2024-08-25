@@ -77,3 +77,33 @@ export const shareLinkBox = css`
     padding: 10px;
   `)}
 `;
+
+export const expectationInput = css`
+  padding: 18px;
+  height: 100px;
+  resize: none;
+  width: 600px;
+  border-radius: 14px;
+  background-color: ${theme.color.gray100};
+  outline: none;
+
+  ${mobile(css`
+    width: 100%;
+  `)}
+`;
+
+export const applyBtn = (isExpectationNull: boolean) => css`
+  padding: 50px 50px;
+  height: 100px;
+  background-color: ${isExpectationNull
+    ? theme.color.gray400
+    : theme.color.eventBlue};
+  color: ${isExpectationNull ? theme.color.gray300 : theme.color.white};
+  cursor: ${isExpectationNull ? "default" : "pointer"};
+
+  &:active {
+    background-color: ${isExpectationNull && theme.color.gray400};
+  }
+
+  width: fit-content;
+`;
