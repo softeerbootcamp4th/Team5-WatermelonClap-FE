@@ -21,8 +21,8 @@ import {
   PartsCollection,
   Share,
   NQuizEventWinnerApply,
+  LotteryApplyInfo,
 } from "./pages";
-import { LotteryApplyInfo } from "./pages/LotteryApplyInfo";
 
 export const router = createBrowserRouter([
   {

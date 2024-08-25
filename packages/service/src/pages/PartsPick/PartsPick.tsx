@@ -1,9 +1,5 @@
 import { Button, ButtonVariant } from "@service/common/components/Button";
-import {
-  partsPickBackgroundStyle,
-  partsPickButtonStyle,
-  partsNameStyle,
-} from "./PartsPick.css";
+import * as style from "./PartsPick.css";
 import { PartsCard, PickTitle } from "@service/components/partsPick";
 import { Space } from "@service/common/styles/Space";
 import { useState } from "react";
@@ -66,7 +62,7 @@ export const PartsPick = () => {
         </title>
         <meta name="description" content="파츠 뽑기 이벤트 페이지" />
       </Helmet>
-      <div css={partsPickBackgroundStyle}>
+      <div css={style.partsPickBackgroundStyle}>
         <PickTitle />
 
         <PartsCard
@@ -82,7 +78,7 @@ export const PartsPick = () => {
 
         <Space size={isMobile ? 4 : 6} />
         {isPickComplete && (
-          <p css={partsNameStyle}>
+          <p css={style.partsNameStyle}>
             "{partsInfo?.name}" &nbsp;
             {Category[partsInfo?.category as keyof typeof Category]} 당첨!
           </p>
@@ -92,7 +88,7 @@ export const PartsPick = () => {
           <>
             <Button
               variant={ButtonVariant.LONG}
-              css={partsPickButtonStyle}
+              css={style.partsPickButtonStyle}
               onClick={() => {
                 navigate(PARTS_COLLECTION_PAGE_ROUTE);
               }}
@@ -105,7 +101,7 @@ export const PartsPick = () => {
         {isPickComplete && (
           <Button
             variant={ButtonVariant.LONG}
-            css={partsPickButtonStyle}
+            css={style.partsPickButtonStyle}
             onClick={handleOneMorePickButtonClick}
           >
             한 번 더 뽑기 ({remainChance > 1 ? remainChance - 1 : 0}회)

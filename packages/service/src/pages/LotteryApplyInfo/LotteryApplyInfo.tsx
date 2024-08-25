@@ -20,8 +20,10 @@ import { Helmet } from "react-helmet";
 import { getAccessToken } from "@watermelon-clap/core/src/utils";
 import { useAuth, useModal } from "@watermelon-clap/core/src/hooks";
 import { IApiGetCheckExpectation } from "@service/apis/expectation/type";
-import { apiGetCheckExpectation } from "@service/apis/expectation/apiGetCheckExpectation";
-import { apiPostExpectation } from "@service/apis/expectation/apiPostExpectation";
+import {
+  apiGetCheckExpectation,
+  apiPostExpectation,
+} from "@service/apis/expectation";
 
 export const LotteryApplyInfo = () => {
   const navigate = useNavigate();
