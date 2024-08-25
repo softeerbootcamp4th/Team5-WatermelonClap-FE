@@ -88,6 +88,11 @@ export const activeLinkStyles = css`
     height: 4px;
     background-color: white;
     border-radius: 1px;
-    transition: all 1s;
   }
+
+  ${mobile(css`
+    &::after {
+      display: none;
+    }
+  `)}
 `;
