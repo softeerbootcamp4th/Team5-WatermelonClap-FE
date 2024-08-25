@@ -5,9 +5,9 @@ import { theme } from "@watermelon-clap/core/src/theme";
 export const container = css`
   color: ${theme.color.white};
   text-align: center;
-  padding-top: 70px;
+  padding-top: 150px;
   ${mobile(css`
-    padding-top: 30px;
+    padding-top: 50px;
   `)}
 `;
 
