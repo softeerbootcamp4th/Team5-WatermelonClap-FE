@@ -11,6 +11,7 @@ import {
 } from "@service/common/utils/confettiCrafter";
 import { apiPostParts } from "@service/apis/partsEvent";
 import { MODAL_CONTENT_NO_REMAINING_CHANCES } from "@service/common/components/ModalContainer/content/modalContent";
+import { isCardAnimationSupportedOnDevice } from "@service/common/utils/deviceChecker";
 
 interface CardProps {
   backImage: string;
@@ -62,9 +63,11 @@ export const PartsCard = ({
   const cardRef = useRef<HTMLDivElement>(null);
   const styleRef = useRef<HTMLStyleElement>(document.createElement("style"));
   const [isFlipped, setIsFlipped] = useState(false);
+  const [isIphoneFlipped, setIsIphoneFlipped] = useState(false);
   const [isFrontShow, setIsFrontShow] = useState(false);
   const { getIsLogin } = useAuth();
   const { openModal } = useModal();
+  const isCardAnimationSupported = isCardAnimationSupportedOnDevice();
 
   const handleMouseMove = (e: React.MouseEvent | React.TouchEvent) => {
     const $card = cardRef.current;
@@ -124,6 +127,7 @@ export const PartsCard = ({
 
   const handleClick = () => {
     if (isFlipped) return;
+    if (isIphoneFlipped) return;
     if (!getIsLogin()) return;
     if (remainChance < 1) {
       openModal({
@@ -139,17 +143,23 @@ export const PartsCard = ({
       craftFireworks(1);
       return;
     }
-    setIsFlipped(true);
+
+    if (isCardAnimationSupported) setIsFlipped(true);
+    else setIsIphoneFlipped(true);
 
     apiPostParts().then((data) => {
       setPartsInfo(data);
 
-      setTimeout(() => {
-        craftSideCannons(1);
-        setIsFrontShow(true);
-        setIsFlipped(false);
-        setIsPickComplete(true);
-      }, 3000);
+      setTimeout(
+        () => {
+          craftSideCannons(1);
+          setIsFrontShow(true);
+          setIsFlipped(false);
+          setIsIphoneFlipped(false);
+          setIsPickComplete(true);
+        },
+        isCardAnimationSupported ? 3000 : 1000,
+      );
     });
   };
 
@@ -161,7 +171,7 @@ export const PartsCard = ({
 
   return (
     <CardWrapper
-      className={`card ${isFlipped ? "flipped" : ""}`}
+      className={`card ${isFlipped ? "flipped" : ""} ${isIphoneFlipped ? "iphoneFlipped" : ""}`}
       ref={cardRef}
       onClick={handleClick}
       onMouseMove={handleMouseMove}

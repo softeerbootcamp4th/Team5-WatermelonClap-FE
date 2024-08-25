@@ -122,6 +122,33 @@ export const cardBaseStyles = css`
     animation: rotateCard 3s ease forwards;
   }
 
+  &.iphoneFlipped {
+    animation: rotateShake 1s ease forwards;
+  }
+
+  @keyframes rotateShake {
+    0% {
+      transform: rotate(0deg);
+      opacity: 1;
+    }
+    25% {
+      transform: rotate(5deg);
+      opacity: 0.7;
+    }
+    50% {
+      transform: rotate(-5deg);
+      opacity: 0.5;
+    }
+    75% {
+      transform: rotate(5deg);
+      opacity: 0.7;
+    }
+    100% {
+      transform: rotate(0deg);
+      opacity: 1;
+    }
+  }
+
   @-webkit-keyframes rotateCard {
     0% {
       -webkit-transform: perspective(800px) rotateY(0deg) rotateX(0deg) scale(1);
