@@ -9,9 +9,16 @@ import { getAccessToken } from "@watermelon-clap/core/src/utils";
 import { PinContainer } from "@service/components/partsCollection/PinContainer";
 import { useSuspenseQuery } from "@tanstack/react-query";
 import { Helmet } from "react-helmet";
+import { Space } from "@service/common/styles/Space";
+import { useMobile } from "@service/common/hooks/useMobile";
+import { Button, ButtonVariant } from "@service/common/components/Button";
+import { useNavigate } from "react-router-dom";
+import { LOTTER_APPLY_INFO_PAGE_ROUTE } from "@service/constants/routes";
 
 export const PartsCollection = () => {
   const [equippedParts, setEquippedParts] = useState<ICustomCardProps>();
+  const isMobile = useMobile();
+  const navigate = useNavigate();
 
   const { data: partsDatas, refetch } = useSuspenseQuery<IMyParts[]>({
     queryKey: ["myParts", getAccessToken()],
@@ -41,6 +48,17 @@ export const PartsCollection = () => {
 
           <PartsTab partsDatas={partsDatas} refetchGetMyParts={refetch} />
         </div>
+        <Space size={isMobile ? 20 : 12} />
+        <Button
+          variant={ButtonVariant.LONG}
+          css={style.moveButton}
+          onClick={() => {
+            navigate(LOTTER_APPLY_INFO_PAGE_ROUTE);
+          }}
+        >
+          내 아반떼 N 자랑하기
+        </Button>
+        <Space size={isMobile ? 4 : 12} />
       </div>
     </>
   );

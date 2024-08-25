@@ -53,3 +53,13 @@ export const customCardContainer = css`
     width: 350px;
   `)}
 `;
+
+export const moveButton = css`
+  width: 300px;
+  height: 60px;
+
+  ${mobile(css`
+    width: 200px;
+    height: 40px;
+  `)}
+`;
