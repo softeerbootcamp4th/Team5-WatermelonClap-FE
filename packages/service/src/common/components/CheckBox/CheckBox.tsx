@@ -49,11 +49,12 @@ export const CheckBox = ({
   ...props
 }: CheckBoxProps) => {
   return (
-    <div css={checkBoxContainerStyle} {...props}>
-      <button
-        css={checkBoxButtonStyle}
-        onClick={() => setIsChecked(!isChecked)}
-      >
+    <div
+      css={checkBoxContainerStyle}
+      {...props}
+      onClick={() => setIsChecked(!isChecked)}
+    >
+      <button css={checkBoxButtonStyle}>
         <div
           css={[
             checkBoxStyle(isChecked),

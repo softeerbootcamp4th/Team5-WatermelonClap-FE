@@ -52,6 +52,7 @@ export const checkBoxLabelStyle = css`
   color: ${theme.color.gray300};
   margin-left: 8px;
   transition: color 0.3s ease-out;
+  cursor: pointer;
 
   ${mobile(css`
     font-size: 14px;
