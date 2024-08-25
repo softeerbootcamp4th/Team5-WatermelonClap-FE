@@ -83,7 +83,7 @@ const GlobalNavs = ({ isOpen, setIsOpen }: IGlobalNavsProps) => {
             css={linkStyles}
             onClick={() => handleNavigation(LOTTER_APPLY_INFO_PAGE_ROUTE)}
           >
-            응모 내역 확인
+            기대평 / 공유
           </div>
         </>
       )}
