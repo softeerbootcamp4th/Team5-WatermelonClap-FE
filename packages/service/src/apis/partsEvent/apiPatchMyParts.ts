@@ -9,5 +9,5 @@ export const apiPatchMyParts = (token: string, partsId: number) => {
         Authorization: `Bearer ${token}`,
       },
     },
-  ).then(() => console.log(partsId));
+  );
 };

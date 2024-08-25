@@ -8,22 +8,30 @@ import { IParts } from "@watermelon-clap/core/src/types";
 interface PinMarkerProps {
   parts?: IParts;
   opacity: number;
+  handleOnTouchEnd: (event: React.TouchEvent<HTMLDivElement>) => void;
   customCss?: SerializedStyles;
   imgCss?: SerializedStyles;
 }
 
-export const Pin = ({ parts, opacity, customCss, imgCss }: PinMarkerProps) => {
+export const Pin = ({
+  parts,
+  opacity,
+  handleOnTouchEnd,
+  customCss,
+  imgCss,
+}: PinMarkerProps) => {
   const { openModal } = useModal();
 
   const handleDescriptionButtonClick = () => {
-    openModal({
-      type: "description",
-      props: {
-        src: parts?.thumbnailImgSrc,
-        name: parts?.name,
-        description: parts?.description,
-      },
-    });
+    opacity === 1 &&
+      openModal({
+        type: "description",
+        props: {
+          src: parts?.thumbnailImgSrc,
+          name: parts?.name,
+          description: parts?.description,
+        },
+      });
   };
 
   return (
@@ -48,9 +56,16 @@ export const Pin = ({ parts, opacity, customCss, imgCss }: PinMarkerProps) => {
         </div>
       </motion.div>
       {/* Line */}
-      <motion.div css={style.pinLine} />
+      <motion.div
+        css={style.pinLineContainer}
+        onTouchEnd={(event) => handleOnTouchEnd(event)}
+      >
+        <motion.div css={style.pinLine} />
+      </motion.div>
       {/* Circle */}
-      <WaveCircle />
+      <motion.div onTouchEnd={(event) => handleOnTouchEnd(event)}>
+        <WaveCircle />
+      </motion.div>
     </motion.div>
   );
 };

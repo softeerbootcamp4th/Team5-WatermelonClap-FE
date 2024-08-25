@@ -34,6 +34,14 @@ export const PinContainer = ({
     setPerspectiveOpacity(0);
   };
 
+  const handleOnTouchEnd = (event: React.TouchEvent<HTMLDivElement>) => {
+    event.stopPropagation();
+    event.preventDefault();
+
+    if (perspectiveOpacity === 1) onMouseLeave();
+    else onMouseEnter();
+  };
+
   return (
     <div css={styles.mainContainer}>
       <div
@@ -41,7 +49,10 @@ export const PinContainer = ({
         onMouseEnter={onMouseEnter}
         onMouseLeave={onMouseLeave}
       >
-        <div css={styles.perspectiveContainer}>
+        <div
+          css={styles.perspectiveContainer}
+          onTouchEnd={(event) => handleOnTouchEnd(event)}
+        >
           <div style={{ transform }} css={styles.innerContainer}>
             {children}
           </div>
@@ -52,6 +63,7 @@ export const PinContainer = ({
           <Pin
             parts={equippedParts.colorParts}
             opacity={perspectiveOpacity}
+            handleOnTouchEnd={handleOnTouchEnd}
             imgCss={styles.pinCommonImg}
             customCss={styles.pinCommonCustom}
           />
@@ -61,6 +73,7 @@ export const PinContainer = ({
           <Pin
             parts={equippedParts.bgParts}
             opacity={perspectiveOpacity}
+            handleOnTouchEnd={handleOnTouchEnd}
             imgCss={styles.pinBgImg}
             customCss={styles.pinBgCustom}
           />
@@ -70,6 +83,7 @@ export const PinContainer = ({
           <Pin
             parts={equippedParts.wheelParts}
             opacity={perspectiveOpacity}
+            handleOnTouchEnd={handleOnTouchEnd}
             imgCss={styles.pinWheelImg}
             customCss={styles.pinWheelCustom}
           />
@@ -79,6 +93,7 @@ export const PinContainer = ({
           <Pin
             parts={equippedParts.spoilerParts}
             opacity={perspectiveOpacity}
+            handleOnTouchEnd={handleOnTouchEnd}
             imgCss={styles.pinSpoilerImg}
             customCss={styles.pinSpoilerCustom}
           />

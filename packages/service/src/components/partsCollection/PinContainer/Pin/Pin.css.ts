@@ -78,12 +78,20 @@ export const pinItemBottom = css`
   z-index: 22;
 `;
 
-export const pinLine = css`
+export const pinLineContainer = css`
   position: absolute;
+  width: 100px;
+  height: 100%;
+`;
+
+export const pinLine = css`
+  position: relative;
   background: linear-gradient(to bottom, transparent, ${theme.color.white});
   transform: translateY(14px);
   width: 1px;
   height: 100%;
   z-index: 9;
+  left: 50px;
+
   filter: blur(0.5px);
 `;
