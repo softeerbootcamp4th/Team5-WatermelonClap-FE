@@ -46,10 +46,7 @@ export const linkStyles = css`
   cursor: pointer;
 
   &:hover {
-    transform: translateY(-1px);
-  }
-  &:active {
-    transform: translateY(1px);
+    color: ${theme.color.gray200};
   }
 
   ${mobile(
@@ -76,4 +73,21 @@ export const linkStyles = css`
     `,
     GNB_BREAKPOINT,
   )}
+`;
+
+export const activeLinkStyles = css`
+  position: relative;
+
+  &::after {
+    content: "";
+    position: absolute;
+    display: inline-block;
+    left: 0;
+    bottom: -22px;
+    width: 100%;
+    height: 4px;
+    background-color: white;
+    border-radius: 1px;
+    transition: all 1s;
+  }
 `;
