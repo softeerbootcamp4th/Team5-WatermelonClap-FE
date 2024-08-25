@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import * as style from "./ExpirationTimer.css";
 import { PiTimerBold } from "react-icons/pi";
-import { useAuth, useModal } from "@watermelon-clap/core/src/hooks";
+import { useAuth } from "@watermelon-clap/core/src/hooks";
 import { css } from "@emotion/react";
 import { theme } from "@watermelon-clap/core/src/theme";
 
@@ -15,20 +15,8 @@ export const ExpirationTimer = ({ diffMs }: IExpirationTimerProps) => {
   const { refresh, getExpirationTime } = useAuth();
 
   const handleRefreshToken = () => {
-    openModal({
-      type: "confirm",
-      props: {
-        title: "로그인",
-        content: "로그인을 연장하시겠습니까?",
-        confirmEvent: () => {
-          refresh()?.then(() =>
-            setRemainingTime(getExpirationTime() as number),
-          );
-        },
-      },
-    });
+    refresh()?.then(() => setRemainingTime(getExpirationTime() as number));
   };
-  const { openModal } = useModal();
   useEffect(() => {
     if (remainingTime <= 0) return;
 
