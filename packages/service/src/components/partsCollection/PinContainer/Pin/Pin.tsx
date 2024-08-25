@@ -63,7 +63,9 @@ export const Pin = ({
         <motion.div css={style.pinLine} />
       </motion.div>
       {/* Circle */}
-      <WaveCircle />
+      <motion.div onTouchEnd={(event) => handleOnTouchEnd(event)}>
+        <WaveCircle />
+      </motion.div>
     </motion.div>
   );
 };
