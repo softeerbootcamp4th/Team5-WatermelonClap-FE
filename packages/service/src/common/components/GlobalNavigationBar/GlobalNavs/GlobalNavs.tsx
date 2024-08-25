@@ -1,6 +1,11 @@
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import { ReactComponent as NLogo } from "public/images/gnb/n-logo.svg";
-import { linkStyles, navsContainerStyles, nLogoStyles } from "./GlobalNavs.css";
+import {
+  linkStyles,
+  navsContainerStyles,
+  nLogoStyles,
+  activeLinkStyles,
+} from "./GlobalNavs.css";
 import { useErrorBoundary } from "react-error-boundary";
 import {
   NEW_CAR_PAGE_ROUTE,
@@ -23,6 +28,7 @@ interface IGlobalNavsProps {
 
 const GlobalNavs = ({ isOpen, setIsOpen }: IGlobalNavsProps) => {
   const navigate = useNavigate();
+  const location = useLocation();
   const { resetBoundary } = useErrorBoundary();
   const { getExpirationTime, getIsLogin } = useAuth();
 
@@ -51,22 +57,33 @@ const GlobalNavs = ({ isOpen, setIsOpen }: IGlobalNavsProps) => {
     });
   };
 
+  const isActiveRoute = (route: string) => location.pathname === route;
+
   return (
     <div css={navsContainerStyles(isOpen)}>
       <div
-        css={linkStyles}
+        css={[
+          linkStyles,
+          isActiveRoute(NEW_CAR_PAGE_ROUTE) && activeLinkStyles,
+        ]}
         onClick={() => handleNavigation(NEW_CAR_PAGE_ROUTE)}
       >
         아반떼 N 소개
       </div>
       <div
-        css={linkStyles}
+        css={[
+          linkStyles,
+          isActiveRoute(PICK_EVENT_PAGE_ROUTE) && activeLinkStyles,
+        ]}
         onClick={() => handleNavigation(PICK_EVENT_PAGE_ROUTE)}
       >
         내 아반떼 N 뽑기
       </div>
       <div
-        css={linkStyles}
+        css={[
+          linkStyles,
+          isActiveRoute(N_QUIZ_EVENT_PAGE_ROUTE) && activeLinkStyles,
+        ]}
         onClick={() => handleNavigation(N_QUIZ_EVENT_PAGE_ROUTE)}
       >
         <NLogo css={nLogoStyles} /> 퀴즈
@@ -74,13 +91,19 @@ const GlobalNavs = ({ isOpen, setIsOpen }: IGlobalNavsProps) => {
       {isLogin && (
         <>
           <div
-            css={linkStyles}
+            css={[
+              linkStyles,
+              isActiveRoute(PARTS_COLLECTION_PAGE_ROUTE) && activeLinkStyles,
+            ]}
             onClick={() => handleNavigation(PARTS_COLLECTION_PAGE_ROUTE)}
           >
             내 컬렉션
           </div>
           <div
-            css={linkStyles}
+            css={[
+              linkStyles,
+              isActiveRoute(LOTTER_APPLY_INFO_PAGE_ROUTE) && activeLinkStyles,
+            ]}
             onClick={() => handleNavigation(LOTTER_APPLY_INFO_PAGE_ROUTE)}
           >
             기대평 / 공유

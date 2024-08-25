@@ -5,6 +5,8 @@ import { eventData } from "./eventData";
 import { Space } from "@service/common/styles/Space";
 import { useMobile } from "@service/common/hooks/useMobile";
 import { Helmet } from "react-helmet";
+import { ClickInduceIcon } from "@service/common/components/ClickInduceIcon";
+import { css } from "@emotion/react";
 
 export const Main = () => {
   const isMobile = useMobile();
@@ -18,6 +20,14 @@ export const Main = () => {
 
       <Banner />
       <div css={style.mainBg}>
+        {isMobile || (
+          <ClickInduceIcon
+            text={"SCROLL"}
+            customCss={css`
+              top: -100px;
+            `}
+          />
+        )}
         <EventPeriod />
         <Space size={isMobile ? 30 : 100} />
         <Expectations />

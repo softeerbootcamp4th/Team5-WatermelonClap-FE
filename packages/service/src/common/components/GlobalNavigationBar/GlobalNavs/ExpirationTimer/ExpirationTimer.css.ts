@@ -18,4 +18,5 @@ export const timer = css`
   display: flex;
   flex-shrink: 0;
   flex-wrap: nowrap;
+  min-width: 170px;
 `;

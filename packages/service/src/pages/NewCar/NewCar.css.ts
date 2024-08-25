@@ -1,4 +1,5 @@
 import { css } from "@emotion/react";
+import { mobile } from "@service/common/responsive/responsive";
 import { theme } from "@watermelon-clap/core/src/theme";
 
 export const bg = css`
@@ -8,4 +9,10 @@ export const bg = css`
 export const mainImg = css`
   width: 100%;
   vertical-align: bottom;
+  height: 100vh;
+  object-fit: cover;
+
+  ${mobile(css`
+    height: fit-content;
+  `)}
 `;

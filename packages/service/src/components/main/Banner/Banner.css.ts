@@ -19,6 +19,12 @@ export const bannerImg = ({ index, currentIndex }: IBannerImg) => css`
   opacity: ${index === currentIndex ? 1 : 0};
   transition: opacity 1s ease-in-out;
   position: absolute;
+  height: 100vh;
+  object-fit: cover;
+
+  ${mobile(css`
+    height: fit-content;
+  `)}
 `;
 
 export const bannerContent = css`
