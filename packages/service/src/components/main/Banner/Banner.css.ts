@@ -23,7 +23,7 @@ export const bannerImg = ({ index, currentIndex }: IBannerImg) => css`
   object-fit: cover;
 
   ${mobile(css`
-    height: fit-content;
+    height: auto;
   `)}
 `;
 
