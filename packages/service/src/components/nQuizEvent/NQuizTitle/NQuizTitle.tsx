@@ -1,14 +1,18 @@
 import { ReactComponent as NLogo } from "public/images/gnb/n-logo.svg";
 import * as style from "./NQuizTitle.css";
 
-export const NQuizTitle = () => {
+interface NQuizTitleProps {
+  eventDate: string;
+}
+
+export const NQuizTitle = ({ eventDate }: NQuizTitleProps) => {
   return (
     <div css={style.containerStyle}>
       <div css={style.logoContainerStyle}>
         <NLogo css={style.logoStyle} />
         <span css={style.titleStyle}>퀴즈</span>
       </div>
-      <div css={style.dateStyle}>2024. 08. 19 ~ 08. 23</div>
+      <div css={style.dateStyle}>{eventDate}</div>
       <div css={style.contentContainerStyle}>
         <div css={style.contentTextStyle}>
           아반떼 N에 관한 정보를 알아보는 간단한 퀴즈를 맞혀보세요!
