@@ -5,7 +5,10 @@ interface ModalProviderProps {
 }
 
 export const ModalProvider = ({ children }: ModalProviderProps) => {
-  const [state, setState] = useState<ModalState>({ type: null, props: null });
+  const [state, setState] = useState<ModalState<unknown, unknown>>({
+    type: null,
+    props: null,
+  });
 
   return (
     <ModalSetterContext.Provider value={setState}>
