@@ -15,6 +15,7 @@ import {
   DescriptionModalProps,
 } from "./modal";
 
+// ModalType 정의
 export type ModalType =
   | "login"
   | "alert"
@@ -23,11 +24,13 @@ export type ModalType =
   | "confirm"
   | "description";
 
+// DefaultModalProps 정의
 export interface DefaultModalProps {
   isOpen: boolean;
   onRequestClose: () => void;
 }
 
+// ModalComponentMap 인터페이스 정의
 interface ModalComponentMap {
   login: React.FC<DefaultModalProps>;
   alert: React.FC<AlertModalProps>;
@@ -37,6 +40,7 @@ interface ModalComponentMap {
   description: React.FC<DescriptionModalProps>;
 }
 
+// MODAL_COMPONENT_MAP 구현
 const MODAL_COMPONENT_MAP: ModalComponentMap = {
   login: GoogleLoginModal,
   alert: AlertModal,
@@ -46,27 +50,51 @@ const MODAL_COMPONENT_MAP: ModalComponentMap = {
   description: DescriptionModal,
 };
 
+// ModalStateMap 정의
+export interface ModalStateMap {
+  login: DefaultModalProps;
+  alert: AlertModalProps;
+  pending: DefaultModalProps;
+  navigate: NavigateModalProps;
+  confirm: ConfirmModalProps;
+  description: DescriptionModalProps;
+}
+
+// ModalState 제네릭 타입 정의
+export interface ModalState<T extends ModalType> {
+  type: T;
+  props?: ModalStateMap[T];
+}
+
+// ModalContainer 컴포넌트 정의
 export const ModalContainer = () => {
   const { closeModal } = useModal();
-  const modalState = useContext(ModalStateContext);
+  const modalState = useContext(
+    ModalStateContext,
+  ) as ModalState<ModalType> | null;
 
   if (!modalState || !modalState.type) {
     return null;
   }
 
+  // modalState의 type과 props를 구체적으로 타입 캐스팅
   const { type, props } = modalState;
 
-  const ModalComponent = MODAL_COMPONENT_MAP[type as ModalType];
+  // ModalComponent를 동적으로 선택
+  const ModalComponent = MODAL_COMPONENT_MAP[type] as React.FC<
+    ModalStateMap[typeof type]
+  >;
 
   if (!ModalComponent) {
     return null;
   }
 
+  // modalProps 정의
   const modalProps = {
     ...props,
-    isOpen: !!modalState.type, // boolean 보장을 위해 !! 사용
+    isOpen: Boolean(modalState.type),
     onRequestClose: closeModal,
-  };
+  } as ModalStateMap[typeof type]; // modalProps 타입 지정
 
   return createPortal(
     <ModalComponent {...modalProps} />,
