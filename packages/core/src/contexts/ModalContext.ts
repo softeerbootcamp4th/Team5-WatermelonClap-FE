@@ -1,11 +1,15 @@
 import { createContext, Dispatch, SetStateAction } from "react";
 
-export interface ModalState {
-  type: any;
-  props?: any;
+export interface ModalState<T, P> {
+  type: T;
+  props?: P;
 }
 
-export const ModalStateContext = createContext<ModalState | null>(null);
+export const ModalStateContext = createContext<ModalState<
+  unknown,
+  unknown
+> | null>(null);
+
 export const ModalSetterContext = createContext<Dispatch<
-  SetStateAction<ModalState>
+  SetStateAction<ModalState<unknown, unknown>>
 > | null>(null);
