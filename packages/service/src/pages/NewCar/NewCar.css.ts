@@ -13,6 +13,6 @@ export const mainImg = css`
   object-fit: cover;
 
   ${mobile(css`
-    height: fit-content;
+    height: auto;
   `)}
 `;
