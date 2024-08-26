@@ -9,12 +9,13 @@ import { apiGetOrderEvent } from "@service/apis/orderEvent";
 import { IOrderEvent } from "@watermelon-clap/core/src/types";
 import * as style from "./NQuizEvent.css";
 import { Helmet } from "react-helmet";
+import { formatEventDate } from "@service/common/utils";
 
 export const NQuizEvent = () => {
   const { data: quizList } = useSuspenseQuery<IOrderEvent[]>({
     queryKey: ["orderEvent"],
     queryFn: () => apiGetOrderEvent(),
-    staleTime: Infinity,
+    staleTime: 0,
   });
 
   const openedQuiz = quizList.find(
@@ -29,6 +30,11 @@ export const NQuizEvent = () => {
     (quiz) => quiz.status === "UPCOMING",
   ) as IOrderEvent;
 
+  const startDate = quizList[0].startDate;
+  const endDate = quizList[quizList.length - 1].endDate;
+
+  const eventData = formatEventDate(startDate, endDate);
+
   return (
     <>
       <Helmet>
@@ -39,7 +45,7 @@ export const NQuizEvent = () => {
         <meta name="description" content="선착순 퀴즈 이벤트 페이지" />
       </Helmet>
       <div css={style.backgroundStyle}>
-        <NQuizTitle />
+        <NQuizTitle eventDate={eventData} />
 
         <div css={style.rewardWrapStyle}>
           {quizList.map((quiz, index) => (
