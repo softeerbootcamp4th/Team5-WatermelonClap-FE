@@ -90,9 +90,12 @@ export const activeLinkStyles = css`
     border-radius: 1px;
   }
 
-  ${mobile(css`
-    &::after {
-      display: none;
-    }
-  `)}
+  ${mobile(
+    css`
+      &::after {
+        display: none;
+      }
+    `,
+    GNB_BREAKPOINT,
+  )}
 `;
